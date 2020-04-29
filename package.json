@@ -2,10 +2,11 @@
   "name": "tany4",
   "version": "0.1.0",
   "private": true,
+  "author": "Tania Papazafeiropoulou",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p $PORT"
   },
   "dependencies": {
     "date-fns": "^2.12.0",
@@ -17,5 +18,8 @@
     "remark-highlight.js": "^6.0.0",
     "remark-html": "^11.0.1",
     "sass": "^1.26.5"
+  },
+  "engines": {
+    "node": "11.x"
   }
 }
