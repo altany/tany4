@@ -13,11 +13,13 @@ export default function Layout({ children, home }) {
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
-          content="Tania Papazafeiropoulou, Web Developer - Personal Website"
+          property="og:description"
+          content="Hi, I'm Tania! I am a React Native developer and have been a Front-end developer for years. I love beautiful and engaging web apps."
         />
-        <meta property="og:image" content="/logo.svg" />
+        <meta name="image" property="og:image" content="logo.svg" />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="author" content="Tania Papazafeiropoulou" />
       </Head>
       <header className={styles.header}>
         {home ? (
