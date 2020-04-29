@@ -1,0 +1,8 @@
+{
+  "name": "Tania Papazafeiropoulou - Web developer",
+  "description": "Personal website",
+  "repository": "https://github.com/altany/tany4",
+  "logo": "logo.svg",
+  "keywords": ["react", "next", "node"],
+  "image": "heroku/nodejs"
+}
