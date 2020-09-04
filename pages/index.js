@@ -26,6 +26,12 @@ export default function Home({ posts }) {
         </p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <h2 className={utilStyles.headingLg}>Github Playground</h2>
+        <Link href="/github">
+          <a>Check it out</a>
+        </Link>
+      </section>
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
           {posts.map(({ id, date, title }) => (
