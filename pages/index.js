@@ -10,20 +10,13 @@ export default function Home() {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={utilStyles.headingMd}>
-        <p>Welcome to my website!</p>
-        <p>I'm Tania and I love beautiful and engaging web apps!</p>
+      <section className={utilStyles.introduction}>
+        <p>Welcome!</p>
         <p>
-          I enjoy building captivating UIs that make user experience easy and
-          fun. My favourite technologies at the moment are React / React Native,
-          Redux and Node.js. Previously, I have worked with Angular 2 and Ionic
-          2.
+          My name is Tania and I am a React Developer with many years of
+          experience in various front-end techonologies.
         </p>
-        <p>
-          I am currently working for OLIO as a React Native developer. This
-          allows me to do my part in reducing social inequality and
-          environmental waste, while at the same time writing sick code!
-        </p>
+        <p>Feel free to check my website and find out more about my work.</p>
       </section>
     </Layout>
   );

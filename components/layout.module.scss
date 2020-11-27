@@ -1,12 +1,11 @@
 @use "sass:color";
 @use "../styles/mixins";
 
-$themeColor: #efe2f5;
+$themeColor: #f0e2f5;
 $intenseThemeColor: darken($themeColor, 10%);
 $darkThemeColor: darken($themeColor, 50%);
-$lightThemeColor: lighten($themeColor, 5%);
+$lightThemeColor: lighten($themeColor, 7%);
 $navBarWidth: 60px;
-$navBarShadow: 1px 0 1px 0 darken($intenseThemeColor, 15%);
 $footerHeight: 20px;
 
 .logo {
@@ -26,7 +25,7 @@ $footerHeight: 20px;
   height: 100%;
   position: fixed;
   background: $intenseThemeColor;
-  @include mixins.boxShadow($navBarShadow);
+  @include mixins.boxShadow(1px 0 1px 0 darken($intenseThemeColor, 10%));
 
   .container {
     display: flex;
@@ -47,7 +46,7 @@ $footerHeight: 20px;
 .contentContainer {
   margin-left: $navBarWidth;
   padding: 3rem;
-  background-color: $lightThemeColor;
+  background-color: color.adjust($lightThemeColor, $red: 25);
   height: 100%;
 }
 
