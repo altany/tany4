@@ -3,10 +3,11 @@
 
 $themeColor: #efe2f5;
 $intenseThemeColor: darken($themeColor, 10%);
-$darkThemeColor: darken($themeColor, 50);
+$darkThemeColor: darken($themeColor, 50%);
 $lightThemeColor: lighten($themeColor, 5%);
 $navBarWidth: 60px;
-$navBarShadow: 1px 0 2px 0 #4a474c;
+$navBarShadow: 1px 0 1px 0 darken($intenseThemeColor, 15%);
+$footerHeight: 20px;
 
 .logo {
   > * {
@@ -24,7 +25,6 @@ $navBarShadow: 1px 0 2px 0 #4a474c;
   width: $navBarWidth;
   height: 100%;
   position: fixed;
-  top: 0;
   background: $intenseThemeColor;
   @include mixins.boxShadow($navBarShadow);
 
@@ -36,7 +36,7 @@ $navBarShadow: 1px 0 2px 0 #4a474c;
 
   .bottom {
     position: absolute;
-    bottom: 0;
+    bottom: $footerHeight;
   }
 
   .navLink {
@@ -59,4 +59,26 @@ $navBarShadow: 1px 0 2px 0 #4a474c;
 
 .backToHome {
   margin: 3rem 0 0;
+}
+
+.footer {
+  height: $footerHeight;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background: $darkThemeColor;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-top: 1px solid darken($darkThemeColor, 10);
+
+  .created {
+    color: white;
+    font-size: 10px;
+    padding: 0 10px;
+
+    a {
+      color: white;
+    }
+  }
 }
