@@ -4,7 +4,7 @@ import utilStyles from "../styles/utils.module.scss";
 import Link from "next/link";
 import useSWR from "swr";
 
-const name = "Tania Papazafeiropoulou";
+export const name = "Tania Papazafeiropoulou";
 export const siteTitle = `${name} - Web Developer`;
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
@@ -93,7 +93,9 @@ const Content = ({ home, children }) => (
     <header className={styles.header}>
       {home ? (
         <>
-          <h1 className={utilStyles.heading2Xl}>{name}</h1>
+          <h1 className={utilStyles.heading2Xl}>
+            Hi, I'm Tania. Welcome to my website!
+          </h1>
           <h2 className={utilStyles.headingLg}>
             Front end development, Mobile development
           </h2>
