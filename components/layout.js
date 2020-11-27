@@ -2,11 +2,18 @@ import Head from "next/head";
 import styles from "./layout.module.scss";
 import utilStyles from "../styles/utils.module.scss";
 import Link from "next/link";
+import useSWR from "swr";
 
 const name = "Tania Papazafeiropoulou";
-export const siteTitle = "Tania Papazafeiropoulou - Web Developer";
+export const siteTitle = `${name} - Web Developer`;
+
+const fetcher = (url) => fetch(url).then((r) => r.json());
+const lastCommitEndpoint =
+  "https://github-api-altany.herokuapp.com/last-commit/tany4";
 
 export default function Layout({ children, home }) {
+  const { data, error } = useSWR(lastCommitEndpoint, fetcher);
+  console.log(data, error);
   return (
     <>
       <Head>
@@ -22,7 +29,7 @@ export default function Layout({ children, home }) {
         <meta name="author" content="Tania Papazafeiropoulou" />
       </Head>
 
-      <navigation className={styles.navigation}>
+      <nav className={styles.navigation}>
         <div className={styles.container}>
           <div>
             <Link href="/">
@@ -72,7 +79,7 @@ export default function Layout({ children, home }) {
             </div>
           </div>
         </div>
-      </navigation>
+      </nav>
 
       <div className={styles.contentContainer}>
         <header className={styles.header}>
@@ -95,6 +102,21 @@ export default function Layout({ children, home }) {
           </div>
         )}
       </div>
+
+      <footer className={styles.footer}>
+        <div className={styles.created}>
+          {`Created by `}
+          <b>{name}</b>
+          {data && (
+            <span>
+              {` |  Last updated: `}
+              <a href={data.link} target="_lastCommit">
+                <b>{data.date}</b>
+              </a>
+            </span>
+          )}
+        </div>
+      </footer>
     </>
   );
 }
