@@ -4,22 +4,18 @@ import Layout, { siteTitle } from "../../components/layout";
 import RepoList from "../../components/github/repoList";
 import utilStyles from "../../styles/utils.module.scss";
 
-export default function Github() {
+export default function Work() {
   return (
     <Layout github>
       <Head>
-        <title>{siteTitle} - Github API</title>
+        <title>{siteTitle} - My work</title>
       </Head>
-      <section className={utilStyles.headingMd}>
-        <p className="intro">
-          {"Check out my Github profile on "}
-          <a href="http://www.github.com/altany">
-            <img
-              src="https://github.githubassets.com/images/modules/logos_page/Octocat.png"
-              title="github.com/altany"
-            />
-          </a>
-        </p>
+      <section>
+        <a href="http://www.github.com/altany">Github</a>
+        <br />
+        <a href="https://gitlab.com/brief-challenges">Gitlab</a>
+        <br />
+        <a href="http://stackoverflow.com/story/tany4">StackOverlow</a>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Github API Playground</h2>
