@@ -24,40 +24,62 @@ $gradient-color-2: #4d10dd;
     flex-direction: column;
     justify-content: space-between;
     padding-bottom: $footerHeight;
-    overflow-y: scroll;
   }
 
   .navEntry {
-    text-align: center;
+    align-self: center;
     font-family: monospace;
   }
-}
 
-.logo {
-  @extend .navEntry;
-  background-color: color.adjust($lightThemeColor, $red: 15);
-  margin-bottom: 10px;
-  div {
-    font-size: 16px;
-    color: color.adjust($darkThemeColor, $red: 15);
+  .linksSection {
+    display: flex;
+    flex-direction: column;
+    li {
+      @extend .navEntry;
+    }
   }
 }
 
-.navLink {
-  @extend .navEntry;
-  padding: 7px 0;
-  font-weight: bold;
-  font-size: 27px;
-  height: 60px;
-  line-height: 60px;
-  div {
-    color: $navLinkColor;
-    &:hover {
-      font-size: 110%;
-      @include mixins.navLinkHoverAnimation(
-        $gradient-color-1,
-        $gradient-color-2
-      );
+.topLinks {
+  @extend .linksSection;
+
+  .logo {
+    background-color: color.adjust($lightThemeColor, $red: 15);
+    margin-bottom: 10px;
+    div {
+      font-size: 16px;
+      color: color.adjust($darkThemeColor, $red: 15);
+      text-align: center;
+    }
+  }
+
+  li:not(.logo) {
+    padding: 7px 0;
+    font-weight: bold;
+    font-size: 27px;
+    height: 60px;
+    line-height: 60px;
+    div {
+      color: $navLinkColor;
+      &:hover {
+        font-size: 110%;
+        @include mixins.navLinkHoverAnimation(
+          $gradient-color-1,
+          $gradient-color-2
+        );
+      }
+    }
+  }
+}
+
+.bottomLinks {
+  @extend .linksSection;
+
+  li {
+    height: 30px;
+    padding-bottom: 5px;
+    img {
+      height: 80%;
     }
   }
 }
