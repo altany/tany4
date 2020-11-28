@@ -40,24 +40,24 @@ const HtmlHead = ({ home }) => (
 const Navigation = () => (
   <nav className={styles.navigation}>
     <div className={styles.container}>
-      <logo>
+      <logo className={styles.logo}>
         <Link href="/">
-          <a className={`${styles.navLink} ${styles.logo}`}>
+          <a>
             <img src="/profile.svg" alt={name} />
             <div>Tania</div>
           </a>
         </Link>
       </logo>
-      <div>
+      <div className={styles.navLink}>
         <Link href="/work">
-          <a className={styles.navLink}>
+          <a>
             <div>Work</div>
           </a>
         </Link>
       </div>
-      <div>
+      <div className={styles.navLink}>
         <Link href="/blog">
-          <a className={styles.navLink}>
+          <a>
             <div>Blog</div>
           </a>
         </Link>
