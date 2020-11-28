@@ -5,7 +5,7 @@ $themeColor: #f0e2f5;
 $intenseThemeColor: darken($themeColor, 10%);
 $darkThemeColor: darken($themeColor, 50%);
 $lightThemeColor: lighten($themeColor, 7%);
-$navBarWidth: 80px;
+$navBarWidth: 60px;
 $footerHeight: 20px;
 $navLinkColor: color.adjust($darkThemeColor, $blue: 30);
 $gradient-color-1: $navLinkColor;
@@ -55,10 +55,9 @@ $gradient-color-2: #4d10dd;
 
   li:not(.logo) {
     padding: 7px 0;
-    font-weight: bold;
-    font-size: 27px;
-    height: 60px;
-    line-height: 60px;
+    font-size: 20px;
+    height: 50px;
+    line-height: 50px;
     div {
       color: $navLinkColor;
       &:hover {
@@ -76,7 +75,7 @@ $gradient-color-2: #4d10dd;
   @extend .linksSection;
 
   li {
-    height: 30px;
+    height: 40px;
     padding-bottom: 5px;
     img {
       height: 80%;

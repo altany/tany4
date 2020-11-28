@@ -68,22 +68,38 @@ const Navigation = () => (
       </ul>
       <ul className={styles.bottomLinks}>
         <li>
-          <a href="http://tany4.com/TaniaPapazafeiropoulou-CV" target="_cv">
+          <a
+            href="http://tany4.com/TaniaPapazafeiropoulou-CV"
+            target="_cv"
+            title="Tania's resume"
+          >
             <img src="resume.svg" alt="resume" />
           </a>
         </li>
         <li>
-          <a href="mailto:hello@tany4.com" target="_email">
+          <a
+            href="mailto:hello@tany4.com"
+            target="_email"
+            title="hello@tany4.com"
+          >
             <img src="email.svg" alt="hello@tany4.com" />
           </a>
         </li>
         <li>
-          <a href="https://twitter.com/_Tany_" target="_twitter">
+          <a
+            href="https://twitter.com/_Tany_"
+            target="_twitter"
+            title="@_Tany_"
+          >
             <img src="twitter.svg" alt="Twitter" />
           </a>
         </li>
         <li>
-          <a href="http://www.linkedin.com/in/taniapapazaf" target="_linkedin">
+          <a
+            href="http://www.linkedin.com/in/taniapapazaf"
+            target="_linkedin"
+            title="/in/taniapapazaf"
+          >
             <img src="linkedin.svg" alt="Linkedin" />
           </a>
         </li>
@@ -95,25 +111,12 @@ const Navigation = () => (
 const Content = ({ home, children }) => (
   <div className={styles.contentContainer}>
     <header className={styles.header}>
-      {home ? (
+      <h3>Front end development, Mobile development</h3>
+
+      {home && (
         <>
-          <h1 className={utilStyles.heading2Xl}>
-            Hi, I'm Tania. Welcome to my website!
-          </h1>
-          <h2 className={utilStyles.headingLg}>
-            Front end development, Mobile development
-          </h2>
-        </>
-      ) : (
-        <>
-          <h2 className={utilStyles.headingLg}>
-            <Link href="/">
-              <a className={utilStyles.colorInherit}>{name}</a>
-            </Link>
-          </h2>
-          <h3 className={utilStyles.headingLMd}>
-            Front end development, Mobile development
-          </h3>
+          <h1>Hi, I'm Tania, web developer.</h1>
+          <h2>Welcome to my website!</h2>
         </>
       )}
     </header>
