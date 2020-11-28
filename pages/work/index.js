@@ -25,8 +25,15 @@ export default function Work() {
           />
         </a>
       </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Github API Playground</h2>
+      <section>
+        <h4>Github Languages pie chart</h4>
+        <img
+          src="github languages pie chart.png"
+          alt="Github Languages pie chart"
+        />
+      </section>
+      <section>
+        <h4>Github API Playground</h4>
         <p>
           {
             "This page contains a list of my Github repos. All the data is retrieved through the "
