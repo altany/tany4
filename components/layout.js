@@ -49,16 +49,16 @@ const Navigation = () => (
         </Link>
       </logo>
       <div>
-        <Link href="/blog">
+        <Link href="/work">
           <a className={styles.navLink}>
-            <div>Blog</div>
+            <div>Work</div>
           </a>
         </Link>
       </div>
       <div>
-        <Link href="/work">
+        <Link href="/blog">
           <a className={styles.navLink}>
-            <div>Work</div>
+            <div>Blog</div>
           </a>
         </Link>
       </div>

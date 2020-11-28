@@ -16,6 +16,14 @@ export default function Work() {
         <a href="https://gitlab.com/brief-challenges">Gitlab</a>
         <br />
         <a href="http://stackoverflow.com/story/tany4">StackOverlow</a>
+        <br />
+        If you like code challenges, find me at CodeWars:
+        <a href="https://www.codewars.com/users/altany" target="_codewars">
+          <img
+            src="https://www.codewars.com/users/altany/badges/small"
+            alt="codewars profile badge"
+          />
+        </a>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Github API Playground</h2>
