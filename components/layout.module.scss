@@ -2,7 +2,7 @@
 @use "../styles/mixins";
 
 $themeColor: #f0e2f5;
-$intenseThemeColor: darken($themeColor, 10%);
+$intenseThemeColor: color.adjust($themeColor, $red: 10);
 $darkThemeColor: darken($themeColor, 50%);
 $lightThemeColor: lighten($themeColor, 7%);
 $statusBarHeight: 30px;
@@ -10,7 +10,7 @@ $navBarWidth: 60px;
 $footerHeight: 20px;
 $navLinkColor: color.adjust($darkThemeColor, $blue: 30);
 $gradient-color-1: $navLinkColor;
-$gradient-color-2: #4d10dd;
+$gradient-color-2: color.adjust($navLinkColor, $red: -80);
 
 .navigation {
   width: $navBarWidth;
@@ -29,6 +29,7 @@ $gradient-color-2: #4d10dd;
 
   .navEntry {
     align-self: center;
+    flex: 1;
   }
 
   .linksSection {
@@ -45,14 +46,28 @@ $gradient-color-2: #4d10dd;
 
   .logo {
     background-color: color.adjust($lightThemeColor, $red: 15);
-    margin-bottom: 10px;
+    margin-bottom: 30px;
   }
 
-  li:not(.logo) {
-    padding: 7px 0;
-    font-size: 20px;
-    height: 50px;
-    line-height: 50px;
+  li {
+    width: $navBarWidth;
+    &.active {
+      font-weight: bold;
+      background-color: lighten($intenseThemeColor, 3%);
+      div {
+        color: $gradient-color-2;
+      }
+    }
+
+    &:not(.logo) {
+      padding: 7px 0;
+      font-size: 20px;
+      flex-basis: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     div {
       color: $navLinkColor;
       &:hover {
