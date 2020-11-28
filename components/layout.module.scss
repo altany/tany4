@@ -5,20 +5,11 @@ $themeColor: #f0e2f5;
 $intenseThemeColor: darken($themeColor, 10%);
 $darkThemeColor: darken($themeColor, 50%);
 $lightThemeColor: lighten($themeColor, 7%);
-$navBarWidth: 60px;
+$navBarWidth: 80px;
 $footerHeight: 20px;
-
-.logo {
-  > * {
-    background-color: color.adjust($lightThemeColor, $red: 15);
-  }
-
-  div {
-    font-size: 16px;
-    font-family: monospace;
-    color: color.adjust($darkThemeColor, $red: 15);
-  }
-}
+$navLinkColor: color.adjust($darkThemeColor, $blue: 30);
+$gradient-color-1: $navLinkColor;
+$gradient-color-2: #4d10dd;
 
 .navigation {
   width: $navBarWidth;
@@ -38,8 +29,37 @@ $footerHeight: 20px;
     bottom: $footerHeight;
   }
 
-  .navLink {
-    text-align: center; // how to include this to .logo and .link and .bottom-link
+  .navEntry {
+    text-align: center;
+    font-family: monospace;
+  }
+}
+
+.logo {
+  @extend .navEntry;
+  background-color: color.adjust($lightThemeColor, $red: 15);
+  margin-bottom: 10px;
+  div {
+    font-size: 16px;
+    color: color.adjust($darkThemeColor, $red: 15);
+  }
+}
+
+.navLink {
+  @extend .navEntry;
+  padding: 7px 0;
+  font-weight: bold;
+  font-size: 27px;
+  height: 60px;
+  div {
+    color: $navLinkColor;
+    &:hover {
+      font-size: 110%;
+      @include mixins.navLinkHoverAnimation(
+        $gradient-color-1,
+        $gradient-color-2
+      );
+    }
   }
 }
 
