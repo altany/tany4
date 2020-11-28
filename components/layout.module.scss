@@ -5,6 +5,7 @@ $themeColor: #f0e2f5;
 $intenseThemeColor: darken($themeColor, 10%);
 $darkThemeColor: darken($themeColor, 50%);
 $lightThemeColor: lighten($themeColor, 7%);
+$statusBarHeight: 30px;
 $navBarWidth: 60px;
 $footerHeight: 20px;
 $navLinkColor: color.adjust($darkThemeColor, $blue: 30);
@@ -23,12 +24,11 @@ $gradient-color-2: #4d10dd;
     height: 100%;
     flex-direction: column;
     justify-content: space-between;
-    padding-bottom: $footerHeight;
+    padding: $statusBarHeight 0 $footerHeight;
   }
 
   .navEntry {
     align-self: center;
-    font-family: monospace;
   }
 
   .linksSection {
@@ -46,11 +46,6 @@ $gradient-color-2: #4d10dd;
   .logo {
     background-color: color.adjust($lightThemeColor, $red: 15);
     margin-bottom: 10px;
-    div {
-      font-size: 16px;
-      color: color.adjust($darkThemeColor, $red: 15);
-      text-align: center;
-    }
   }
 
   li:not(.logo) {
@@ -88,6 +83,29 @@ $gradient-color-2: #4d10dd;
   padding: 3rem;
   background-color: color.adjust($lightThemeColor, $red: 25);
   min-height: 100%;
+}
+
+.statusBar {
+  height: $statusBarHeight;
+  width: 100%;
+  position: fixed;
+  background: $darkThemeColor;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid darken($darkThemeColor, 10);
+  font-family: monospace;
+  color: white;
+
+  .name {
+    font-size: 16px;
+    text-align: center;
+    width: $navBarWidth;
+  }
+
+  .title {
+    padding-left: 3rem;
+    font-weight: bold;
+  }
 }
 
 .header {

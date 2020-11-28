@@ -16,6 +16,7 @@ export default function Layout({ children, home }) {
     <>
       <HtmlHead home={home} />
       <Navigation />
+      <StatusBar />
       <Content home={home}>{children}</Content>
       <Footer />
     </>
@@ -46,7 +47,6 @@ const Navigation = () => (
             <Link href="/">
               <a>
                 <img src="/profile.svg" alt={name} />
-                <div>Tania</div>
               </a>
             </Link>
           </logo>
@@ -108,11 +108,18 @@ const Navigation = () => (
   </nav>
 );
 
+const StatusBar = () => (
+  <aside className={styles.statusBar}>
+    <span className={styles.name}>Tania</span>
+    <span className={styles.title}>
+      Front end development, Mobile development
+    </span>
+  </aside>
+);
+
 const Content = ({ home, children }) => (
   <div className={styles.contentContainer}>
     <header className={styles.header}>
-      <h3>Front end development, Mobile development</h3>
-
       {home && (
         <>
           <h1>Hi, I'm Tania, web developer.</h1>
