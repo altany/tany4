@@ -40,7 +40,7 @@ const HtmlHead = ({ home }) => (
 const Navigation = () => (
   <nav className={styles.navigation}>
     <div className={styles.container}>
-      <ul>
+      <ul className={styles.topLinks}>
         <li className={styles.logo}>
           <logo>
             <Link href="/">
@@ -51,14 +51,14 @@ const Navigation = () => (
             </Link>
           </logo>
         </li>
-        <li className={styles.navLink}>
+        <li>
           <Link href="/work">
             <a>
               <div>Work</div>
             </a>
           </Link>
         </li>
-        <li className={styles.navLink}>
+        <li>
           <Link href="/blog">
             <a>
               <div>Blog</div>
@@ -66,25 +66,25 @@ const Navigation = () => (
           </Link>
         </li>
       </ul>
-      <ul>
-        <li className={styles.navLink}>
-          <a href="mailto:hello@tany4.com" target="_email">
-            Email
-          </a>
-        </li>
-        <li className={styles.navLink}>
+      <ul className={styles.bottomLinks}>
+        <li>
           <a href="http://tany4.com/TaniaPapazafeiropoulou-CV" target="_cv">
-            CV
+            <img src="resume.svg" alt="resume" />
           </a>
         </li>
-        <li className={styles.navLink}>
-          <a href="http://www.linkedin.com/in/taniapapazaf" target="_linkedin">
-            LinkedIn
+        <li>
+          <a href="mailto:hello@tany4.com" target="_email">
+            <img src="email.svg" alt="hello@tany4.com" />
           </a>
         </li>
-        <li className={styles.navLink}>
+        <li>
           <a href="https://twitter.com/_Tany_" target="_twitter">
-            Twitter
+            <img src="twitter.svg" alt="Twitter" />
+          </a>
+        </li>
+        <li>
+          <a href="http://www.linkedin.com/in/taniapapazaf" target="_linkedin">
+            <img src="linkedin.svg" alt="Linkedin" />
           </a>
         </li>
       </ul>
