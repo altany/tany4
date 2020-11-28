@@ -40,50 +40,54 @@ const HtmlHead = ({ home }) => (
 const Navigation = () => (
   <nav className={styles.navigation}>
     <div className={styles.container}>
-      <logo className={styles.logo}>
-        <Link href="/">
-          <a>
-            <img src="/profile.svg" alt={name} />
-            <div>Tania</div>
-          </a>
-        </Link>
-      </logo>
-      <div className={styles.navLink}>
-        <Link href="/work">
-          <a>
-            <div>Work</div>
-          </a>
-        </Link>
-      </div>
-      <div className={styles.navLink}>
-        <Link href="/blog">
-          <a>
-            <div>Blog</div>
-          </a>
-        </Link>
-      </div>
-      <div className={styles.bottom}>
-        <div className={styles.navLink}>
+      <ul>
+        <li className={styles.logo}>
+          <logo>
+            <Link href="/">
+              <a>
+                <img src="/profile.svg" alt={name} />
+                <div>Tania</div>
+              </a>
+            </Link>
+          </logo>
+        </li>
+        <li className={styles.navLink}>
+          <Link href="/work">
+            <a>
+              <div>Work</div>
+            </a>
+          </Link>
+        </li>
+        <li className={styles.navLink}>
+          <Link href="/blog">
+            <a>
+              <div>Blog</div>
+            </a>
+          </Link>
+        </li>
+      </ul>
+      <ul>
+        <li className={styles.navLink}>
           <a href="mailto:hello@tany4.com" target="_email">
             Email
           </a>
-        </div>
-        <div className={styles.navLink}>
+        </li>
+        <li className={styles.navLink}>
           <a href="http://tany4.com/TaniaPapazafeiropoulou-CV" target="_cv">
             CV
           </a>
-        </div>
-        <div className={styles.navLink}>
+        </li>
+        <li className={styles.navLink}>
           <a href="http://www.linkedin.com/in/taniapapazaf" target="_linkedin">
             LinkedIn
           </a>
-        </div>
-        <div className={styles.navLink}>
+        </li>
+        <li className={styles.navLink}>
           <a href="https://twitter.com/_Tany_" target="_twitter">
             Twitter
           </a>
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
   </nav>
 );
