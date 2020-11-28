@@ -6,7 +6,7 @@ import utilStyles from "../../styles/utils.module.scss";
 
 export default function Work() {
   return (
-    <Layout github>
+    <Layout work>
       <Head>
         <title>{siteTitle} - My work</title>
       </Head>

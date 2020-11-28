@@ -11,11 +11,11 @@ const fetcher = (url) => fetch(url).then((r) => r.json());
 const lastCommitEndpoint =
   "https://github-api-altany.herokuapp.com/last-commit/tany4";
 
-export default function Layout({ children, home }) {
+export default function Layout({ children, home, blog, work }) {
   return (
     <>
       <HtmlHead home={home} />
-      <Navigation />
+      <Navigation blog={blog} work={work} />
       <StatusBar />
       <Content home={home}>{children}</Content>
       <Footer />
@@ -38,7 +38,7 @@ const HtmlHead = ({ home }) => (
   </Head>
 );
 
-const Navigation = () => (
+const Navigation = ({ blog, work }) => (
   <nav className={styles.navigation}>
     <div className={styles.container}>
       <ul className={styles.topLinks}>
@@ -51,14 +51,14 @@ const Navigation = () => (
             </Link>
           </logo>
         </li>
-        <li>
+        <li className={work && styles.active}>
           <Link href="/work">
             <a>
               <div>Work</div>
             </a>
           </Link>
         </li>
-        <li>
+        <li className={blog && styles.active}>
           <Link href="/blog">
             <a>
               <div>Blog</div>
@@ -111,9 +111,7 @@ const Navigation = () => (
 const StatusBar = () => (
   <aside className={styles.statusBar}>
     <span className={styles.name}>Tania</span>
-    <span className={styles.title}>
-      Front end development, Mobile development
-    </span>
+    <span className={styles.title}>Front end &amp; Mobile developer</span>
   </aside>
 );
 
