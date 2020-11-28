@@ -22,11 +22,9 @@ $gradient-color-2: #4d10dd;
     display: flex;
     height: 100%;
     flex-direction: column;
-  }
-
-  .bottom {
-    position: absolute;
-    bottom: $footerHeight;
+    justify-content: space-between;
+    padding-bottom: $footerHeight;
+    overflow-y: scroll;
   }
 
   .navEntry {
@@ -51,6 +49,7 @@ $gradient-color-2: #4d10dd;
   font-weight: bold;
   font-size: 27px;
   height: 60px;
+  line-height: 60px;
   div {
     color: $navLinkColor;
     &:hover {
