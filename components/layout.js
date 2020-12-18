@@ -3,9 +3,10 @@ import styles from "./layout.module.scss";
 import utilStyles from "../styles/utils.module.scss";
 import Link from "next/link";
 import useSWR from "swr";
-
+import Icon from "./icon";
 export const name = "Tania Papazafeiropoulou";
 export const siteTitle = `${name} - Web Developer`;
+import { LINKEDIN, ENVELOPE, RESUME, TWITTER } from "../lib/icons";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 const lastCommitEndpoint =
@@ -73,7 +74,7 @@ const Navigation = ({ blog, work }) => (
             target="_cv"
             title="Tania's resume"
           >
-            <img src="resume.svg" alt="resume" />
+            <Icon icon={RESUME} />
           </a>
         </li>
         <li>
@@ -82,7 +83,7 @@ const Navigation = ({ blog, work }) => (
             target="_email"
             title="hello@tany4.com"
           >
-            <img src="email.svg" alt="hello@tany4.com" />
+            <Icon icon={ENVELOPE} />
           </a>
         </li>
         <li>
@@ -91,7 +92,7 @@ const Navigation = ({ blog, work }) => (
             target="_twitter"
             title="@_Tany_"
           >
-            <img src="twitter.svg" alt="Twitter" />
+            <Icon icon={TWITTER} />
           </a>
         </li>
         <li>
@@ -100,7 +101,7 @@ const Navigation = ({ blog, work }) => (
             target="_linkedin"
             title="/in/taniapapazaf"
           >
-            <img src="linkedin.svg" alt="Linkedin" />
+            <Icon icon={LINKEDIN} />
           </a>
         </li>
       </ul>
@@ -112,6 +113,7 @@ const StatusBar = () => (
   <aside className={styles.statusBar}>
     <span className={styles.name}>Tania</span>
     <span className={styles.title}>Front end &amp; Mobile developer</span>
+    {/* TODO: Add conferences link with animated dropdown */}
   </aside>
 );
 
