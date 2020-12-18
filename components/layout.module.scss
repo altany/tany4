@@ -1,8 +1,9 @@
 @use "sass:color";
 @use "../styles/mixins";
 
-$themeColor: #e2ecf5;
-$intenseThemeColor: color.adjust($themeColor, $red: 10);
+$themeColor: #b4e7ff;
+$secondaryThemeColor: #fff4e6;
+$thirdColor: #ee7c79;
 $darkThemeColor: darken($themeColor, 50%);
 $lightThemeColor: lighten($themeColor, 7%);
 $statusBarHeight: 30px;
@@ -10,7 +11,7 @@ $navBarWidth: 60px;
 $footerHeight: 20px;
 $navLinkColor: color.adjust($darkThemeColor, $blue: 30);
 $gradient-color-1: $navLinkColor;
-$gradient-color-2: color.adjust($navLinkColor, $red: -80);
+$gradient-color-2: #ef7b78;
 $stackOverflowOrange: #f69c55;
 $linkedInBlue: #0077b5;
 $githubBlack: #000000;
@@ -23,8 +24,8 @@ $twitterBlue: #20a2f1;
   width: $navBarWidth;
   height: 100%;
   position: fixed;
-  background: $intenseThemeColor;
-  @include mixins.boxShadow(1px 0 1px 0 darken($intenseThemeColor, 10%));
+  background: $secondaryThemeColor;
+  @include mixins.boxShadow(1px 0 1px 0 darken($secondaryThemeColor, 10%));
 
   .container {
     display: flex;
@@ -52,7 +53,7 @@ $twitterBlue: #20a2f1;
   @extend .linksSection;
 
   .logo {
-    background-color: color.adjust($lightThemeColor, $red: 15);
+    background-color: white;
     margin-bottom: 1rem;
   }
 
@@ -60,7 +61,7 @@ $twitterBlue: #20a2f1;
     width: $navBarWidth;
     &.active {
       font-weight: bold;
-      background-color: lighten($intenseThemeColor, 3%);
+      background-color: lighten($secondaryThemeColor, 3%);
       div {
         color: $gradient-color-2;
       }
@@ -93,7 +94,7 @@ $twitterBlue: #20a2f1;
   @extend .linksSection;
 
   li {
-    height: 2rem;
+    padding-bottom: 0.7rem;
     img {
       height: 80%;
     }
@@ -103,7 +104,6 @@ $twitterBlue: #20a2f1;
 .contentContainer {
   margin-left: $navBarWidth;
   padding: 3rem;
-  background-color: color.adjust($lightThemeColor, $red: 25);
   min-height: 100%;
 }
 
@@ -115,20 +115,21 @@ $twitterBlue: #20a2f1;
   display: flex;
   align-items: center;
   border-bottom: 1px solid darken($darkThemeColor, 10);
-  color: white;
 
   .name {
     font-size: 1.1rem;
     text-align: center;
     width: $navBarWidth;
     letter-spacing: 0.1rem;
+    color: white;
   }
 
   .title {
     padding-left: 3rem;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     letter-spacing: 0.2rem;
+    color: white;
   }
 }
 
@@ -147,11 +148,11 @@ $twitterBlue: #20a2f1;
   width: 100%;
   position: fixed;
   bottom: 0;
-  background: $darkThemeColor;
+  background: $thirdColor;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  border-top: 1px solid darken($darkThemeColor, 10);
+  border-top: 1px solid darken($thirdColor, 10);
 
   .created {
     color: white;

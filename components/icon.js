@@ -7,13 +7,14 @@ const Icon = (props) => {
       height={`${props.size}px`}
       viewBox="0 0 1024 1024"
     >
-      <path d={props.icon}></path>
+      <path d={props.icon} fill={props.color}></path>
     </svg>
   );
 };
 
 Icon.defaultProps = {
-  size: 25,
+  size: 20,
+  color: "#007ab4",
 };
 
 export default Icon;

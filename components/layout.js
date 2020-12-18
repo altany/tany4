@@ -111,7 +111,9 @@ const Navigation = ({ blog, work }) => (
 
 const StatusBar = () => (
   <aside className={styles.statusBar}>
-    <span className={styles.name}>Tania</span>
+    <Link href="/">
+      <a className={styles.name}>Tania</a>
+    </Link>
     <span className={styles.title}>Front end &amp; Mobile developer</span>
     {/* TODO: Add conferences link with animated dropdown */}
   </aside>
