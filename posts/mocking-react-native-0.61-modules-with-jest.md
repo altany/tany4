@@ -1,7 +1,9 @@
 ---
 title: "Mocking React Native 0.61 modules with Jest"
-date: "2020-01-25 14:00:50 +0200"
+date: "2020-01-25T14:00:50+0200"
 categories: react-native 0.61 jest mocking upgrade
+banner: "rn-jest.png"
+color: "#222222"
 ---
 
 A few months ago, Facebook announced the release of [React Native 0.61](https://facebook.github.io/react-native/blog/2019/09/18/version-0.61).

@@ -2,8 +2,9 @@ import Head from "next/head";
 import Link from "next/link";
 import Layout, { siteTitle } from "../../components/layout";
 import RepoList from "../../components/github/repoList";
-import utilStyles from "../../styles/utils.module.scss";
+import styles from "../../styles/utils.module.scss";
 import { getSortedPostsData } from "../../lib/posts";
+import Date from "../../components/date";
 
 export default function Blog({ posts }) {
   return (
@@ -11,17 +12,21 @@ export default function Blog({ posts }) {
       <Head>
         <title>{siteTitle} - Blog</title>
       </Head>
-      <section>
+      <section className={styles.blog}>
         <ul>
-          {posts.map(({ id, date, title }) => (
-            <li key={id}>
+          {posts.map(({ id, date, title, banner, color }) => (
+            <li key={id} style={{ backgroundColor: color }}>
               <Link href="/blog/posts/[id]" as={`/blog/posts/${id}`}>
-                <a>{title}</a>
+                <a>
+                  <img src={`blog/${banner}`} />
+                  <div className={styles.content}>
+                    <b>{title}</b>
+                    <small>
+                      <Date dateString={date} />
+                    </small>
+                  </div>
+                </a>
               </Link>
-              <br />
-              <small>
-                <Date dateString={date} />
-              </small>
             </li>
           ))}
         </ul>

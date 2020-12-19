@@ -1,4 +1,5 @@
 @use "../styles/variables";
+@use "../styles/mixins";
 
 .introduction {
   width: 600px;
@@ -6,5 +7,41 @@
   margin: 0 auto;
   b {
     color: variables.$thirdColor;
+  }
+}
+
+.blog {
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    li {
+      flex-basis: 45%;
+      height: 250px;
+      margin: 1rem 0;
+      @include mixins.boxShadow(1px 1px 6px 0px variables.$secondColor);
+
+      a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        color: variables.$textColor;
+      }
+
+      img {
+        height: 170px;
+        object-fit: cover;
+      }
+      .content {
+        background-color: white;
+        padding: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+      }
+    }
   }
 }

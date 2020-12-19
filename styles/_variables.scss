@@ -3,7 +3,7 @@
 $mainColor: #a8f1ed;
 $secondColor: #fff4e6;
 $thirdColor: #ee7c79;
-
+$textColor: #3d5d5d;
 $darkmainColor: darken($mainColor, 50%);
 $lightmainColor: lighten($mainColor, 7%);
 $statusBarHeight: 30px;
@@ -11,7 +11,7 @@ $navBarWidth: 60px;
 $footerHeight: 20px;
 $navLinkColor: color.adjust($darkmainColor, $blue: 30);
 $gradientColor1: $navLinkColor;
-$gradientColor2: darken($thirdColor, 10%);
+$gradientColor2: darken($thirdColor, 5%);
 
 $stackOverflowOrange: #f69c55;
 $linkedInBlue: #0077b5;
