@@ -1,7 +1,9 @@
 ---
 title: "React Conf 2019"
-date: "2019-10-30 20:00:50 +0200"
+date: "2019-10-30T20:00:50+0200"
 categories: react conference 2019 react-native talk speaker
+banner: "reactconf-banner.jpg"
+color: "#401b57"
 ---
 
 # Using React Native to save the world

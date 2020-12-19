@@ -1,5 +1,5 @@
-@use "sass:color";
 @use "../styles/variables";
+@use "sass:color";
 @use "../styles/mixins";
 
 .statusBar {
@@ -9,7 +9,7 @@
   background: variables.$darkmainColor;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid darken(variables.$darkmainColor, 10);
+  border-bottom: 1px solid darken(variables.$darkmainColor, 5%);
 
   .name {
     font-size: 1.1rem;
@@ -69,7 +69,7 @@
     width: variables.$navBarWidth;
     &.active {
       font-weight: bold;
-      background-color: darken(variables.$secondColor, 2%);
+      background-color: color.adjust(variables.$mainColor, $saturation: -20);
       div {
         color: variables.$gradientColor2;
       }

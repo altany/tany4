@@ -1,10 +1,12 @@
 ---
 title: "JS VidCon"
-date: "2020-05-07 23:30:00 +0200"
+date: "2020-05-07T23:30:00+0200"
 categories: react conference 2020 jsvidcon talk speaker
+banner: "jsvidcon-banner.jpeg"
+color: "#03a7af"
 ---
 
-![JS VidCon - Tania Papazafeiropoulou banner](/jsvidcon-banner.png "JS VidCon banner - Tania Papazafeiropoulou")
+![JS VidCon - Tania Papazafeiropoulou banner](/blog/jsvidcon-banner-tania.png "JS VidCon banner - Tania Papazafeiropoulou")
 
 Join me and tonnes of great speakers on May 7th!
 It's all online and you can get tickets at [jsvid.com](https://jsvidcon.com)

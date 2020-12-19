@@ -2,7 +2,7 @@ import Head from "next/head";
 import Layout from "../../../components/layout";
 import { getAllPostIds, getPostData } from "../../../lib/posts";
 import Date from "../../../components/date";
-import utilStyles from "../../../styles/utils.module.scss";
+import styles from "../../../styles/utils.module.scss";
 
 export default function Post({ data }) {
   return (
@@ -12,9 +12,7 @@ export default function Post({ data }) {
       </Head>
       <article>
         <h1>{data.title}</h1>
-        <div>
-          <Date dateString={data.date} />
-        </div>
+        <Date dateString={data.date} />
         <div dangerouslySetInnerHTML={{ __html: data.contentHtml }} />
       </article>
     </Layout>
