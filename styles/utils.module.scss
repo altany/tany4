@@ -1,5 +1,6 @@
 @use "../styles/variables";
 @use "../styles/mixins";
+@use "sass:color";
 
 .introduction {
   width: 600px;
@@ -11,6 +12,12 @@
 }
 
 .blog {
+  margin: 5rem 0 1rem;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
   ul {
     display: flex;
     flex-direction: row;
@@ -19,7 +26,7 @@
     li {
       flex-basis: 45%;
       height: 250px;
-      margin: 1rem 0;
+      margin: 3rem 0;
       @include mixins.boxShadow(1px 1px 6px 0px variables.$secondColor);
 
       a {
@@ -36,7 +43,10 @@
         object-fit: cover;
       }
       .content {
-        background-color: white;
+        background-color: lighten(
+          color.adjust(variables.$secondColor, $saturation: -50),
+          2%
+        );
         padding: 0.5rem;
         display: flex;
         flex-direction: column;
