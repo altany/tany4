@@ -127,7 +127,7 @@ And it works like a charm!
 
 However, soon I came across another obstacle. I need to be able to mock platform detection. By default, we mock Platform.OS to be `ios`, but not only there were cases that we needed to test scenarios for Android, we are also using react-native for the web. It was really important to be able to test our web app as well.
 
-Before upgrading, we have been using a method that overwrites the OS property of Platform like this:
+Before upgrading, we had been using a method that overwrites the OS property of Platform like this:
 
 ```javascript
 export const mockPlatform = (OS) => {

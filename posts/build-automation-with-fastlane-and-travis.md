@@ -36,18 +36,22 @@ With match, the certificates are stored and synced via a github repo which is pu
 Build Variants - flavours (staging vs production) and types (debug vs release)
 Similar to iOS
 
-# ## iOS and Android
+# iOS and Android
 
-Fastlane
+## Fastlane
+
 Once finally set up correctly, we were able to automate the full process of building the app and deploying to firebase for internal testing.
 This change alone reduced the process from over a day to just a couple of hours
 Not well documented. Very time consuming and often frustrating to figure things out. But once set up, very reliable
-Renogen
+
+## Renogen
+
 Automated release notes generation
 One of the most tedious and boring parts of the process is now absorbed into the development process.
 Changelog entry included in pull request, when necessary
 
-##Travis
+## Travis
+
 Work in progress.
 Still have to manually trigger fastlane when wanting to get a new release.
 Still a developer's responsibility, forcing to stop any other task and run the process locally
@@ -56,7 +60,9 @@ With Travis we are hoping to allow the QA team to get a fresh release just by cr
 ## Web
 
 Maybe mention how we set up travis for multiple language jobs, i.e. node (web), java (android) and objective-c (ios)
-More on fastlane
+
+# More on fastlane
+
 Ensure things are always up to date by running pod install, npx jetify, ...
 Just update the version in package.json, and a lane will handle bumping the version for the xcode project and keep things up to date
 Build android bundle automatically (when generating the production release .apk)
