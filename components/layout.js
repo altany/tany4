@@ -30,7 +30,7 @@ const HtmlHead = ({ home }) => (
     <meta
       name="description"
       property="og:description"
-      content="Hi, I'm Tania! I am a React Native developer and have been a Front-end developer for years. I love beautiful and engaging web apps."
+      content="Hi, I'm Tania! I am a React Native developer and have been a Front-end developer for years. I love building beautiful and engaging web apps."
     />
     <meta name="image" property="og:image" content="logo.svg" />
     <meta name="og:title" content={siteTitle} />

@@ -12,7 +12,9 @@ export default function Blog({ posts }) {
       <Head>
         <title>{siteTitle} - Blog</title>
       </Head>
+
       <section className={styles.blog}>
+        <h1>Blog</h1>
         <ul>
           {posts.map(({ id, date, title, banner, color }) => (
             <li key={id} style={{ backgroundColor: color }}>
