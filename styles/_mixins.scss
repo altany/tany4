@@ -10,13 +10,13 @@
   }
 }
 
-@mixin navLinkHoverAnimation($gradient-color-1, $gradient-color-2) {
+@mixin navLinkHoverAnimation($gradientColor1, $gradientColor2) {
   background: linear-gradient(
     to right,
-    $gradient-color-1 20%,
-    $gradient-color-2 40%,
-    $gradient-color-2 60%,
-    $gradient-color-1 80%
+    $gradientColor1 20%,
+    $gradientColor2 40%,
+    $gradientColor2 60%,
+    $gradientColor1 80%
   );
   background-size: 200% auto;
   background-clip: text;

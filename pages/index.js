@@ -11,10 +11,9 @@ export default function Home() {
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.introduction}>
-        {/* TODO: Highlight React and front-end */}
         <p>
-          My name is {name} and I am a React Developer with many years of
-          experience in various front-end techonologies.
+          My name is {name} and I am a <b>React</b> Developer with many years of
+          experience in various <b>front end</b> techonologies.
         </p>
         <p>Feel free to check my website and find out more about my work.</p>
       </section>

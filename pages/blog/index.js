@@ -11,15 +11,15 @@ export default function Blog({ posts }) {
       <Head>
         <title>{siteTitle} - Blog</title>
       </Head>
-      <section className={utilStyles.headingMd}>
-        <ul className={utilStyles.list}>
+      <section>
+        <ul>
           {posts.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
+            <li key={id}>
               <Link href="/blog/posts/[id]" as={`/blog/posts/${id}`}>
                 <a>{title}</a>
               </Link>
               <br />
-              <small className={utilStyles.lightText}>
+              <small>
                 <Date dateString={date} />
               </small>
             </li>
