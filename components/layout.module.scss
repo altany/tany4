@@ -1,38 +1,46 @@
 @use "sass:color";
+@use "../styles/variables";
 @use "../styles/mixins";
 
-$themeColor: #b4e7ff;
-$secondaryThemeColor: #fff4e6;
-$thirdColor: #ee7c79;
-$darkThemeColor: darken($themeColor, 50%);
-$lightThemeColor: lighten($themeColor, 7%);
-$statusBarHeight: 30px;
-$navBarWidth: 60px;
-$footerHeight: 20px;
-$navLinkColor: color.adjust($darkThemeColor, $blue: 30);
-$gradient-color-1: $navLinkColor;
-$gradient-color-2: #ef7b78;
-$stackOverflowOrange: #f69c55;
-$linkedInBlue: #0077b5;
-$githubBlack: #000000;
-$cvGray: #5d5d5d;
-$envelopTeal: #028dad;
-$gitlabOrange: #e24329;
-$twitterBlue: #20a2f1;
+.statusBar {
+  height: variables.$statusBarHeight;
+  width: 100%;
+  position: fixed;
+  background: variables.$darkmainColor;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid darken(variables.$darkmainColor, 10);
+
+  .name {
+    font-size: 1.1rem;
+    text-align: center;
+    width: variables.$navBarWidth;
+    letter-spacing: 0.1rem;
+    color: white;
+  }
+
+  .title {
+    padding-left: 3rem;
+    font-weight: bold;
+    font-size: 1.3rem;
+    letter-spacing: 0.1rem;
+    color: white;
+  }
+}
 
 .navigation {
-  width: $navBarWidth;
+  width: variables.$navBarWidth;
   height: 100%;
   position: fixed;
-  background: $secondaryThemeColor;
-  @include mixins.boxShadow(1px 0 1px 0 darken($secondaryThemeColor, 10%));
+  background: variables.$secondColor;
+  @include mixins.boxShadow(1px 0 1px 0 darken(variables.$secondColor, 10%));
 
   .container {
     display: flex;
     height: 100%;
     flex-direction: column;
     justify-content: space-between;
-    padding: $statusBarHeight 0 $footerHeight;
+    padding: variables.$statusBarHeight 0 variables.$footerHeight;
   }
 
   .navEntry {
@@ -54,22 +62,22 @@ $twitterBlue: #20a2f1;
 
   .logo {
     background-color: white;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
   }
 
   li {
-    width: $navBarWidth;
+    width: variables.$navBarWidth;
     &.active {
       font-weight: bold;
-      background-color: lighten($secondaryThemeColor, 3%);
+      background-color: darken(variables.$secondColor, 2%);
       div {
-        color: $gradient-color-2;
+        color: variables.$gradientColor2;
       }
     }
 
     &:not(.logo) {
       padding: 0.5rem 0;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       flex-basis: 60px;
       display: flex;
       align-items: center;
@@ -77,13 +85,13 @@ $twitterBlue: #20a2f1;
     }
 
     div {
-      color: $navLinkColor;
+      color: variables.$navLinkColor;
 
       &:hover {
         font-size: 110%;
         @include mixins.navLinkHoverAnimation(
-          $gradient-color-1,
-          $gradient-color-2
+          variables.$gradientColor1,
+          variables.$gradientColor2
         );
       }
     }
@@ -102,35 +110,9 @@ $twitterBlue: #20a2f1;
 }
 
 .contentContainer {
-  margin-left: $navBarWidth;
+  margin-left: variables.$navBarWidth;
   padding: 3rem;
   min-height: 100%;
-}
-
-.statusBar {
-  height: $statusBarHeight;
-  width: 100%;
-  position: fixed;
-  background: $darkThemeColor;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid darken($darkThemeColor, 10);
-
-  .name {
-    font-size: 1.1rem;
-    text-align: center;
-    width: $navBarWidth;
-    letter-spacing: 0.1rem;
-    color: white;
-  }
-
-  .title {
-    padding-left: 3rem;
-    font-weight: bold;
-    font-size: 1.4rem;
-    letter-spacing: 0.2rem;
-    color: white;
-  }
 }
 
 .header {
@@ -144,23 +126,23 @@ $twitterBlue: #20a2f1;
 }
 
 .footer {
-  height: $footerHeight;
+  height: variables.$footerHeight;
   width: 100%;
   position: fixed;
   bottom: 0;
-  background: $thirdColor;
+  background: variables.$thirdColor;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  border-top: 1px solid darken($thirdColor, 10);
+  border-top: 1px solid darken(variables.$thirdColor, 10);
 
   .created {
-    color: white;
+    color: variables.$secondColor;
     font-size: 0.6rem;
     padding: 0 0.6rem;
 
     a {
-      color: white;
+      color: variables.$secondColor;
     }
   }
 }
