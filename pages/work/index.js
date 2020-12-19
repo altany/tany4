@@ -2,7 +2,8 @@ import Head from "next/head";
 import Link from "next/link";
 import Layout, { siteTitle } from "../../components/layout";
 import RepoList from "../../components/github/repoList";
-import utilStyles from "../../styles/utils.module.scss";
+import Icon from "../../components/icon";
+import { GITHUB, GITLAB, STACKOVERFLOW, CODEWARS } from "../../lib/icons";
 
 export default function Work() {
   return (
@@ -11,12 +12,22 @@ export default function Work() {
         <title>{siteTitle} - My work</title>
       </Head>
       <section>
-        <a href="http://www.github.com/altany">Github</a>
+        <a href="http://www.github.com/altany">
+          <Icon icon={GITHUB} />
+          Github
+        </a>
         <br />
-        <a href="https://gitlab.com/brief-challenges">Gitlab</a>
+        <a href="https://gitlab.com/brief-challenges">
+          <Icon icon={GITLAB} />
+          Gitlab
+        </a>
         <br />
-        <a href="http://stackoverflow.com/story/tany4">StackOverlow</a>
+        <a href="http://stackoverflow.com/story/tany4">
+          <Icon icon={STACKOVERFLOW} />
+          StackOverlow
+        </a>
         <br />
+        <Icon icon={CODEWARS} />
         If you like code challenges, find me at CodeWars:
         <a href="https://www.codewars.com/users/altany" target="_codewars">
           <img
