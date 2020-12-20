@@ -25,6 +25,10 @@
     @media (max-height: 500px) {
       @content;
     }
+  } @else if ($point == portrait) {
+    @media (min-height: 500px) {
+      @content;
+    }
   } @else {
     @warn "Breakpoint mixin supports: desktop, laptop, tablet, phablet and mobileonly";
   }

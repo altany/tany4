@@ -1,6 +1,5 @@
 import Head from "next/head";
 import styles from "./layout.module.scss";
-import utilStyles from "../styles/utils.module.scss";
 import Link from "next/link";
 import useSWR from "swr";
 import Icon from "./icon";
@@ -12,19 +11,19 @@ const fetcher = (url) => fetch(url).then((r) => r.json());
 const lastCommitEndpoint =
   "https://github-api-altany.herokuapp.com/last-commit/tany4";
 
-export default function Layout({ children, home, blog, work }) {
+export default function Layout({ children, blog, work }) {
   return (
     <>
-      <HtmlHead home={home} />
+      <HtmlHead />
       <Navigation blog={blog} work={work} />
       <StatusBar />
-      <Content home={home}>{children}</Content>
+      <Content>{children}</Content>
       <Footer />
     </>
   );
 }
 
-const HtmlHead = ({ home }) => (
+const HtmlHead = () => (
   <Head>
     <link rel="icon" href="/favicon.ico" />
     <meta
@@ -44,13 +43,11 @@ const Navigation = ({ blog, work }) => (
     <div className={styles.container}>
       <ul className={styles.topLinks}>
         <li className={styles.logo}>
-          <logo>
-            <Link href="/">
-              <a>
-                <img src="/profile.svg" alt={name} />
-              </a>
-            </Link>
-          </logo>
+          <Link href="/">
+            <a>
+              <img src="/profile.svg" alt={name} />
+            </a>
+          </Link>
         </li>
         <li className={work && styles.active}>
           <Link href="/work">
@@ -77,15 +74,6 @@ const BottomLinks = () => {
     <ul className={styles.bottomLinks}>
       <li>
         <a
-          href="http://tany4.com/TaniaPapazafeiropoulou-CV"
-          target="_cv"
-          title="Tania's resume"
-        >
-          <Icon icon={RESUME} />
-        </a>
-      </li>
-      <li>
-        <a
           href="http://www.linkedin.com/in/taniapapazaf"
           target="_linkedin"
           title="/in/taniapapazaf"
@@ -96,6 +84,15 @@ const BottomLinks = () => {
       <li>
         <a href="https://twitter.com/_Tany_" target="_twitter" title="@_Tany_">
           <Icon icon={TWITTER} />
+        </a>
+      </li>
+      <li>
+        <a
+          href="http://tany4.com/TaniaPapazafeiropoulou-CV"
+          target="_cv"
+          title="Tania's resume"
+        >
+          <Icon icon={RESUME} />
         </a>
       </li>
       <li>
@@ -121,16 +118,8 @@ const StatusBar = () => (
   </aside>
 );
 
-const Content = ({ home, children }) => (
+const Content = ({ children }) => (
   <div className={styles.contentContainer}>
-    <header className={styles.header}>
-      {home && (
-        <>
-          <h1>Hi, I'm Tania, web developer.</h1>
-          <h2>Welcome to my website!</h2>
-        </>
-      )}
-    </header>
     <main>{children}</main>
   </div>
 );
