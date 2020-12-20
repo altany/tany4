@@ -1,3 +1,5 @@
+@use "../styles/variables";
+
 @mixin breakpoint($point) {
   @if ($point == desktop) {
     @media (min-width: 1024px) {
@@ -19,8 +21,21 @@
     @media (max-width: 600px) {
       @content;
     }
+  } @else if ($point == landscape) {
+    @media (max-height: 500px) {
+      @content;
+    }
   } @else {
     @warn "Breakpoint mixin supports: desktop, laptop, tablet, phablet and mobileonly";
+  }
+}
+
+@mixin navBarWidth() {
+  @include breakpoint(phablet) {
+    width: variables.$navBarWidth;
+  }
+  @include breakpoint(mobileonly) {
+    width: variables.$navBarWidthMobile;
   }
 }
 
