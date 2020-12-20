@@ -18,7 +18,7 @@
     letter-spacing: 0.1rem;
     color: white;
     @include mixins.breakpoint(mobileonly) {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
     }
   }
 
@@ -33,6 +33,11 @@
       font-size: 0.8rem;
     }
   }
+}
+
+.navEntry {
+  align-self: center;
+  flex: 1;
 }
 
 .linksSection {
@@ -56,11 +61,6 @@
     flex-direction: column;
     justify-content: space-between;
     padding: variables.$statusBarHeight 0 variables.$footerHeight;
-  }
-
-  .navEntry {
-    align-self: center;
-    flex: 1;
   }
 }
 
@@ -91,6 +91,10 @@
       justify-content: center;
       @include mixins.breakpoint(landscape) {
         flex-basis: 40px;
+      }
+      @include mixins.breakpoint(mobileonly) {
+        font-size: 0.9rem;
+        flex-basis: 50px;
       }
     }
 
