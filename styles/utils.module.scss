@@ -13,10 +13,16 @@
 
 .blog {
   margin: 5rem 0 1rem;
+  @include mixins.breakpoint(mobileonly) {
+    margin: 2rem 0;
+  }
 
   h1 {
     text-align: center;
     margin-bottom: 2rem;
+    @include mixins.breakpoint(mobileonly) {
+      margin: 1rem 0;
+    }
   }
   ul {
     display: flex;
@@ -25,9 +31,15 @@
     justify-content: space-around;
     li {
       flex-basis: 45%;
-      height: 250px;
+      min-height: 250px;
       margin: 3rem 0;
       @include mixins.boxShadow(1px 1px 6px 0px variables.$secondColor);
+
+      @include mixins.breakpoint(mobileonly) {
+        flex-basis: 100%;
+        min-height: 180px;
+        margin: 2rem 0;
+      }
 
       a {
         display: flex;
@@ -41,6 +53,9 @@
       img {
         height: 170px;
         object-fit: cover;
+        @include mixins.breakpoint(mobileonly) {
+          height: 100px;
+        }
       }
       .content {
         background-color: lighten(
