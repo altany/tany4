@@ -35,6 +35,10 @@ const HtmlHead = () => (
     <meta name="og:title" content={siteTitle} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="author" content={name} />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
   </Head>
 );
 
