@@ -29,6 +29,7 @@
     letter-spacing: 0.1rem;
     color: white;
     @include mixins.breakpoint(mobileonly) {
+      padding-left: 1rem;
       font-size: 0.8rem;
     }
   }
@@ -88,17 +89,22 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      @include mixins.breakpoint(landscape) {
+        flex-basis: 40px;
+      }
     }
 
     div {
       color: variables.$navLinkColor;
 
       &:hover {
-        font-size: 110%;
-        @include mixins.navLinkHoverAnimation(
-          variables.$gradientColor1,
-          variables.$gradientColor2
-        );
+        @include mixins.breakpoint(portrait) {
+          font-size: 110%;
+          @include mixins.navLinkHoverAnimation(
+            variables.$gradientColor1,
+            variables.$gradientColor2
+          );
+        }
       }
     }
   }
@@ -135,12 +141,6 @@
   }
 }
 
-.header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .backToHome {
   margin: 3rem 0 0;
 }
@@ -160,7 +160,9 @@
     color: variables.$secondColor;
     font-size: 0.6rem;
     padding: 0 0.6rem;
-
+    @include mixins.breakpoint(mobileonly) {
+      font-size: 0.5rem;
+    }
     a {
       color: variables.$secondColor;
     }

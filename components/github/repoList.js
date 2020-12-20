@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import utilStyles from "../../styles/utils.module.scss";
 import Repo from "../../components/github/repo";
 import useSWR from "swr";
 
