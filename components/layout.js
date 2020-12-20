@@ -67,47 +67,49 @@ const Navigation = ({ blog, work }) => (
           </Link>
         </li>
       </ul>
-      <ul className={styles.bottomLinks}>
-        <li>
-          <a
-            href="http://tany4.com/TaniaPapazafeiropoulou-CV"
-            target="_cv"
-            title="Tania's resume"
-          >
-            <Icon icon={RESUME} />
-          </a>
-        </li>
-        <li>
-          <a
-            href="mailto:hello@tany4.com"
-            target="_email"
-            title="hello@tany4.com"
-          >
-            <Icon icon={ENVELOPE} />
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://twitter.com/_Tany_"
-            target="_twitter"
-            title="@_Tany_"
-          >
-            <Icon icon={TWITTER} />
-          </a>
-        </li>
-        <li>
-          <a
-            href="http://www.linkedin.com/in/taniapapazaf"
-            target="_linkedin"
-            title="/in/taniapapazaf"
-          >
-            <Icon icon={LINKEDIN} />
-          </a>
-        </li>
-      </ul>
+      <BottomLinks />
     </div>
   </nav>
 );
+
+const BottomLinks = () => {
+  return (
+    <ul className={styles.bottomLinks}>
+      <li>
+        <a
+          href="http://tany4.com/TaniaPapazafeiropoulou-CV"
+          target="_cv"
+          title="Tania's resume"
+        >
+          <Icon icon={RESUME} />
+        </a>
+      </li>
+      <li>
+        <a
+          href="http://www.linkedin.com/in/taniapapazaf"
+          target="_linkedin"
+          title="/in/taniapapazaf"
+        >
+          <Icon icon={LINKEDIN} />
+        </a>
+      </li>
+      <li>
+        <a href="https://twitter.com/_Tany_" target="_twitter" title="@_Tany_">
+          <Icon icon={TWITTER} />
+        </a>
+      </li>
+      <li>
+        <a
+          href="mailto:hello@tany4.com"
+          target="_email"
+          title="hello@tany4.com"
+        >
+          <Icon icon={ENVELOPE} />
+        </a>
+      </li>
+    </ul>
+  );
+};
 
 const StatusBar = () => (
   <aside className={styles.statusBar}>
