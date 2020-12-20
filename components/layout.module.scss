@@ -113,6 +113,9 @@
   margin-left: variables.$navBarWidth;
   padding: 3rem;
   min-height: 100%;
+  @include mixins.breakpoint(mobileonly) {
+    padding: 1rem;
+  }
 }
 
 .header {
