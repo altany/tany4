@@ -6,9 +6,11 @@ $thirdColor: #ee7c79;
 $textColor: #3d5d5d;
 $darkmainColor: darken($mainColor, 50%);
 $lightmainColor: lighten($mainColor, 7%);
-$statusBarHeight: 30px;
-$navBarWidth: 60px;
-$footerHeight: 20px;
 $navLinkColor: color.adjust($darkmainColor, $blue: 30);
 $gradientColor1: $navLinkColor;
 $gradientColor2: darken($thirdColor, 5%);
+
+$statusBarHeight: 30px;
+$footerHeight: 20px;
+$navBarWidth: 60px;
+$navBarWidthMobile: 50px;

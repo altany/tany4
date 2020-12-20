@@ -12,11 +12,14 @@
   border-bottom: 1px solid darken(variables.$darkmainColor, 5%);
 
   .name {
+    @include mixins.navBarWidth;
     font-size: 1.1rem;
     text-align: center;
-    width: variables.$navBarWidth;
     letter-spacing: 0.1rem;
     color: white;
+    @include mixins.breakpoint(mobileonly) {
+      font-size: 0.7rem;
+    }
   }
 
   .title {
@@ -25,11 +28,22 @@
     font-size: 1.3rem;
     letter-spacing: 0.1rem;
     color: white;
+    @include mixins.breakpoint(mobileonly) {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.linksSection {
+  display: flex;
+  flex-direction: column;
+  li {
+    @extend .navEntry;
   }
 }
 
 .navigation {
-  width: variables.$navBarWidth;
+  @include mixins.navBarWidth;
   height: 100%;
   position: fixed;
   background: variables.$secondColor;
@@ -47,14 +61,6 @@
     align-self: center;
     flex: 1;
   }
-
-  .linksSection {
-    display: flex;
-    flex-direction: column;
-    li {
-      @extend .navEntry;
-    }
-  }
 }
 
 .topLinks {
@@ -66,7 +72,7 @@
   }
 
   li {
-    width: variables.$navBarWidth;
+    @include mixins.navBarWidth;
     &.active {
       font-weight: bold;
       background-color: color.adjust(variables.$mainColor, $saturation: -20);
@@ -107,6 +113,16 @@
       height: 80%;
     }
   }
+
+  @include mixins.breakpoint(landscape) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    li {
+      flex-basis: 50% !important;
+      text-align: center;
+    }
+  }
 }
 
 .contentContainer {
@@ -115,6 +131,7 @@
   min-height: 100%;
   @include mixins.breakpoint(mobileonly) {
     padding: 1rem;
+    margin-left: variables.$navBarWidthMobile;
   }
 }
 
