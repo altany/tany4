@@ -6,10 +6,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  h1,
+  h2 {
+    text-align: center;
+  }
 }
 
 .introduction {
-  width: 600px;
+  max-width: 35rem;
   text-align: center;
   margin: 0 auto;
   b {
