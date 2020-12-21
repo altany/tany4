@@ -60,12 +60,14 @@
       flex-basis: 45%;
       min-height: 250px;
       margin: 3rem 0;
+      @include mixins.borderRadius(6px);
       @include mixins.boxShadow(1px 1px 6px 0px variables.$secondColor);
 
       @include mixins.breakpoint(mobileonly) {
         flex-basis: 100%;
         min-height: 180px;
         margin: 2rem 0;
+        @include mixins.borderRadius(4px);
       }
 
       @include mixins.breakpoint(landscape) {
@@ -85,8 +87,10 @@
       img {
         height: 170px;
         object-fit: cover;
+        @include mixins.borderRadii(6px, 6px, null, null);
         @include mixins.breakpoint(mobileonly) {
           height: 100px;
+          @include mixins.borderRadii(4px, 4px, null, null);
         }
         @include mixins.breakpoint(landscape) {
           height: 60px;
