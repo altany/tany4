@@ -92,7 +92,7 @@
       font-weight: bold;
       background-color: color.adjust(variables.$mainColor, $saturation: -20);
       div {
-        color: variables.$gradientColor2;
+        color: darken(variables.$thirdColor, 5%);
       }
     }
 
@@ -119,8 +119,8 @@
         @include mixins.breakpoint(portrait) {
           font-size: 110%;
           @include mixins.navLinkHoverAnimation(
-            variables.$gradientColor1,
-            variables.$gradientColor2
+            variables.$navLinkColor,
+            darken(variables.$thirdColor, 5%)
           );
         }
       }
@@ -133,8 +133,8 @@
 
   li {
     padding-bottom: 0.7rem;
-    img {
-      height: 80%;
+    svg {
+      width: 24px;
     }
   }
 
@@ -147,6 +147,9 @@
       text-align: center;
       padding-bottom: 0;
       padding-top: 0.7rem;
+      svg {
+        width: 20px;
+      }
     }
   }
 }

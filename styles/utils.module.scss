@@ -31,6 +31,91 @@
   }
 }
 
+.work {
+  & > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    @include mixins.breakpoint(mobileonly) {
+      flex-direction: column;
+
+      & > * {
+        margin-bottom: 40px;
+      }
+    }
+
+    @include mixins.breakpoint(landscape) {
+      flex-wrap: wrap;
+      justify-content: space-around;
+      ul {
+        flex-basis: 50%;
+        display: flex;
+      }
+      section {
+        align-items: center;
+      }
+    }
+  }
+  a {
+    color: variables.$navLinkColor;
+  }
+
+  .links {
+    svg {
+      width: 30px;
+    }
+
+    @include mixins.breakpoint(mobileonly) {
+      display: flex;
+      flex-direction: row;
+      width: 150px;
+      justify-content: space-around;
+    }
+
+    @include mixins.breakpoint(landscape) {
+      justify-content: space-around;
+    }
+  }
+
+  .git {
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+    justify-content: space-around;
+
+    li a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    svg {
+      width: 40px;
+    }
+  }
+
+  .codewars {
+    svg {
+      width: 30px;
+      margin-right: 5px;
+    }
+    & > div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    @include mixins.breakpoint(landscape) {
+      margin: 15px 0;
+      flex-basis: 100%;
+      & > div {
+        justify-content: flex-start;
+      }
+    }
+  }
+}
+
 .blog {
   margin: 5rem 0 1rem;
   @include mixins.breakpoint(mobileonly) {
