@@ -5,10 +5,7 @@ $secondColor: #fff4e6;
 $thirdColor: #ee7c79;
 $textColor: #3d5d5d;
 $darkmainColor: darken($mainColor, 50%);
-$lightmainColor: lighten($mainColor, 7%);
 $navLinkColor: color.adjust($darkmainColor, $blue: 30);
-$gradientColor1: $navLinkColor;
-$gradientColor2: darken($thirdColor, 5%);
 
 $statusBarHeight: 30px;
 $statusBarHeightLandscape: 20px;
