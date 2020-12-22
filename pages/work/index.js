@@ -79,12 +79,12 @@ export default function Work() {
           <section className={styles.codewars}>
             <p>Do you enjoy code challenges? Find me at CodeWars!</p>
             <div>
-              <Icon icon={CODEWARS} />
               <a
                 href="https://www.codewars.com/users/altany"
                 target="_codewars"
                 title="User altany"
               >
+                <Icon icon={CODEWARS} />
                 <img
                   src="https://www.codewars.com/users/altany/badges/small"
                   alt="codewars profile badge"
