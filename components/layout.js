@@ -3,9 +3,13 @@ import styles from "./layout.module.scss";
 import Link from "next/link";
 import useSWR from "swr";
 import Icon from "./icon";
+
+import { LINKEDIN, ENVELOPE, RESUME, TWITTER } from "../lib/icons";
+
 export const name = "Tania Papazafeiropoulou";
 export const siteTitle = `${name} - Web Developer`;
-import { LINKEDIN, ENVELOPE, RESUME, TWITTER } from "../lib/icons";
+const siteDescription =
+  "Hi, I'm Tania! I am a React Native developer and have been a Front-end developer for years. I love building beautiful and engaging web apps.";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 const lastCommitEndpoint =
@@ -24,20 +28,39 @@ export default function Layout({ children, blog, work }) {
 }
 
 const HtmlHead = () => (
-  <Head>
+  <Head lang="en">
     <link rel="icon" href="/favicon.ico" />
     <meta
       name="description"
       property="og:description"
-      content="Hi, I'm Tania! I am a React Native developer and have been a Front-end developer for years. I love building beautiful and engaging web apps."
+      content={siteDescription}
     />
-    <meta name="image" property="og:image" content="logo.svg" />
-    <meta name="og:title" content={siteTitle} />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="image"
+      property="og:image"
+      content="https://tany4-inprogress.herokuapp.com/profile.png"
+    />
     <meta name="author" content={name} />
+
+    <meta name="og:title" content={siteTitle} />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@_Tany_" />
+    <meta name="twitter:title" content={siteTitle} />
+    <meta name="twitter:description" content={siteDescription} />
+    <meta name="twitter:creator" content="@_Tany_" />
+    <meta
+      name="twitter:image"
+      content="https://tany4-inprogress.herokuapp.com/profile.png"
+    />
+    <meta name="twitter:image:alt" content="Tania's photo" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://tany4-inprogress.herokuapp.com/profile.png"
     />
   </Head>
 );
