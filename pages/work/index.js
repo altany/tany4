@@ -28,29 +28,32 @@ export default function Work() {
           <ul className={styles.links}>
             <li>
               <a
-                href="http://www.linkedin.com/in/taniapapazaf"
-                target="_linkedin"
-                title="/in/taniapapazaf"
+                href="https://twitter.com/_Tany_"
+                target="_twitter"
+                title="Twitter profile - @_Tany_"
               >
-                <Icon icon={LINKEDIN} />
+                <Icon icon={TWITTER} />
+                @_Tany_
               </a>
             </li>
             <li>
               <a
-                href="https://twitter.com/_Tany_"
-                target="_twitter"
-                title="@_Tany_"
+                href="http://www.linkedin.com/in/taniapapazaf"
+                target="_linkedin"
+                title="Linkedin profile - in/taniapapazaf"
               >
-                <Icon icon={TWITTER} />
+                <Icon icon={LINKEDIN} />
+                /taniapapazaf
               </a>
             </li>
             <li>
               <a
                 href="http://stackoverflow.com/story/tany4"
                 target="_stackoverflow"
-                title="story/tany4"
+                title="StackOverflow story - tany4"
               >
                 <Icon icon={STACKOVERFLOW} />
+                tany4
               </a>
             </li>
           </ul>
@@ -77,7 +80,7 @@ export default function Work() {
             </li>
           </ul>
           <section className={styles.codewars}>
-            <p>Do you enjoy code challenges? Find me at CodeWars!</p>
+            Do you enjoy code challenges? Find me at CodeWars!
             <div>
               <a
                 href="https://www.codewars.com/users/altany"
