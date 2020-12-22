@@ -52,9 +52,6 @@
         flex-basis: 50%;
         display: flex;
       }
-      section {
-        align-items: center;
-      }
     }
   }
   a {
@@ -99,7 +96,7 @@
       width: 30px;
       margin-right: 5px;
     }
-    & > div {
+    a {
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -109,8 +106,14 @@
     @include mixins.breakpoint(landscape) {
       margin: 15px 0;
       flex-basis: 100%;
-      & > div {
+      a {
         justify-content: flex-start;
+      }
+    }
+
+    @include mixins.breakpoint(mobileonly) {
+      img {
+        width: calc(100% - 35px);
       }
     }
   }
