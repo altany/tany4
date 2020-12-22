@@ -11,7 +11,7 @@
   align-items: center;
   border-bottom: 1px solid darken(variables.$darkmainColor, 5%);
 
-  @include mixins.breakpoint(landscape) {
+  @include mixins.breakpoint(mobileLandscape) {
     height: variables.$statusBarHeightLandscape;
   }
   .name {
@@ -20,10 +20,10 @@
     text-align: center;
     letter-spacing: 0.1rem;
     color: white;
-    @include mixins.breakpoint(mobileonly) {
+    @include mixins.breakpoint(mobilePortrait) {
       font-size: 0.65rem;
     }
-    @include mixins.breakpoint(landscape) {
+    @include mixins.breakpoint(mobileLandscape) {
       font-size: 0.8rem;
     }
   }
@@ -34,13 +34,9 @@
     font-size: 1.3rem;
     letter-spacing: 0.1rem;
     color: white;
-    @include mixins.breakpoint(mobileonly) {
+    @include mixins.breakpoint(mobile) {
       padding-left: 1rem;
       font-size: 0.8rem;
-    }
-    @include mixins.breakpoint(landscape) {
-      font-size: 0.9em;
-      padding-left: 1rem;
     }
   }
 }
@@ -71,7 +67,7 @@
     flex-direction: column;
     justify-content: space-between;
     padding: variables.$statusBarHeight 0 variables.$footerHeight;
-    @include mixins.breakpoint(landscape) {
+    @include mixins.breakpoint(mobileLandscape) {
       padding: variables.$statusBarHeightLandscape 0
         variables.$footerHeightLandscape;
     }
@@ -103,10 +99,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      @include mixins.breakpoint(landscape) {
+      @include mixins.breakpoint(mobileLandscape) {
         flex-basis: 40px;
       }
-      @include mixins.breakpoint(mobileonly) {
+      @include mixins.breakpoint(mobilePortrait) {
         font-size: 0.9rem;
         flex-basis: 50px;
       }
@@ -116,7 +112,7 @@
       color: variables.$navLinkColor;
 
       &:hover {
-        @include mixins.breakpoint(portrait) {
+        @include mixins.breakpoint(tall) {
           font-size: 110%;
           @include mixins.navLinkHoverAnimation(
             variables.$navLinkColor,
@@ -138,7 +134,7 @@
     }
   }
 
-  @include mixins.breakpoint(landscape) {
+  @include mixins.breakpoint(mobileLandscape) {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -161,22 +157,18 @@
   display: flex;
   justify-content: center;
 
-  @include mixins.breakpoint(mobileonly) {
+  @include mixins.breakpoint(mobilePortrait) {
     padding: 1rem;
     margin-left: variables.$navBarWidthMobile;
   }
 
-  @include mixins.breakpoint(landscape) {
+  @include mixins.breakpoint(mobileLandscape) {
     padding: 1rem;
   }
 
   main {
     max-width: 1200px;
   }
-}
-
-.backToHome {
-  margin: 3rem 0 0;
 }
 
 .footer {
@@ -189,19 +181,17 @@
   align-items: center;
   justify-content: flex-end;
   border-top: 1px solid darken(variables.$thirdColor, 10);
-  @include mixins.breakpoint(landscape) {
+  @include mixins.breakpoint(mobileLandscape) {
     height: variables.$footerHeightLandscape;
   }
   .created {
     color: variables.$secondColor;
     font-size: 0.6rem;
     padding: 0 0.6rem;
-    @include mixins.breakpoint(mobileonly) {
-      font-size: 0.5rem;
-    }
-    @include mixins.breakpoint(landscape) {
+    @include mixins.breakpoint(mobile) {
       font-size: 0.4rem;
     }
+
     a {
       color: variables.$secondColor;
     }

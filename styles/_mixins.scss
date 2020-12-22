@@ -17,20 +17,24 @@
     @media (min-width: 600px) {
       @content;
     }
-  } @else if ($point == mobileonly) {
+  } @else if ($point == mobilePortrait) {
     @media (max-width: 600px) {
       @content;
     }
-  } @else if ($point == landscape) {
+  } @else if ($point == mobileLandscape) {
     @media (max-height: 500px) {
       @content;
     }
-  } @else if ($point == portrait) {
+  } @else if ($point == mobile) {
+    @media (max-height: 500px), (max-width: 500px) {
+      @content;
+    }
+  } @else if ($point == tall) {
     @media (min-height: 500px) {
       @content;
     }
   } @else {
-    @warn "Breakpoint mixin supports: desktop, laptop, tablet, phablet, mobileonly, landscape and portrait";
+    @warn "Breakpoint mixin supports: desktop, laptop, tablet, phablet, mobile, mobilePortrait, mobileLandscape and tall";
   }
 }
 
@@ -38,7 +42,7 @@
   @include breakpoint(phablet) {
     width: variables.$navBarWidth;
   }
-  @include breakpoint(mobileonly) {
+  @include breakpoint(mobilePortrait) {
     width: variables.$navBarWidthMobile;
   }
 }
