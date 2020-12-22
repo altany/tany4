@@ -71,21 +71,21 @@ const Navigation = ({ blog, work }) => (
       <ul className={styles.topLinks}>
         <li className={styles.logo}>
           <Link href="/">
-            <a>
+            <a title="Home">
               <img src="/profile.svg" alt={name} />
             </a>
           </Link>
         </li>
         <li className={work && styles.active}>
           <Link href="/work">
-            <a>
+            <a title="Check out my work">
               <div>Work</div>
             </a>
           </Link>
         </li>
         <li className={blog && styles.active}>
           <Link href="/blog">
-            <a>
+            <a title="Blog">
               <div>Blog</div>
             </a>
           </Link>
@@ -103,13 +103,17 @@ const BottomLinks = () => {
         <a
           href="http://www.linkedin.com/in/taniapapazaf"
           target="_linkedin"
-          title="/in/taniapapazaf"
+          title="Linkedin profile - in/taniapapazaf"
         >
           <Icon icon={LINKEDIN} />
         </a>
       </li>
       <li>
-        <a href="https://twitter.com/_Tany_" target="_twitter" title="@_Tany_">
+        <a
+          href="https://twitter.com/_Tany_"
+          target="_twitter"
+          title="Twitter profile - @_Tany_"
+        >
           <Icon icon={TWITTER} />
         </a>
       </li>
@@ -117,7 +121,7 @@ const BottomLinks = () => {
         <a
           href="http://tany4.com/TaniaPapazafeiropoulou-CV"
           target="_cv"
-          title="Tania's resume"
+          title="Resume - Tania Papapazafeiropoulou"
         >
           <Icon icon={RESUME} />
         </a>
@@ -126,7 +130,7 @@ const BottomLinks = () => {
         <a
           href="mailto:hello@tany4.com"
           target="_email"
-          title="hello@tany4.com"
+          title="Email - hello@tany4.com"
         >
           <Icon icon={ENVELOPE} />
         </a>

@@ -32,6 +32,31 @@
 }
 
 .work {
+  @include mixins.breakpoint(mobileonly) {
+    h1,
+    h3 {
+      text-align: center;
+    }
+    h1 {
+      font-size: 1.5rem;
+    }
+    h3 {
+      font-size: 0.9rem;
+    }
+  }
+
+  @include mixins.breakpoint(landscape) {
+    h1,
+    h3 {
+      text-align: center;
+    }
+    h1 {
+      font-size: 1.5rem;
+    }
+    h3 {
+      font-size: 0.9rem;
+    }
+  }
   & > div {
     display: flex;
     flex-direction: row;
@@ -46,11 +71,9 @@
     }
 
     @include mixins.breakpoint(landscape) {
-      flex-wrap: wrap;
-      justify-content: space-around;
-      ul {
-        flex-basis: 50%;
-        display: flex;
+      flex-direction: column;
+      & > * {
+        margin-bottom: 40px;
       }
     }
   }
@@ -59,19 +82,41 @@
   }
 
   .links {
-    svg {
-      width: 30px;
-    }
-
     @include mixins.breakpoint(mobileonly) {
       display: flex;
       flex-direction: row;
-      width: 150px;
+      width: 100%;
       justify-content: space-around;
     }
 
     @include mixins.breakpoint(landscape) {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
       justify-content: space-around;
+    }
+
+    svg {
+      width: 30px;
+      margin-right: 10px;
+      @include mixins.breakpoint(mobileonly) {
+        width: 25px;
+        margin-bottom: 5px;
+      }
+    }
+
+    li a {
+      align-items: center;
+      display: flex;
+      padding: 10px 0;
+      font-size: 0.9rem;
+      @include mixins.breakpoint(landscape) {
+        flex-direction: column;
+      }
+      @include mixins.breakpoint(mobileonly) {
+        flex-direction: column;
+        font-size: 0.7rem;
+      }
     }
   }
 
@@ -107,7 +152,7 @@
       margin: 15px 0;
       flex-basis: 100%;
       a {
-        justify-content: flex-start;
+        justify-content: center;
       }
     }
 
