@@ -64,6 +64,7 @@
 
   .links {
     @include mixins.breakpoint(mobile) {
+      order: 2;
       display: flex;
       flex-direction: row;
       width: 100%;
@@ -71,7 +72,7 @@
     }
 
     svg {
-      width: 30px;
+      width: 28px;
       margin-right: 10px;
       @include mixins.breakpoint(mobilePortrait) {
         width: 25px;
@@ -83,7 +84,10 @@
       align-items: center;
       display: flex;
       padding: 10px 0;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
+      border: 1px solid variables.$thirdColor;
+      @include mixins.borderRadius(6px);
+      padding: 5px;
       @include mixins.breakpoint(mobileLandscape) {
         flex-direction: column;
       }
@@ -104,6 +108,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      border: 1px solid variables.$darkmainColor;
+      @include mixins.borderRadius(6px);
+      padding: 5px;
     }
     svg {
       width: 40px;
@@ -111,6 +118,16 @@
   }
 
   .codewars {
+    text-align: center;
+    @include mixins.breakpoint(mobile) {
+      order: 1;
+    }
+    @include mixins.breakpoint(mobilePortrait) {
+      img {
+        width: calc(100% - 35px);
+      }
+    }
+
     svg {
       width: 30px;
       margin-right: 5px;
@@ -120,19 +137,8 @@
       flex-direction: row;
       align-items: center;
       justify-content: flex-end;
-    }
-
-    @include mixins.breakpoint(mobileLandscape) {
-      margin: 15px 0;
-      flex-basis: 100%;
-      a {
+      @include mixins.breakpoint(mobile) {
         justify-content: center;
-      }
-    }
-
-    @include mixins.breakpoint(mobilePortrait) {
-      img {
-        width: calc(100% - 35px);
       }
     }
   }
