@@ -25,33 +25,35 @@ export default function Work() {
           <h3>Check the links below to find out more about me</h3>
         </header>
         <div>
-          <ul className={styles.git}>
-            <li>
-              <a
-                href="http://www.github.com/altany"
-                target="_github"
-                title="altany"
-              >
-                <Icon icon={GITHUB} />
-                Hub
-              </a>
-            </li>
-            <li>
-              GIT
-              <br />
-              altany
-            </li>
-            <li>
-              <a
-                href="https://gitlab.com/brief-challenges"
-                target="_gitlab"
-                title="altany"
-              >
-                <Icon icon={GITLAB} />
-                Lab
-              </a>
-            </li>
-          </ul>
+          <section className={styles.git}>
+            <div className={styles.label}>GIT</div>
+            <div className={styles.curly}>{"{"}</div>
+            <ul>
+              <li>
+                <a
+                  href="http://www.github.com/altany"
+                  target="_github"
+                  title="altany"
+                >
+                  <b>Hub</b>
+                  <Icon icon={GITHUB} />
+                  altany
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://gitlab.com/brief-challenges"
+                  target="_gitlab"
+                  title="altany"
+                >
+                  <b>Lab</b>
+                  <Icon icon={GITLAB} />
+                  altany
+                </a>
+              </li>
+            </ul>
+          </section>
           <ul className={styles.links}>
             <li>
               <a
