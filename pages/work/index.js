@@ -25,6 +25,33 @@ export default function Work() {
           <h3>Check the links below to find out more about me</h3>
         </header>
         <div>
+          <ul className={styles.git}>
+            <li>
+              <a
+                href="http://www.github.com/altany"
+                target="_github"
+                title="altany"
+              >
+                <Icon icon={GITHUB} />
+                Hub
+              </a>
+            </li>
+            <li>
+              GIT
+              <br />
+              altany
+            </li>
+            <li>
+              <a
+                href="https://gitlab.com/brief-challenges"
+                target="_gitlab"
+                title="altany"
+              >
+                <Icon icon={GITLAB} />
+                Lab
+              </a>
+            </li>
+          </ul>
           <ul className={styles.links}>
             <li>
               <a
@@ -57,43 +84,19 @@ export default function Work() {
               </a>
             </li>
           </ul>
-          <ul className={styles.git}>
-            <li>
-              <a
-                href="http://www.github.com/altany"
-                target="_github"
-                title="altany"
-              >
-                <Icon icon={GITHUB} />
-                Github
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://gitlab.com/brief-challenges"
-                target="_gitlab"
-                title="altany"
-              >
-                <Icon icon={GITLAB} />
-                Gitlab
-              </a>
-            </li>
-          </ul>
           <section className={styles.codewars}>
             Do you enjoy code challenges? Find me at CodeWars!
-            <div>
-              <a
-                href="https://www.codewars.com/users/altany"
-                target="_codewars"
-                title="User altany"
-              >
-                <Icon icon={CODEWARS} />
-                <img
-                  src="https://www.codewars.com/users/altany/badges/small"
-                  alt="codewars profile badge"
-                />
-              </a>
-            </div>
+            <a
+              href="https://www.codewars.com/users/altany"
+              target="_codewars"
+              title="User altany"
+            >
+              <Icon icon={CODEWARS} />
+              <img
+                src="https://www.codewars.com/users/altany/badges/small"
+                alt="codewars profile badge"
+              />
+            </a>
           </section>
         </div>
         <section>
