@@ -16,6 +16,34 @@ export default function Chart() {
     name: language,
     value,
   }));
+  const RADIAN = Math.PI / 180;
+
+  const renderCustomizedLabel = ({
+    cx,
+    cy,
+    midAngle,
+    innerRadius,
+    outerRadius,
+    percent,
+    index,
+    name,
+  }) => {
+    const radius = outerRadius + 25;
+    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+    return (
+      <text
+        x={x}
+        y={y}
+        textAnchor={x > cx ? "start" : "end"}
+        dominantBaseline="central"
+      >
+        {`${name} ${(percent * 100).toFixed(0)}%`}
+      </text>
+    );
+  };
+
   return (
     <PieChart width={500} height={400}>
       <Pie
@@ -25,8 +53,8 @@ export default function Chart() {
         cx={200}
         cy={200}
         outerRadius={150}
-        fill="#8884d8"
-        label
+        label={renderCustomizedLabel}
+        fill="#79769c"
       />
       <Tooltip />
     </PieChart>
