@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
 import Layout, { siteTitle } from "../../components/layout";
-import RepoList from "../../components/github/repoList";
 import Icon from "../../components/icon";
 import Chart from "../../components/githubLanguagesChart";
 import {
@@ -109,16 +108,6 @@ export default function Work() {
             src="github languages pie chart.png"
             alt="Github Languages pie chart"
           />
-        </section>
-        <section>
-          <h4>Github API Playground</h4>
-          <p>
-            {
-              "This page contains a list of my Github repos. All the data is retrieved through the "
-            }
-            <a href="https://developer.github.com/v3/">Github API v3</a>
-          </p>
-          <RepoList />
         </section>
       </div>
     </Layout>
