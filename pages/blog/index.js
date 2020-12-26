@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
 import Layout, { siteTitle } from "../../components/layout";
-import RepoList from "../../components/github/repoList";
 import styles from "../../styles/utils.module.scss";
 import { getSortedPostsData } from "../../lib/posts";
 import Date from "../../components/date";
