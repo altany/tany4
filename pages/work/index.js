@@ -3,6 +3,7 @@ import Link from "next/link";
 import Layout, { siteTitle } from "../../components/layout";
 import RepoList from "../../components/github/repoList";
 import Icon from "../../components/icon";
+import Chart from "../../components/githubLanguagesChart";
 import {
   GITHUB,
   GITLAB,
@@ -103,6 +104,7 @@ export default function Work() {
         </div>
         <section>
           <h4>Github Languages pie chart</h4>
+          <Chart />
           <img
             src="github languages pie chart.png"
             alt="Github Languages pie chart"
