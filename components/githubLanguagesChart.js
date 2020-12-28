@@ -39,7 +39,7 @@ export default function Chart() {
         textAnchor={x > cx ? "start" : "end"}
         dominantBaseline="central"
       >
-        {`${name} ${(percent * 100).toFixed(0)}%`}
+        {`${name} ${(percent * 100).toFixed(1)}%`}
       </text>
     );
   };
