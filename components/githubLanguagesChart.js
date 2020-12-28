@@ -1,6 +1,6 @@
 import { language } from "gray-matter";
 import React from "react";
-import { PieChart, Pie, Legend, Tooltip } from "recharts";
+import { PieChart, Pie, Legend, Tooltip, BarChart, Bar, XAxis } from "recharts";
 import useSWR from "swr";
 
 export default function Chart() {
@@ -45,18 +45,25 @@ export default function Chart() {
   };
 
   return (
-    <PieChart width={500} height={400}>
-      <Pie
-        dataKey="value"
-        isAnimationActive={true}
-        data={chartData}
-        cx={200}
-        cy={200}
-        outerRadius={150}
-        label={renderCustomizedLabel}
-        fill="#79769c"
-      />
-      <Tooltip />
-    </PieChart>
+    <>
+      <PieChart width={600} height={500}>
+        <Pie
+          dataKey="value"
+          isAnimationActive={true}
+          data={chartData}
+          cx={230}
+          cy={230}
+          outerRadius={170}
+          label={renderCustomizedLabel}
+          fill="#79769c"
+          minAngle="1"
+        />
+        <Tooltip />
+      </PieChart>
+      <BarChart width={1000} height={200} data={chartData}>
+        <Bar dataKey="value" fill="#79769c" minPointSize="1" />
+        <XAxis dataKey="name" />
+      </BarChart>
+    </>
   );
 }
