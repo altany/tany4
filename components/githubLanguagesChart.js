@@ -3,7 +3,7 @@ import React from "react";
 import {
   PieChart,
   Pie,
-  Legend,
+  Cell,
   Tooltip,
   BarChart,
   Bar,
@@ -15,10 +15,11 @@ import useSWR from "swr";
 import styles from "../styles/utils.module.scss";
 
 const RADIAN = Math.PI / 180;
+const COLORS = ["#ee7c79", "#16857e", "#ffe4c1", "#3d5d5d"];
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
-const renderCustomizedLabel = ({
+const renderPieLabel = ({
   cx,
   cy,
   midAngle,
@@ -28,7 +29,7 @@ const renderCustomizedLabel = ({
   index,
   name,
 }) => {
-  const radius = outerRadius + 25;
+  const radius = outerRadius + 15;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
   return (
@@ -37,6 +38,7 @@ const renderCustomizedLabel = ({
       y={y}
       textAnchor={x > cx ? "start" : "end"}
       dominantBaseline="central"
+      className={styles.label}
     >
       {`${name} ${(percent * 100).toFixed(1)}%`}
     </text>
@@ -56,30 +58,27 @@ export default function Chart() {
   }));
   return (
     <div className={styles.chartContainer}>
-      <div className={styles.pieChart}>
-        <ResponsiveContainer>
-          <PieChart>
-            <Pie
-              dataKey="value"
-              isAnimationActive={true}
-              data={chartData}
-              label={renderCustomizedLabel}
-              fill="#79769c"
-              minAngle={1}
-            />
-            <Tooltip />
-          </PieChart>
-        </ResponsiveContainer>
-      </div>
-      <div>
-        <ResponsiveContainer>
-          <BarChart data={chartData} layout="vertical">
-            <Bar dataKey="value" fill="#79769c" minPointSize={1} label />
-            <XAxis type="number" />
-            <YAxis type="category" dataKey="name" />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
+      <ResponsiveContainer width="94%">
+        <PieChart>
+          <Pie
+            dataKey="value"
+            isAnimationActive={true}
+            data={chartData}
+            label={renderPieLabel}
+            fill="#79769c"
+            minAngle={1}
+            paddingAngle={1}
+          >
+            {data.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={COLORS[index % COLORS.length]}
+              />
+            ))}
+          </Pie>
+          <Tooltip />
+        </PieChart>
+      </ResponsiveContainer>
     </div>
   );
 }
