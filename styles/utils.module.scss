@@ -251,3 +251,19 @@
     }
   }
 }
+
+.chartContainer {
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+  @include mixins.breakpoint(mobilePortrait) {
+    flex-direction: column;
+  }
+  & > div {
+    flex-basis: 50%;
+
+    @include mixins.breakpoint(mobilePortrait) {
+      flex-basis: 100%;
+    }
+  }
+}
