@@ -33,7 +33,7 @@ export default function Work() {
                 <a
                   href="http://www.github.com/altany"
                   target="_github"
-                  title="altany"
+                  title="Github profile - altany"
                 >
                   <b>Hub</b>
                   <Icon icon={GITHUB} />
@@ -45,7 +45,7 @@ export default function Work() {
                 <a
                   href="https://gitlab.com/brief-challenges"
                   target="_gitlab"
-                  title="altany"
+                  title="Gitlab profile - altany"
                 >
                   <b>Lab</b>
                   <Icon icon={GITLAB} />
@@ -91,7 +91,7 @@ export default function Work() {
             <a
               href="https://www.codewars.com/users/altany"
               target="_codewars"
-              title="User altany"
+              title="Codewars - altany"
             >
               <Icon icon={CODEWARS} />
               <img
@@ -105,30 +105,39 @@ export default function Work() {
           <h4>Github Languages pie chart</h4>
           <Chart />
           <p>
-            Build with data from the Github API and available in{" "}
+            Using the Github API to fetch data about{" "}
+            <a
+              href="http://www.github.com/altany"
+              target="_github"
+              title="Github profile - altany"
+            >
+              my account
+            </a>{" "}
+            and running in{" "}
             <a
               href="https://github-api-altany.herokuapp.com/"
               title="API data"
-              target="blank"
+              target="_blank"
             >
               Heroku
             </a>
-            . The server is running in a{" "}
-            <a
-              href="https://hub.docker.com/r/altany/github-api-docker"
-              title="Docker container running a server for fetching data for the 'altany' repo"
-              target="blank"
-            >
-              docker container
-            </a>{" "}
-            and the source is available on{" "}
+            . The source is available on a{" "}
             <a
               href="https://github.com/altany/docker-github-api"
               title="Github repo for the server"
-              target="blank"
+              target="_blank"
             >
-              github
+              github repo
+            </a>{" "}
+            and the docker container is also available{" "}
+            <a
+              href="https://hub.docker.com/r/altany/github-api-docker"
+              title="Docker container running a server for fetching data for the 'altany' repo"
+              target="_blank"
+            >
+              here
             </a>
+            .
           </p>
         </section>
       </div>
