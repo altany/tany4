@@ -15,17 +15,17 @@ const Tooltip = ({ active, payload, ...rest }) => {
     return (
       <div className={styles.tooltip}>
         {error && "failed to load repos"}
-        {!data && "loading repo data..."}
-        {
+        {!data && `loading repos with ${label}...`}
+        {(data || []).length && (
           <>
             <p>Repos with {label}:</p>
             <ul>
               {data.map((repo) => (
-                <li>{repo}</li>
+                <li key={repo}>{repo}</li>
               ))}
             </ul>
           </>
-        }
+        )}
       </div>
     );
   }
