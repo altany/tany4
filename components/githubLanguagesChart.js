@@ -78,6 +78,7 @@ export default function Chart() {
             fill="#79769c"
             minAngle={1}
             paddingAngle={1}
+            innerRadius="50%"
           >
             {data.map((entry, index) => (
               <Cell
