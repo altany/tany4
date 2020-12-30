@@ -12,49 +12,13 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import useSWR from "swr";
-import styles from "../styles/utils.module.scss";
-import fetcher from "../lib/fetcher";
+import PieLabel from "./pieLabel";
+import ReposTooltip from "./tooltip";
+import styles from "../../styles/utils.module.scss";
+import fetcher from "../../lib/fetcher";
 
-const RADIAN = Math.PI / 180;
 const COLORS = ["#ee7c79", "#16857e", "#ffe4c1", "#3d5d5d"];
 
-const PieLabel = ({
-  cx,
-  cy,
-  midAngle,
-  innerRadius,
-  outerRadius,
-  percent,
-  index,
-  name,
-}) => {
-  const radius = outerRadius + 15;
-  const x = cx + radius * Math.cos(-midAngle * RADIAN);
-  const y = cy + radius * Math.sin(-midAngle * RADIAN);
-  return (
-    <text
-      x={x}
-      y={y}
-      textAnchor={x > cx ? "start" : "end"}
-      dominantBaseline="central"
-      className={styles.label}
-    >
-      {`${name} ${(percent * 100).toFixed(1)}%`}
-    </text>
-  );
-};
-
-const CustomTooltip = ({ active, payload, ...rest }) => {
-  if (active) {
-    const label = payload[0]?.name;
-    const value = payload[0]?.value;
-    return (
-      <div className={styles.tooltip}>{`Repos with ${label}: (soon...)`}</div>
-    );
-  }
-
-  return null;
-};
 export default function Chart() {
   const { data, error } = useSWR(
     "https://github-api-altany.herokuapp.com/languages",
@@ -87,7 +51,7 @@ export default function Chart() {
               />
             ))}
           </Pie>
-          <Tooltip content={<CustomTooltip />} />
+          <Tooltip content={<ReposTooltip />} />
         </PieChart>
       </ResponsiveContainer>
     </div>
