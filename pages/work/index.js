@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Layout, { siteTitle } from "../../components/layout";
 import Icon from "../../components/icon";
-import Chart from "../../components/githubLanguagesChart";
+import Chart from "../../components/github/chart";
 import {
   GITHUB,
   GITLAB,
