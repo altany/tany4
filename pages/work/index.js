@@ -104,6 +104,32 @@ export default function Work() {
         <section>
           <h4>Github Languages pie chart</h4>
           <Chart />
+          <p>
+            Build with data from the Github API and available in{" "}
+            <a
+              href="https://github-api-altany.herokuapp.com/"
+              title="API data"
+              target="blank"
+            >
+              Heroku
+            </a>
+            . The server is running in a{" "}
+            <a
+              href="https://hub.docker.com/r/altany/github-api-docker"
+              title="Docker container running a server for fetching data for the 'altany' repo"
+              target="blank"
+            >
+              docker container
+            </a>{" "}
+            and the source is available on{" "}
+            <a
+              href="https://github.com/altany/docker-github-api"
+              title="Github repo for the server"
+              target="blank"
+            >
+              github
+            </a>
+          </p>
         </section>
       </div>
     </Layout>
