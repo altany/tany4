@@ -273,4 +273,10 @@
       font-size: 13px;
     }
   }
+
+  .tooltip {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid variables.$thirdColor;
+  }
 }

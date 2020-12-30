@@ -104,10 +104,6 @@ export default function Work() {
         <section>
           <h4>Github Languages pie chart</h4>
           <Chart />
-          <img
-            src="github languages pie chart.png"
-            alt="Github Languages pie chart"
-          />
         </section>
       </div>
     </Layout>

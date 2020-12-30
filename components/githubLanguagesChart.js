@@ -18,7 +18,7 @@ import fetcher from "../lib/fetcher";
 const RADIAN = Math.PI / 180;
 const COLORS = ["#ee7c79", "#16857e", "#ffe4c1", "#3d5d5d"];
 
-const renderPieLabel = ({
+const PieLabel = ({
   cx,
   cy,
   midAngle,
@@ -44,6 +44,17 @@ const renderPieLabel = ({
   );
 };
 
+const CustomTooltip = ({ active, payload, ...rest }) => {
+  if (active) {
+    const label = payload[0]?.name;
+    const value = payload[0]?.value;
+    return (
+      <div className={styles.tooltip}>{`Repos with ${label}: (soon...)`}</div>
+    );
+  }
+
+  return null;
+};
 export default function Chart() {
   const { data, error } = useSWR(
     "https://github-api-altany.herokuapp.com/languages",
@@ -63,7 +74,7 @@ export default function Chart() {
             dataKey="value"
             isAnimationActive={true}
             data={chartData}
-            label={renderPieLabel}
+            label={<PieLabel />}
             fill="#79769c"
             minAngle={1}
             paddingAngle={1}
@@ -75,7 +86,7 @@ export default function Chart() {
               />
             ))}
           </Pie>
-          <Tooltip />
+          <Tooltip content={<CustomTooltip />} />
         </PieChart>
       </ResponsiveContainer>
     </div>
