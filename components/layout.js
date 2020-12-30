@@ -3,6 +3,7 @@ import styles from "./layout.module.scss";
 import Link from "next/link";
 import useSWR from "swr";
 import Icon from "./icon";
+import fetcher from "../lib/fetcher";
 
 import { LINKEDIN, ENVELOPE, RESUME, TWITTER } from "../lib/icons";
 
@@ -11,7 +12,6 @@ export const siteTitle = `${name} - Web Developer`;
 const siteDescription =
   "Hi, I'm Tania! I am a React Native developer and have been a Front-end developer for years. I love building beautiful and engaging web apps.";
 
-const fetcher = (url) => fetch(url).then((r) => r.json());
 const lastCommitEndpoint =
   "https://github-api-altany.herokuapp.com/last-commit/tany4";
 

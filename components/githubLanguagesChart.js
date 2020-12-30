@@ -13,11 +13,10 @@ import {
 } from "recharts";
 import useSWR from "swr";
 import styles from "../styles/utils.module.scss";
+import fetcher from "../lib/fetcher";
 
 const RADIAN = Math.PI / 180;
 const COLORS = ["#ee7c79", "#16857e", "#ffe4c1", "#3d5d5d"];
-
-const fetcher = (url) => fetch(url).then((r) => r.json());
 
 const renderPieLabel = ({
   cx,
