@@ -104,7 +104,7 @@ export default function Work() {
         <section>
           <h4>Github Languages pie chart</h4>
           <Chart />
-          <p>
+          <p className={styles.chartInfo}>
             Using the Github API to fetch data about{" "}
             <a
               href="http://www.github.com/altany"

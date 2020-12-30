@@ -34,9 +34,7 @@
 .work {
   max-width: 900px;
   margin: 0 auto;
-  a {
-    color: variables.$thirdColor;
-  }
+
   .linkButton {
     border-width: 1px;
     border-style: solid;
@@ -173,6 +171,17 @@
       @include mixins.breakpoint(mobile) {
         justify-content: center;
       }
+    }
+  }
+
+  .chartInfo {
+    font-size: 0.8rem;
+    @include mixins.breakpoint(mobilePortrait) {
+      margin: 0.7rem;
+    }
+    a {
+      color: variables.$thirdColor;
+      font-weight: bold;
     }
   }
 }
