@@ -103,17 +103,17 @@ export default function Work() {
         </div>
         <section>
           <h4>Github Languages pie chart</h4>
-          <Chart />
           <p className={styles.chartInfo}>
-            Using the Github API to fetch data about{" "}
+            You can interact with the chart to get information about languages
+            and repos for my{" "}
             <a
               href="http://www.github.com/altany"
               target="_github"
               title="Github profile - altany"
             >
-              my account
-            </a>{" "}
-            and running in{" "}
+              Github account
+            </a>
+            . It is built using the Github API and it's running in{" "}
             <a
               href="https://github-api-altany.herokuapp.com/"
               title="API data"
@@ -139,6 +139,7 @@ export default function Work() {
             </a>
             .
           </p>
+          <Chart />
         </section>
       </div>
     </Layout>
