@@ -158,7 +158,7 @@
   justify-content: center;
 
   @include mixins.breakpoint(mobilePortrait) {
-    padding: 0.5rem;
+    padding: 2rem 0.5rem;
     margin-left: variables.$navBarWidthMobile;
   }
 

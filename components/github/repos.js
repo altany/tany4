@@ -5,30 +5,29 @@ import fetcher from "../../lib/fetcher";
 
 const Repos = ({ language }) => {
   if (!language) {
-    return (
-      <div className={styles.instructions}>
-        Click on a language to get a list of repos using it
-      </div>
-    );
+    return null;
   }
 
   const { data, error } = useSWR(
     `https://github-api-altany.herokuapp.com/repos/language/${language}`,
     fetcher
   );
-  if (error)
-    return <div className={styles.instructions}>failed to load repos</div>;
-  if (!data) return <div className={styles.instructions}>loading repos...</div>;
+  if (error || !data) return null;
   return (
-    <ul>
-      {data.map((repo, index) => (
-        <li ley={index}>
-          <a target="_blank" href={`https://github.com/altany/${repo}`}>
-            {repo}
-          </a>
-        </li>
-      ))}
-    </ul>
+    <>
+      <h4>
+        Repos with <span>{language}</span>
+      </h4>
+      <ul>
+        {data.map((repo, index) => (
+          <li key={index}>
+            <a target="_blank" href={`https://github.com/altany/${repo}`}>
+              {repo}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 
