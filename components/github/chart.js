@@ -1,25 +1,30 @@
 import { language } from "gray-matter";
-import React from "react";
+import React, { useState } from "react";
 import {
   PieChart,
   Pie,
   Cell,
-  Tooltip,
   BarChart,
   Bar,
   XAxis,
   YAxis,
   ResponsiveContainer,
+  Sector,
+  Legend,
 } from "recharts";
 import useSWR from "swr";
-import PieLabel from "./pieLabel";
-import ReposTooltip from "./tooltip";
+import ActiveSector from "./activeSector";
 import styles from "../../styles/utils.module.scss";
 import fetcher from "../../lib/fetcher";
 
-const COLORS = ["#ee7c79", "#16857e", "#ffe4c1", "#3d5d5d"];
+const selectColor = (number) => {
+  const hue = number * 137.508; // use golden angle approximation
+  return `hsl(${hue},50%,65%)`;
+};
 
 export default function Chart() {
+  const [activeIndex, setActiveIndex] = useState(null);
+
   const { data, error } = useSWR(
     "https://github-api-altany.herokuapp.com/languages",
     fetcher
@@ -30,6 +35,9 @@ export default function Chart() {
     name: language,
     value,
   }));
+
+  const hoverSector = (_, index) => setActiveIndex(index);
+
   return (
     <div className={styles.chartContainer}>
       <ResponsiveContainer width="94%">
@@ -38,20 +46,19 @@ export default function Chart() {
             dataKey="value"
             isAnimationActive={true}
             data={chartData}
-            label={<PieLabel />}
             fill="#79769c"
             minAngle={1}
             paddingAngle={1}
             innerRadius="50%"
+            activeIndex={activeIndex}
+            onMouseEnter={hoverSector}
+            activeShape={<ActiveSector />}
           >
             {data.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
-              />
+              <Cell key={`cell-${index}`} fill={selectColor(index)} />
             ))}
           </Pie>
-          <Tooltip content={<ReposTooltip />} />
+          <Legend layout="vertical" align="right" onMouseOver={hoverSector} />
         </PieChart>
       </ResponsiveContainer>
     </div>
