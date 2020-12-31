@@ -270,22 +270,9 @@
   height: 400px;
   @include mixins.breakpoint(mobilePortrait) {
     margin: 0 -0.5rem;
-    height: 300px;
-    padding: 10%;
   }
   @include mixins.breakpoint(mobileLandscape) {
-    height: 300px;
-  }
-
-  .label {
-    font-size: 16px;
-    @include mixins.breakpoint(mobilePortrait) {
-      font-size: 10px;
-    }
-
-    @include mixins.breakpoint(mobileLandscape) {
-      font-size: 13px;
-    }
+    height: 350px;
   }
 
   .tooltip {

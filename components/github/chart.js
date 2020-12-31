@@ -49,7 +49,7 @@ export default function Chart() {
             fill="#79769c"
             minAngle={1}
             paddingAngle={1}
-            innerRadius="50%"
+            innerRadius="55%"
             activeIndex={activeIndex}
             onMouseEnter={hoverSector}
             activeShape={<ActiveSector />}
@@ -58,7 +58,7 @@ export default function Chart() {
               <Cell key={`cell-${index}`} fill={selectColor(index)} />
             ))}
           </Pie>
-          <Legend layout="vertical" align="right" onMouseOver={hoverSector} />
+          <Legend onMouseOver={hoverSector} />
         </PieChart>
       </ResponsiveContainer>
     </div>
