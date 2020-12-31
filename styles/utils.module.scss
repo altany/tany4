@@ -174,6 +174,30 @@
     }
   }
 
+  .chartContainer {
+    display: flex;
+    flex-wrap: wrap;
+    .chart {
+      height: 400px;
+      flex-basis: 70%;
+      @include mixins.breakpoint(mobilePortrait) {
+        margin: 0 -0.5rem;
+        flex-basis: 100%;
+      }
+      @include mixins.breakpoint(mobileLandscape) {
+        height: 350px;
+      }
+    }
+
+    .repoInfo {
+      flex-basis: 30%;
+      border: 1px solid variables.$secondColor;
+      @include mixins.breakpoint(mobilePortrait) {
+        flex-basis: 100%;
+      }
+    }
+  }
+
   .chartInfo {
     font-size: 0.8rem;
     @include mixins.breakpoint(mobilePortrait) {
@@ -263,21 +287,5 @@
         }
       }
     }
-  }
-}
-
-.chartContainer {
-  height: 400px;
-  @include mixins.breakpoint(mobilePortrait) {
-    margin: 0 -0.5rem;
-  }
-  @include mixins.breakpoint(mobileLandscape) {
-    height: 350px;
-  }
-
-  .tooltip {
-    background-color: white;
-    padding: 20px;
-    border: 1px solid variables.$thirdColor;
   }
 }

@@ -14,6 +14,7 @@ import {
 } from "recharts";
 import useSWR from "swr";
 import ActiveSector from "./activeSector";
+import Repos from "./repos";
 import styles from "../../styles/utils.module.scss";
 import fetcher from "../../lib/fetcher";
 
@@ -24,6 +25,7 @@ const selectColor = (number) => {
 
 export default function Chart() {
   const [activeIndex, setActiveIndex] = useState(null);
+  const [activeLanguage, setActiveLanguage] = useState(null);
 
   const { data, error } = useSWR(
     "https://github-api-altany.herokuapp.com/languages",
@@ -37,30 +39,44 @@ export default function Chart() {
   }));
 
   const hoverSector = (_, index) => setActiveIndex(index);
+  const clickSector = (data, index) => {
+    const language = data.payload.name;
+    setActiveLanguage(language);
+  };
 
   return (
     <div className={styles.chartContainer}>
-      <ResponsiveContainer width="94%">
-        <PieChart>
-          <Pie
-            dataKey="value"
-            isAnimationActive={true}
-            data={chartData}
-            fill="#79769c"
-            minAngle={1}
-            paddingAngle={1}
-            innerRadius="55%"
-            activeIndex={activeIndex}
-            onMouseEnter={hoverSector}
-            activeShape={<ActiveSector />}
-          >
-            {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={selectColor(index)} />
-            ))}
-          </Pie>
-          <Legend onMouseOver={hoverSector} />
-        </PieChart>
-      </ResponsiveContainer>
+      <div className={styles.chart}>
+        <ResponsiveContainer width="94%">
+          <PieChart>
+            <Pie
+              dataKey="value"
+              isAnimationActive={true}
+              data={chartData}
+              fill="#79769c"
+              minAngle={1}
+              paddingAngle={1}
+              innerRadius="55%"
+              activeIndex={activeIndex}
+              onMouseEnter={hoverSector}
+              onClick={clickSector}
+              activeShape={<ActiveSector />}
+            >
+              {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={selectColor(index)} />
+              ))}
+            </Pie>
+            <Legend
+              onMouseOver={hoverSector}
+              onClick={clickSector}
+              iconSize={20}
+            />
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
+      <div className={styles.repoInfo}>
+        <Repos language={activeLanguage} />
+      </div>
     </div>
   );
 }
