@@ -48,7 +48,7 @@ export default function Chart() {
     <div className={styles.chartContainer}>
       <div className={styles.chart}>
         <ResponsiveContainer width="94%">
-          <PieChart>
+          <PieChart cursor="pointer">
             <Pie
               dataKey="value"
               isAnimationActive={true}
