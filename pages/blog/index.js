@@ -15,13 +15,18 @@ export default function Blog({ posts }) {
       <section className={styles.blog}>
         <h1>Blog</h1>
         <ul>
-          {posts.map(({ id, date, title, banner, color }) => (
+          {posts.map(({ id, date, title, subtitle, banner, color }) => (
             <li key={id} style={{ backgroundColor: color }}>
               <Link href="/blog/posts/[id]" as={`/blog/posts/${id}`}>
                 <a>
                   <img src={`blog/${banner}`} />
                   <div className={styles.content}>
                     <b>{title}</b>
+                    {subtitle && (
+                      <b>
+                        <small>{subtitle}</small>
+                      </b>
+                    )}
                     <small>
                       <Date dateString={date} />
                     </small>
