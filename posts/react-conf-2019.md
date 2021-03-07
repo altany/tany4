@@ -17,4 +17,4 @@ During my presentation I talked about how we migrated the entire OLIO applicatio
 
 You can check the full talk on Youtube:
 
-<iframe width="840" height="500" src="https://www.youtube.com/embed/zVHWugBPGBE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/zVHWugBPGBE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

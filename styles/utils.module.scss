@@ -318,14 +318,14 @@
 .post {
   .title {
     margin: 0;
-    padding: 30px;
+    padding: 20px 30px;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     display: flex;
     background: linear-gradient(
       darken(variables.$secondColor, 3%),
-      lighten(color.adjust(variables.$thirdColor, $saturation: -25%), 25%)
+      lighten(color.adjust(variables.$thirdColor, $saturation: -15%), 20%)
     );
     @include mixins.breakpoint(mobile) {
       padding: 15px;
