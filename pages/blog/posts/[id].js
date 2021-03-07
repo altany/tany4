@@ -1,15 +1,16 @@
 import Head from "next/head";
-import Layout, { siteTitle, name } from "../../../components/layout";
+import Layout from "../../../components/layout";
 import { getAllPostIds, getPostData } from "../../../lib/posts";
 import Date from "../../../components/date";
 import styles from "../../../styles/utils.module.scss";
+import { SITE_TITLE } from "../../../lib/constants";
 
 export default function Post({ data }) {
   return (
     <Layout noPadding>
       <Head>
         <title>
-          {data.title} - {siteTitle}
+          {data.title} - {SITE_TITLE}
         </title>
       </Head>
       <div className={styles.post}>

@@ -4,16 +4,13 @@ import Link from "next/link";
 import useSWR from "swr";
 import Icon from "./icon";
 import fetcher from "../lib/fetcher";
-
 import { LINKEDIN, ENVELOPE, RESUME, TWITTER } from "../lib/icons";
-
-export const name = "Tania Papazafeiropoulou";
-export const siteTitle = `${name} - Web Developer`;
-const siteDescription =
-  "Hi, I'm Tania! I am a React Native developer and have been a Front-end developer for years. I love building beautiful and engaging web apps.";
-
-const lastCommitEndpoint =
-  "https://github-api-altany.herokuapp.com/last-commit/tany4";
+import {
+  NAME,
+  SITE_DESCRIPTION,
+  SITE_TITLE,
+  LAST_COMMIT_ENDPOINT,
+} from "../lib/constants";
 
 export default function Layout({ children, noPadding, blog, work }) {
   return (
@@ -33,21 +30,21 @@ const HtmlHead = () => (
     <meta
       name="description"
       property="og:description"
-      content={siteDescription}
+      content={SITE_DESCRIPTION}
     />
     <meta
       name="image"
       property="og:image"
       content="https://tany4-inprogress.herokuapp.com/profile.png"
     />
-    <meta name="author" content={name} />
+    <meta name="author" content={NAME} />
 
-    <meta name="og:title" content={siteTitle} />
+    <meta name="og:title" content={SITE_TITLE} />
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@_Tany_" />
-    <meta name="twitter:title" content={siteTitle} />
-    <meta name="twitter:description" content={siteDescription} />
+    <meta name="twitter:title" content={SITE_TITLE} />
+    <meta name="twitter:description" content={SITE_DESCRIPTION} />
     <meta name="twitter:creator" content="@_Tany_" />
     <meta
       name="twitter:image"
@@ -72,7 +69,7 @@ const Navigation = ({ blog, work }) => (
         <li className={styles.logo}>
           <Link href="/">
             <a title="Home">
-              <img src="/profile.svg" alt={name} />
+              <img src="/profile.svg" alt={NAME} />
             </a>
           </Link>
         </li>
@@ -160,14 +157,14 @@ const Content = ({ children, noPadding }) => (
 );
 
 const Footer = () => {
-  const { data, error } = useSWR(lastCommitEndpoint, fetcher);
+  const { data, error } = useSWR(LAST_COMMIT_ENDPOINT, fetcher);
 
   return (
     <footer className={styles.footer}>
       <aside className={styles.created}>
         {`Created by `}
         <a href="http://www.linkedin.com/in/taniapapazaf" target="_linkedin">
-          <b>{name}</b>
+          <b>{NAME}</b>
         </a>
         {data && (
           <span>
