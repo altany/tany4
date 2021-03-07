@@ -1,15 +1,16 @@
 import Head from "next/head";
 import Link from "next/link";
-import Layout, { siteTitle } from "../../components/layout";
+import Layout from "../../components/layout";
 import styles from "../../styles/utils.module.scss";
 import { getSortedPostsData } from "../../lib/posts";
 import Date from "../../components/date";
+import { SITE_TITLE } from "../../lib/constants";
 
 export default function Blog({ posts }) {
   return (
     <Layout blog>
       <Head>
-        <title>{siteTitle} - Blog</title>
+        <title>{SITE_TITLE} - Blog</title>
       </Head>
 
       <section className={styles.blog}>

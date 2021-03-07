@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
-import Layout, { siteTitle } from "../../components/layout";
+import Layout from "../../components/layout";
+import { SITE_TITLE } from "../../lib/constants";
 import Icon from "../../components/icon";
 import Chart from "../../components/github/chart";
 import {
@@ -17,7 +18,7 @@ export default function Work() {
   return (
     <Layout work>
       <Head>
-        <title>{siteTitle} - My work</title>
+        <title>{SITE_TITLE} - My work</title>
       </Head>
       <div className={styles.work}>
         <header>
