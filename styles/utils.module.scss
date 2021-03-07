@@ -221,7 +221,6 @@
 
   .chartInfo {
     font-size: 0.8rem;
-    margin-top: 3rem;
     @include mixins.breakpoint(mobilePortrait) {
       margin: 0.7rem;
     }
@@ -308,6 +307,41 @@
           font-size: 0.8rem;
         }
       }
+    }
+  }
+}
+
+.post {
+  & > h1 {
+    margin: 0;
+    padding: 30px;
+    font-size: 2rem;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    background: linear-gradient(
+      darken(variables.$secondColor, 3%),
+      lighten(color.adjust(variables.$thirdColor, $saturation: -25%), 25%)
+    );
+    @include mixins.breakpoint(mobile) {
+      font-size: 1.5rem;
+      padding: 15px;
+    }
+  }
+
+  time {
+    font-style: italic;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  article {
+    max-width: 900px;
+    padding: 0 30px;
+    margin: 20px auto 70px auto;
+    @include mixins.breakpoint(mobile) {
+      padding: 0 15px;
     }
   }
 }

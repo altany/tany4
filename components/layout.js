@@ -15,13 +15,13 @@ const siteDescription =
 const lastCommitEndpoint =
   "https://github-api-altany.herokuapp.com/last-commit/tany4";
 
-export default function Layout({ children, blog, work }) {
+export default function Layout({ children, noPadding, blog, work }) {
   return (
     <>
       <HtmlHead />
       <Navigation blog={blog} work={work} />
       <StatusBar />
-      <Content>{children}</Content>
+      <Content noPadding={noPadding}>{children}</Content>
       <Footer />
     </>
   );
@@ -149,8 +149,12 @@ const StatusBar = () => (
   </aside>
 );
 
-const Content = ({ children }) => (
-  <div className={styles.contentContainer}>
+const Content = ({ children, noPadding }) => (
+  <div
+    className={`${styles.contentContainer} ${
+      noPadding ? styles.noPadding : ""
+    }`}
+  >
     <main>{children}</main>
   </div>
 );
