@@ -306,16 +306,20 @@
         @include mixins.breakpoint(mobileLandscape) {
           font-size: 0.8rem;
         }
+
+        time {
+          font-style: italic;
+        }
       }
     }
   }
 }
 
 .post {
-  & > h1 {
+  .title {
     margin: 0;
     padding: 30px;
-    font-size: 2rem;
+    flex-direction: column;
     justify-content: center;
     text-align: center;
     display: flex;
@@ -324,8 +328,22 @@
       lighten(color.adjust(variables.$thirdColor, $saturation: -25%), 25%)
     );
     @include mixins.breakpoint(mobile) {
-      font-size: 1.5rem;
       padding: 15px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+      @include mixins.breakpoint(mobile) {
+        font-size: 1.5rem;
+      }
+    }
+    h2 {
+      margin: 0;
+      font-size: 1.7rem;
+      @include mixins.breakpoint(mobile) {
+        font-size: 1.3rem;
+      }
     }
   }
 

@@ -13,7 +13,10 @@ export default function Post({ data }) {
         </title>
       </Head>
       <div className={styles.post}>
-        <h1>{data.title}</h1>
+        <div className={styles.title}>
+          <h1>{data.title}</h1>
+          {data.subtitle && <h2>{data.subtitle}</h2>}
+        </div>
         <article>
           <Date dateString={data.date} />
           <div dangerouslySetInnerHTML={{ __html: data.contentHtml }} />
