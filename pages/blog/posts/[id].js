@@ -1,20 +1,24 @@
 import Head from "next/head";
-import Layout from "../../../components/layout";
+import Layout, { siteTitle, name } from "../../../components/layout";
 import { getAllPostIds, getPostData } from "../../../lib/posts";
 import Date from "../../../components/date";
 import styles from "../../../styles/utils.module.scss";
 
 export default function Post({ data }) {
   return (
-    <Layout>
+    <Layout noPadding>
       <Head>
-        <title>{data.title}</title>
+        <title>
+          {data.title} - {siteTitle}
+        </title>
       </Head>
-      <article>
+      <div className={styles.post}>
         <h1>{data.title}</h1>
-        <Date dateString={data.date} />
-        <div dangerouslySetInnerHTML={{ __html: data.contentHtml }} />
-      </article>
+        <article>
+          <Date dateString={data.date} />
+          <div dangerouslySetInnerHTML={{ __html: data.contentHtml }} />
+        </article>
+      </div>
     </Layout>
   );
 }

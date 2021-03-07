@@ -152,10 +152,10 @@
 
 .contentContainer {
   margin-left: variables.$navBarWidth;
-  padding: 3rem;
   min-height: 100%;
   display: flex;
   justify-content: center;
+  padding: 3rem;
 
   @include mixins.breakpoint(mobilePortrait) {
     padding: 2rem 0.5rem;
@@ -168,7 +168,14 @@
 
   main {
     width: 100%;
-    max-width: 1200px;
+  }
+
+  &.noPadding {
+    padding: variables.$statusBarHeight 0 0 0;
+    max-width: 100%;
+    @include mixins.breakpoint(mobileLandscape) {
+      padding-top: variables.$statusBarHeightLandscape;
+    }
   }
 }
 
