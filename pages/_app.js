@@ -9,9 +9,11 @@ const App = ({ Component, pageProps }) => {
     const handleRouteChange = (url) => {
       pageview(url);
     };
-    router.events.on("routeChangeComplete", handleRouteChange);
+    //router.events.on("routeChangeComplete", handleRouteChange);
+    router.events.on("beforeHistoryChange", handleRouteChange);
     return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
+      //router.events.off("routeChangeComplete", handleRouteChange);
+      router.events.off("beforeHistoryChange", handleRouteChange);
     };
   }, [router.events]);
 
