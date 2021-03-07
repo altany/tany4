@@ -46,3 +46,9 @@ ul {
 .recharts-legend-item {
   cursor: pointer;
 }
+
+article {
+  a {
+    color: variables.$navLinkColor;
+  }
+}
