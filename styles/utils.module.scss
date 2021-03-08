@@ -29,6 +29,10 @@
   b {
     color: variables.$thirdColor;
   }
+  a {
+    color: variables.$navLinkColor;
+    font-weight: bold;
+  }
 }
 
 .work {

@@ -22,7 +22,13 @@ export default function Home() {
           My name is {NAME} and I am a <b>React</b> Developer with many years of
           experience in various <b>front end</b> techonologies.
         </p>
-        <p>Feel free to check my website and find out more about my work.</p>
+        <p>
+          Feel free to check my website and find out more about
+          <Link href="/work">
+            <a title="Work"> my work</a>
+          </Link>
+          .
+        </p>
       </section>
     </Layout>
   );
