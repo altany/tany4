@@ -12,7 +12,6 @@ app.prepare().then(() => {
   server.use((req, res, next) => {
     const hostname =
       req.hostname === "www.tany4.com" ? "tany4.com" : req.hostname;
-    console.log(req);
     if (
       req.headers["x-forwarded-proto"] === "http" ||
       req.hostname === "www.tany4.com"
