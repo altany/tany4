@@ -7,6 +7,7 @@ import fetcher from "../lib/fetcher";
 import { LINKEDIN, ENVELOPE, RESUME, TWITTER } from "../lib/icons";
 import {
   NAME,
+  SITE_URL,
   SITE_DESCRIPTION,
   SITE_TITLE,
   LAST_COMMIT_ENDPOINT,
@@ -27,38 +28,25 @@ export default function Layout({ children, noPadding, blog, work }) {
 const HtmlHead = () => (
   <Head lang="en">
     <link rel="icon" href="/favicon.ico" />
-    <meta
-      name="description"
-      property="og:description"
-      content={SITE_DESCRIPTION}
-    />
-    <meta
-      name="image"
-      property="og:image"
-      content="https://tany4-inprogress.herokuapp.com/profile.png"
-    />
     <meta name="author" content={NAME} />
-
-    <meta name="og:title" content={SITE_TITLE} />
+    <meta property="og:description" content={SITE_DESCRIPTION} />
+    <meta property="og:image" content={`${SITE_URL}profile.png`} />
+    <meta property="og:title" content={SITE_TITLE} />
+    <meta property="og:url" content={SITE_URL} />
+    <meta property="og:type" content="website" />
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@_Tany_" />
     <meta name="twitter:title" content={SITE_TITLE} />
     <meta name="twitter:description" content={SITE_DESCRIPTION} />
     <meta name="twitter:creator" content="@_Tany_" />
-    <meta
-      name="twitter:image"
-      content="https://tany4-inprogress.herokuapp.com/profile.png"
-    />
+    <meta name="twitter:image" content={`${SITE_URL}profile.png`} />
     <meta name="twitter:image:alt" content="Tania's photo" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
     />
-    <link
-      rel="apple-touch-icon"
-      href="https://tany4-inprogress.herokuapp.com/profile.png"
-    />
+    <link rel="apple-touch-icon" href={`${SITE_URL}profile.png`} />
   </Head>
 );
 
@@ -116,7 +104,7 @@ const BottomLinks = () => {
       </li>
       <li>
         <a
-          href="http://tany4.com/TaniaPapazafeiropoulou-CV"
+          href={`${SITE_URL}TaniaPapazafeiropoulou-CV`}
           target="_cv"
           title="Resume - Tania Papapazafeiropoulou"
         >
