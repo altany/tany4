@@ -6,6 +6,8 @@ import { GTM_TRACKING_ID } from "../lib/constants";
 const MyApp = ({ Component, pageProps }) => {
   // Google Tag Manager
   useEffect(() => {
+    console.log(GTM_TRACKING_ID);
+
     TagManager.initialize({ gtmId: GTM_TRACKING_ID });
   }, []);
 
