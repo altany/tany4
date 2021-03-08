@@ -6,8 +6,6 @@ import { NEXT_PUBLIC_GTM_TRACKING_ID } from "../lib/constants";
 const MyApp = ({ Component, pageProps }) => {
   // Google Tag Manager
   useEffect(() => {
-    console.log(NEXT_PUBLIC_GTM_TRACKING_ID);
-
     TagManager.initialize({ gtmId: NEXT_PUBLIC_GTM_TRACKING_ID });
   }, []);
 
