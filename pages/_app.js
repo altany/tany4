@@ -1,23 +1,15 @@
 import "../styles/global.scss";
 import { useEffect } from "react";
-import { useRouter } from "next/router";
-import { pageview } from "../lib/analytics";
+import TagManager from "react-gtm-module";
+import { GTM_TRACKING_ID } from "../lib/constants";
 
-const App = ({ Component, pageProps }) => {
-  const router = useRouter();
+const MyApp = ({ Component, pageProps }) => {
+  // Google Tag Manager
   useEffect(() => {
-    const handleRouteChange = (url) => {
-      pageview(url);
-    };
-    //router.events.on("routeChangeComplete", handleRouteChange);
-    router.events.on("beforeHistoryChange", handleRouteChange);
-    return () => {
-      //router.events.off("routeChangeComplete", handleRouteChange);
-      router.events.off("beforeHistoryChange", handleRouteChange);
-    };
-  }, [router.events]);
+    TagManager.initialize({ gtmId: GTM_TRACKING_ID });
+  }, []);
 
   return <Component {...pageProps} />;
 };
 
-export default App;
+export default MyApp;
