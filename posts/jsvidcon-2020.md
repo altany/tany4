@@ -7,7 +7,7 @@ banner: "jsvidcon-banner.jpeg"
 color: "#03a7af"
 ---
 
-In May of 2020 I had the honour to speak at JS VidCon's online conference about how me team is using React Native to save the world.
+In May of 2020 I had the honour to speak at JS VidCon's online conference about how my team is using React Native to save the world.
 
 Food waste is one of the biggest environmental and social challenges facing the planet. OLIO helps people connect and share surplus food.
 
