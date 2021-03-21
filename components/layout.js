@@ -104,7 +104,7 @@ const BottomLinks = () => {
       </li>
       <li>
         <a
-          href={`${SITE_URL}TaniaPapazafeiropoulou-CV`}
+          href={`${SITE_URL}TaniaPapazafeiropoulou-CV.pdf`}
           target="_cv"
           title="Resume - Tania Papapazafeiropoulou"
         >
