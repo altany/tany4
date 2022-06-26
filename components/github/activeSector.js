@@ -1,7 +1,6 @@
 import React from "react";
-import styles from "../../styles/utils.module.scss";
 
-import { Sector, Customized } from "recharts";
+import { Sector } from "recharts";
 
 const ActiveSector = ({
   cx,
