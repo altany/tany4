@@ -1,10 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a repo with language and error unchanged 1`] = `<div />`;
+exports[`renders repos for language and no data unchanged 1`] = `<div />`;
 
-exports[`renders a repo with language and no data unchanged 1`] = `<div />`;
-
-exports[`renders a repo with language unchanged 1`] = `
+exports[`renders repos for language unchanged 1`] = `
 <div>
   <h4>
     Repos with 
@@ -41,4 +39,6 @@ exports[`renders a repo with language unchanged 1`] = `
 </div>
 `;
 
-exports[`renders a repo without language unchanged 1`] = `<div />`;
+exports[`renders repos for language with error unchanged 1`] = `<div />`;
+
+exports[`renders repos without language unchanged 1`] = `<div />`;
