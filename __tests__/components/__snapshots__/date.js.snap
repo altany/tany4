@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the date unchanged 1`] = `
+<div>
+  <time
+    datetime="2020-12-19T15:49:00+0200"
+  >
+    19 December 2020
+  </time>
+</div>
+`;
