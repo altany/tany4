@@ -13,7 +13,7 @@ const ActiveSector = ({
   payload,
   percent,
 }) => {
-  const language = payload.name;
+  const language = payload?.name;
 
   return (
     <g>
