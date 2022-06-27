@@ -84,6 +84,5 @@ module.exports = async () => {
       "^.+\\.module\\.(css|sass|scss)$",
       `/node_modules/(?!(${remarkIgnoredModules})/)`
   ]
-  console.log(config)
   return config
 }
