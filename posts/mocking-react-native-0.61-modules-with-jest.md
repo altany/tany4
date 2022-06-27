@@ -12,7 +12,7 @@ Version 0.61 seems to be solving several issues that stopped my team from upgrad
 
 Prior to React Native 0.61, haste was used to map the individual module files. In haste the mapping is done by filename so it's easy enough to find the corresponding file in the react-native repo. So, to mock a module, we could simply do something like:
 
-```javascript
+```js
 jest.mock("Button", () => {});
 ```
 
@@ -32,7 +32,7 @@ The first approach seems to be the most popular, especially when mocking individ
 
 The second approach seems to be the correct one. The suggested implementation is to mock react-native inside `setup.js`, [such as](https://github.com/facebook/react-native/issues/26579#issuecomment-538610849):
 
-```javascript
+```js[class="line-numbers"]
 import * as ReactNative from "react-native";
 
 jest.doMock("react-native", () => {
@@ -70,7 +70,7 @@ I had issues when I followed this approach and my tests didn't seem to get mocke
 
 What worked for me instead was to mock react-native manually inside the `tests/__mocks__` folder. So I created a `react-native.js` file with this content:
 
-```javascript
+```js[class="line-numbers"]
 import * as ReactNative from "react-native";
 
 export const alert = jest.fn();
@@ -114,7 +114,7 @@ Also, I exported mocks of any methods as needed to help me test when they were c
 
 For example, I can now do:
 
-```javascript
+```js[class="line-numbers"]
 import { alert } from "react-native";
 
 it("showAlert() calls Alert.alert", () => {
@@ -129,7 +129,7 @@ However, soon I came across another obstacle. I need to be able to mock platform
 
 Before upgrading, we had been using a method that overwrites the OS property of Platform like this:
 
-```javascript
+```js[class="line-numbers"]
 export const mockPlatform = (OS) => {
   jest.resetModules();
   jest.doMock("Platform", () => ({ OS, select: (objs) => objs[OS] }));
@@ -160,13 +160,12 @@ import { Platform } from "react-native";
 
 and then simply overwrite the platform inside the test
 
-```javascript
+```js[class="line-numbers"]
 it('renders Element if Android', () => {
   Platform.OS = 'android'
   renderIfAndroid()
-  expect(wrapper.find(Element)).exists()).toBe(true)
+  expect(wrapper.find(Element).exists()).toBe(true)
 })
-
 ```
 
 Using the above setup, we have finally been able to mock our modules properly and are one step closer to the react-native 0.61 upgrade.
