@@ -4,12 +4,7 @@ import {
   PieChart,
   Pie,
   Cell,
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
   ResponsiveContainer,
-  Sector,
   Legend,
 } from "recharts";
 import useSWR from "swr";

@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "../../styles/utils.module.scss";
 import useSWR from "swr";
 import fetcher from "../../lib/fetcher";
 
@@ -12,6 +11,7 @@ const Repos = ({ language }) => {
     `https://github-api-altany.herokuapp.com/repos/language/${language}`,
     fetcher
   );
+
   if (error || !data) return null;
   return (
     <>

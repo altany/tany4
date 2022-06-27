@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a chart with data and no error unchanged 1`] = `
+<div>
+  <div
+    class="chartContainer"
+  >
+    <div
+      class="chart"
+    >
+      <div
+        class="recharts-responsive-container"
+        style="width: 94%; height: 100%;"
+      >
+        <div
+          style="position: absolute; width: 0px; height: 0px; visibility: hidden; display: none;"
+        />
+      </div>
+    </div>
+    <div
+      class="repoInfo"
+    />
+  </div>
+</div>
+`;
+
+exports[`renders a repo with an error unchanged 1`] = `
+<div>
+  <div>
+    failed to load chart
+  </div>
+</div>
+`;
+
+exports[`renders a repo with no data and no error unchanged 1`] = `
+<div>
+  <div>
+    loading chart data...
+  </div>
+</div>
+`;

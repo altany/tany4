@@ -6,7 +6,7 @@ import { getSortedPostsData } from "../../lib/posts";
 import Date from "../../components/date";
 import { SITE_TITLE } from "../../lib/constants";
 
-export default function Blog({ posts }) {
+export default function Blog({ posts = [] }) {
   return (
     <Layout blog>
       <Head>

@@ -1,7 +1,6 @@
 import React from "react";
-import styles from "../../styles/utils.module.scss";
 
-import { Sector, Customized } from "recharts";
+import { Sector } from "recharts";
 
 const ActiveSector = ({
   cx,
@@ -14,7 +13,7 @@ const ActiveSector = ({
   payload,
   percent,
 }) => {
-  const language = payload.name;
+  const language = payload?.name;
 
   return (
     <g>
