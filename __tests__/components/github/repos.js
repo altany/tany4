@@ -1,4 +1,8 @@
 import { render } from '@testing-library/react'
+import Repos from '../../../components/github/repos'
+
+jest.mock('swr')
+const swr = require('swr').default
 
 it('renders repos without language unchanged', () => {
     const Repos = require('../../../components/github/repos').default
@@ -9,12 +13,7 @@ it('renders repos without language unchanged', () => {
 it('renders repos for language unchanged', () => {
     const data=['repo1', 'repo 2', 'repo 3']
     const error=undefined
-    jest.mock('swr', ()=>({
-        __esModule: true,
-        default: ()=>({data, error})
-    }))
-
-    const Repos = require('../../../components/github/repos').default
+    swr.mockImplementation(()=>({data, error}))
     
     const { container } = render(<Repos language='Javascript' />)
     expect(container).toMatchSnapshot()
@@ -23,12 +22,8 @@ it('renders repos for language unchanged', () => {
 it('renders repos for language and no data unchanged', () => {
     const data=undefined
     const error=undefined
-    jest.mock('swr', ()=>({
-        __esModule: true,
-        default: ()=>({data, error})
-    }))
+    swr.mockImplementation(()=>({data, error}))
 
-    const Repos = require('../../../components/github/repos').default
     const { container } = render(<Repos language='Javascript' />)
     expect(container).toMatchSnapshot()
 })
@@ -36,12 +31,8 @@ it('renders repos for language and no data unchanged', () => {
 it('renders repos for language with error unchanged', () => {
     const data=undefined
     const error='test error'
-    jest.mock('swr', ()=>({
-        __esModule: true,
-        default: ()=>({data, error})
-    }))
+    swr.mockImplementation(()=>({data, error}))
 
-    const Repos = require('../../../components/github/repos').default
     const { container } = render(<Repos language='Javascript' />)
     expect(container).toMatchSnapshot()
 })
