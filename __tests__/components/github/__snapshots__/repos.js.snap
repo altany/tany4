@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders repos for language and no data unchanged 1`] = `<div />`;
+
+exports[`renders repos for language unchanged 1`] = `
+<div>
+  <h4>
+    Repos with 
+    <span>
+      Javascript
+    </span>
+  </h4>
+  <ul>
+    <li>
+      <a
+        href="https://github.com/altany/repo1"
+        target="_blank"
+      >
+        repo1
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://github.com/altany/repo 2"
+        target="_blank"
+      >
+        repo 2
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://github.com/altany/repo 3"
+        target="_blank"
+      >
+        repo 3
+      </a>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`renders repos for language with error unchanged 1`] = `<div />`;
+
+exports[`renders repos without language unchanged 1`] = `<div />`;
