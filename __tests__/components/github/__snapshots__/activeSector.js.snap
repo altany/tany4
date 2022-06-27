@@ -2,19 +2,20 @@
 
 exports[`renders an active sector with language unchanged 1`] = `
 <div>
-  <g>
-    <text
-      dy="8"
-      fill="hsl(0,50%,65%)"
-      text-anchor="middle"
-      x="296"
-      y="131.8046875"
-    >
-      Javascipt 79.97%
-    </text>
-    <path
-      class="recharts-sector"
-      d="M 397.44375,131.8046875
+  <svg>
+    <g>
+      <text
+        dy="8"
+        fill="hsl(0,50%,65%)"
+        text-anchor="middle"
+        x="296"
+        y="131.8046875"
+      >
+        Javascipt 79.97%
+      </text>
+      <path
+        class="recharts-sector"
+        d="M 397.44375,131.8046875
     A 101.44375,101.44375,0,
     1,0,
     286.996790890694,232.8481268703847
@@ -22,11 +23,11 @@ exports[`renders an active sector with language unchanged 1`] = `
             A 69.742578125,69.742578125,0,
             1,1,
             365.742578125,131.8046875 Z"
-      fill="hsl(0,50%,65%)"
-    />
-    <path
-      class="recharts-sector"
-      d="M 407.44375,131.8046875
+        fill="hsl(0,50%,65%)"
+      />
+      <path
+        class="recharts-sector"
+        d="M 407.44375,131.8046875
     A 111.44375,111.44375,0,
     1,0,
     286.1092833695992,242.8086655305175
@@ -34,27 +35,29 @@ exports[`renders an active sector with language unchanged 1`] = `
             A 107.44375,107.44375,0,
             1,1,
             403.44375,131.8046875 Z"
-      fill="hsl(0,50%,65%)"
-    />
-  </g>
+        fill="hsl(0,50%,65%)"
+      />
+    </g>
+  </svg>
 </div>
 `;
 
 exports[`renders an active sector without language unchanged 1`] = `
 <div>
-  <g>
-    <text
-      dy="8"
-      fill="hsl(0,50%,65%)"
-      text-anchor="middle"
-      x="296"
-      y="131.8046875"
-    >
-      undefined 79.97%
-    </text>
-    <path
-      class="recharts-sector"
-      d="M 397.44375,131.8046875
+  <svg>
+    <g>
+      <text
+        dy="8"
+        fill="hsl(0,50%,65%)"
+        text-anchor="middle"
+        x="296"
+        y="131.8046875"
+      >
+        undefined 79.97%
+      </text>
+      <path
+        class="recharts-sector"
+        d="M 397.44375,131.8046875
     A 101.44375,101.44375,0,
     1,0,
     286.996790890694,232.8481268703847
@@ -62,11 +65,11 @@ exports[`renders an active sector without language unchanged 1`] = `
             A 69.742578125,69.742578125,0,
             1,1,
             365.742578125,131.8046875 Z"
-      fill="hsl(0,50%,65%)"
-    />
-    <path
-      class="recharts-sector"
-      d="M 407.44375,131.8046875
+        fill="hsl(0,50%,65%)"
+      />
+      <path
+        class="recharts-sector"
+        d="M 407.44375,131.8046875
     A 111.44375,111.44375,0,
     1,0,
     286.1092833695992,242.8086655305175
@@ -74,8 +77,9 @@ exports[`renders an active sector without language unchanged 1`] = `
             A 107.44375,107.44375,0,
             1,1,
             403.44375,131.8046875 Z"
-      fill="hsl(0,50%,65%)"
-    />
-  </g>
+        fill="hsl(0,50%,65%)"
+      />
+    </g>
+  </svg>
 </div>
 `;
