@@ -15,11 +15,11 @@ const props = {
 }
 
 it('renders an active sector with language unchanged', () => {
-  const { container } = render(<ActiveSector {...props} />)
+  const { container } = render(<svg><ActiveSector {...props} /></svg>)
   expect(container).toMatchSnapshot()
 })
 
 it('renders an active sector without language unchanged', () => {
-    const { container } = render(<ActiveSector { ...props} payload={undefined} />)
+    const { container } = render(<svg><ActiveSector { ...props} payload={undefined} /></svg>)
     expect(container).toMatchSnapshot()
 })
