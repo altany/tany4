@@ -78,7 +78,7 @@ export default function Work() {
             </li>
             <li>
               <a
-                href="http://stackoverflow.com/story/tany4"
+                href="https://stackoverflow.com/users/2075902/tany4"
                 target="_stackoverflow"
                 title="StackOverflow story - tany4"
               >
