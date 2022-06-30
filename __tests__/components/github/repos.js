@@ -5,7 +5,9 @@ jest.mock('swr')
 const swr = require('swr').default
 
 it('renders repos without language unchanged', () => {
-    const Repos = require('../../../components/github/repos').default
+    const data=undefined
+    const error=undefined
+    swr.mockImplementation(()=>({data, error}))
     const { container } = render(<Repos />)
     expect(container).toMatchSnapshot()
 })
