@@ -17,6 +17,7 @@ exports[`renders a chart with data and no error unchanged 1`] = `
     </div>
     <div
       class="repoInfo"
+      id="repos"
     />
   </div>
 </div>
