@@ -9,9 +9,18 @@ exports[`renders an active sector with language unchanged 1`] = `
         fill="hsl(0,50%,65%)"
         text-anchor="middle"
         x="296"
-        y="131.8046875"
+        y="119.8046875"
       >
-        Javascipt 79.97%
+        Javascipt
+      </text>
+      <text
+        dy="8"
+        fill="hsl(0,50%,65%)"
+        text-anchor="middle"
+        x="296"
+        y="143.8046875"
+      >
+        79.97%
       </text>
       <path
         class="recharts-sector"
@@ -55,9 +64,16 @@ exports[`renders an active sector without language unchanged 1`] = `
         fill="hsl(0,50%,65%)"
         text-anchor="middle"
         x="296"
-        y="131.8046875"
+        y="119.8046875"
+      />
+      <text
+        dy="8"
+        fill="hsl(0,50%,65%)"
+        text-anchor="middle"
+        x="296"
+        y="143.8046875"
       >
-        undefined 79.97%
+        79.97%
       </text>
       <path
         class="recharts-sector"

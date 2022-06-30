@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Sector } from "recharts";
 
 const ActiveSector = ({
@@ -17,8 +16,11 @@ const ActiveSector = ({
 
   return (
     <g>
-      <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
-        {`${language} ${(percent * 100).toFixed(2)}%`}
+      <text x={cx} y={cy-12} dy={8} textAnchor="middle" fill={fill}>
+        {language}
+      </text>
+      <text x={cx} y={cy+12} dy={8} textAnchor="middle" fill={fill}>
+        {`${(percent * 100).toFixed(2)}%`}
       </text>
       <Sector
         cx={cx}
