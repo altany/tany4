@@ -245,7 +245,7 @@ exports[`renders the work page unchanged 1`] = `
               <a
                 href="https://stackoverflow.com/users/2075902/tany4"
                 target="_stackoverflow"
-                title="StackOverflow story - tany4"
+                title="StackOverflow profile - tany4"
               >
                 <svg
                   viewBox="0 0 1024 1024"

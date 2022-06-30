@@ -80,7 +80,7 @@ export default function Work() {
               <a
                 href="https://stackoverflow.com/users/2075902/tany4"
                 target="_stackoverflow"
-                title="StackOverflow story - tany4"
+                title="StackOverflow profile - tany4"
               >
                 <Icon icon={STACKOVERFLOW} />
                 tany4
