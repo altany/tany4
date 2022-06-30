@@ -3,16 +3,10 @@ import useSWR from "swr";
 import fetcher from "../../lib/fetcher";
 
 const Repos = ({ language }) => {
-  if (!language) {
-    return null;
-  }
 
-  const { data, error } = useSWR(
-    `https://github-api-altany.herokuapp.com/repos/language/${language}`,
-    fetcher
-  );
+  const { data , error} = useSWR(language ? `https://github-api-altany.herokuapp.com/repos/language/${language}`: null, fetcher)
 
-  if (error || !data) return null;
+  if (!language || error || !data) return null;
   return (
     <>
       <h4>
