@@ -7,6 +7,7 @@ exports[`renders a chart with data and no error unchanged 1`] = `
   >
     <div
       class="chart"
+      title="Click on any section to see a list of repos that uses the language"
     >
       <mock-react-resize-detector>
         <div
