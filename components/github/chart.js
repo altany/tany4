@@ -34,9 +34,12 @@ export default function Chart() {
   }));
 
   const hoverSector = (_, index) => setActiveIndex(index);
-  const clickSector = (data, index) => {
+  const clickSector = (data) => {
     const language = data.payload.name;
     setActiveLanguage(language);
+    document.getElementById("repos").scrollIntoView({
+      behavior: 'smooth'
+    });
   };
 
   return (
@@ -69,7 +72,7 @@ export default function Chart() {
           </PieChart>
         </ResponsiveContainer>
       </div>
-      <div className={styles.repoInfo}>
+      <div id="repos" className={styles.repoInfo}>
         <Repos language={activeLanguage} />
       </div>
     </div>

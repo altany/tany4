@@ -194,9 +194,11 @@
       }
     }
 
+    
     .repoInfo {
       flex-basis: 30%;
       font-size: 0.8rem;
+      min-height: 150px;
       @include mixins.breakpoint(mobilePortrait) {
         flex-basis: 100%;
       }
