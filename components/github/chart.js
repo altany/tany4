@@ -44,7 +44,7 @@ export default function Chart() {
 
   return (
     <div className={styles.chartContainer}>
-      <div className={styles.chart}>
+      <div className={styles.chart} title="Click on any section to see a list of repos that uses the language">
         <ResponsiveContainer width="94%">
           <PieChart cursor="pointer">
             <Pie
