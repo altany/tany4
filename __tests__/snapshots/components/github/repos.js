@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react'
-import Repos from '../../../components/github/repos'
+import Repos from '../../../../components/github/repos'
 
 jest.mock('swr')
 const swr = require('swr').default
