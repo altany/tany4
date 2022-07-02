@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react'
-import Blog from '../../../pages/blog/index'
+import Blog from '../../../../pages/blog/index'
 
 it('renders an empty blog page unchanged', () => {
   const { container } = render(<Blog />)

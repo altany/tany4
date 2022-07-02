@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react'
-import BlogPost from '../../../../pages/blog/posts/[id]'
+import BlogPost from '../../../../../pages/blog/posts/[id]'
 
 
 const data = {

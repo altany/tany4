@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react'
-import Chart from'../../../components/github/chart'
+import Chart from'../../../../components/github/chart'
 
 jest.mock('swr')
 const swr = require('swr').default
