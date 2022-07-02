@@ -3,7 +3,7 @@ const createTestCafe = require('testcafe');
 createTestCafe('localhost', 3001)
     .then(testcafe => {
         return testcafe.createRunner()
-        .startApp('npm run dev')
+        .startApp('node server.js') // serve the static build
         .run()
             .then(() => {
                 testcafe.close()
