@@ -4,5 +4,13 @@
   "repository": "https://github.com/altany/tany4",
   "logo": "logo.svg",
   "keywords": ["react", "next", "node"],
-  "image": "heroku/nodejs"
+  "image": "heroku/nodejs",
+  "environments": {
+    "test": {
+      "buildpacks": [
+        { "url": "heroku/google-chrome" },
+        { "url": "heroku/nodejs" }
+      ]
+    }
+  }
 }
