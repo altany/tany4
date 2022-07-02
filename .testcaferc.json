@@ -1,11 +1,7 @@
 {
-    "hostname": "localhost",
     "browsers": ["chrome:headless"],
     "clientScripts": [
         { "module": "@testing-library/dom/dist/@testing-library/dom.umd.js" }
     ],
-    "src": "__tests__/e2e/",
-    "options": {
-        "quietMode": false
-    }
+    "src": "__tests__/e2e/"
 }
