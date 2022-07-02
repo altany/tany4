@@ -14,6 +14,7 @@ exports[`renders repos for language unchanged 1`] = `
     <li>
       <a
         href="https://github.com/altany/repo1"
+        rel="noreferrer"
         target="_blank"
       >
         repo1
@@ -22,6 +23,7 @@ exports[`renders repos for language unchanged 1`] = `
     <li>
       <a
         href="https://github.com/altany/repo 2"
+        rel="noreferrer"
         target="_blank"
       >
         repo 2
@@ -30,6 +32,7 @@ exports[`renders repos for language unchanged 1`] = `
     <li>
       <a
         href="https://github.com/altany/repo 3"
+        rel="noreferrer"
         target="_blank"
       >
         repo 3
