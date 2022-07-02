@@ -20,7 +20,7 @@ export default function Blog({ posts = [] }) {
             <li key={id} style={{ backgroundColor: color }}>
               <Link href="/blog/posts/[id]" as={`/blog/posts/${id}`}>
                 <a>
-                  <img src={`blog/${banner}`} />
+                  <img src={`blog/${banner}`} alt=""/>
                   <div className={styles.content}>
                     <b>{title}</b>
                     {subtitle && (

@@ -114,27 +114,30 @@ export default function Work() {
             >
               Github account
             </a>
-            . It is built using the Github API and it's running in{" "}
+            {". It is built using the Github API and it's running in "}
             <a
               href="https://github-api-altany.herokuapp.com/"
               title="API data"
               target="_blank"
+              rel="noreferrer"
             >
               Heroku
             </a>
-            . The source is available on a{" "}
+            {". The source is available on a "}
             <a
               href="https://github.com/altany/docker-github-api"
               title="Github repo for the server"
               target="_blank"
+              rel="noreferrer"
             >
               github repo
             </a>{" "}
-            and the docker container is also available{" "}
+            {"and the docker container is also available "}
             <a
               href="https://hub.docker.com/r/altany/github-api-docker"
               title="Docker container running a server for fetching data for the 'altany' repo"
               target="_blank"
+              rel="noreferrer"
             >
               here
             </a>

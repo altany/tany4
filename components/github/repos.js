@@ -15,7 +15,7 @@ const Repos = ({ language }) => {
       <ul>
         {data.map((repo, index) => (
           <li key={index}>
-            <a target="_blank" href={`https://github.com/altany/${repo}`}>
+            <a target="_blank" href={`https://github.com/altany/${repo}`} rel="noreferrer">
               {repo}
             </a>
           </li>
