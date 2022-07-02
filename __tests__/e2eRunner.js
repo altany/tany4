@@ -2,7 +2,7 @@ const createTestCafe = require('testcafe');
 
 createTestCafe('localhost', 3001)
     .then(testcafe => {
-        testcafe.createRunner()
+        return testcafe.createRunner()
         .startApp('npm run dev')
         .run()
             .then(() => {
