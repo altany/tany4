@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "cross-env NODE_ENV=production node server.js",
-    "test": "node __tests__/e2eRunner.js && jest",
+    "test": "testcafe --list-browsers && node __tests__/e2eRunner.js && jest",
     "lint": "next lint"
   },
   "dependencies": {
