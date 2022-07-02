@@ -13,7 +13,7 @@ export default function Home() {
       </Head>
 
       <header className={styles.header}>
-        <h1>Hi, I'm Tania, web developer.</h1>
+        <h1>{"Hi, I'm Tania, web developer."}</h1>
         <h2>Welcome to my website!</h2>
       </header>
 
