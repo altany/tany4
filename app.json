@@ -10,10 +10,7 @@
       "buildpacks": [
         { "url": "heroku/google-chrome" },
         { "url": "heroku/nodejs" }
-      ],
-      "scripts": {
-        "test-setup": "node server.js"
-      }
+      ]
 
     }
   }
