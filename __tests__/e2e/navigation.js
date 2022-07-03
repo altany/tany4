@@ -1,7 +1,8 @@
 import {screen} from '@testing-library/testcafe'
+import { userVariables } from 'testcafe'
 
 fixture('Layout')
-  .page`localhost:3000`;
+  .page(userVariables.baseUrl);
 
 test('Renders `work` link', async t => {
   const workLink = screen.getByText('Work')
