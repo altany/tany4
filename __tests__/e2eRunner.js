@@ -7,7 +7,9 @@ createTestCafe('localhost', 3001, 3002)
         return testcafe.createRunner()
             .startApp('PORT=3000 node server.js', 1000) // serve the static build
             .run()
-    }).then(()=>{
+    }).then(failedCount=>{
         testcafe.close()
-    }).catch(console.error)
-   
+        if(failedCount>0) {
+            throw new Error(`${failedCount} tests failed`)
+        }
+    })
