@@ -23,9 +23,9 @@ export default function Home() {
           experience in various <b>front end</b> techonologies.
         </p>
         <p>
-          Feel free to check my website and find out more about
+          {'Feel free to check my website and find out more about '}
           <Link href="/work">
-            <a title="Work"> my work</a>
+            <a>my work</a>
           </Link>
           .
         </p>
