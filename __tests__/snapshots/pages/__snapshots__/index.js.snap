@@ -4,6 +4,7 @@ exports[`renders the whole page unchanged 1`] = `
 <div>
   <nav
     class="navigation"
+    data-testid="navigation"
   >
     <div
       class="container"
@@ -19,7 +20,7 @@ exports[`renders the whole page unchanged 1`] = `
             title="Home"
           >
             <img
-              alt="Tania Papazafeiropoulou"
+              alt="Tania Papazafeiropoulou avatar"
               src="/profile.svg"
             />
           </a>
@@ -161,12 +162,11 @@ exports[`renders the whole page unchanged 1`] = `
            techonologies.
         </p>
         <p>
-          Feel free to check my website and find out more about
+          Feel free to check my website and find out more about 
           <a
             href="/work"
-            title="Work"
           >
-             my work
+            my work
           </a>
           .
         </p>

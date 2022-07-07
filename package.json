@@ -7,7 +7,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "cross-env NODE_ENV=production node server.js",
-    "test": "node __tests__/e2eRunner.js && jest",
+    "test-e2e": "node __tests__/e2eRunner.js",
+    "test-unit": "jest",
+    "test": "npm run test-e2e && npm run test-unit",
     "lint": "next lint"
   },
   "dependencies": {
