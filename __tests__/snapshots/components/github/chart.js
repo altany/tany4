@@ -1,9 +1,10 @@
 import { render } from '@testing-library/react'
-import Chart from'../../../components/github/chart'
+import Chart from'../../../../components/github/chart'
 
 jest.mock('swr')
 const swr = require('swr').default
 
+// eslint-disable-next-line react/display-name
 jest.mock("react-resize-detector", () => ({children}) => {
     const MockReactResizeDetector = "mock-react-resize-detector";
     return <MockReactResizeDetector>{children}</MockReactResizeDetector>;

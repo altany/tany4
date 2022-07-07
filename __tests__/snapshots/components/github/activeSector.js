@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react'
-import ActiveSector from '../../../components/github/activeSector'
+import ActiveSector from '../../../../components/github/activeSector'
 
 
 const props = {

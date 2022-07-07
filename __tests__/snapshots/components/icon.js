@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react'
-import Icon from '../../components/icon'
+import Icon from '../../../components/icon'
 import {
     GITHUB,
     GITLAB,
@@ -9,7 +9,7 @@ import {
     TWITTER,
     STACKOVERFLOW,
     CODEWARS
-} from "../../lib/icons";
+} from "../../../lib/icons";
 
 it('renders the GITHUB icon unchanged', () => {
   const { container } = render(<Icon icon={GITHUB} />)
