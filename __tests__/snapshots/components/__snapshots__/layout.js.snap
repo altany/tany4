@@ -1,9 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders the blog post unchanged 1`] = `
+exports[`renders the layout unchanged 1`] = `
 <div>
   <nav
     class="navigation"
+    data-testid="navigation"
   >
     <div
       class="container"
@@ -19,7 +20,7 @@ exports[`renders the blog post unchanged 1`] = `
             title="Home"
           >
             <img
-              alt="Tania Papazafeiropoulou"
+              alt="Tania Papazafeiropoulou avatar"
               src="/profile.svg"
             />
           </a>
@@ -131,39 +132,9 @@ exports[`renders the blog post unchanged 1`] = `
     </span>
   </aside>
   <div
-    class="contentContainer noPadding"
+    class="contentContainer "
   >
-    <main>
-      <div
-        class="post"
-      >
-        <div
-          class="title"
-        >
-          <h1>
-            I am the title
-          </h1>
-          <h2>
-            I am the subtitle
-          </h2>
-        </div>
-        <article>
-          <time
-            datetime="2020-12-19T15:49:00+0200"
-          >
-            19 December 2020
-          </time>
-          <div>
-            <div>
-              I am the 
-              <strong>
-                content
-              </strong>
-            </div>
-          </div>
-        </article>
-      </div>
-    </main>
+    <main />
   </div>
   <footer
     class="footer"

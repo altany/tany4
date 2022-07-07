@@ -51,13 +51,13 @@ const HtmlHead = () => (
 );
 
 const Navigation = ({ blog, work }) => (
-  <nav className={styles.navigation}>
+  <nav className={styles.navigation} data-testid="navigation">
     <div className={styles.container}>
       <ul className={styles.topLinks}>
         <li className={styles.logo}>
           <Link href="/">
             <a title="Home">
-              <img src="/profile.svg" alt={NAME} />
+              <img src="/profile.svg" alt={`${NAME} avatar`} />
             </a>
           </Link>
         </li>
