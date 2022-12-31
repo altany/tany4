@@ -33,10 +33,10 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/testcafe": "^4.4.1",
     "eslint": "8.18.0",
-    "eslint-config-next": "12.2.0",
+    "eslint-config-next": "13.1.1",
     "jest": "^28.1.1",
     "jest-environment-jsdom": "^28.1.1",
-    "testcafe": "^1.19.0"
+    "testcafe": "^15.1.317922"
   },
   "engines": {
     "node": "14.x"
