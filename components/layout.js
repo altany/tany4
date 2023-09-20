@@ -11,6 +11,7 @@ import {
   SITE_DESCRIPTION,
   SITE_TITLE,
   LAST_COMMIT_ENDPOINT,
+  JOB_TITLE
 } from "../lib/constants";
 
 export default function Layout({ children, noPadding, blog, work }) {
@@ -129,8 +130,7 @@ const StatusBar = () => (
     <Link href="/">
       <a className={styles.name}>Tania</a>
     </Link>
-    <span className={styles.title}>Front end &amp; Mobile developer</span>
-    {/* TODO: Add conferences link with animated dropdown */}
+    <span className={styles.title}>{JOB_TITLE}</span>
   </aside>
 );
 
