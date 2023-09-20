@@ -128,7 +128,7 @@ exports[`renders the whole page unchanged 1`] = `
     <span
       class="title"
     >
-      Front end & Mobile developer
+      Technical Lead & Web Developer
     </span>
   </aside>
   <div
@@ -139,36 +139,38 @@ exports[`renders the whole page unchanged 1`] = `
         class="header"
       >
         <h1>
-          Hi, I'm Tania, web developer.
+          Welcome to my website!
         </h1>
         <h2>
-          Welcome to my website!
+          Hi, I'm 
+          Tania Papazafeiropoulou
+          , a 
+          Technical Lead & Web Developer
+          .
         </h2>
       </header>
       <section
         class="introduction"
       >
         <p>
-          My name is 
-          Tania Papazafeiropoulou
-           and I am a 
+          With years of experience in various 
           <b>
-            React
+            frontend
           </b>
-           Developer with many years of experience in various 
-          <b>
-            front end
-          </b>
-           techonologies.
+           technologies, I was recently promoted to a Technical Lead at Olio.
         </p>
         <p>
-          Feel free to check my website and find out more about 
+          Explore my journey and discover more about 
           <a
             href="/work"
           >
             my work
           </a>
-          .
+           in the world of 
+          <b>
+            React
+          </b>
+           development.
         </p>
       </section>
     </main>
