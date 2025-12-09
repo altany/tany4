@@ -13,17 +13,24 @@ export default function Home() {
       </Head>
 
       <header className={styles.header}>
-        <h1>Welcome to my website!</h1>
-        <h2>Hi, I&apos;m {NAME}, a {JOB_TITLE}.</h2>
+        <p>Welcome to my website!</p>
+        <h1>Hi, I'm {NAME},</h1>
+        <h2>{JOB_TITLE}</h2>
       </header>
 
       <section className={styles.introduction}>
-        <p>
-          With years of experience in various <b>frontend</b> technologies, I was recently promoted to a Technical Lead at Olio.
+        <p>I specialise in building fast, accessible and user-focused mobile and web experiences. With 10+ years in front-end engineering and 2.5 years as a tech lead, I&apos;ve delivered production React Native apps, led cross-functional teams, improved performance, and shaped product direction.</p>
+        <p>I&apos;m passionate about:
+          <ul>
+            <li>React &amp; React Native mobile development</li>
+            <li>Accessibility and performance</li>
+            <li>Mentoring engineers & cross-team collaboration</li>
+            <li>AI-assisted developer productivity (Cascade + LLMs)</li>
+            <li>Using technology to create positive impact</li>
+          </ul>
         </p>
-        <p>
-          Explore my journey and discover more about <Link href="/work">my work</Link> in the world of <b>React</b> development.
-        </p>
+        <p>I&apos;ve spoken at <Link href="/blog/posts/react-conf-2019">React Conf 2019</Link> and <Link href="/posts/jsvidcon-2020">JS VidCon 2020</Link> about how we built and scaled the Olio React Native app.</p>
+        <p>Explore <Link href="/work">my work</Link>.</p>
       </section>
     </Layout>
   );
