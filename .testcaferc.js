@@ -1,5 +1,5 @@
 module.exports = {
-    "browsers": ["chrome --headless --no-sandbox"],
+    "browsers": ["Chrome --headless --no-sandbox"],
     "clientScripts": [
         { "module": "@testing-library/dom/dist/@testing-library/dom.umd.js" }
     ],
