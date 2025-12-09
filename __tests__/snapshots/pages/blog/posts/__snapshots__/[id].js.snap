@@ -27,6 +27,7 @@ exports[`renders the blog post unchanged 1`] = `
         </li>
         <li>
           <a
+            aria-label="Check out my work"
             href="/work"
             title="Check out my work"
           >
@@ -128,7 +129,7 @@ exports[`renders the blog post unchanged 1`] = `
     <span
       class="title"
     >
-      Technical Lead & Web Developer
+      Front-End Tech Lead & Senior React / React Native Engineer
     </span>
   </aside>
   <div

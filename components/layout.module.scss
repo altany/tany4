@@ -9,6 +9,7 @@
   background: variables.$darkmainColor;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   border-bottom: 1px solid darken(variables.$darkmainColor, 5%);
   z-index: 2;
   @include mixins.breakpoint(mobileLandscape) {
@@ -34,8 +35,12 @@
     font-size: 1.3rem;
     letter-spacing: 0.1rem;
     color: white;
+    font-size: 0.6rem;
+
     @include mixins.breakpoint(mobile) {
       padding-left: 1rem;
+    }
+    @include mixins.breakpoint(phablet) {
       font-size: 0.8rem;
     }
   }
