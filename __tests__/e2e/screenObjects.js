@@ -22,7 +22,7 @@ class Navigation {
 
 class HomePage {
   constructor () {
-    this.heading = screen.queryByRole('heading', {name:"Welcome to my website!"})
+    this.heading = screen.queryByRole('heading', {name:"Hi, I'm Tania Papazafeiropoulou,"})
     this.workLink = screen.queryByRole('link', {name: 'my work'})
   }
 }

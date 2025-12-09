@@ -159,24 +159,24 @@ exports[`renders the whole page unchanged 1`] = `
         </p>
         <p>
           I'm passionate about:
-          <ul>
-            <li>
-              React & React Native mobile development
-            </li>
-            <li>
-              Accessibility and performance
-            </li>
-            <li>
-              Mentoring engineers & cross-team collaboration
-            </li>
-            <li>
-              AI-assisted developer productivity (Cascade + LLMs)
-            </li>
-            <li>
-              Using technology to create positive impact
-            </li>
-          </ul>
         </p>
+        <ul>
+          <li>
+            React & React Native mobile development
+          </li>
+          <li>
+            Accessibility and performance
+          </li>
+          <li>
+            Mentoring engineers & cross-team collaboration
+          </li>
+          <li>
+            AI-assisted developer productivity (Cascade + LLMs)
+          </li>
+          <li>
+            Using technology to create positive impact
+          </li>
+        </ul>
         <p>
           I've spoken at 
           <a
