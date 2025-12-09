@@ -27,6 +27,7 @@ exports[`renders the whole page unchanged 1`] = `
         </li>
         <li>
           <a
+            aria-label="Check out my work"
             href="/work"
             title="Check out my work"
           >
@@ -128,7 +129,7 @@ exports[`renders the whole page unchanged 1`] = `
     <span
       class="title"
     >
-      Technical Lead & Web Developer
+      Front-End Tech Lead & Senior React / React Native Engineer
     </span>
   </aside>
   <div
@@ -145,7 +146,7 @@ exports[`renders the whole page unchanged 1`] = `
           Hi, I'm 
           Tania Papazafeiropoulou
           , a 
-          Technical Lead & Web Developer
+          Front-End Tech Lead & Senior React / React Native Engineer
           .
         </h2>
       </header>
