@@ -61,7 +61,11 @@ const Navigation = ({ blog, work }) => (
           </Link>
         </li>
         <li className={work && styles.active}>
-          <Link href="/work" title="Check out my work">
+          <Link
+            href="/work"
+            title="Check out my work"
+            aria-label="Check out my work"
+          >
             <div>Work</div>
           </Link>
         </li>
