@@ -22,9 +22,7 @@ export default function Home() {
           With years of experience in various <b>frontend</b> technologies, I was recently promoted to a Technical Lead at Olio.
         </p>
         <p>
-          Explore my journey and discover more about <Link href="/work">
-            <a>my work</a>
-          </Link> in the world of <b>React</b> development.
+          Explore my journey and discover more about <Link href="/work">my work</Link> in the world of <b>React</b> development.
         </p>
       </section>
     </Layout>

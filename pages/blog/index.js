@@ -18,21 +18,19 @@ export default function Blog({ posts = [] }) {
         <ul>
           {posts.map(({ id, date, title, subtitle, banner, color }) => (
             <li key={id} style={{ backgroundColor: color }}>
-              <Link href="/blog/posts/[id]" as={`/blog/posts/${id}`}>
-                <a>
-                  <img src={`blog/${banner}`} alt=""/>
-                  <div className={styles.content}>
-                    <b>{title}</b>
-                    {subtitle && (
-                      <b>
-                        <small>{subtitle}</small>
-                      </b>
-                    )}
-                    <small>
-                      <Date dateString={date} />
-                    </small>
-                  </div>
-                </a>
+              <Link href={`/blog/posts/${id}`}>
+                <img src={`blog/${banner}`} alt="" />
+                <div className={styles.content}>
+                  <b>{title}</b>
+                  {subtitle && (
+                    <b>
+                      <small>{subtitle}</small>
+                    </b>
+                  )}
+                  <small>
+                    <Date dateString={date} />
+                  </small>
+                </div>
               </Link>
             </li>
           ))}
