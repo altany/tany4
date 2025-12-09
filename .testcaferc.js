@@ -1,5 +1,5 @@
 module.exports = {
-    "browsers": ["chrome:headless --disable-native-automation --disable-features=LocalNetworkAccessChecks"],
+    "browsers": ["chrome:headless"],
     "clientScripts": [
         { "module": "@testing-library/dom/dist/@testing-library/dom.umd.js" }
     ],
