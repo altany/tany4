@@ -8,10 +8,9 @@
   "environments": {
     "test": {
       "buildpacks": [
-        { "url": "heroku/google-chrome" },
+        { "url": "https://github.com/heroku/heroku-buildpack-chrome-for-testing" },
         { "url": "heroku/nodejs" }
       ]
-
     }
   }
 }
