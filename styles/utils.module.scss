@@ -5,11 +5,14 @@
 .header {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  h1,
-  h2 {
-    text-align: center;
+ 
+  h1 {
+    margin-bottom: 0;
   }
+  h2 {
+    margin-top:0;
+  }
+
   @include mixins.breakpoint(mobileLandscape) {
     h1 {
       font-size: 1.5rem;
@@ -21,10 +24,7 @@
     }
   }
 }
-
 .introduction {
-  max-width: 35rem;
-  text-align: center;
   margin: 0 auto;
   b {
     color: variables.$thirdColor;
@@ -32,6 +32,10 @@
   a {
     color: variables.$navLinkColor;
     font-weight: bold;
+  }
+  ul {
+  list-style-type: circle;
+  padding-left: 1rem;
   }
 }
 
