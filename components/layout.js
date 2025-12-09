@@ -27,7 +27,7 @@ export default function Layout({ children, noPadding, blog, work }) {
 }
 
 const HtmlHead = () => (
-  <Head lang="en">
+  <Head>
     <link rel="icon" href="/favicon.ico" />
     <meta name="author" content={NAME} />
     <meta property="og:description" content={SITE_DESCRIPTION} />
@@ -56,24 +56,18 @@ const Navigation = ({ blog, work }) => (
     <div className={styles.container}>
       <ul className={styles.topLinks}>
         <li className={styles.logo}>
-          <Link href="/">
-            <a title="Home">
-              <img src="/profile.svg" alt={`${NAME} avatar`} />
-            </a>
+          <Link href="/" title="Home">
+            <img src="/profile.svg" alt={`${NAME} avatar`} />
           </Link>
         </li>
         <li className={work && styles.active}>
-          <Link href="/work">
-            <a title="Check out my work">
-              <div>Work</div>
-            </a>
+          <Link href="/work" title="Check out my work">
+            <div>Work</div>
           </Link>
         </li>
         <li className={blog && styles.active}>
-          <Link href="/blog">
-            <a title="Blog">
-              <div>Blog</div>
-            </a>
+          <Link href="/blog" title="Blog">
+            <div>Blog</div>
           </Link>
         </li>
       </ul>
@@ -127,8 +121,8 @@ const BottomLinks = () => {
 
 const StatusBar = () => (
   <aside className={styles.statusBar}>
-    <Link href="/">
-      <a className={styles.name}>Tania</a>
+    <Link href="/" className={styles.name}>
+      Tania
     </Link>
     <span className={styles.title}>{JOB_TITLE}</span>
   </aside>
