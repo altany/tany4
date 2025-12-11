@@ -100,6 +100,7 @@ export default function Post({ data }) {
               src={`/blog/${data.banner}`}
               alt={data.title}
               className={styles.postBanner}
+              style={{backgroundColor:data.color || 'white'}}
             />
           )}
           <div className={styles.postHeaderMeta}>
