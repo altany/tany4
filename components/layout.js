@@ -11,13 +11,19 @@ import {
   SITE_DESCRIPTION,
   SITE_TITLE,
   LAST_COMMIT_ENDPOINT,
-  JOB_TITLE
+  JOB_TITLE,
 } from "../lib/constants";
 
-export default function Layout({ children, noPadding, blog, work }) {
+export default function Layout({
+  children,
+  noPadding,
+  blog,
+  work,
+  seoImage,
+}) {
   return (
     <>
-      <HtmlHead />
+      <HtmlHead seoImage={seoImage} />
       <Navigation blog={blog} work={work} />
       <StatusBar />
       <Content noPadding={noPadding}>{children}</Content>
@@ -26,30 +32,41 @@ export default function Layout({ children, noPadding, blog, work }) {
   );
 }
 
-const HtmlHead = () => (
-  <Head>
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="author" content={NAME} />
-    <meta property="og:description" content={SITE_DESCRIPTION} />
-    <meta property="og:image" content={`${SITE_URL}profile.png`} />
-    <meta property="og:title" content={SITE_TITLE} />
-    <meta property="og:url" content={SITE_URL} />
-    <meta property="og:type" content="website" />
+const HtmlHead = ({ seoImage }) => {
+  const defaultImagePath = "profile.png";
+  const resolvedImage = seoImage || defaultImagePath;
 
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@_Tany_" />
-    <meta name="twitter:title" content={SITE_TITLE} />
-    <meta name="twitter:description" content={SITE_DESCRIPTION} />
-    <meta name="twitter:creator" content="@_Tany_" />
-    <meta name="twitter:image" content={`${SITE_URL}profile.png`} />
-    <meta name="twitter:image:alt" content="Tania's photo" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-    />
-    <link rel="apple-touch-icon" href={`${SITE_URL}profile.png`} />
-  </Head>
-);
+  return (
+    <Head>
+      <link rel="icon" href="/favicon.ico" />
+      <meta name="author" content={NAME} />
+      <meta property="og:description" content={SITE_DESCRIPTION} />
+      <meta
+        property="og:image"
+        content={`${SITE_URL}${resolvedImage.replace(/^\//, "")}`}
+      />
+      <meta property="og:title" content={SITE_TITLE} />
+      <meta property="og:url" content={SITE_URL} />
+      <meta property="og:type" content="website" />
+
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:site" content="@_Tany_" />
+      <meta name="twitter:title" content={SITE_TITLE} />
+      <meta name="twitter:description" content={SITE_DESCRIPTION} />
+      <meta name="twitter:creator" content="@_Tany_" />
+      <meta
+        name="twitter:image"
+        content={`${SITE_URL}${resolvedImage.replace(/^\//, "")}`}
+      />
+      <meta name="twitter:image:alt" content="Tania's photo" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+      />
+      <link rel="apple-touch-icon" href={`${SITE_URL}profile.png`} />
+    </Head>
+  );
+};
 
 const Navigation = ({ blog, work }) => (
   <nav className={styles.navigation} data-testid="navigation">
