@@ -398,6 +398,20 @@
       padding: 15px;
     }
 
+    .breadcrumbs {
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.9;
+
+      span + span {
+        margin-left: 0.25rem;
+      }
+
+      a {
+        text-decoration: underline;
+      }
+    }
+
     h1 {
       margin: 0;
       font-size: 2rem;
@@ -449,6 +463,19 @@
       margin: 0;
     }
 
+    .postMetaTop {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .postUpdated {
+      font-size: 0.8rem;
+      opacity: 0.9;
+    }
+
     .postMeta {
       margin-top: 0.25rem;
     }
@@ -471,5 +498,13 @@
       margin-left: auto;
       @include mixins.borderRadius(3px);
     }
+  }
+
+  .postAuthor {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 0.9rem;
+    opacity: 0.9;
   }
 }

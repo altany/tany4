@@ -142,6 +142,21 @@ exports[`renders the blog post unchanged 1`] = `
         <div
           class="title"
         >
+          <div
+            class="breadcrumbs"
+          >
+            <a
+              href="/blog"
+            >
+              Blog
+            </a>
+            <span>
+              →
+            </span>
+            <span>
+              I am the title
+            </span>
+          </div>
           <h1>
             I am the title
           </h1>
@@ -153,11 +168,17 @@ exports[`renders the blog post unchanged 1`] = `
           <div
             class="postHeaderMeta"
           >
-            <time
-              datetime="2020-12-19T15:49:00+0200"
+            <div
+              class="postMetaTop"
             >
-              19 December 2020
-            </time>
+              <span>
+                <time
+                  datetime="2020-12-19T15:49:00+0200"
+                >
+                  19 December 2020
+                </time>
+              </span>
+            </div>
           </div>
           <div>
             <div>
@@ -166,6 +187,17 @@ exports[`renders the blog post unchanged 1`] = `
                 content
               </strong>
             </div>
+          </div>
+          <div
+            class="postAuthor"
+          >
+            <p>
+              Written by 
+              Tania Papazafeiropoulou
+               - 
+              Front-End Tech Lead & Senior React / React Native Engineer
+              .
+            </p>
           </div>
         </article>
       </div>

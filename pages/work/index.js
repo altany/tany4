@@ -256,7 +256,7 @@ export default function Work() {
           </p>
           <ul>
             <li>
-              Using React Native to save the world — presented at <Link href="/blog/posts/react-conf-2019">React Conf 2019</Link> and <Link href="/blog/posts/jsvidcon-2020">JS VidCon 2020</Link>
+              Using React Native to save the world - presented at <Link href="/blog/posts/react-conf-2019">React Conf 2019</Link> and <Link href="/blog/posts/jsvidcon-2020">JS VidCon 2020</Link>
             </li>
             
           </ul>

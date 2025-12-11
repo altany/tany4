@@ -453,7 +453,7 @@ exports[`renders the work page unchanged 1`] = `
           </p>
           <ul>
             <li>
-              Using React Native to save the world — presented at 
+              Using React Native to save the world - presented at 
               <a
                 href="/blog/posts/react-conf-2019"
               >
