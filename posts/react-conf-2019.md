@@ -6,6 +6,7 @@ categories: ["React Native", "Conference talk"]
 highlight: true
 banner: "reactconf-banner.jpg"
 color: "#401b57"
+description: "Conference talk on how OLIO migrated its entire app to React Native with a small team, the performance and testing challenges we faced, and the lessons that can help other engineering teams."
 ---
 
 In October of 2019 I had the amazing opportunity to speak at the [React Conf 2019](https://conf.reactjs.org) about [how we at OLIO are using React Native to save the world](https://conf.reactjs.org/event.html?_Tany_).
