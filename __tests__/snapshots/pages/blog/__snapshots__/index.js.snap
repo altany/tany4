@@ -155,7 +155,7 @@ exports[`renders an blog page with a post unchanged 1`] = `
               href="/blog/posts/123"
             >
               <img
-                alt=""
+                alt="I am the titel - banner"
                 src="blog/banner-path"
               />
               <div

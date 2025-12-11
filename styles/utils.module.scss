@@ -452,10 +452,16 @@
 
   .postBanner {
     width: 100%;
-    max-height: 320px;
-    object-fit: cover;
-    margin: 2rem 0 1rem;
+    max-height: 150px;
+    object-fit: contain;
+    margin: 3rem 0 1.5rem;
     @include mixins.borderRadius(6px);
+    @include mixins.breakpoint(mobile) {
+      margin: 1.5rem 0 1rem;
+    }
+
+
+    
   }
 
   .postHeaderMeta {
