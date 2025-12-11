@@ -1,21 +1,20 @@
 import Head from "next/head";
+import Link from "next/link";
 import Layout from "../../../components/layout";
 import { getAllPostIds, getPostData } from "../../../lib/posts";
 import Date from "../../../components/date";
 import styles from "../../../styles/utils.module.scss";
-import { NAME, SITE_URL } from "../../../lib/constants";
+import { NAME, SITE_URL, JOB_TITLE } from "../../../lib/constants";
 
 export default function Post({ data }) {
   return (
     <Layout noPadding>
       <Head>
         <title>{`${data.title} - ${NAME}`}</title>
-     
         {data.description && (
           <meta name="description" content={data.description} />
         )}
 
-      
         {(() => {
           const baseUrl = SITE_URL.endsWith("/")
             ? SITE_URL.slice(0, -1)
@@ -83,6 +82,17 @@ export default function Post({ data }) {
       </Head>
       <div className={styles.post}>
         <div className={styles.title}>
+          <div className={styles.breadcrumbs}>
+            <Link href="/blog">Blog</Link>
+            {Array.isArray(data.categories) && data.categories.length > 0 && (
+              <>
+                <span>→</span>
+                <span>{data.categories[0]}</span>
+              </>
+            )}
+            <span>→</span>
+            <span>{data.title}</span>
+          </div>
           <h1>{data.title}</h1>
           {data.subtitle && <h2>{data.subtitle}</h2>}
         </div>
@@ -95,7 +105,19 @@ export default function Post({ data }) {
             />
           )}
           <div className={styles.postHeaderMeta}>
-            <Date dateString={data.date} />
+            <div className={styles.postMetaTop}>
+              <span>
+                <Date dateString={data.date} />
+              </span>
+              {typeof data.readingTimeMinutes === "number" && (
+                <span>{`${data.readingTimeMinutes} min read`}</span>
+              )}
+            </div>
+            {data.updated && (
+              <div className={styles.postUpdated}>
+                Last updated <Date dateString={data.updated} />
+              </div>
+            )}
             {Array.isArray(data.categories) && data.categories.length > 0 && (
               <div className={styles.postMeta}>
                 {data.categories.map((cat) => (
@@ -107,6 +129,11 @@ export default function Post({ data }) {
             )}
           </div>
           <div dangerouslySetInnerHTML={{ __html: data.contentHtml }} />
+          <div className={styles.postAuthor}>
+            <p>
+              Written by {NAME} - {JOB_TITLE}.
+            </p>
+          </div>
         </article>
       </div>
     </Layout>
