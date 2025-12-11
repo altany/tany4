@@ -349,6 +349,7 @@
       margin: 1rem 0;
     }
   }
+
   ul {
     display: flex;
     flex-direction: row;
@@ -408,8 +409,33 @@
           font-size: 0.8rem;
         }
 
+        .featuredBadge {
+          align-self: flex-start;
+          background-color: darken(variables.$thirdColor, 5%);
+          color: #fff;
+          font-size: 0.7rem;
+          font-weight: bold;
+          padding: 0.2rem 0.4rem;
+          margin-bottom: 0.3rem;
+          @include mixins.borderRadius(3px);
+        }
+
         time {
           font-style: italic;
+        }
+
+        .postMeta {
+          margin-top: 0.25rem;
+        }
+
+        .postTag {
+          display: inline-block;
+          font-size: 0.7rem;
+          padding: 0.1rem 0.4rem;
+          margin-right: 0.25rem;
+          margin-top: 0.15rem;
+          background-color: rgba(0, 0, 0, 0.1);
+          @include mixins.borderRadius(3px);
         }
       }
     }
@@ -461,6 +487,49 @@
     margin: 20px auto 70px auto;
     @include mixins.breakpoint(mobile) {
       padding: 0 15px;
+    }
+  }
+
+  .postBanner {
+    width: 100%;
+    max-height: 320px;
+    object-fit: cover;
+    margin: 2rem 0 1rem;
+    @include mixins.borderRadius(6px);
+  }
+
+  .postHeaderMeta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+
+    time {
+      margin: 0;
+    }
+
+    .postMeta {
+      margin-top: 0.25rem;
+    }
+
+    .postTag {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 0.1rem 0.5rem;
+      margin-left: 0.25rem;
+      background-color: rgba(0, 0, 0, 0.08);
+      @include mixins.borderRadius(3px);
+    }
+
+    .featuredBadge {
+      font-size: 0.75rem;
+      font-weight: bold;
+      background-color: darken(variables.$thirdColor, 5%);
+      color: #fff;
+      padding: 0.2rem 0.5rem;
+      margin-left: auto;
+      @include mixins.borderRadius(3px);
     }
   }
 }

@@ -2,7 +2,7 @@
 title: "JS VidCon 2020"
 subtitle: '"How we are using React Native to save the world"'
 date: "2020-05-07T23:30:00+0200"
-categories: react conference 2020 jsvidcon talk speaker
+categories: ["React Native", "Conference talk"]
 banner: "jsvidcon-banner.jpeg"
 color: "#03a7af"
 ---
