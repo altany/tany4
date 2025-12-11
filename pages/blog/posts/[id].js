@@ -8,7 +8,10 @@ import { NAME, SITE_URL, JOB_TITLE } from "../../../lib/constants";
 
 export default function Post({ data }) {
   return (
-    <Layout noPadding>
+    <Layout
+      noPadding
+      seoImage={data.banner ? `/blog/${data.banner}` : undefined}
+    >
       <Head>
         <title>{`${data.title} - ${NAME}`}</title>
         {data.description && (
@@ -54,7 +57,6 @@ export default function Post({ data }) {
                 <meta property="og:description" content={description} />
               )}
               <meta property="og:url" content={canonicalUrl} />
-              {imageUrl && <meta property="og:image" content={imageUrl} />}
 
               {/** Twitter Card */}
               <meta name="twitter:card" content="summary_large_image" />
@@ -68,10 +70,6 @@ export default function Post({ data }) {
                   content={description}
                 />
               )}
-              {imageUrl && (
-                <meta name="twitter:image" content={imageUrl} />
-              )}
-
               <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
