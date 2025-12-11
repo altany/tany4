@@ -29,7 +29,7 @@ export default function Home() {
           <li>Using technology to create positive impact</li>
         </ul>
         <p>I&apos;ve spoken at <Link href="/blog/posts/react-conf-2019">React Conf 2019</Link> and <Link href="/posts/jsvidcon-2020">JS VidCon 2020</Link> about how we built and scaled the Olio React Native app.</p>
-        <p>Explore <Link href="/work">my work</Link>.</p>
+        <p>Explore <Link href="/work">my work</Link> and <Link href="/blog">publications</Link>.</p>
       </section>
     </Layout>
   );

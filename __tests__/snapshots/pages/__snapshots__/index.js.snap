@@ -199,6 +199,12 @@ exports[`renders the whole page unchanged 1`] = `
           >
             my work
           </a>
+           and 
+          <a
+            href="/blog"
+          >
+            publications
+          </a>
           .
         </p>
       </section>
