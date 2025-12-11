@@ -34,7 +34,7 @@ export default function Blog({ posts = [] }) {
               if (a.date > b.date) return -1;
               return 0;
             })
-            .map(({ id, date, title, subtitle, banner, color, categories, highlight }) => (
+            .map(({ id, date, title, subtitle, banner, color, categories, highlight, description }) => (
               <li key={id} style={{ backgroundColor: color }}>
                 <Link href={`/blog/posts/${id}`}>
                   <img src={`blog/${banner}`} alt={`${title} - banner`} />
@@ -51,6 +51,9 @@ export default function Blog({ posts = [] }) {
                     <small>
                       <Date dateString={date} />
                     </small>
+                    {description && (
+                      <p className={styles.postExcerpt}>{description}</p>
+                    )}
                     {Array.isArray(categories) && categories.length > 0 && (
                       <div className={styles.postMeta}>
                         {categories.map((cat) => (

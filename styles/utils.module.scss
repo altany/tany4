@@ -377,6 +377,12 @@
           background-color: rgba(0, 0, 0, 0.1);
           @include mixins.borderRadius(3px);
         }
+
+        .postExcerpt {
+          margin: 0.4rem 0 0.3rem;
+          font-size: 0.8rem;
+          line-height: 1.4;
+        }
       }
     }
   }
