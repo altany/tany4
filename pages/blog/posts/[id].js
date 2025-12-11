@@ -19,7 +19,25 @@ export default function Post({ data }) {
           {data.subtitle && <h2>{data.subtitle}</h2>}
         </div>
         <article>
-          <Date dateString={data.date} />
+          {data.banner && (
+            <img
+              src={`/blog/${data.banner}`}
+              alt={data.title}
+              className={styles.postBanner}
+            />
+          )}
+          <div className={styles.postHeaderMeta}>
+            <Date dateString={data.date} />
+            {Array.isArray(data.categories) && data.categories.length > 0 && (
+              <div className={styles.postMeta}>
+                {data.categories.map((cat) => (
+                  <span key={cat} className={styles.postTag}>
+                    {cat}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
           <div dangerouslySetInnerHTML={{ __html: data.contentHtml }} />
         </article>
       </div>
