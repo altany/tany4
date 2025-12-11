@@ -171,7 +171,7 @@ exports[`renders the whole page unchanged 1`] = `
             Mentoring engineers & cross-team collaboration
           </li>
           <li>
-            AI-assisted developer productivity (Cascade + LLMs)
+            AI-assisted developer productivity
           </li>
           <li>
             Using technology to create positive impact
