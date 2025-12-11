@@ -37,7 +37,7 @@ export default function Blog({ posts = [] }) {
             .map(({ id, date, title, subtitle, banner, color, categories, highlight }) => (
               <li key={id} style={{ backgroundColor: color }}>
                 <Link href={`/blog/posts/${id}`}>
-                  <img src={`blog/${banner}`} alt="" />
+                  <img src={`blog/${banner}`} alt={`${title} - banner`} />
                   <div className={styles.content}>
                     {highlight && (
                       <span className={styles.featuredBadge}>HIGHLIGHT</span>
