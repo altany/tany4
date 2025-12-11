@@ -3,7 +3,6 @@ import Link from "next/link";
 import Layout from "../../components/layout";
 import { SITE_TITLE } from "../../lib/constants";
 import Icon from "../../components/icon";
-import Chart from "../../components/github/chart";
 import {
   GITHUB,
   GITLAB,
@@ -23,7 +22,10 @@ export default function Work() {
       <div className={styles.work}>
         <header>
           <h1>My work</h1>
-          <h3>Check the links below to find out more about me</h3>
+          <h3>
+            Front-End Tech Lead & Senior React / React Native Engineer, focused
+            on shipping user-facing products and leading teams.
+          </h3>
         </header>
         <div>
           <section className={styles.git}>
@@ -102,48 +104,162 @@ export default function Work() {
             </a>
           </section>
         </div>
-        <section>
-          <h4>Github Languages pie chart</h4>
-          <p className={styles.chartInfo}>
-            You can interact with the chart to get information about languages
-            and repos for my{" "}
-            <a
-              href="http://www.github.com/altany"
-              target="_github"
-              title="Github profile - altany"
-            >
-              Github account
-            </a>
-            {". It is built using the Github API and it's running in "}
-            <a
-              href="https://github-api-altany.herokuapp.com/"
-              title="API data"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Heroku
-            </a>
-            {". The source is available on a "}
-            <a
-              href="https://github.com/altany/docker-github-api"
-              title="Github repo for the server"
-              target="_blank"
-              rel="noreferrer"
-            >
-              github repo
-            </a>{" "}
-            {"and the docker container is also available "}
-            <a
-              href="https://hub.docker.com/r/altany/github-api-docker"
-              title="Docker container running a server for fetching data for the 'altany' repo"
-              target="_blank"
-              rel="noreferrer"
-            >
-              here
-            </a>
-            .
+        <section className={styles.workIntroSection}>
+          <p>
+            As a Front-End Tech Lead and seasoned Senior React / React Native Engineer, I've had the privilege of driving the development of user-facing products and leading high-performing teams. Below, you'll find a curated selection of projects that showcase my technical expertise and leadership capabilities.
           </p>
-          <Chart />
+        </section>
+
+        <section className={styles.experienceGrid}>
+          <article className={styles.experienceCard}>
+            <h2>Olio React Native consumer app</h2>
+            <p className={styles.experienceRole}>Senior Front-End Engineer</p>
+            <p className={styles.experienceTech}>
+              React Native, TypeScript, testing, CI/CD
+            </p>
+            <ul>
+              <li>
+                Helped build, improve, and maintain the core React Native app
+                used by Olio&apos;s community across onboarding, browsing, and posting flows.
+              </li>
+              <li>
+                Worked on performance improvements, accessibility fixes, and
+                general stability as the app grew.
+              </li>
+              <li>
+                Supported the team with PR reviews, debugging tricky issues,
+                and working closely with product and backend.
+              </li>
+              <li>
+                Impact: a more stable and responsive app experience across the
+                areas people use most.
+              </li>
+            </ul>
+          </article>
+
+          <article className={styles.experienceCard}>
+            <h2>Olio Volunteers platform (migration + feature expansion)</h2>
+            <p className={styles.experienceRole}>
+              Senior Front-End Engineer / Tech Lead
+            </p>
+            <p className={styles.experienceTech}>
+              React, TypeScript, Ruby on Rails, testing, CI/CD
+            </p>
+            <ul>
+              <li>
+                Migrated the volunteer platform from Rails to React to make
+                the platform faster and easier to work with.
+              </li>
+              <li>
+                Built and shipped many new features that expanded what
+                volunteers could do, well beyond the original migration.
+              </li>
+              <li>
+                Introduced shared components and small accessibility
+                improvements to keep things consistent and easier to maintain.
+              </li>
+              <li>
+                Worked closely with operations and support teams to understand
+                issues real volunteers were facing and fix them.
+              </li>
+              <li>
+                As a tech lead later on, helped extend the platform from
+                supporting only Olio volunteers to supporting charity volunteers
+                too.
+              </li>
+              <li>
+                Impact: a faster, more flexible and capable platform that
+                supported more volunteers and was easier to improve over time.
+              </li>
+            </ul>
+          </article>
+
+          <article className={styles.experienceCard}>
+            <h2>Partner tools & integration interfaces</h2>
+            <p className={styles.experienceRole}>Front-End Tech Lead</p>
+            <p className={styles.experienceTech}>
+              React, TypeScript, data visualisation, testing, CI/CD
+            </p>
+            <ul>
+              <li>
+                Worked on internal dashboards and tools that surface important
+                food-rescue metrics and operational data.
+              </li>
+              <li>
+                Helped teams decide how to balance real-time data needs with
+                performance and implementation complexity.
+              </li>
+              <li>
+                Worked closely with product, design, data and commercial teams
+                so the UI matched what partners actually needed.
+              </li>
+              <li>
+                Impact: clearer insight into how partners operate and smoother
+                workflows across different types of organisations.
+              </li>
+            </ul>
+          </article>
+
+          <article className={styles.experienceCard}>
+            <h2>Prototyping & experiments</h2>
+            <p className={styles.experienceRole}>Hackathons & discovery work</p>
+            <p className={styles.experienceTech}>React, React Native, APIs, AI tooling</p>
+            <ul>
+              <li>
+                Built several prototypes, including an early partner platform
+                concept that eventually fed into the Sainsbury&apos;s trial and
+                helped shape Charity SaaS.
+              </li>
+              <li>
+                Created an AI-assisted appointment planner for faster and
+                smarter scheduling.
+              </li>
+              <li>
+                Focused on building simple, realistic prototypes quickly so
+                teams could test ideas with real user flows.
+              </li>
+              <li>
+                Used what we learned from these experiments to help decide what
+                should (or shouldn&apos;t) move into proper development.
+              </li>
+              <li>
+                Enjoy working in early-stage, ambiguous spaces and turning
+                loose ideas into something concrete enough to evaluate.
+              </li>
+              <li>
+                Impact: early insights that influenced product direction before
+                any major build started.
+              </li>
+            </ul>
+          </article>
+        </section>
+
+        <section className={styles.leadershipSection}>
+          <h2>How I work as a tech lead</h2>
+          <p>
+            I aim to keep the front-end simple, predictable and well-tested. I
+            am a fan of small PRs, clear written communication, and being
+            honest about the trade-offs between speed, quality and complexity.
+            I enjoy pairing, mentoring, and working closely with backend and
+            design to find solutions that make sense technically and still feel
+            good to use. I&apos;m also comfortable talking with non-technical
+            stakeholders and explaining technical considerations in a
+            straightforward way, without making promises we can&apos;t keep.
+          </p>
+        </section>
+
+        <section className={styles.talksSection}>
+          <h2>Talks</h2>
+          <p>
+            Although I don&apos;t actively pursue speaking opportunities, I&apos;ve
+            previously shared engineering learnings at industry events:
+          </p>
+          <ul>
+            <li>
+              Using React Native to save the world — presented at <Link href="/blog/posts/react-conf-2019">React Conf 2019</Link> and <Link href="/blog/posts/jsvidcon-2020">JS VidCon 2020</Link>
+            </li>
+            
+          </ul>
         </section>
       </div>
     </Layout>
