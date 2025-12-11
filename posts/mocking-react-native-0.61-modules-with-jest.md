@@ -4,6 +4,7 @@ date: "2020-01-25T14:00:50+0200"
 categories: ["React Native", "Testing"]
 banner: "rn-jest.png"
 color: "#222222"
+description: "A simple explanation of how to mock React Native 0.61 modules with Jest, why mocks broke after the Haste removal, and how to fix common testing errors."
 ---
 
 A few months ago, Facebook announced the release of [React Native 0.61](https://facebook.github.io/react-native/blog/2019/09/18/version-0.61).

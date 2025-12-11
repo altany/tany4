@@ -5,6 +5,7 @@ date: "2020-05-07T23:30:00+0200"
 categories: ["React Native", "Conference talk"]
 banner: "jsvidcon-banner.jpeg"
 color: "#03a7af"
+description: "Online conference talk on how our team uses React Native to reduce food waste, migrate a production app quickly, and keep performance, testing, and developer experience under control."
 ---
 
 In May of 2020 I had the honour to speak at JS VidCon's online conference about how my team is using React Native to save the world.
