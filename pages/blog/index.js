@@ -22,12 +22,14 @@ export default function Blog({ posts = [] }) {
       </Head>
 
       <section className={styles.blog}>
-        <h1>Blog</h1>
-        <p>
-          I write about React, React Native, debugging, testing, performance
-          and general engineering practices. These posts capture lessons
-          learned from real-world work, conference talks, and experiments.
-        </p>
+        <header className={styles.header}>
+            <h1>Blog</h1>
+          <h2>
+            I write about React, React Native, debugging, testing, performance
+            and general engineering practices. These posts capture lessons
+            learned from real-world work, conference talks, and experiments.
+          </h2>
+        </header>
         <ul>
           {posts
             .slice()

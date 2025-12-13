@@ -31,8 +31,9 @@ export default function Work() {
         <header>
           <h1>My work</h1>
           <h3>
-            Front-End Tech Lead & Senior React / React Native Engineer, focused
-            on shipping user-facing products and leading teams.
+            Front-End Tech Lead & Senior React / React Native Engineer. Here
+            you will find highlights from key projects, plus my Git
+            and developer profiles below.
           </h3>
         </header>
         <div>
