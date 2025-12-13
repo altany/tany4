@@ -4,13 +4,21 @@ import Layout from "../../components/layout";
 import styles from "../../styles/utils.module.scss";
 import { getSortedPostsData } from "../../lib/posts";
 import Date from "../../components/date";
-import { SITE_TITLE } from "../../lib/constants";
+import { SITE_TITLE, SITE_URL } from "../../lib/constants";
 
 export default function Blog({ posts = [] }) {
+  const seoDescription =
+    "Articles on React, React Native, debugging, testing, performance, and engineering practices.";
+
   return (
-    <Layout blog>
+    <Layout
+      blog
+      canonicalUrl= {`${SITE_URL}blog`}
+      seoTitle={ `${SITE_TITLE} - Blog`}
+      seoDescription={seoDescription}
+    >
       <Head>
-        <title>{SITE_TITLE} - Blog</title>
+        <title>{`${SITE_TITLE} - Blog`}</title>
       </Head>
 
       <section className={styles.blog}>

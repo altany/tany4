@@ -7,23 +7,25 @@ import styles from "../../../styles/utils.module.scss";
 import { NAME, SITE_URL, JOB_TITLE } from "../../../lib/constants";
 
 export default function Post({ data }) {
+  const baseUrl = SITE_URL.endsWith("/") ? SITE_URL.slice(0, -1) : SITE_URL;
+  const canonicalUrl = `${baseUrl}/blog/posts/${data.id}`;
+  const seoTitle = `${data.title} - ${NAME}`;
+  const seoDescription = data.description || undefined;
+
   return (
     <Layout
       noPadding
       seoImage={data.banner ? `/blog/${data.banner}` : undefined}
+      canonicalUrl={canonicalUrl}
+      seoTitle={seoTitle}
+      seoDescription={seoDescription}
+      ogType="article"
     >
       <Head>
-        <title>{`${data.title} - ${NAME}`}</title>
-        {data.description && (
-          <meta name="description" content={data.description} />
-        )}
+        <title>{seoTitle}</title>
 
         {(() => {
-          const baseUrl = SITE_URL.endsWith("/")
-            ? SITE_URL.slice(0, -1)
-            : SITE_URL;
-          const canonicalUrl = `${baseUrl}/blog/posts/${data.id}`;
-          const description = data.description || undefined;
+          const description = seoDescription;
           const imageUrl = data.banner
             ? `${baseUrl}/blog/${data.banner}`
             : undefined;
@@ -48,28 +50,6 @@ export default function Post({ data }) {
 
           return (
             <>
-              <link rel="canonical" href={canonicalUrl} />
-
-              {/** Open Graph */}
-              <meta property="og:type" content="article" />
-              <meta property="og:title" content={`${data.title} - ${NAME}`} />
-              {description && (
-                <meta property="og:description" content={description} />
-              )}
-              <meta property="og:url" content={canonicalUrl} />
-
-              {/** Twitter Card */}
-              <meta name="twitter:card" content="summary_large_image" />
-              <meta
-                name="twitter:title"
-                content={`${data.title} - ${NAME}`}
-              />
-              {description && (
-                <meta
-                  name="twitter:description"
-                  content={description}
-                />
-              )}
               <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

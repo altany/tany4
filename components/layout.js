@@ -20,10 +20,20 @@ export default function Layout({
   blog,
   work,
   seoImage,
+  seoTitle,
+  seoDescription,
+  canonicalUrl,
+  ogType,
 }) {
   return (
     <>
-      <HtmlHead seoImage={seoImage} />
+      <HtmlHead
+        seoImage={seoImage}
+        seoTitle={seoTitle}
+        seoDescription={seoDescription}
+        canonicalUrl={canonicalUrl}
+        ogType={ogType}
+      />
       <Navigation blog={blog} work={work} />
       <StatusBar />
       <Content noPadding={noPadding}>{children}</Content>
@@ -32,33 +42,59 @@ export default function Layout({
   );
 }
 
-const HtmlHead = ({ seoImage }) => {
+const HtmlHead = ({ seoImage, seoTitle, seoDescription, canonicalUrl, ogType }) => {
   const defaultImagePath = "profile.png";
   const resolvedImage = seoImage || defaultImagePath;
+  const resolvedTitle = seoTitle || SITE_TITLE;
+  const resolvedDescription = seoDescription || SITE_DESCRIPTION;
+  const resolvedCanonicalUrl = canonicalUrl || SITE_URL;
+  const resolvedOgType = ogType || "website";
+  const siteJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        name: SITE_TITLE,
+        url: SITE_URL,
+      },
+      {
+        '@type': 'Person',
+        name: NAME,
+        jobTitle: JOB_TITLE,
+        url: SITE_URL,
+      },
+    ],
+  };
 
   return (
     <Head>
       <link rel="icon" href="/favicon.ico" />
       <meta name="author" content={NAME} />
-      <meta property="og:description" content={SITE_DESCRIPTION} />
+      <meta name="description" content={resolvedDescription} />
+      <link rel="canonical" href={resolvedCanonicalUrl} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
+      />
+      <meta property="og:description" content={resolvedDescription} />
       <meta
         property="og:image"
         content={`${SITE_URL}${resolvedImage.replace(/^\//, "")}`}
       />
-      <meta property="og:title" content={SITE_TITLE} />
-      <meta property="og:url" content={SITE_URL} />
-      <meta property="og:type" content="website" />
+      <meta property="og:title" content={resolvedTitle} />
+      <meta property="og:url" content={resolvedCanonicalUrl} />
+      <meta property="og:type" content={resolvedOgType} />
 
-      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@_Tany_" />
-      <meta name="twitter:title" content={SITE_TITLE} />
-      <meta name="twitter:description" content={SITE_DESCRIPTION} />
+      <meta name="twitter:title" content={resolvedTitle} />
+      <meta name="twitter:description" content={resolvedDescription} />
       <meta name="twitter:creator" content="@_Tany_" />
       <meta
         name="twitter:image"
         content={`${SITE_URL}${resolvedImage.replace(/^\//, "")}`}
       />
-      <meta name="twitter:image:alt" content="Tania's photo" />
+      <meta name="twitter:image:alt" content={resolvedTitle} />
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
