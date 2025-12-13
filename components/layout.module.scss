@@ -12,10 +12,10 @@
   justify-content: space-between;
   border-bottom: 1px solid darken(variables.$darkmainColor, 5%);
   z-index: 2;
-  padding-right: 140px;
+  padding-right: 1rem;
   @include mixins.breakpoint(mobileLandscape) {
     height: variables.$statusBarHeightLandscape;
-    padding-right: 120px;
+    padding-right: 0.75rem;
   }
   .name {
     @include mixins.navBarWidth;
@@ -38,12 +38,19 @@
     letter-spacing: 0.1rem;
     color: white;
     font-size: 0.6rem;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     @include mixins.breakpoint(mobile) {
       padding-left: 1rem;
     }
     @include mixins.breakpoint(phablet) {
       font-size: 0.8rem;
+    }
+    @include mixins.breakpoint(mobilePortrait) {
+      letter-spacing: 1px;
     }
   }
 }
@@ -91,6 +98,7 @@
   @include mixins.breakpoint(mobilePortrait) {
     padding: 6px 10px;
     font-size: 0.72rem;
+    top: 55px;
   }
 }
 
