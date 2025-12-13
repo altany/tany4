@@ -6,7 +6,6 @@ import Icon from "../../components/icon";
 import {
   GITHUB,
   GITLAB,
-  STACKOVERFLOW,
   CODEWARS,
   LINKEDIN,
   TWITTER,
@@ -85,16 +84,6 @@ export default function Work() {
               >
                 <Icon icon={LINKEDIN} />
                 /taniapapazaf
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://stackoverflow.com/users/2075902/tany4"
-                target="_stackoverflow"
-                title="StackOverflow profile - tany4"
-              >
-                <Icon icon={STACKOVERFLOW} />
-                tany4
               </a>
             </li>
           </ul>
