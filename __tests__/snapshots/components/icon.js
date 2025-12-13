@@ -7,7 +7,6 @@ import {
     ENVELOPE,
     LINKEDIN,
     TWITTER,
-    STACKOVERFLOW,
     CODEWARS
 } from "../../../lib/icons";
 
@@ -38,11 +37,6 @@ it('renders the LINKEDIN icon unchanged', () => {
 
 it('renders the TWITTER icon unchanged', () => {
     const { container } = render(<Icon icon={TWITTER} />)
-    expect(container).toMatchSnapshot()
-})
-
-it('renders the STACKOVERFLOW icon unchanged', () => {
-    const { container } = render(<Icon icon={STACKOVERFLOW} />)
     expect(container).toMatchSnapshot()
 })
 
