@@ -330,7 +330,7 @@ exports[`renders the work page unchanged 1`] = `
             class="experienceCard"
           >
             <h2>
-              Olio Volunteers platform (migration + feature expansion)
+              Olio Volunteers platform migration and feature expansion
             </h2>
             <p
               class="experienceRole"

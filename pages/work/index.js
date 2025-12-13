@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import Layout from "../../components/layout";
-import { SITE_TITLE } from "../../lib/constants";
+import { SITE_TITLE, SITE_URL } from "../../lib/constants";
 import Icon from "../../components/icon";
 import {
   GITHUB,
@@ -14,10 +14,18 @@ import {
 import styles from "../../styles/utils.module.scss";
 
 export default function Work() {
+  const seoDescription =
+    "Selected projects and leadership impact across React, React Native, TypeScript, testing, performance and accessibility.";
+
   return (
-    <Layout work>
+    <Layout
+      work
+      canonicalUrl={`${SITE_URL}work`}
+      seoTitle={`${SITE_TITLE} - My work`}
+      seoDescription={seoDescription}
+    >
       <Head>
-        <title>{SITE_TITLE} - My work</title>
+        <title>{`${SITE_TITLE} - My work`}</title>
       </Head>
       <div className={styles.work}>
         <header>

@@ -186,7 +186,7 @@ exports[`renders the whole page unchanged 1`] = `
           </a>
            and 
           <a
-            href="/posts/jsvidcon-2020"
+            href="/blog/posts/jsvidcon-2020"
           >
             JS VidCon 2020
           </a>
