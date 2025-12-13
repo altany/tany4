@@ -502,6 +502,16 @@
       font-size: 1rem;
     }
 
+    :not(pre) > code {
+      padding: 0.12em 0.35em;
+      border-radius: 4px;
+      background: rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+      font-size: 0.95em;
+    }
+
     blockquote {
       margin: 1.25rem 0;
       padding: 0.75rem 1rem;
