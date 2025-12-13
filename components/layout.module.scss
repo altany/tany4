@@ -12,8 +12,10 @@
   justify-content: space-between;
   border-bottom: 1px solid darken(variables.$darkmainColor, 5%);
   z-index: 2;
+  padding-right: 140px;
   @include mixins.breakpoint(mobileLandscape) {
     height: variables.$statusBarHeightLandscape;
+    padding-right: 120px;
   }
   .name {
     @include mixins.navBarWidth;
@@ -46,12 +48,57 @@
   }
 }
 
+.downloadCv {
+  position: absolute;
+  transform: translateY(-50%);
+  right: 14px;
+  z-index: 3;
+
+  background: darken(variables.$thirdColor, 6%);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  @include mixins.borderRadius(999px);
+  padding: 8px 14px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  @include mixins.boxShadow(0 3px 10px 0 rgba(0, 0, 0, 0.18));
+  top: 60px;
+  transition: transform 160ms ease, background-color 160ms ease, box-shadow 160ms ease,
+    border-color 160ms ease;
+  will-change: transform;
+
+  &:hover {
+    background: darken(variables.$thirdColor, 10%);
+    transform: translateY(-50%) translateY(-2px) scale(1.02);
+    @include mixins.boxShadow(0 8px 18px 0 rgba(0, 0, 0, 0.22));
+  }
+
+  &:focus-visible {
+    outline: 2px solid lighten(variables.$thirdColor, 10%);
+    outline-offset: 3px;
+  }
+
+  @include mixins.breakpoint(mobileLandscape) {
+    right: 10px;
+    padding: 7px 12px;
+    font-size: 0.78rem;
+    top: 50px;
+
+  }
+
+  @include mixins.breakpoint(mobilePortrait) {
+    padding: 6px 10px;
+    font-size: 0.72rem;
+  }
+}
+
 .navigation a:focus-visible,
 .statusBar a:focus-visible,
 .footer a:focus-visible {
   outline: 2px solid lighten(variables.$thirdColor, 10%);
   outline-offset: 3px;
-  border-radius: 4px;
 }
 
 .navEntry {
