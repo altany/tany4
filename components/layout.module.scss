@@ -46,6 +46,14 @@
   }
 }
 
+.navigation a:focus-visible,
+.statusBar a:focus-visible,
+.footer a:focus-visible {
+  outline: 2px solid lighten(variables.$thirdColor, 10%);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 .navEntry {
   align-self: center;
   flex: 1;

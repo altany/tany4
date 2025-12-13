@@ -32,6 +32,16 @@
   a {
     color: variables.$navLinkColor;
     font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  a:hover {
+    text-decoration-thickness: 3px;
+  }
+  a:focus-visible {
+    outline: 2px solid lighten(variables.$thirdColor, 10%);
+    outline-offset: 3px;
+    border-radius: 4px;
   }
   ul {
   list-style-type: circle;
@@ -42,6 +52,23 @@
 .work {
   max-width: 900px;
   margin: 0 auto;
+
+  a {
+    color: variables.$navLinkColor;
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  a:hover {
+    text-decoration-thickness: 3px;
+  }
+
+  a:focus-visible {
+    outline: 2px solid lighten(variables.$thirdColor, 10%);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
 
   .linkButton {
     border-width: 1px;
@@ -54,6 +81,7 @@
     padding: 5px 16px;
     color: variables.$textColor;
     font-size: 0.8rem;
+    text-decoration: none;
     @include mixins.breakpoint(mobilePortrait) {
       font-size: 0.7rem;
     }
@@ -207,26 +235,38 @@
       color.adjust(variables.$secondColor, $saturation: -40%),
       4%
     );
-    padding: 1rem;
+    padding: 1.15rem 1.15rem 1.05rem;
     @include mixins.borderRadius(6px);
     @include mixins.boxShadow(1px 1px 6px 0px variables.$secondColor);
     font-size: 0.9rem;
+    line-height: 1.55;
+    border: 1px solid rgba(0, 0, 0, 0.06);
 
     @include mixins.breakpoint(mobilePortrait) {
       flex-basis: 100%;
+    }
+
+    &:hover {
+      @include mixins.boxShadow(2px 2px 10px 0px variables.$secondColor);
+    }
+
+    &:focus-within {
+      outline: 2px solid lighten(variables.$thirdColor, 10%);
+      outline-offset: 3px;
     }
 
     h2 {
       margin-top: 0;
       margin-bottom: 0.5rem;
       font-size: 1.1rem;
+      line-height: 1.25;
     }
 
     ul {
       padding-left: 1.1rem;
       margin: 0.5rem 0 0;
       li {
-        margin-bottom: 0.3rem;
+        margin-bottom: 0.45rem;
       }
     }
   }
@@ -234,12 +274,14 @@
   .experienceRole {
     font-weight: bold;
     margin: 0;
+    line-height: 1.35;
   }
 
   .experienceTech {
     margin: 0.15rem 0 0.4rem;
     font-size: 0.85rem;
     font-style: italic;
+    color: rgba(0, 0, 0, 0.75);
   }
 
   .leadershipSection {
@@ -382,6 +424,11 @@
           margin: 0.4rem 0 0.3rem;
           font-size: 0.8rem;
           line-height: 1.4;
+          display: -webkit-box;
+          line-clamp: 3;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
       }
     }
@@ -407,7 +454,8 @@
     .breadcrumbs {
       font-size: 0.8rem;
       margin-bottom: 0.5rem;
-      opacity: 0.9;
+      opacity: 1;
+      color: rgba(0, 0, 0, 0.72);
 
       span + span {
         margin-left: 0.25rem;
@@ -415,7 +463,6 @@
 
       a {
         text-decoration: underline;
-        color: unset;
       }
     }
 
@@ -448,6 +495,59 @@
     margin: 20px auto 70px auto;
     @include mixins.breakpoint(mobile) {
       padding: 0 15px;
+    }
+
+    font-size: 1.05rem;
+    @include mixins.breakpoint(mobile) {
+      font-size: 1rem;
+    }
+
+    blockquote {
+      margin: 1.25rem 0;
+      padding: 0.75rem 1rem;
+      border-left: 4px solid lighten(variables.$thirdColor, 10%);
+      background: rgba(0, 0, 0, 0.04);
+      border-radius: 6px;
+      color: rgba(0, 0, 0, 0.85);
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    p {
+      line-height: 1.65;
+      margin: 0.9rem 0;
+    }
+
+    li {
+      line-height: 1.6;
+      margin: 0.35rem 0;
+    }
+
+    h2,
+    h3 {
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    a {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    a:hover {
+      text-decoration-thickness: 3px;
+    }
+
+    a:focus-visible {
+      outline: 2px solid lighten(variables.$thirdColor, 10%);
+      outline-offset: 3px;
+      border-radius: 4px;
     }
   }
 
