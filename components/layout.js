@@ -182,6 +182,15 @@ const StatusBar = () => (
       Tania
     </Link>
     <span className={styles.title}>{JOB_TITLE}</span>
+    <a
+      href="/TaniaPapazafeiropoulou-CV.pdf"
+      className={styles.downloadCv}
+      target="_cv"
+      rel="noopener noreferrer"
+      title="Download CV"
+    >
+      Download CV
+    </a>
   </aside>
 );
 

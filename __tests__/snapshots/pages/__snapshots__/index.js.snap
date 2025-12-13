@@ -131,6 +131,15 @@ exports[`renders the whole page unchanged 1`] = `
     >
       Front-End Tech Lead & Senior React / React Native Engineer
     </span>
+    <a
+      class="downloadCv"
+      href="/TaniaPapazafeiropoulou-CV.pdf"
+      rel="noopener noreferrer"
+      target="_cv"
+      title="Download CV"
+    >
+      Download CV
+    </a>
   </aside>
   <div
     class="contentContainer "
