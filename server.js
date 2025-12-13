@@ -20,6 +20,14 @@ app.prepare().then(() => {
       return;
     }
 
+    if (
+      req.path.startsWith("/_next/static/") ||
+      /\.(png|jpg|jpeg|gif|webp|svg|ico|pdf)$/i.test(req.path)
+    ) {
+      res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+      res.setHeader("Expires", "Thu, 31 Dec 2099 23:59:59 GMT");
+    }
+
     res.setHeader(
       "strict-transport-security",
       "max-age=31536000; includeSubDomains; preload"
