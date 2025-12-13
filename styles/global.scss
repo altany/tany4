@@ -1,5 +1,6 @@
 @use "../styles/variables";
 @use "../styles/codeHighlight";
+@use "../styles/mixins";
 
 html,
 body {
@@ -10,6 +11,15 @@ body {
   line-height: 1.6;
   font-size: 18px;
   height: 100%;
+
+  @include mixins.breakpoint(mobile) {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  @include mixins.breakpoint(mobilePortrait) {
+    font-size: 1rem;
+  }
 
   > div {
     height: 100%;
