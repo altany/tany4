@@ -145,24 +145,24 @@ exports[`renders the whole page unchanged 1`] = `
     class="contentContainer "
   >
     <main>
-      <header
-        class="header"
-      >
-        <p>
-          Welcome to my website!
-        </p>
-        <h1>
-          Hi, I'm 
-          Tania Papazafeiropoulou
-          ,
-        </h1>
-        <h2>
-          Front-End Tech Lead & Senior React / React Native Engineer
-        </h2>
-      </header>
       <section
-        class="introduction"
+        class="home"
       >
+        <header
+          class="header"
+        >
+          <p>
+            Welcome to my website!
+          </p>
+          <h1>
+            Hi, I'm 
+            Tania Papazafeiropoulou
+            ,
+          </h1>
+          <h2>
+            Front-End Tech Lead & Senior React / React Native Engineer
+          </h2>
+        </header>
         <p>
           I specialise in building fast, accessible and user-focused mobile and web experiences. With 10+ years in front-end engineering and 2.5 years as a tech lead, I've delivered production React Native apps, led cross-functional teams, improved performance, and shaped product direction.
         </p>
