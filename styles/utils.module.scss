@@ -23,6 +23,17 @@
       margin: 0.4rem 0;
     }
   }
+
+  @include mixins.breakpoint(mobilePortrait) {
+    h1 {
+      font-size: 1.25rem;
+      line-height: 1.2;
+    }
+    h2 {
+      font-size: 1.05rem;
+      line-height: 1.25;
+    }
+  }
 }
 .introduction {
   margin: 0 auto;
@@ -451,7 +462,7 @@
       lighten(color.adjust(variables.$thirdColor, $saturation: -15%), 20%)
     );
     @include mixins.breakpoint(mobile) {
-      padding: 15px;
+      padding: 3rem 1rem 1rem;
     }
 
     .breadcrumbs {

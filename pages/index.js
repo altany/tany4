@@ -12,13 +12,14 @@ export default function Home() {
         <title>{SITE_TITLE}</title>
       </Head>
 
-      <header className={styles.header}>
-        <p>Welcome to my website!</p>
-        <h1>Hi, I'm {NAME},</h1>
-        <h2>{JOB_TITLE}</h2>
-      </header>
+     
 
-      <section className={styles.introduction}>
+      <section className={styles.home}>
+        <header className={styles.header}>
+          <p>Welcome to my website!</p>
+          <h1>Hi, I'm {NAME},</h1>
+          <h2>{JOB_TITLE}</h2>
+        </header>
         <p>I specialise in building fast, accessible and user-focused mobile and web experiences. With 10+ years in front-end engineering and 2.5 years as a tech lead, I&apos;ve delivered production React Native apps, led cross-functional teams, improved performance, and shaped product direction.</p>
         <p>I&apos;m passionate about:</p>
         <ul>
