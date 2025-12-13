@@ -138,7 +138,7 @@ export default function Work() {
           </article>
 
           <article className={styles.experienceCard}>
-            <h2>Olio Volunteers platform (migration + feature expansion)</h2>
+            <h2>Olio Volunteers platform migration and feature expansion</h2>
             <p className={styles.experienceRole}>
               Senior Front-End Engineer / Tech Lead
             </p>
