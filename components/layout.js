@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "./layout.module.scss";
 import Link from "next/link";
 import useSWR from "swr";
+import dynamic from "next/dynamic";
 import Icon from "./icon";
 import fetcher from "../lib/fetcher";
 import { LINKEDIN, ENVELOPE, RESUME, TWITTER } from "../lib/icons";
@@ -13,6 +14,8 @@ import {
   LAST_COMMIT_ENDPOINT,
   JOB_TITLE,
 } from "../lib/constants";
+
+const ChatWidget = dynamic(() => import("./chatWidget"), { ssr: false });
 
 export default function Layout({
   children,
@@ -38,6 +41,7 @@ export default function Layout({
       <StatusBar />
       <Content noPadding={noPadding}>{children}</Content>
       <Footer />
+      <ChatWidget />
     </>
   );
 }
