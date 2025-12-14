@@ -11,6 +11,7 @@ const customJestConfig = {
   moduleDirectories: ['node_modules', '<rootDir>/'],
   testEnvironment: 'jest-environment-jsdom',
   testMatch: ['**/__tests__/snapshots/**/*.[jt]s?(x)'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   clearMocks: true
 }
 

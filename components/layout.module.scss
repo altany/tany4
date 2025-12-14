@@ -109,6 +109,165 @@
   outline-offset: 3px;
 }
 
+.chatWidget {
+  position: fixed;
+  right: 1rem;
+  bottom: 30px;
+  z-index: 5;
+}
+
+.chatToggle {
+  background: darken(variables.$thirdColor, 6%);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  @include mixins.borderRadius(999px);
+  padding: 10px 14px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  @include mixins.boxShadow(0 8px 18px 0 rgba(0, 0, 0, 0.18));
+  cursor: pointer;
+
+  &:hover {
+    background: darken(variables.$thirdColor, 10%);
+  }
+
+  &:focus-visible {
+    outline: 2px solid lighten(variables.$thirdColor, 10%);
+    outline-offset: 3px;
+  }
+}
+
+.chatPanel {
+  position: absolute;
+  right: 0;
+  bottom: 52px;
+  width: min(360px, calc(100vw - 32px));
+  max-height: min(520px, calc(100vh - 120px));
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  @include mixins.borderRadius(12px);
+  @include mixins.boxShadow(0 18px 40px 0 rgba(0, 0, 0, 0.22));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chatHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: variables.$darkmainColor;
+  color: #fff;
+  font-weight: bold;
+}
+
+.chatClose {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  @include mixins.borderRadius(999px);
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid lighten(variables.$thirdColor, 10%);
+    outline-offset: 3px;
+  }
+}
+
+.chatMessages {
+  padding: 10px;
+  overflow: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chatEmpty {
+  color: variables.$textColor;
+  opacity: 0.85;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.chatError {
+  padding: 10px;
+  @include mixins.borderRadius(10px);
+  background: rgba(220, 38, 38, 0.12);
+  border: 1px solid rgba(220, 38, 38, 0.25);
+  color: #7f1d1d;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.chatUser,
+.chatAssistant {
+  padding: 8px 10px;
+  @include mixins.borderRadius(10px);
+  font-size: 0.9rem;
+  line-height: 1.35;
+  white-space: pre-wrap;
+  max-width: 92%;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.chatUser {
+  align-self: flex-end;
+  background: color.adjust(variables.$thirdColor, $lightness: 34%, $saturation: -10%);
+  border-color: rgba(0, 0, 0, 0.08);
+  font-weight: 600;
+}
+
+.chatAssistant {
+  align-self: flex-start;
+  background: color.adjust(variables.$secondColor, $lightness: 26%, $saturation: -8%);
+  border-color: rgba(0, 0, 0, 0.06);
+  font-weight: 400;
+}
+
+.chatForm {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.chatInput {
+  flex: 1;
+  padding: 10px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  @include mixins.borderRadius(10px);
+  font-size: 0.9rem;
+
+  &:focus-visible {
+    outline: 2px solid lighten(variables.$thirdColor, 10%);
+    outline-offset: 2px;
+  }
+}
+
+.chatSend {
+  background: variables.$thirdColor;
+  color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  @include mixins.borderRadius(10px);
+  padding: 10px 12px;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &:focus-visible {
+    outline: 2px solid lighten(variables.$thirdColor, 10%);
+    outline-offset: 2px;
+  }
+}
+
 .navEntry {
   align-self: center;
   flex: 1;
