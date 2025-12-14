@@ -156,7 +156,7 @@ const BottomLinks = () => {
       </li>
       <li>
         <a
-          href="/TaniaPapazafeiropoulou-CV.pdf"
+          href="/TaniaPapazafeiropoulou-CV.pdf?version=2025"
           target="_cv"
           title="Resume - Tania Papapazafeiropoulou"
         >
@@ -183,7 +183,7 @@ const StatusBar = () => (
     </Link>
     <span className={styles.title}>{JOB_TITLE}</span>
     <a
-      href="/TaniaPapazafeiropoulou-CV.pdf"
+      href="/TaniaPapazafeiropoulou-CV.pdf?version=2025"
       className={styles.downloadCv}
       target="_cv"
       rel="noopener noreferrer"
