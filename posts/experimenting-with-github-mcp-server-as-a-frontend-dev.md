@@ -5,7 +5,7 @@ categories: ["AI", "Tooling", "GitHub"]
 banner: "github-mcp-server-fullstack.png"
 color: "#0d1117"
 description: "Notes from experimenting with GitHub’s MCP Server as a front-end dev: cross-repo debugging, better types, and docs without cloning extra repos."
-updated: "2025-12-15T12:52:00+0000"
+updated: "2025-11-21T18:52:00+0000"
 readingTimeMinutes: 5
 ---
 
@@ -111,3 +111,7 @@ I’m not replacing my workflow with AI. But I’ve added a new tool that helps 
 It feels like having a lightweight technical assistant who reads code all day and never gets bored. There are still limits (and trust me, you’ll hit them quickly), but even with those limitations, the impact on my daily work has been real.
 
 I’ll keep experimenting - especially with automating PR reviews and generating tests - and I’ll share more once I’ve broken things enough times.
+
+---
+
+Part 2: [Getting Confident with GitHub MCP Server: A QA Win](/blog/posts/getting-confident-with-github-mcp-server-a-real-qa-win)
