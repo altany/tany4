@@ -74,7 +74,15 @@ export default function ChatWidget() {
         aria-expanded={open}
         aria-controls="chat-panel"
       >
-        Chat
+        <span className={styles.chatToggleContent}>
+          <span>Chat</span>
+          <img
+            className={styles.chatToggleIcon}
+            src="/ai-logo.png"
+            alt=""
+            aria-hidden="true"
+          />
+        </span>
       </button>
 
       {open && (

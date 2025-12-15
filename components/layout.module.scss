@@ -121,7 +121,7 @@
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.25);
   @include mixins.borderRadius(999px);
-  padding: 10px 14px;
+  padding: 4px 14px;
   font-weight: bold;
   font-size: 0.85rem;
   @include mixins.boxShadow(0 8px 18px 0 rgba(0, 0, 0, 0.18));
@@ -135,6 +135,18 @@
     outline: 2px solid lighten(variables.$thirdColor, 10%);
     outline-offset: 3px;
   }
+}
+
+.chatToggleContent {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.chatToggleIcon {
+  width: 32px;
+  height: 32px;
+  display: block;
 }
 
 .chatPanel {
