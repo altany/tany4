@@ -212,7 +212,7 @@ exports[`renders the whole page unchanged 1`] = `
           <a
             href="/blog"
           >
-            publications
+            writing
           </a>
           .
         </p>
