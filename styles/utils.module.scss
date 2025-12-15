@@ -353,10 +353,14 @@
     justify-content: space-between;
     li {
       flex-basis: 45%;
-      min-height: 250px;
-      margin: 3rem 0;
+      min-height: 220px;
+      margin: 2rem 0;
       @include mixins.borderRadius(6px);
       @include mixins.boxShadow(1px 1px 6px 0px variables.$secondColor);
+
+      @include mixins.breakpoint(desktop) {
+        flex-basis: 32% !important;
+      }
 
       @include mixins.breakpoint(mobilePortrait) {
         flex-basis: 100%;
@@ -381,7 +385,7 @@
       }
 
       img {
-        height: 170px;
+        height: 130px;
         object-fit: cover;
         @include mixins.borderRadii(6px, 6px, null, null);
         @include mixins.breakpoint(mobilePortrait) {
