@@ -62,7 +62,7 @@ Pretty much what one would expect, but I did learn a few things.
 
 ## A couple of small UX touches
 
-Once the backend was stable, I made it feel a bit more “chatty”:
+Once the back-end was stable, I made it feel a bit more “chatty”:
 
 - User questions and assistant replies have different bubble styles
 - The empty state includes example prompts so you’re not staring at a blank box thinking “uhhh… what can I ask?”

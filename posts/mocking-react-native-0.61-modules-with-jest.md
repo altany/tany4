@@ -5,7 +5,6 @@ categories: ["Testing", "React Native"]
 banner: "rn-jest.png"
 color: "#222222"
 description: "A simple explanation of how to mock React Native 0.61 modules with Jest, why mocks broke after the Haste removal, and how to fix common testing errors."
-updated: "2025-01-01T00:00:00+0000"
 readingTimeMinutes: 6
 ---
 

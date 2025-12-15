@@ -126,7 +126,7 @@ export default function Work() {
               </li>
               <li>
                 Supported the team with PR reviews, debugging tricky issues,
-                and working closely with product and backend.
+                and working closely with product and back-end.
               </li>
               <li>
                 Impact: a more stable and responsive app experience across the
@@ -238,7 +238,7 @@ export default function Work() {
             I aim to keep the front-end simple, predictable and well-tested. I
             am a fan of small PRs, clear written communication, and being
             honest about the trade-offs between speed, quality and complexity.
-            I enjoy pairing, mentoring, and working closely with backend and
+            I enjoy pairing, mentoring, and working closely with back-end and
             design to find solutions that make sense technically and still feel
             good to use. I&apos;m also comfortable talking with non-technical
             stakeholders and explaining technical considerations in a
