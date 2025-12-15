@@ -311,7 +311,7 @@ exports[`renders the work page unchanged 1`] = `
                 Worked on performance improvements, accessibility fixes, and general stability as the app grew.
               </li>
               <li>
-                Supported the team with PR reviews, debugging tricky issues, and working closely with product and backend.
+                Supported the team with PR reviews, debugging tricky issues, and working closely with product and back-end.
               </li>
               <li>
                 Impact: a more stable and responsive app experience across the areas people use most.
@@ -431,7 +431,7 @@ exports[`renders the work page unchanged 1`] = `
             How I work as a tech lead
           </h2>
           <p>
-            I aim to keep the front-end simple, predictable and well-tested. I am a fan of small PRs, clear written communication, and being honest about the trade-offs between speed, quality and complexity. I enjoy pairing, mentoring, and working closely with backend and design to find solutions that make sense technically and still feel good to use. I'm also comfortable talking with non-technical stakeholders and explaining technical considerations in a straightforward way, without making promises we can't keep.
+            I aim to keep the front-end simple, predictable and well-tested. I am a fan of small PRs, clear written communication, and being honest about the trade-offs between speed, quality and complexity. I enjoy pairing, mentoring, and working closely with back-end and design to find solutions that make sense technically and still feel good to use. I'm also comfortable talking with non-technical stakeholders and explaining technical considerations in a straightforward way, without making promises we can't keep.
           </p>
         </section>
         <section
