@@ -7,6 +7,7 @@ color: "#1d7be2"
 description: "A light evening experiment: I vibe-coded a small AI chatbot into my website using the Vercel AI SDK, a tiny bit of retrieval, and a lot of trial-and-error."
 updated: "2025-12-15T12:00:00+0000"
 readingTimeMinutes: 4
+new: true
 ---
 
 **TL;DR**: I vibe-coded a chatbot into this website over an evening. It answers questions about my work using the content already on the site and my CV, and politely refuses to make things up. I had fun building it, debugging it, and making sure the right context is available.
