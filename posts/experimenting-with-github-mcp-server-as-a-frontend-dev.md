@@ -96,7 +96,7 @@ It forces precision and makes errors obvious.
 
 4. Keep the responsibility on yourself
 
-The AI is fast, but you know the project best. Always double-check anything that looks too magical
+The AI is fast, but you know the project best. Always double-check anything that looks too magical.
 
 ## Where this leaves front-end engineering
 

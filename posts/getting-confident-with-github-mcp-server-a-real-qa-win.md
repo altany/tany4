@@ -4,7 +4,7 @@ date: "2025-11-21T18:52:00+0000"
 categories: ["AI", "Tooling", "QA"]
 banner: "github-mcp-server-qa.png"
 color: "#051025"
-description: "How GitHub MCP Server helped me QA a backend PR with almost no context, and the subtle mistake (undefined vs []) that proved why humans still need to verify."
+description: "How GitHub MCP Server helped me QA a back-end PR with almost no context, and the subtle mistake that proved why humans still need to verify."
 updated: "2025-11-21T18:52:00+0000"
 readingTimeMinutes: 6
 ---
@@ -13,7 +13,7 @@ Part 1: [Experimenting with GitHub MCP Server as a Front-End Dev](/blog/posts/ex
 
 After spending a bit more time pairing with GitHub’s MCP Server, I started doing things I normally wouldn’t feel comfortable doing - at least not with confidence.
 
-I’m a front-end developer. I live in components, hooks, UI states, and TypeScript. Backend logic, API setup details, server-side workflows… I understand them conceptually, but I don’t swim in that water daily. So when a backend ticket landed on my plate to QA - part of a bigger project, with very little context - I felt the usual mix of “I love a challenge” and “I definitely don’t know enough for this.”
+I’m a front-end developer. I live in components, hooks, UI states, and TypeScript. Back-end logic, API setup details, server-side workflows… I understand them conceptually, but I don’t swim in that water daily. So when a back-end ticket landed on my plate to QA - part of a bigger project, with very little context - I felt the usual mix of “I love a challenge” and “I definitely don’t know enough for this.”
 
 To make it more fun, the developer drafting the PR hadn’t left any testing steps. The only note was: “Refer to the previous PR; this one amends that.” And that developer was busy somewhere else. 🙈
 
@@ -42,13 +42,13 @@ It generated a proper list of paths - happy, unhappy, edge cases - and described
 
 Not just "run this command". It explained why the command mattered and how it connected to the functionality being updated.
 
-For someone with limited backend knowledge, this context was gold. It gave me enough confidence to QA the PR properly and feel that my work was actually meaningful, not guessy.
+For someone with limited back-end knowledge, this context was gold. It gave me enough confidence to QA the PR properly and feel that my work was actually meaningful, not guessy.
 
 (Though, as you’ll see below, "confident" does not mean "correct.")
 
 ## When MCP helps and still gets it wrong
 
-Once I finished testing all scenarios - with Windsurf helping me keep track of what passed - I asked MCP to produce a full test report for the backend developer. The report was clean, structured, and detailed. But the backend dev spotted something immediately.
+Once I finished testing all scenarios - with Windsurf helping me keep track of what passed - I asked MCP to produce a full test report for the back-end developer. The report was clean, structured, and detailed. But the back-end dev spotted something immediately.
 
 One scenario required the test data to include an array:
 
@@ -67,7 +67,7 @@ This whole experience really drove home two things:
 
 1. AI can help you work on things outside your expertise
 
-I was able to QA backend logic I barely understood, produce detailed scenarios, and communicate confidently with my backend colleague. I simply wouldn’t have been able to do this on my own, at least not without several hours of back-and-forth.
+I was able to QA back-end logic I barely understood, produce detailed scenarios, and communicate confidently with my back-end colleague. I simply wouldn’t have been able to do this on my own, at least not without several hours of back-and-forth.
 
 2. AI will still get important details wrong
 
@@ -83,14 +83,14 @@ But the wrong data setup (`undefined` vs empty array) meant the unhappy path was
 
 ## Final thoughts
 
-Using MCP Server hasn’t magically made me a backend engineer. But it has made me far more capable, curious, and confident when stepping outside my usual domain.
+Using MCP Server hasn’t magically made me a back-end engineer. But it has made me far more capable, curious, and confident when stepping outside my usual domain.
 
 It lets me:
 
-- Understand backend PRs quickly
+- Understand back-end PRs quickly
 - Generate detailed test scenarios
 - Trace linked logic without manually navigating repos
-- Communicate more effectively with backend colleagues
+- Communicate more effectively with back-end colleagues
 - Learn by doing, not by guessing
 
 But it also constantly reminds me that AI is powerful, but not infallible.

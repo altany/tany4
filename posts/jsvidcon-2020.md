@@ -6,7 +6,6 @@ categories: ["Conference talk", "React Native", ]
 banner: "jsvidcon-banner.jpeg"
 color: "#03a7af"
 description: "Online conference talk on how Olio uses React Native to reduce food waste, migrate a production app quickly, and keep performance, testing, and developer experience under control."
-updated: "2025-01-01T00:00:00+0000"
 readingTimeMinutes: 4
 ---
 
@@ -18,7 +17,7 @@ In May 2020, at the height of COVID when everything had moved online, I spoke at
 
 Food waste is one of the biggest environmental and social challenges facing the planet. Olio helps people connect and share surplus food - and, like in my React Conf talk, the app is built in React Native.
 
-During my presentation I talked about how we migrated the entire OLIO application to React Native over a period of 3 months with a front-end team of just 3 developers. I talked about some of the issues we faced as an inexperienced React team (performance issues, code structure, testing, etc), how we overcame these and how our lessons could help others.
+During my presentation I talked about how we migrated the entire Olio application to React Native over a period of 3 months with a front-end team of just 3 developers. I talked about some of the issues we faced as an inexperienced React team (performance issues, code structure, testing, etc), how we overcame these and how our lessons could help others.
 
 In this talk I revisit the migration story from [React Conf 2019](/blog/posts/react-conf-2019), share what changed in the year since, and focus more on the practical realities of running a React Native app in production.
 

@@ -8,7 +8,7 @@ import { SITE_TITLE, SITE_URL } from "../../lib/constants";
 
 export default function Blog({ posts = [] }) {
   const seoDescription =
-    "Articles on React, React Native, debugging, testing, performance, and engineering practices.";
+    "Articles on React, React Native, AI tooling, debugging, testing, performance, and engineering practices.";
 
   return (
     <Layout
@@ -25,8 +25,7 @@ export default function Blog({ posts = [] }) {
         <header className={styles.header}>
             <h1>Blog</h1>
           <h2>
-            I write about React, React Native, debugging, testing, performance
-            and general engineering practices. These posts capture lessons
+            I write about React, React Native, AI tooling, debugging, testing, performance and general engineering practices. These posts capture lessons
             learned from real-world work, conference talks, and experiments.
           </h2>
         </header>
@@ -49,9 +48,9 @@ export default function Blog({ posts = [] }) {
                 <Link href={`/blog/posts/${id}`}>
                   <img src={`blog/${banner}`} alt={`${title} - banner`} />
                   <div className={styles.content}>
-                    {isNew && <span className={styles.newBadge}>NEW</span>}
+                    {isNew && <span className={styles.newBadge}>New</span>}
                     {highlight && (
-                      <span className={styles.featuredBadge}>HIGHLIGHT</span>
+                      <span className={styles.featuredBadge}>Highlight</span>
                     )}
                     <div className={styles.postTitle}>{title}</div>
                     {subtitle && (
