@@ -52,16 +52,27 @@ export default async function handler(req, res) {
     lastUserMessage?.parts?.find((p) => p?.type === "text")?.text ||
     "";
 
-  const context = await getKeywordContext(lastUserText || "");
-  const hasContext = Boolean(context && context.trim().length > 0);
-
-  const system = `You are Tania Papazafeiropoulou's website assistant.\n\nHard rules:\n- You must answer ONLY using the CONTEXT below (which comes from Tania's website content and CV).\n- If the answer is not explicitly supported by the context, reply exactly: \"I don't have that information in the website/CV.\"\n- If the context is empty or irrelevant, reply exactly: \"I don't have that information in the website/CV.\"\n- Be concise, friendly, and factual.\n- Do not invent employers, dates, metrics, or experience.\n\nCONTEXT:\n${hasContext ? context : "(no relevant context found)"}`;
-
   const trimmedMessages = Array.isArray(messages)
     ? messages.slice(Math.max(0, messages.length - MAX_MESSAGES))
     : [];
 
   try {
+    let context = "";
+    try {
+      context = await getKeywordContext(lastUserText || "");
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error("[api/chat] retrieval failed");
+      res.status(500).json({
+        error: "Chat is temporarily unavailable. Please try again.",
+        code: "retrieval_failed",
+      });
+      return;
+    }
+
+    const hasContext = Boolean(context && context.trim().length > 0);
+    const system = `You are Tania Papazafeiropoulou's website assistant.\n\nHard rules:\n- You must answer ONLY using the CONTEXT below (which comes from Tania's website content and CV).\n- If the answer is not explicitly supported by the context, reply exactly: \"I don't have that information in the website/CV.\"\n- If the context is empty or irrelevant, reply exactly: \"I don't have that information in the website/CV.\"\n- Be concise, friendly, and factual.\n- Do not invent employers, dates, metrics, or experience.\n\nCONTEXT:\n${hasContext ? context : "(no relevant context found)"}`;
+
     let modelMessages;
     try {
       modelMessages = convertToModelMessages(trimmedMessages);
