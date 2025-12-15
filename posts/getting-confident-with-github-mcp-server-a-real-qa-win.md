@@ -1,7 +1,7 @@
 ---
 title: "Getting Confident with GitHub MCP Server: A Real QA Win"
 date: "2025-11-21T18:52:00+0000"
-categories: ["AI", "Tooling", "GitHub"]
+categories: ["AI", "Tooling", "QA"]
 banner: "github-mcp-server-qa.png"
 color: "#051025"
 description: "How GitHub MCP Server helped me QA a backend PR with almost no context, and the subtle mistake (undefined vs []) that proved why humans still need to verify."

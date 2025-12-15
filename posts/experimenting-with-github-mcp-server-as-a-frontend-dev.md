@@ -1,7 +1,7 @@
 ---
 title: "Experimenting with GitHub MCP Server as a Front-End Dev"
 date: "2025-11-14T18:52:00+0000"
-categories: ["AI", "Tooling", "GitHub"]
+categories: ["AI", "Tooling", "Fullstack"]
 banner: "github-mcp-server-fullstack.png"
 color: "#0d1117"
 description: "Notes from experimenting with GitHub’s MCP Server as a front-end dev: cross-repo debugging, better types, and docs without cloning extra repos."
