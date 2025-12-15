@@ -157,7 +157,7 @@ exports[`renders an blog page with a post unchanged 1`] = `
             Blog
           </h1>
           <h2>
-            I write about React, React Native, debugging, testing, performance and general engineering practices. These posts capture lessons learned from real-world work, conference talks, and experiments.
+            I write about React, React Native, AI tooling, debugging, testing, performance and general engineering practices. These posts capture lessons learned from real-world work, conference talks, and experiments.
           </h2>
         </header>
         <ul>
@@ -377,7 +377,7 @@ exports[`renders an empty blog page unchanged 1`] = `
             Blog
           </h1>
           <h2>
-            I write about React, React Native, debugging, testing, performance and general engineering practices. These posts capture lessons learned from real-world work, conference talks, and experiments.
+            I write about React, React Native, AI tooling, debugging, testing, performance and general engineering practices. These posts capture lessons learned from real-world work, conference talks, and experiments.
           </h2>
         </header>
         <ul />

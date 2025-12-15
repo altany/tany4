@@ -5,7 +5,6 @@ categories: ["AI", "Next.js", "Vibe coding"]
 banner: "vercel-aisdk.png"
 color: "#1d7be2"
 description: "A light evening experiment: I vibe-coded a small AI chatbot into my website using the Vercel AI SDK, a tiny bit of retrieval, and a lot of trial-and-error."
-updated: "2025-12-15T12:00:00+0000"
 readingTimeMinutes: 4
 new: true
 ---
