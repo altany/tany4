@@ -44,19 +44,20 @@ export default function Blog({ posts = [] }) {
               if (a.date > b.date) return -1;
               return 0;
             })
-            .map(({ id, date, title, subtitle, banner, color, categories, highlight, description }) => (
+            .map(({ id, date, title, subtitle, banner, color, categories, highlight, description, new: isNew }) => (
               <li key={id} style={{ backgroundColor: color }}>
                 <Link href={`/blog/posts/${id}`}>
                   <img src={`blog/${banner}`} alt={`${title} - banner`} />
                   <div className={styles.content}>
+                    {isNew && <span className={styles.newBadge}>NEW</span>}
                     {highlight && (
                       <span className={styles.featuredBadge}>HIGHLIGHT</span>
                     )}
-                    <b>{title}</b>
+                    <div className={styles.postTitle}>{title}</div>
                     {subtitle && (
-                      <b>
+                      <div className={styles.postSubtitle}>
                         <small>{subtitle}</small>
-                      </b>
+                      </div>
                     )}
                     <small>
                       <Date dateString={date} />

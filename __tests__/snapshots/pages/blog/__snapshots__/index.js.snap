@@ -174,14 +174,18 @@ exports[`renders an blog page with a post unchanged 1`] = `
               <div
                 class="content"
               >
-                <b>
+                <div
+                  class="postTitle"
+                >
                   I am the titel
-                </b>
-                <b>
+                </div>
+                <div
+                  class="postSubtitle"
+                >
                   <small>
                     I am the subtitle
                   </small>
-                </b>
+                </div>
                 <small>
                   <time
                     datetime="2020-12-19T15:49:00+0200"

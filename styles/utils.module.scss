@@ -409,7 +409,7 @@
           font-size: 0.8rem;
         }
 
-        .featuredBadge {
+        .newBadge {
           align-self: flex-start;
           background-color: darken(variables.$thirdColor, 5%);
           color: #fff;
@@ -418,6 +418,25 @@
           padding: 0.2rem 0.4rem;
           margin-bottom: 0.3rem;
           @include mixins.borderRadius(3px);
+        }
+
+        .featuredBadge {
+          align-self: flex-start;
+          background-color: rgba(0, 0, 0, 0.12);
+          color: rgba(0, 0, 0, 0.85);
+          font-size: 0.7rem;
+          font-weight: bold;
+          padding: 0.2rem 0.4rem;
+          margin-bottom: 0.3rem;
+          @include mixins.borderRadius(3px);
+        }
+
+        .postTitle {
+          font-weight: bold;
+        }
+
+        .postSubtitle {
+          font-weight: bold;
         }
 
         time {
