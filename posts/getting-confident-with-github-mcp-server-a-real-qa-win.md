@@ -5,7 +5,6 @@ categories: ["AI", "Tooling", "QA"]
 banner: "github-mcp-server-qa.png"
 color: "#051025"
 description: "How GitHub MCP Server helped me QA a back-end PR with almost no context, and the subtle mistake that proved why humans still need to verify."
-updated: "2025-11-21T18:52:00+0000"
 readingTimeMinutes: 6
 ---
 
