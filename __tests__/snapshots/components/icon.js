@@ -3,7 +3,6 @@ import Icon from '../../../components/icon'
 import {
     GITHUB,
     GITLAB,
-    RESUME,
     ENVELOPE,
     LINKEDIN,
     TWITTER,
@@ -17,11 +16,6 @@ it('renders the GITHUB icon unchanged', () => {
 
 it('renders the GITLAB icon unchanged', () => {
     const { container } = render(<Icon icon={GITLAB} />)
-    expect(container).toMatchSnapshot()
-})
-
-it('renders the RESUME icon unchanged', () => {
-    const { container } = render(<Icon icon={RESUME} />)
     expect(container).toMatchSnapshot()
 })
 

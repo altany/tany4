@@ -12,6 +12,7 @@ class Navigation {
         this.about = within(this.element).queryByRole('link', {name: 'About'})
         this.work = within(this.element).queryByRole('link', {name: 'Check out my work'})
         this.blog = within(this.element).queryByRole('link', {name: 'Blog'})
+        this.resumeNav = within(this.element).queryByRole('link', {name: 'Resume'})
         this.avatar = within(this.element).queryByAltText(`${NAME} avatar`)
 
         this.linkedin = within(this.element).queryByTitle('Linkedin profile - in/taniapapazaf')

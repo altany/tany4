@@ -5,7 +5,7 @@ import useSWR from "swr";
 import dynamic from "next/dynamic";
 import Icon from "./icon";
 import fetcher from "../lib/fetcher";
-import { LINKEDIN, ENVELOPE, RESUME, TWITTER } from "../lib/icons";
+import { LINKEDIN, ENVELOPE, TWITTER } from "../lib/icons";
 import {
   NAME,
   SITE_URL,
@@ -20,15 +20,16 @@ const ChatWidget = dynamic(() => import("./chatWidget"), { ssr: false });
 
 export default function Layout({
   children,
-  noPadding,
-  blog,
-  work,
-  about,
-  seoImage,
-  seoTitle,
-  seoDescription,
-  canonicalUrl,
-  ogType,
+  noPadding = false,
+  blog = false,
+  work = false,
+  about = false,
+  resume = false,
+  seoImage = "",
+  seoTitle = "",
+  seoDescription = "",
+  canonicalUrl = "",
+  ogType = "",
 }) {
   return (
     <>
@@ -39,7 +40,7 @@ export default function Layout({
         canonicalUrl={canonicalUrl}
         ogType={ogType}
       />
-      <Navigation blog={blog} work={work} about={about} />
+      <Navigation blog={blog} work={work} about={about} resume={resume} />
       <StatusBar />
       <Content noPadding={noPadding}>{children}</Content>
       <Footer />
@@ -110,7 +111,7 @@ const HtmlHead = ({ seoImage, seoTitle, seoDescription, canonicalUrl, ogType }) 
   );
 };
 
-const Navigation = ({ blog, work, about }) => (
+const Navigation = ({ blog, work, about, resume }) => (
   <nav className={styles.navigation} data-testid="navigation">
     <div className={styles.container}>
       <ul className={styles.topLinks}>
@@ -131,6 +132,12 @@ const Navigation = ({ blog, work, about }) => (
         <li className={blog && styles.active}>
           <Link href="/blog" title="Blog">
             <div>Blog</div>
+          </Link>
+        </li>
+        
+        <li className={resume && styles.active}>
+          <Link href="/cv" title="Resume">
+            <div>CV</div>
           </Link>
         </li>
         <li className={about && styles.active}>
