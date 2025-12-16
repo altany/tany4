@@ -50,6 +50,22 @@ If the context doesn’t contain the answer, the assistant replies exactly:
 
 (Too eagerly sometimes, annoying always, but very honest.)
 
+## Update: making it less eager to say “I don’t know”
+
+After trying a bunch of common prompts (the kind that humans write, not the kind you’d design for keyword matching), I tweaked two parts of the setup to make the assistant more helpful without making it less grounded:
+
+1. Retrieval: better recall
+
+I loosened the rules and expanded how much context we return, so broad questions are more likely to pull in something relevant from Home/Work/CV/blog posts.
+
+2. Prompt rules: partial answers + one clarifying question
+
+Instead of forcing an immediate refusal when the context isn’t a perfect match, the assistant now:
+
+- Answers what it can from the context it has
+- Asks one short clarifying question if needed
+- Still uses the exact refusal line only when there’s genuinely nothing useful in the website/CV content
+
 ## The debugging
 
 Unsurprisingly, there were a few challenges:
