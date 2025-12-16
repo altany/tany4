@@ -37,7 +37,14 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
   - `http://localhost:3000/cv`
   - Print-safe mode: `http://localhost:3000/cv?print=1`
 - **Regenerate PDF**
-  - Run `npm run cv:pdf`
-  - Output: `public/TaniaPapazafeiropoulou-CV.pdf`
+  - One-time setup (installs the browser Playwright uses to print PDFs):
+    - `npx playwright install chromium`
+  - Kill the development server if it's running
+  - Generate/refresh the PDF from the print view:
+    - `npm run cv:pdf`
+  - Output:
+    - `public/TaniaPapazafeiropoulou-CV.pdf`
+
+If you update CV content or styling, re-run `npm run cv:pdf` to refresh that file.
 
 To keep `/cv?print=1` print-safe, avoid adding site chrome (navigation/footer/chat) in print mode and keep layout in `styles/Cv.module.scss` aligned with A4 sizing.
