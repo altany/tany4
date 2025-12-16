@@ -1,15 +1,16 @@
 ---
 title: "Vibe coding an AI chatbot into my website"
 date: "2025-12-15T12:00:00+0000"
-categories: ["AI", "Next.js", "Vibe coding"]
+categories: ["AI", "Vibe coding", "Chatbot"]
 banner: "vercel-aisdk.png"
 color: "#1d7be2"
 description: "A light evening experiment: I vibe-coded a small AI chatbot into my website using the Vercel AI SDK, a tiny bit of retrieval, and a lot of trial-and-error."
 readingTimeMinutes: 4
 new: true
+updated: "2025-12-16T12:00:00+0000"
 ---
 
-**TL;DR**: I vibe-coded a chatbot into this website over an evening. It answers questions about my work using the content already on the site and my CV, and politely refuses to make things up. I had fun building it, debugging it, and making sure the right context is available.
+**TL;DR**: I vibe-coded a chatbot into this website over an evening. It answers questions about my work using content already on the site and my CV, and it refuses to make things up. I did not go into this as an “LLM expert”. I mostly got it working by asking the coding assistant a lot of questions, nudging things until they behaved, and then being slightly surprised when they actually did.
 
 ## The idea
 
@@ -33,16 +34,18 @@ I used the **Vercel AI SDK** (`ai`) with OpenAI to power the responses.
 
 ## Keeping it grounded (site + CV only)
 
-The main trick wasn’t to make the LLM respond (that part is easy). The trick was to **give it the right context**.
+The main trick wasn’t making the LLM respond (that part is easy). The trick was making sure it only answers with things that are actually true for me.
 
-I ended up with a small keyword-based retrieval setup that builds a corpus from:
+I’m going to be honest: before this, I barely knew what “retrieval” meant beyond “something AI people say”. I got this working by asking the assistant (a lot) and then reading the code until it stopped feeling like magic.
+
+The end result was basically building a pool of text from what’s already on my website:
 
 - Home page text
 - Work page text
 - Blog posts (markdown)
-- My CV PDF
+- My CV (PDF)
 
-Then for each question, we grab the most relevant chunks and inject them into the system prompt as `CONTEXT`.
+Then for each question, we try to grab the bits that look most relevant and pass them into the prompt as `CONTEXT`.
 
 If the context doesn’t contain the answer, the assistant replies exactly:
 
@@ -52,7 +55,7 @@ If the context doesn’t contain the answer, the assistant replies exactly:
 
 ## Update: making it less eager to say “I don’t know”
 
-After trying a bunch of common prompts (the kind that humans write, not the kind you’d design for keyword matching), I tweaked two parts of the setup to make the assistant more helpful without making it less grounded:
+After trying a bunch of normal prompts (the kind you actually type when you’re not thinking about how the system works), I realised it was refusing way too often. So I asked the assistant to help me tweak it to be more useful without letting it hallucinate. It’s feeling much more reliable now: it answers the obvious stuff, and it still refuses when it genuinely can’t back something up.
 
 1. Retrieval: better recall
 
@@ -60,7 +63,7 @@ I loosened the rules and expanded how much context we return, so broad questions
 
 2. Prompt rules: partial answers + one clarifying question
 
-Instead of forcing an immediate refusal when the context isn’t a perfect match, the assistant now:
+Instead of forcing an immediate refusal when the context isn’t a perfect match, it now:
 
 - Answers what it can from the context it has
 - Asks one short clarifying question if needed
@@ -70,8 +73,9 @@ Instead of forcing an immediate refusal when the context isn’t a perfect match
 
 Unsurprisingly, there were a few challenges:
 
-- Getting streaming right (and then deciding to not stream) was trickier than expected.
-- Getting the OpenAI key scope right taught me more about permissions than I ever wanted to know.
+- The chatbot was a bit too eager to say “I don't have that information in the website/CV.” even when the answer *was* on the site.
+- Getting streaming right was trickier than expected (streaming is when the answer appears gradually as it’s being generated, rather than showing up all at once at the end). So I decided not to stream.
+- Getting the OpenAI key scope right taught me more about permissions than I ever planned to know.
 
 Pretty much what one would expect, but I did learn a few things.
 
@@ -84,7 +88,7 @@ Once the back-end was stable, I made it feel a bit more “chatty”:
 
 ## Key takeaways
 
-- Retrieval and a strict prompt are a surprisingly effective way to keep answers grounded.
-- “Vibe coding” is great, as long as you follow it up with real guardrails.
+- “Vibe coding” is fun, but you still need guardrails if you don’t want nonsense answers.
+- Also: you can absolutely build things you don’t fully understand yet… as long as you’re honest about it and you test what you ship.
 
 You can try it for yourself! Just click the chat icon in the bottom-right corner. If you try the widget and it refuses to answer something you think is on the site, it probably means my retrieval missed the right chunk. If you feel invested, you can [reach out to me](mailto:hello@tany4.com) so I can fine tune it. 🙏
