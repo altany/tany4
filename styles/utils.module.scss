@@ -64,7 +64,7 @@
 
 .about {
   max-width: 720px;
-  margin: 3rem auto 1rem;
+  margin: 3rem auto;
   line-height: 1.6;
 
   .header {
@@ -76,8 +76,11 @@
   display: flex;
   justify-content: center;
   margin: 1.25rem 0;
-  color: color.adjust(variables.$darkmainColor, $lightness: 0%);
-  opacity: 0.55;
+  img {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
 }
 
 .aboutPhoto {
