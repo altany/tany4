@@ -120,7 +120,7 @@ const Navigation = ({ blog, work, about, resume }) => (
             <img src="/profile.svg" alt={`${NAME} avatar`} />
           </Link>
         </li>
-        <li className={work && styles.active}>
+        <li className={work ? styles.active : undefined}>
           <Link
             href="/work"
             title="Check out my work"
@@ -129,18 +129,18 @@ const Navigation = ({ blog, work, about, resume }) => (
             <div>Work</div>
           </Link>
         </li>
-        <li className={blog && styles.active}>
+        <li className={blog ? styles.active : undefined}>
           <Link href="/blog" title="Blog">
             <div>Blog</div>
           </Link>
         </li>
         
-        <li className={resume && styles.active}>
+        <li className={resume ? styles.active : undefined}>
           <Link href="/cv" title="Resume">
             <div>CV</div>
           </Link>
         </li>
-        <li className={about && styles.active}>
+        <li className={about ? styles.active : undefined}>
           <Link href="/about" title="About">
             <div>About</div>
           </Link>
