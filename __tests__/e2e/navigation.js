@@ -25,6 +25,13 @@ test('`work` link navigates to `Work` page', async t => {
 
 });
 
+test('`about` link navigates to `About` page', async t => {
+  await t
+    .click(Screen.navigation.about)
+    .expect(screen.queryByRole('heading', {name:'About'}).exists).ok()
+
+});
+
 test('`blog` link navigates to `Blog` page', async t => {
   await t
     .click(Screen.navigation.blog)

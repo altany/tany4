@@ -22,6 +22,7 @@ export default function Layout({
   noPadding,
   blog,
   work,
+  about,
   seoImage,
   seoTitle,
   seoDescription,
@@ -37,7 +38,7 @@ export default function Layout({
         canonicalUrl={canonicalUrl}
         ogType={ogType}
       />
-      <Navigation blog={blog} work={work} />
+      <Navigation blog={blog} work={work} about={about} />
       <StatusBar />
       <Content noPadding={noPadding}>{children}</Content>
       <Footer />
@@ -108,7 +109,7 @@ const HtmlHead = ({ seoImage, seoTitle, seoDescription, canonicalUrl, ogType }) 
   );
 };
 
-const Navigation = ({ blog, work }) => (
+const Navigation = ({ blog, work, about }) => (
   <nav className={styles.navigation} data-testid="navigation">
     <div className={styles.container}>
       <ul className={styles.topLinks}>
@@ -129,6 +130,11 @@ const Navigation = ({ blog, work }) => (
         <li className={blog && styles.active}>
           <Link href="/blog" title="Blog">
             <div>Blog</div>
+          </Link>
+        </li>
+        <li className={about && styles.active}>
+          <Link href="/about" title="About">
+            <div>About</div>
           </Link>
         </li>
       </ul>

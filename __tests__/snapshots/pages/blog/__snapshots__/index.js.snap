@@ -48,6 +48,16 @@ exports[`renders an blog page with a post unchanged 1`] = `
             </div>
           </a>
         </li>
+        <li>
+          <a
+            href="/about"
+            title="About"
+          >
+            <div>
+              About
+            </div>
+          </a>
+        </li>
       </ul>
       <ul
         class="bottomLinks"
@@ -265,6 +275,16 @@ exports[`renders an empty blog page unchanged 1`] = `
           >
             <div>
               Blog
+            </div>
+          </a>
+        </li>
+        <li>
+          <a
+            href="/about"
+            title="About"
+          >
+            <div>
+              About
             </div>
           </a>
         </li>
