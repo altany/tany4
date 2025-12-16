@@ -46,6 +46,16 @@ exports[`renders the blog post unchanged 1`] = `
             </div>
           </a>
         </li>
+        <li>
+          <a
+            href="/about"
+            title="About"
+          >
+            <div>
+              About
+            </div>
+          </a>
+        </li>
       </ul>
       <ul
         class="bottomLinks"

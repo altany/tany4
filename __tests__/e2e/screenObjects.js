@@ -8,6 +8,7 @@ class Navigation {
     constructor () {
         this.element = screen.queryByTestId('navigation')
         
+        this.about = within(this.element).queryByRole('link', {name: 'About'})
         this.work = within(this.element).queryByRole('link', {name: 'Check out my work'})
         this.blog = within(this.element).queryByRole('link', {name: 'Blog'})
         this.avatar = within(this.element).queryByAltText(`${NAME} avatar`)
