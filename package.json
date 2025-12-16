@@ -7,6 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "cross-env NODE_ENV=production node server.js",
+    "cv:pdf": "tsx scripts/generate-cv-pdf.ts",
     "test-e2e": "node __tests__/e2eRunner.js",
     "test-unit": "jest",
     "test": "npm run test-e2e && npm run test-unit",
@@ -37,10 +38,14 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/testcafe": "^4.4.1",
+    "@types/node": "^22.10.2",
     "eslint": "^9.0.0",
     "eslint-config-next": "16.0.7",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
+    "playwright": "^1.49.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
     "testcafe": "3.7.2"
   },
   "engines": {

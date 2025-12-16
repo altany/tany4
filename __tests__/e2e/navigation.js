@@ -38,3 +38,10 @@ test('`blog` link navigates to `Blog` page', async t => {
     .expect(Screen.blogPage.heading.exists).ok()
 
 });
+
+test('`resume` link navigates to `CV` page', async t => {
+  await t
+    .click(Screen.navigation.resumeNav)
+    .expect(screen.queryByRole('heading', {name:'Tania Papazafeiropoulou'}).exists).ok()
+
+});

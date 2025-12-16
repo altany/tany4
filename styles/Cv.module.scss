@@ -1,0 +1,245 @@
+@use "sass:color";
+@use "../styles/variables";
+@use "../styles/mixins";
+
+$pageWidth: 210mm;
+$pageHeight: 297mm;
+
+$pageBg: #ffffff;
+$sidebarBg: #2f6f7f;
+$sidebarText: #ffffff;
+$accent: #2f6f7f;
+$text: #111111;
+$muted: #666666;
+
+.page {
+  background: $pageBg;
+  width: min(#{$pageWidth}, 100%);
+  margin: 0 auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  display: grid;
+  grid-template-columns: 255px 1fr;
+  min-height: $pageHeight;
+
+  @include mixins.breakpoint(mobilePortrait) {
+    width: 100%;
+    grid-template-columns: 1fr;
+    min-height: auto;
+    box-shadow: none;
+  }
+}
+
+.sidebar {
+  background: $sidebarBg;
+  color: $sidebarText;
+  padding: 28px 22px;
+
+  a {
+    color: $sidebarText;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+.sidebarSection {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.sidebarHeading {
+  margin: 0 0 10px 0;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sidebarParagraph {
+  margin: 0 0 10px 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.sidebarList {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 12px;
+  line-height: 1.5;
+
+  li {
+    margin-bottom: 6px;
+  }
+}
+
+.main {
+  padding: 26px 30px;
+  color: $text;
+
+  @include mixins.breakpoint(mobilePortrait) {
+    padding: 18px 16px;
+  }
+}
+
+.header {
+  padding-bottom: 12px;
+  border-bottom: 2px solid color.adjust($accent, $lightness: 35%);
+}
+
+.name {
+  margin: 0;
+  font-size: 40px;
+  line-height: 1.02;
+
+  @include mixins.breakpoint(mobilePortrait) {
+    font-size: 32px;
+  }
+}
+
+.contactRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  margin-top: 10px;
+  color: $muted;
+  font-size: 12px;
+}
+
+.contactItem {
+  display: inline-flex;
+  align-items: center;
+}
+
+.block {
+  margin-top: 16px;
+}
+
+.heading {
+  margin: 0 0 10px 0;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $accent;
+}
+
+.role {
+  margin-bottom: 14px;
+}
+
+.roleMeta {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  column-gap: 10px;
+  row-gap: 2px;
+  align-items: baseline;
+
+  @include mixins.breakpoint(mobilePortrait) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dates {
+  color: $muted;
+  font-size: 12px;
+}
+
+.roleTitle {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.company {
+  grid-column: 2;
+  font-weight: 700;
+  font-size: 13px;
+
+  @include mixins.breakpoint(mobilePortrait) {
+    grid-column: auto;
+  }
+}
+
+.roleSummary {
+  margin: 8px 0 8px 0;
+  font-size: 12px;
+  color: $muted;
+  font-style: italic;
+}
+
+.bullets {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 12px;
+  line-height: 1.45;
+
+  li {
+    margin-bottom: 5px;
+  }
+}
+
+.edu {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  column-gap: 10px;
+  margin-bottom: 8px;
+
+  @include mixins.breakpoint(mobilePortrait) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.eduDate {
+  font-size: 12px;
+  color: $muted;
+}
+
+.eduSchool {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.eduDegree {
+  font-size: 12px;
+}
+
+.languagesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 14px;
+
+  @include mixins.breakpoint(mobilePortrait) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.languageItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 1px solid #e5e5e5;
+  padding-top: 8px;
+}
+
+.languageName {
+  font-size: 12px;
+}
+
+.languageCode {
+  font-size: 12px;
+  color: $muted;
+  font-weight: 700;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  .page {
+    box-shadow: none;
+    width: $pageWidth;
+    min-height: $pageHeight;
+  }
+}

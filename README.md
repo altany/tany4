@@ -28,3 +28,16 @@ You can check out [the Next.js GitHub repository](https://github.com/zeit/next.j
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## CV
+
+- **Edit CV content**
+  - Update `src/cv/cv.ts` (single source of truth)
+- **View CV HTML**
+  - `http://localhost:3000/cv`
+  - Print-safe mode: `http://localhost:3000/cv?print=1`
+- **Regenerate PDF**
+  - Run `npm run cv:pdf`
+  - Output: `public/TaniaPapazafeiropoulou-CV.pdf`
+
+To keep `/cv?print=1` print-safe, avoid adding site chrome (navigation/footer/chat) in print mode and keep layout in `styles/Cv.module.scss` aligned with A4 sizing.
