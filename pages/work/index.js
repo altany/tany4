@@ -111,89 +111,68 @@ export default function Work() {
         <section className={styles.experienceGrid}>
           <article className={styles.experienceCard}>
             <h2>Olio React Native consumer app</h2>
-            <p className={styles.experienceRole}>Senior Front-End Engineer</p>
+            <p className={styles.experienceRole}>Senior Front-End Engineer, Release Owner</p>
             <p className={styles.experienceTech}>
-              React Native, TypeScript, testing, CI/CD
+              React Native, TypeScript
             </p>
             <ul>
               <li>
-                Helped build, improve, and maintain the core React Native app
-                used by Olio&apos;s community across onboarding, browsing, and posting flows.
+                Joined as one of the first front-end engineers and helped ship the React Native MVP in 3 months.
               </li>
               <li>
-                Worked on performance improvements, accessibility fixes, and
-                general stability as the app grew.
+                Owned the release process for 4+ years, coordinating weekly releases to millions of users across iOS and Android.
               </li>
               <li>
-                Supported the team with PR reviews, debugging tricky issues,
-                and working closely with product and back-end.
+                Drove major React Native version upgrades, keeping the app modern while avoiding breaking changes.
               </li>
               <li>
-                Impact: a more stable and responsive app experience across the
-                areas people use most.
+                Fixed long-standing development environment issues that were blocking the team, improving day-to-day productivity.
               </li>
             </ul>
           </article>
 
           <article className={styles.experienceCard}>
-            <h2>Olio Volunteers platform migration and feature expansion</h2>
+            <h2>Volunteers platform</h2>
             <p className={styles.experienceRole}>
-              Senior Front-End Engineer / Tech Lead
+              Key architect during Rails → React migration
             </p>
             <p className={styles.experienceTech}>
-              React, TypeScript, Ruby on Rails, testing, CI/CD
+              React, TypeScript
             </p>
             <ul>
               <li>
-                Migrated the volunteer platform from Rails to React to make
-                the platform faster and easier to work with.
+                Helped migrate the volunteer platform from server-rendered Rails views to a React SPA, establishing patterns the team still uses today.
               </li>
               <li>
-                Built and shipped many new features that expanded what
-                volunteers could do, well beyond the original migration.
+                Led a major rearchitecture of how collections are displayed, grouping by schedule to match how volunteers actually think about their pickups.
               </li>
               <li>
-                Introduced shared components and small accessibility
-                improvements to keep things consistent and easier to maintain.
+                Extended the platform to support charity volunteers alongside Olio volunteers, a key step in the company&apos;s growth.
               </li>
               <li>
-                Worked closely with operations and support teams to understand
-                issues real volunteers were facing and fix them.
-              </li>
-              <li>
-                As a tech lead later on, helped extend the platform from
-                supporting only Olio volunteers to supporting charity volunteers
-                too.
-              </li>
-              <li>
-                Impact: a faster, more flexible and capable platform that
-                supported more volunteers and was easier to improve over time.
+                Cleaned up years of accumulated feature flags and deprecated code, making the codebase easier for new joiners to navigate.
               </li>
             </ul>
           </article>
 
           <article className={styles.experienceCard}>
-            <h2>Partner tools & integration interfaces</h2>
+            <h2>Partner tools</h2>
             <p className={styles.experienceRole}>Front-End Tech Lead</p>
             <p className={styles.experienceTech}>
-              React, TypeScript, data visualisation, testing, CI/CD
+              React, TypeScript
             </p>
             <ul>
               <li>
-                Worked on internal dashboards and tools that surface important
-                food-rescue metrics and operational data.
+                Led front-end development for the partner-facing dashboard used by supermarkets and food businesses.
               </li>
               <li>
-                Helped teams decide how to balance real-time data needs with
-                performance and implementation complexity.
+                Built the collections feature, which lets partners see upcoming pickups and plan staffing accordingly.
               </li>
               <li>
-                Worked closely with product, design, data and commercial teams
-                so the UI matched what partners actually needed.
+                Added multi-language support to enable international expansion, working closely with ops teams to get translations right.
               </li>
               <li>
-                Impact: clearer insight into how partners operate and smoother
-                workflows across different types of organisations.
+                Mentored mid-level engineers through complex features, pairing regularly and reviewing code to help them grow.
               </li>
             </ul>
           </article>
