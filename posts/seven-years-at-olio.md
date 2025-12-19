@@ -8,7 +8,7 @@ new: true
 color: "#f6256f"
 banner: "olio-logo.svg"
 description: "Reflections on 7 years of growth at Olio. From shipping a React Native MVP in 3 months to leading a front-end team. What I've learned about architecture, mentorship, and building products that matter."
-readingTimeMinutes: 12
+readingTimeMinutes: 14
 ---
 
 **TL;DR**: I've spent over 7 years at Olio, growing from a mid-level developer to Tech Lead. This post reflects on what I've learned about building products, leading teams, and growing as an engineer; lessons I hope are useful regardless of where you work.
