@@ -2,6 +2,7 @@ export type CvLink = {
   label: string;
   href: string;
   display?: string;
+  icon?: "portfolio" | "linkedin";
 };
 
 export type CvHeader = {
