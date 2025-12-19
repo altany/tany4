@@ -138,14 +138,31 @@ const styles = StyleSheet.create({
   },
 
   sidebarList: {
-    marginTop: 0,
-    paddingLeft: 10,
+    marginTop: 4,
+    paddingLeft: 0,
   },
 
   sidebarListItem: {
-    marginBottom: 5,
+    marginBottom: 6,
     fontSize: 8.5,
-    lineHeight: 1.4,
+    lineHeight: 1.5,
+  },
+
+  sidebarBulletItem: {
+    flexDirection: "row",
+    marginBottom: 6,
+  },
+
+  sidebarBullet: {
+    width: 12,
+    fontSize: 8.5,
+    color: "rgba(255, 255, 255, 0.7)",
+  },
+
+  sidebarBulletText: {
+    flex: 1,
+    fontSize: 8.5,
+    lineHeight: 1.5,
   },
 
   sidebarLink: {
@@ -184,11 +201,12 @@ const styles = StyleSheet.create({
   },
 
   roleSummary: {
-    marginTop: 6,
-    marginBottom: 6,
-    color: "#666666",
+    marginTop: 8,
+    marginBottom: 10,
+    color: "#555555",
     fontFamily: "Helvetica-Oblique",
     fontSize: 10,
+    lineHeight: 1.5,
   },
 
   sidebarLinkIcon: {
@@ -203,39 +221,45 @@ const styles = StyleSheet.create({
   },
 
   bullets: {
-    paddingLeft: 10,
-    marginTop: 6,
-    marginBottom: 6,
+    //paddingLeft: 10,
+    marginTop: 4,
+    marginBottom: 4,
   },
 
   bulletItem: {
-    marginBottom: 3,
+    marginBottom: 5,
     fontSize: 9,
-    lineHeight: 1.3,
+    lineHeight: 1.5,
   },
 
   eduRow: {
-    flexDirection: "row",
-    marginBottom: 8,
+    marginBottom: 12,
+  },
+
+  eduMeta: {
+    flexDirection: "column",
   },
 
   eduDate: {
-    width: 86,
-    color: "#666666",
+    color: "#888888",
     fontSize: 10,
+    marginBottom: 2,
   },
 
-  eduBody: {
-    flexGrow: 1,
+  eduTitleRow: {
+    flexDirection: "row",
+    alignItems: "baseline",
   },
 
   eduSchool: {
-    fontSize: 11,
+    fontSize: 10,
     fontWeight: 700,
   },
 
   eduDegree: {
     fontSize: 10,
+    color: "#444444",
+    marginLeft: 6,
   },
 
   languageRow: {
@@ -401,9 +425,10 @@ function SidebarSection({
       {section.bullets && (
         <View style={styles.sidebarList}>
           {section.bullets.map((b) => (
-            <Text key={b} style={styles.sidebarListItem}>
-              {b}
-            </Text>
+            <View key={b} style={styles.sidebarBulletItem}>
+              <Text style={styles.sidebarBullet}>•</Text>
+              <Text style={styles.sidebarBulletText}>{b}</Text>
+            </View>
           ))}
         </View>
       )}
@@ -485,10 +510,12 @@ export default function CvPdfDocument({ cv }: { cv: Cv }) {
           <View wrap={false}>
             {cv.education.map((edu) => (
               <View key={`${edu.institution}-${edu.date}`} style={styles.eduRow} wrap={false}>
-                <Text style={styles.eduDate}>{edu.date}</Text>
-                <View style={styles.eduBody}>
-                  <Text style={styles.eduSchool}>{edu.institution}</Text>
-                  <Text style={styles.eduDegree}>{edu.degree}</Text>
+                <View style={styles.eduMeta}>
+                  <Text style={styles.eduDate}>{edu.date}</Text>
+                  <View style={styles.eduTitleRow}>
+                    <Text style={styles.eduSchool}>{edu.institution}</Text>
+                    <Text style={styles.eduDegree}>{edu.degree}</Text>
+                  </View>
                 </View>
               </View>
             ))}
