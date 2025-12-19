@@ -48,9 +48,13 @@ export default function Blog({ posts = [] }) {
                 <Link href={`/blog/posts/${id}`}>
                   <img src={`blog/${banner}`} alt={`${title} - banner`} />
                   <div className={styles.content}>
-                    {isNew && <span className={styles.newBadge}>New</span>}
-                    {highlight && (
-                      <span className={styles.featuredBadge}>Highlight</span>
+                    {(isNew || highlight) && (
+                      <div className={styles.badges}>
+                        {isNew && <span className={styles.newBadge}>New</span>}
+                        {highlight && (
+                          <span className={styles.featuredBadge}>Highlight</span>
+                        )}
+                      </div>
                     )}
                     <div className={styles.postTitle}>{title}</div>
                     {subtitle && (
