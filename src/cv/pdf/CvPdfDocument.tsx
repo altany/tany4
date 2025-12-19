@@ -1,0 +1,522 @@
+import React from "react";
+import {
+  Document,
+  Page,
+  Text,
+  View,
+  StyleSheet,
+  Link,
+  Font,
+  Svg,
+  Path,
+} from "@react-pdf/renderer";
+import type { Cv } from "../types";
+
+Font.registerHyphenationCallback((word) => [word]);
+
+const styles = StyleSheet.create({
+  page: {
+    position: "relative",
+    fontFamily: "Helvetica",
+    fontSize: 10,
+    lineHeight: 1.35,
+    color: "#111111",
+    backgroundColor: "#ffffff",
+    paddingTop: 0,
+    paddingRight: 0,
+    paddingBottom: 0,
+    paddingLeft: 0,
+  },
+
+  sidebar: {
+    position: "absolute",
+    left: 0,
+    top: 0,
+    bottom: 0,
+    width: 210,
+    backgroundColor: "#2f6f7f",
+    paddingTop: 24,
+    paddingRight: 16,
+    paddingBottom: 24,
+    paddingLeft: 16,
+    color: "#ffffff",
+  },
+
+  main: {
+    marginLeft: 210,
+    paddingTop: 24,
+    paddingRight: 26,
+    paddingBottom: 24,
+    paddingLeft: 26,
+  },
+
+  pageHeader: {
+    height: 20,
+    marginLeft: 210,
+  },
+
+  nameRow: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    fontSize: 30,
+    fontWeight: 700,
+    lineHeight: 1.02,
+    color: "#2f6f7f",
+  },
+
+  contactRow: {
+    marginTop: 8,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 10,
+    color: "#666666",
+    fontSize: 10,
+  },
+
+  contactItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+  },
+
+  contactIcon: {
+    width: 10,
+    height: 10,
+  },
+
+  headerDivider: {
+    marginTop: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#2f6f7f",
+    borderBottomStyle: "solid",
+  },
+
+  sectionHeading: {
+    marginTop: 14,
+    marginBottom: 8,
+    fontSize: 10,
+    fontWeight: 700,
+    letterSpacing: 0.6,
+    textTransform: "uppercase",
+    color: "#2f6f7f",
+  },
+
+  sectionDivider: {
+    marginTop: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#2f6f7f",
+    borderBottomStyle: "solid",
+  },
+
+  sidebarSection: {
+    marginTop: 12,
+    paddingTop: 10,
+    borderTopWidth: 1,
+    borderTopColor: "rgba(255, 255, 255, 0.22)",
+    borderTopStyle: "solid",
+  },
+
+  sidebarSectionFirst: {
+    marginTop: 0,
+    paddingTop: 0,
+    borderTopWidth: 0,
+    borderTopStyle: "solid",
+  },
+
+  sidebarHeading: {
+    marginBottom: 8,
+    fontSize: 9,
+    fontWeight: 700,
+    letterSpacing: 0.7,
+    textTransform: "uppercase",
+  },
+
+  sidebarParagraph: {
+    marginBottom: 8,
+    fontSize: 8.5,
+    lineHeight: 1.4,
+  },
+
+  sidebarList: {
+    marginTop: 0,
+    paddingLeft: 10,
+  },
+
+  sidebarListItem: {
+    marginBottom: 5,
+    fontSize: 8.5,
+    lineHeight: 1.4,
+  },
+
+  sidebarLink: {
+    color: "#ffffff",
+    textDecoration: "none",
+  },
+
+  role: {
+    marginBottom: 12,
+  },
+
+  roleMeta: {
+    flexDirection: "column",
+  },
+
+  dates: {
+    color: "#888888",
+    fontSize: 10,
+    marginBottom: 2,
+  },
+
+  roleTitleRow: {
+    flexDirection: "row",
+    alignItems: "baseline",
+  },
+
+  roleTitle: {
+    fontSize: 10,
+    fontWeight: 700,
+  },
+
+  company: {
+    fontSize: 10,
+    color: "#444444",
+    marginLeft: 6,
+  },
+
+  roleSummary: {
+    marginTop: 6,
+    marginBottom: 6,
+    color: "#666666",
+    fontFamily: "Helvetica-Oblique",
+    fontSize: 10,
+  },
+
+  sidebarLinkIcon: {
+    width: 10,
+    height: 10,
+    marginRight: 4,
+  },
+
+  sidebarLinkRow: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
+  bullets: {
+    paddingLeft: 10,
+    marginTop: 6,
+    marginBottom: 6,
+  },
+
+  bulletItem: {
+    marginBottom: 3,
+    fontSize: 9,
+    lineHeight: 1.3,
+  },
+
+  eduRow: {
+    flexDirection: "row",
+    marginBottom: 8,
+  },
+
+  eduDate: {
+    width: 86,
+    color: "#666666",
+    fontSize: 10,
+  },
+
+  eduBody: {
+    flexGrow: 1,
+  },
+
+  eduSchool: {
+    fontSize: 11,
+    fontWeight: 700,
+  },
+
+  eduDegree: {
+    fontSize: 10,
+  },
+
+  languageRow: {
+    borderTopWidth: 1,
+    borderTopColor: "#e5e5e5",
+    borderTopStyle: "solid",
+    paddingTop: 8,
+    marginBottom: 6,
+  },
+
+  languageTop: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "baseline",
+  },
+
+  languageName: {
+    fontSize: 10,
+  },
+
+  languageCode: {
+    fontSize: 10,
+    fontWeight: 700,
+    color: "#666666",
+  },
+
+  languageBarWrap: {
+    marginTop: 5,
+    height: 4,
+    borderRadius: 2,
+    backgroundColor: "#d9d9d9",
+    overflow: "hidden",
+  },
+
+  languageBarFill: {
+    height: 4,
+    backgroundColor: "#2f6f7f",
+  },
+});
+
+function MailIcon({ color = "#666666" }: { color?: string }) {
+  return (
+    <Svg viewBox="0 0 24 24" style={styles.contactIcon}>
+      <Path
+        d="M4 6h16v12H4V6zm1.6 1.6v.1l6.9 5.4c1 .8 2.1.8 3.1 0l6.9-5.4v-.1"
+        stroke={color}
+        strokeWidth={1.7}
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  );
+}
+
+function PinIcon({ color = "#666666" }: { color?: string }) {
+  return (
+    <Svg viewBox="0 0 24 24" style={styles.contactIcon}>
+      <Path
+        d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11zm0-8.8a2.2 2.2 0 110-4.4 2.2 2.2 0 010 4.4z"
+        stroke={color}
+        strokeWidth={1.7}
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  );
+}
+
+function PortfolioIcon() {
+  return (
+    <Svg viewBox="0 0 24 24" style={styles.sidebarLinkIcon}>
+      <Path
+        d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
+        stroke="#ffffff"
+        strokeWidth={1.7}
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <Path
+        d="M9 22V12h6v10"
+        stroke="#ffffff"
+        strokeWidth={1.7}
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  );
+}
+
+function LinkedInIcon() {
+  return (
+    <Svg viewBox="0 0 24 24" style={styles.sidebarLinkIcon}>
+      <Path
+        d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"
+        stroke="#ffffff"
+        strokeWidth={1.7}
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  );
+}
+
+function languageLevelToPercent(levelLabel: string, levelCode?: string): number {
+  const code = (levelCode || "").toUpperCase();
+  if (levelLabel.toLowerCase().includes("first")) return 100;
+  const map: Record<string, number> = {
+    A1: 20,
+    A2: 30,
+    B1: 50,
+    B2: 65,
+    C1: 80,
+    C2: 90,
+  };
+  if (code in map) return map[code];
+  // fallback for labels like "Proficient" etc.
+  if (levelLabel.toLowerCase().includes("proficient")) return 85;
+  if (levelLabel.toLowerCase().includes("beginner")) return 25;
+  return 60;
+}
+
+function SidebarSection({
+  section,
+  isFirst,
+}: {
+  section: Cv["sidebar"][number];
+  isFirst?: boolean;
+}) {
+  return (
+    <View
+      style={isFirst ? styles.sidebarSectionFirst : styles.sidebarSection}
+      wrap={false}
+    >
+      <Text style={styles.sidebarHeading}>{section.title}</Text>
+
+      {section.paragraphs?.map((p) => (
+        <Text key={p} style={styles.sidebarParagraph}>
+          {p}
+        </Text>
+      ))}
+
+      {section.links && (
+        <View style={styles.sidebarList}>
+          {section.links.map((l) => (
+            <View key={l.href} style={styles.sidebarLinkRow}>
+              {l.icon === "portfolio" && <PortfolioIcon />}
+              {l.icon === "linkedin" && <LinkedInIcon />}
+              <Text style={styles.sidebarListItem}>
+                <Link src={l.href} style={styles.sidebarLink}>
+                  {l.display || l.label}
+                </Link>
+              </Text>
+            </View>
+          ))}
+        </View>
+      )}
+
+      {section.bullets && (
+        <View style={styles.sidebarList}>
+          {section.bullets.map((b) => (
+            <Text key={b} style={styles.sidebarListItem}>
+              {b}
+            </Text>
+          ))}
+        </View>
+      )}
+    </View>
+  );
+}
+
+function ExperienceRole({ role }: { role: Cv["experience"][number] }) {
+  return (
+    <View style={styles.role} wrap={false}>
+      <View style={styles.roleMeta}>
+        <Text style={styles.dates}>{`${role.start} - ${role.end}`}</Text>
+        <View style={styles.roleTitleRow}>
+          <Text style={styles.roleTitle}>{role.title}</Text>
+          <Text style={styles.company}>{role.company}</Text>
+        </View>
+      </View>
+
+      {role.summary ? <Text style={styles.roleSummary}>{role.summary}</Text> : null}
+
+      <View style={styles.bullets}>
+        {role.bullets.map((b) => (
+          <Text key={b} style={styles.bulletItem}>
+            {`• ${b}`}
+          </Text>
+        ))}
+      </View>
+    </View>
+  );
+}
+
+export default function CvPdfDocument({ cv }: { cv: Cv }) {
+  const [firstName = "", ...rest] = cv.header.name.split(" ");
+  const lastName = rest.join(" ");
+
+  return (
+    <Document title={`${cv.header.name} - CV`}>
+      <Page size="A4" style={styles.page}>
+        <View style={styles.sidebar}>
+          {cv.sidebar.map((section, index) => (
+            <SidebarSection
+              key={section.title}
+              section={section}
+              isFirst={index === 0}
+            />
+          ))}
+        </View>
+
+        <View style={styles.pageHeader} fixed render={({ pageNumber }) => (pageNumber > 1 ? <View /> : null)} />
+
+        <View style={styles.main}>
+          <Text style={styles.nameRow}>
+            <Text>{firstName}</Text>
+            {lastName ? <Text>{` ${lastName}`}</Text> : null}
+          </Text>
+          <View style={styles.contactRow}>
+            <View style={styles.contactItem}>
+              <MailIcon />
+              <Text>{cv.header.email}</Text>
+            </View>
+            <View style={styles.contactItem}>
+              <PinIcon />
+              <Text>{cv.header.location}</Text>
+            </View>
+          </View>
+          <View style={styles.headerDivider} />
+
+          <Text style={styles.sectionHeading}>Experience</Text>
+          {cv.experience.map((role) => (
+            <ExperienceRole
+              key={`${role.company}-${role.title}-${role.start}`}
+              role={role}
+            />
+          ))}
+
+          <View style={styles.sectionDivider} />
+
+          <Text style={styles.sectionHeading}>Education</Text>
+          <View wrap={false}>
+            {cv.education.map((edu) => (
+              <View key={`${edu.institution}-${edu.date}`} style={styles.eduRow} wrap={false}>
+                <Text style={styles.eduDate}>{edu.date}</Text>
+                <View style={styles.eduBody}>
+                  <Text style={styles.eduSchool}>{edu.institution}</Text>
+                  <Text style={styles.eduDegree}>{edu.degree}</Text>
+                </View>
+              </View>
+            ))}
+          </View>
+
+          <View style={styles.sectionDivider} />
+
+          <Text style={styles.sectionHeading}>Languages</Text>
+          <View wrap={false}>
+            {cv.languages.map((l) => (
+              <View key={l.name} style={styles.languageRow} wrap={false}>
+                <View style={styles.languageTop}>
+                  <Text style={styles.languageName}>{`${l.name}: ${l.levelLabel}`}</Text>
+                  <Text style={styles.languageCode}>{l.levelCode || ""}</Text>
+                </View>
+                <View style={styles.languageBarWrap}>
+                  <View
+                    style={{
+                      ...styles.languageBarFill,
+                      width: `${languageLevelToPercent(l.levelLabel, l.levelCode)}%`,
+                    }}
+                  />
+                </View>
+              </View>
+            ))}
+          </View>
+        </View>
+      </Page>
+    </Document>
+  );
+}
