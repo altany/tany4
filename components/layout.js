@@ -13,6 +13,7 @@ import {
   SITE_TITLE,
   LAST_COMMIT_ENDPOINT,
   JOB_TITLE,
+  CONTACT_EMAIL,
 } from "../lib/constants";
 
 const ChatWidget = dynamic(() => import("./chatWidget"), { ssr: false });
@@ -175,9 +176,9 @@ const BottomLinks = () => {
       </li>
       <li>
         <a
-          href="mailto:hello@tany4.com"
+          href={`mailto:${CONTACT_EMAIL}`}
           target="_email"
-          title="Email - hello@tany4.com"
+          title={`Email - ${CONTACT_EMAIL}`}
         >
           <Icon icon={ENVELOPE} />
         </a>
