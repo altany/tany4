@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     fontSize: 30,
-    fontWeight: 700,
+    fontFamily: "Helvetica-Bold",
     lineHeight: 1.02,
     color: "#2f6f7f",
   },
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     marginTop: 14,
     marginBottom: 8,
     fontSize: 10,
-    fontWeight: 700,
+    fontFamily: "Helvetica-Bold",
     letterSpacing: 0.6,
     textTransform: "uppercase",
     color: "#2f6f7f",
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
   sidebarHeading: {
     marginBottom: 8,
     fontSize: 9,
-    fontWeight: 700,
+    fontFamily: "Helvetica-Bold",
     letterSpacing: 0.7,
     textTransform: "uppercase",
   },
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
 
   roleTitle: {
     fontSize: 10,
-    fontWeight: 700,
+    fontFamily: "Helvetica-Bold",
   },
 
   company: {
@@ -253,7 +253,7 @@ const styles = StyleSheet.create({
 
   eduSchool: {
     fontSize: 10,
-    fontWeight: 700,
+    fontFamily: "Helvetica-Bold",
   },
 
   eduDegree: {
@@ -282,7 +282,7 @@ const styles = StyleSheet.create({
 
   languageCode: {
     fontSize: 10,
-    fontWeight: 700,
+    fontFamily: "Helvetica-Bold",
     color: "#666666",
   },
 
