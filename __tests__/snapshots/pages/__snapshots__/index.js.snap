@@ -174,30 +174,30 @@ exports[`renders the whole page unchanged 1`] = `
           </h2>
         </header>
         <p>
-          I specialise in building fast, accessible and user-focused mobile and web experiences. With 10+ years in front-end engineering and 2.5 years as a tech lead, I've delivered production React Native apps, led cross-functional teams, improved performance, and shaped product direction.
+          I build mobile and web products that people actually want to use. Over 10 years in front-end engineering, I've shipped apps to millions of users, led teams through complex migrations, and helped junior engineers grow into confident contributors.
         </p>
         <p>
-          I'm passionate about:
+          What drives me:
         </p>
         <ul>
           <li>
-            React & React Native mobile development
+            Shipping products that make a real difference
           </li>
           <li>
-            Accessibility and performance
+            Making complex things simple for users and developers alike
           </li>
           <li>
-            Mentoring engineers & cross-team collaboration
+            Growing teams and creating environments where people do their best work
           </li>
           <li>
-            AI-assisted developer productivity
+            Accessibility as a baseline, not an afterthought
           </li>
           <li>
-            Using technology to create positive impact
+            Using AI tools to work smarter, not just faster
           </li>
         </ul>
         <p>
-          I've spoken at 
+          I've shared my experience at 
           <a
             href="/blog/posts/react-conf-2019"
           >
@@ -209,7 +209,7 @@ exports[`renders the whole page unchanged 1`] = `
           >
             JS VidCon 2020
           </a>
-           about how we built and scaled the Olio React Native app.
+          , talking about building and scaling the Olio app from scratch.
         </p>
         <p>
           Explore 
