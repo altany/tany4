@@ -2,7 +2,7 @@
 title: "7 Years at Olio"
 subtitle: "What I've learned growing from mid-level developer to tech lead"
 date: "2025-12-19T17:00:00+0000"
-categories: ["Career", "React Native", "Leadership"]
+categories: ["Career", "Leadership"]
 highlight: true
 new: true
 color: "#f6256f"
@@ -23,6 +23,8 @@ This isn't a "how to succeed" post. It's a reflection on what I've learned - the
 
 In my first few months, we shipped the React Native app MVP in 3 months with a small team. It was intense. We made trade-offs we wouldn't make today. But we shipped, and the app now serves millions of users.
 
+Over the years, I worked on everything from map performance (optimizing marker and cluster rendering to avoid unnecessary re-renders) to automated ads display logic. The breadth of a small team means you touch everything.
+
 **What I learned:**
 - Speed matters early on. Perfect is the enemy of shipped.
 - The patterns you set in a rush often stick around for years. Try to get the fundamentals right even when moving fast.
@@ -39,7 +41,7 @@ For over 4 years, I co-owned the mobile release process, coordinating weekly rel
 
 ## The Rails → React migration
 
-One of the biggest projects I worked on was migrating the Volunteer Hub from server-rendered Rails views to a React SPA. This took over 2 years and involved rewriting critical flows while thousands of volunteers actively used the platform.
+One of the biggest projects I worked on was migrating the Volunteer Hub from server-rendered Rails views to a React SPA. This took over 2 years and involved rewriting critical flows while thousands of volunteers actively used the platform. We migrated them without major issues - no small feat when people depend on the tool for their daily pickups.
 
 **What I learned:**
 - Big rewrites can fail. Incremental migration works better.
@@ -89,6 +91,12 @@ I've built several prototypes, including a partner platform concept during a hac
 
 A key company milestone was extending the platform from Olio volunteers to charity volunteers. What seemed like "just another user type" ended up touching assumptions across the entire codebase. It was a good reminder that business impact comes from understanding the business, not just the code.
 
+## Building partner tools
+
+As Tech Lead, I owned the front-end for Olio's partner-facing dashboard, the tools supermarkets and food businesses use to manage their collections. This was a different challenge: building for non-technical business users, handling complex scheduling logic, and internationalizing for global expansion (including adding Chinese language support).
+
+I also got more involved in the people side: interviewing candidates, contributing to hiring decisions, and helping shape what good looked like for our front-end team.
+
 ## Speaking at React Conf
 
 In 2019, I [spoke at React Conf](/blog/posts/react-conf-2019) about how we built and scaled the Olio app. I was genuinely terrified. But preparing that talk forced me to understand our work more deeply than I ever had, and the response from the community reminded me how generous and curious people in tech can be.
@@ -103,7 +111,7 @@ No reflection is complete without the things I wish I'd done better:
 
 ## What drives me now
 
-After 7 years, what still excites me:
+After 7 years across four different codebases (consumer app, volunteer platform, partner tools, and even some backend work), what still excites me:
 
 - **Shipping products that matter.** Olio helps redistribute food that would otherwise go to waste. The mission still feels meaningful.
 - **Making complex things simple.** For users and developers alike.
