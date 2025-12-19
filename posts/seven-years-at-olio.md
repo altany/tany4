@@ -1,7 +1,7 @@
 ---
 title: "7 Years at Olio"
 subtitle: "What I've learned growing from mid-level developer to tech lead"
-date: "2025-01-15T10:00:00+0000"
+date: "2025-12-19T17:00:00+0000"
 categories: ["Career", "React Native", "Leadership"]
 highlight: true
 new: true
@@ -91,7 +91,7 @@ A key company milestone was extending the platform from Olio volunteers to chari
 
 ## Speaking at React Conf
 
-In 2019, I spoke at React Conf about how we built and scaled the Olio app. I was genuinely terrified. But preparing that talk forced me to understand our work more deeply than I ever had, and the response from the community reminded me how generous and curious people in tech can be.
+In 2019, I [spoke at React Conf](/blog/posts/react-conf-2019) about how we built and scaled the Olio app. I was genuinely terrified. But preparing that talk forced me to understand our work more deeply than I ever had, and the response from the community reminded me how generous and curious people in tech can be.
 
 ## What I'd do differently
 
