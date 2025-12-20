@@ -174,15 +174,6 @@ const BottomLinks = () => {
       </li>
       <li>
         <a
-          href="/TaniaPapazafeiropoulou-CV.pdf?version=12-2025"
-          target="_cv"
-          title="Resume - Tania Papapazafeiropoulou"
-        >
-          <Icon icon={RESUME} />
-        </a>
-      </li>
-      <li>
-        <a
           href={`mailto:${CONTACT_EMAIL}`}
           target="_email"
           title={`Email - ${CONTACT_EMAIL}`}

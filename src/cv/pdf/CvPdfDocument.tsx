@@ -143,7 +143,6 @@ const styles = StyleSheet.create({
   },
 
   sidebarListItem: {
-    marginBottom: 6,
     fontSize: 8.5,
     lineHeight: 1.5,
   },
@@ -197,12 +196,10 @@ const styles = StyleSheet.create({
   company: {
     fontSize: 10,
     color: "#444444",
-    marginLeft: 6,
   },
 
   roleSummary: {
-    marginTop: 8,
-    marginBottom: 10,
+   
     color: "#555555",
     fontFamily: "Helvetica-Oblique",
     fontSize: 10,
@@ -212,16 +209,16 @@ const styles = StyleSheet.create({
   sidebarLinkIcon: {
     width: 10,
     height: 10,
-    marginRight: 4,
+    marginRight: 6,
   },
 
   sidebarLinkRow: {
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "flex-start",
+    marginBottom: 6,
   },
 
   bullets: {
-    //paddingLeft: 10,
     marginTop: 4,
     marginBottom: 4,
   },
@@ -442,8 +439,8 @@ function ExperienceRole({ role }: { role: Cv["experience"][number] }) {
       <View style={styles.roleMeta}>
         <Text style={styles.dates}>{`${role.start} - ${role.end}`}</Text>
         <View style={styles.roleTitleRow}>
-          <Text style={styles.roleTitle}>{role.title}</Text>
-          <Text style={styles.company}>{role.company}</Text>
+          <Text style={styles.roleTitle}>{role.title} </Text>
+          <Text style={styles.company}>{'  - '}{role.company}</Text>
         </View>
       </View>
 
