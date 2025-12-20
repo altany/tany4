@@ -15,7 +15,7 @@ readingTimeMinutes: 14
 
 ---
 
-When I joined Olio in 2018, the engineering team was fewer than 20 people. The company was early-stage, the app was being rebuilt, and I had no idea I'd still be here 7 years later. In that time, I've shipped a React Native MVP in 3 months, helped migrate an entire platform from Rails to React, mentored engineers who went on to lead their own features, and grown into a Tech Lead role I never planned for.
+When I joined Olio in 2018, the engineering team was only 3 people (including me). The company was early-stage, the app was being rebuilt, and I had no idea I'd still be here 7 years later. In that time, I've shipped a React Native MVP in 3 months, helped migrate an entire platform from Rails to React, mentored engineers who went on to lead their own features, and grown into a Tech Lead role I never planned for.
 
 This isn't a "how to succeed" post. It's a reflection on what I've learned - the hard way, mostly - about building software, working with teams, and growing as an engineer.
 
