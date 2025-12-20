@@ -64,6 +64,13 @@ const styles = StyleSheet.create({
     color: "#2f6f7f",
   },
 
+  titleRow: {
+    marginTop: 10,
+    fontSize: 13,
+    color: "#444444",
+    fontFamily: "Helvetica-Bold",
+  },
+
   contactRow: {
     marginTop: 8,
     flexDirection: "row",
@@ -481,6 +488,7 @@ export default function CvPdfDocument({ cv }: { cv: Cv }) {
             <Text>{firstName}</Text>
             {lastName ? <Text>{` ${lastName}`}</Text> : null}
           </Text>
+          <Text style={styles.titleRow}>{cv.header.title}</Text>
           <View style={styles.contactRow}>
             <View style={styles.contactItem}>
               <MailIcon />
