@@ -17,7 +17,6 @@ class Navigation {
 
         this.linkedin = within(this.element).queryByTitle('Linkedin profile - in/taniapapazaf')
         this.twitter = within(this.element).queryByTitle('Twitter profile - @_Tany_')
-        this.resume = within(this.element).queryByTitle('Resume - Tania Papapazafeiropoulou')
         this.email = within(this.element).queryByTitle(`Email - ${CONTACT_EMAIL}`)
 
     }
