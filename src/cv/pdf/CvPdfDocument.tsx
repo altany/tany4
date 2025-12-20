@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
   },
 
   roleSummary: {
-   
+    margin: "4px 0",
     color: "#555555",
     fontFamily: "Helvetica-Oblique",
     fontSize: 10,
