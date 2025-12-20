@@ -84,35 +84,18 @@
 }
 
 .aboutPhoto {
-  margin: 1rem 0 2rem 0;
+  margin: 1.5rem 0 2rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
 }
 
 .aboutPhoto img {
   width: min(360px, 100%);
   height: auto;
   display: block;
-  clip-path: path('M180,35 C180,35 155,0 97,0 C39,0 0,50 0,110 C0,200 180,340 180,340 C180,340 360,200 360,110 C360,50 321,0 263,0 C205,0 180,35 180,35 Z');
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  position: relative;
-}
-
-.aboutPhoto::before {
-  content: '';
-  position: absolute;
-  top: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 368px;
-  height: 352px;
-  background: linear-gradient(135deg, variables.$thirdColor, variables.$secondColor);
-  filter: blur(2px);
-  clip-path: path('M184,36 C184,36 158,0 99,0 C40,0 0,52 0,114 C0,206 184,348 184,348 C184,348 368,206 368,114 C368,52 328,0 269,0 C210,0 184,36 184,36 Z');
-  z-index: 0;
+  @include mixins.borderRadius(12px);
+    @include mixins.boxShadow(1px 1px 6px 0px variables.$thirdColor);
 }
 
 .aboutPhoto figcaption {
@@ -304,7 +287,7 @@
   }
 
   .experienceCard {
-    flex-basis: 48%;
+    flex-basis: 47%;
     background-color: lighten(
       color.adjust(variables.$secondColor, $saturation: -40%),
       4%
