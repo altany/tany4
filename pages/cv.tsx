@@ -1,133 +1,160 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
 import Layout from "../components/layout";
 import styles from "../styles/Cv.module.scss";
 import { cv } from "../src/cv/cv";
 import { SITE_TITLE, SITE_URL } from "../lib/constants";
 
-function CvContent() {
-  return (
-    <div className={styles.page}>
-      <aside className={styles.sidebar}>
-        {cv.sidebar.map((section) => (
-          <section key={section.title} className={styles.sidebarSection}>
-            <h2 className={styles.sidebarHeading}>{section.title}</h2>
-
-            {section.paragraphs?.map((p) => (
-              <p key={p} className={styles.sidebarParagraph}>
-                {p}
-              </p>
-            ))}
-
-            {section.links && (
-              <ul className={styles.sidebarList}>
-                {section.links.map((l) => (
-                  <li key={l.href}>
-                    <a href={l.href} target="_blank" rel="noreferrer">
-                      {l.display || l.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
-
-            {section.bullets && (
-              <ul className={styles.sidebarList}>
-                {section.bullets.map((b) => (
-                  <li key={b}>{b}</li>
-                ))}
-              </ul>
-            )}
-          </section>
-        ))}
-      </aside>
-
-      <main className={styles.main}>
-        <header className={styles.header}>
-          <h1 className={styles.name}>{cv.header.name}</h1>
-          <div className={styles.contactRow}>
-            <span className={styles.contactItem}>{cv.header.email}</span>
-            <span className={styles.contactItem}>{cv.header.location}</span>
-          </div>
-        </header>
-
-        <section className={styles.block}>
-          <h2 className={styles.heading}>Experience</h2>
-          {cv.experience.map((role) => (
-            <article key={`${role.company}-${role.title}-${role.start}`} className={styles.role}>
-              <div className={styles.roleMeta}>
-                <span className={styles.dates}>{`${role.start} - ${role.end}`}</span>
-                <div className={styles.roleTitle}>{role.title}</div>
-                <div className={styles.company}>{role.company}</div>
-              </div>
-
-              {role.summary && <p className={styles.roleSummary}>{role.summary}</p>}
-
-              <ul className={styles.bullets}>
-                {role.bullets.map((b) => (
-                  <li key={b}>{b}</li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </section>
-
-        <section className={styles.block}>
-          <h2 className={styles.heading}>Education</h2>
-          {cv.education.map((edu) => (
-            <div key={`${edu.institution}-${edu.date}`} className={styles.edu}>
-              <div className={styles.eduDate}>{edu.date}</div>
-              <div className={styles.eduBody}>
-                <div className={styles.eduSchool}>{edu.institution}</div>
-                <div className={styles.eduDegree}>{edu.degree}</div>
-              </div>
-            </div>
-          ))}
-        </section>
-
-        <section className={styles.block}>
-          <h2 className={styles.heading}>Languages</h2>
-          <div className={styles.languagesGrid}>
-            {cv.languages.map((l) => (
-              <div key={l.name} className={styles.languageItem}>
-                <div className={styles.languageName}>
-                  {l.name}: {l.levelLabel}
-                </div>
-                {l.levelCode && <div className={styles.languageCode}>{l.levelCode}</div>}
-              </div>
-            ))}
-          </div>
-        </section>
-      </main>
-    </div>
-  );
-}
-
 export default function CvPage() {
-  const router = useRouter();
-  const print = router.query.print === "1";
-  const title = `${SITE_TITLE} - CV`;
-
-  const content = (
-    <>
-      <Head>
-        <title>{title}</title>
-        <meta name="robots" content="noindex" />
-      </Head>
-      <CvContent />
-    </>
-  );
-
-  if (print) return content;
+  const title = `Resume - ${SITE_TITLE}`;
 
   return (
     <Layout
       resume
       canonicalUrl={`${SITE_URL}cv`}
       seoTitle={title}
-      seoDescription={`${cv.header.name} - CV`}
+      seoDescription={`${cv.header.name} - ${cv.header.title}`}
     >
-      {content}
+      <Head>
+        <title>{title}</title>
+      </Head>
+
+      <div className={styles.container}>
+        <header className={styles.hero}>
+          <h1 className={styles.name}>{cv.header.name}</h1>
+          <p className={styles.title}>{cv.header.title}</p>
+          <div className={styles.contact}>
+            <a href={`mailto:${cv.header.email}`} className={styles.contactLink}>
+              {cv.header.email}
+            </a>
+            <span className={styles.contactDivider}>•</span>
+            <span>{cv.header.location}</span>
+          </div>
+        </header>
+
+        {cv.sidebar.find((s) => s.title === "Summary") && (
+          <section className={styles.section}>
+            <p className={styles.summary}>
+              {cv.sidebar.find((s) => s.title === "Summary")?.paragraphs?.[0]}
+            </p>
+          </section>
+        )}
+
+        {cv.sidebar.find((s) => s.title === "Skills") && (
+          <section className={styles.section}>
+            <h2 className={styles.sectionHeading}>Skills</h2>
+            <div className={styles.tags}>
+              {cv.sidebar
+                .find((s) => s.title === "Skills")
+                ?.bullets?.map((skill) => (
+                  <span key={skill} className={styles.tag}>
+                    {skill}
+                  </span>
+                ))}
+            </div>
+          </section>
+        )}
+
+        {cv.sidebar.find((s) => s.title === "AI experience") && (
+          <section className={styles.section}>
+            <h2 className={styles.sectionHeading}>AI Experience</h2>
+            <ul className={styles.bulletList}>
+              {cv.sidebar
+                .find((s) => s.title === "AI experience")
+                ?.bullets?.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+            </ul>
+          </section>
+        )}
+
+        <section className={styles.section}>
+          <h2 className={styles.sectionHeading}>Experience</h2>
+          <div className={styles.timeline}>
+            {cv.experience.map((role) => (
+              <article
+                key={`${role.company}-${role.title}-${role.start}`}
+                className={styles.timelineItem}
+              >
+                <div className={styles.timelineMeta}>
+                  <span className={styles.dates}>
+                    {role.start} — {role.end}
+                  </span>
+                </div>
+                <div className={styles.timelineContent}>
+                  <h3 className={styles.roleTitle}>{role.title}</h3>
+                  <p className={styles.company}>{role.company}</p>
+                  {role.summary && (
+                    <p className={styles.roleSummary}>{role.summary}</p>
+                  )}
+                  <ul className={styles.bulletList}>
+                    {role.bullets.map((b) => (
+                      <li key={b}>{b}</li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <h2 className={styles.sectionHeading}>Education</h2>
+          <div className={styles.eduGrid}>
+            {cv.education.map((edu) => (
+              <div
+                key={`${edu.institution}-${edu.date}`}
+                className={styles.eduCard}
+              >
+                <span className={styles.eduDate}>{edu.date}</span>
+                <h3 className={styles.eduSchool}>{edu.institution}</h3>
+                <p className={styles.eduDegree}>{edu.degree}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <h2 className={styles.sectionHeading}>Languages</h2>
+          <div className={styles.languagesList}>
+            {cv.languages.map((l) => (
+              <div key={l.name} className={styles.languageItem}>
+                <span className={styles.languageName}>{l.name}</span>
+                <span className={styles.languageLevel}>
+                  {l.levelLabel}
+                  {l.levelCode && ` (${l.levelCode})`}
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <div className={styles.twoCol}>
+          {cv.sidebar.find((s) => s.title === "Certifications") && (
+            <section className={styles.section}>
+              <h2 className={styles.sectionHeading}>Certifications</h2>
+              {cv.sidebar
+                .find((s) => s.title === "Certifications")
+                ?.paragraphs?.map((p) => (
+                  <p key={p} className={styles.smallText}>
+                    {p}
+                  </p>
+                ))}
+            </section>
+          )}
+          {cv.sidebar.find((s) => s.title === "Hobbies and interests") && (
+            <section className={styles.section}>
+              <h2 className={styles.sectionHeading}>Interests</h2>
+              {cv.sidebar
+                .find((s) => s.title === "Hobbies and interests")
+                ?.paragraphs?.map((p) => (
+                  <p key={p} className={styles.smallText}>
+                    {p}
+                  </p>
+                ))}
+            </section>
+          )}
+        </div>
+      </div>
     </Layout>
   );
 }
