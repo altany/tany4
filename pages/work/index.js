@@ -226,16 +226,20 @@ export default function Work() {
         </section>
 
         <section className={styles.talksSection}>
-          <h2>Talks</h2>
+          <h2>Talks & writing</h2>
           <p>
             Although I don&apos;t actively pursue speaking opportunities, I&apos;ve
-            previously shared engineering learnings at industry events:
+            previously shared engineering learnings at industry events. I also
+            write occasionally about engineering, career reflections, and things
+            I&apos;ve learned along the way.
           </p>
           <ul>
             <li>
               Using React Native to save the world - presented at <Link href="/blog/posts/react-conf-2019">React Conf 2019</Link> and <Link href="/blog/posts/jsvidcon-2020">JS VidCon 2020</Link>
             </li>
-            
+            <li>
+              <Link href="/blog">Read my blog</Link> for posts on engineering, AI tooling, and career reflections
+            </li>
           </ul>
         </section>
       </div>

@@ -442,10 +442,10 @@ exports[`renders the work page unchanged 1`] = `
           class="talksSection"
         >
           <h2>
-            Talks
+            Talks & writing
           </h2>
           <p>
-            Although I don't actively pursue speaking opportunities, I've previously shared engineering learnings at industry events:
+            Although I don't actively pursue speaking opportunities, I've previously shared engineering learnings at industry events. I also write occasionally about engineering, career reflections, and things I've learned along the way.
           </p>
           <ul>
             <li>
@@ -461,6 +461,14 @@ exports[`renders the work page unchanged 1`] = `
               >
                 JS VidCon 2020
               </a>
+            </li>
+            <li>
+              <a
+                href="/blog"
+              >
+                Read my blog
+              </a>
+               for posts on engineering, AI tooling, and career reflections
             </li>
           </ul>
         </section>
