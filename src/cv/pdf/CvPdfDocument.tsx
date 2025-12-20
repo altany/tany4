@@ -45,9 +45,9 @@ const styles = StyleSheet.create({
   main: {
     marginLeft: 210,
     paddingTop: 24,
-    paddingRight: 26,
+    paddingRight: 40,
     paddingBottom: 24,
-    paddingLeft: 26,
+    paddingLeft: 36,
   },
 
   pageHeader: {
@@ -106,9 +106,9 @@ const styles = StyleSheet.create({
   sectionHeading: {
     marginTop: 14,
     marginBottom: 8,
-    fontSize: 10,
+    fontSize: 9,
     fontFamily: "Helvetica-Bold",
-    letterSpacing: 0.6,
+    letterSpacing: 0.8,
     textTransform: "uppercase",
     color: "#2f6f7f",
   },
@@ -143,10 +143,26 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
   },
 
+  sidebarHeadingSecondary: {
+    marginBottom: 6,
+    fontSize: 8,
+    fontFamily: "Helvetica-Bold",
+    letterSpacing: 0.5,
+    textTransform: "uppercase",
+    color: "rgba(255, 255, 255, 0.8)",
+  },
+
   sidebarParagraph: {
     marginBottom: 8,
     fontSize: 8.5,
     lineHeight: 1.4,
+  },
+
+  sidebarParagraphSecondary: {
+    marginBottom: 6,
+    fontSize: 8,
+    lineHeight: 1.4,
+    color: "rgba(255, 255, 255, 0.85)",
   },
 
   sidebarList: {
@@ -235,6 +251,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     fontSize: 9,
     lineHeight: 1.5,
+    paddingLeft: 8,
   },
 
   eduRow: {
@@ -277,18 +294,19 @@ const styles = StyleSheet.create({
   },
 
   languageName: {
-    fontSize: 10,
+    fontSize: 9,
+    color: "#444444",
   },
 
   languageLevel: {
-    fontSize: 10,
-    color: "#666666",
+    fontSize: 9,
+    color: "#888888",
   },
 
   languageCode: {
-    fontSize: 10,
+    fontSize: 9,
     fontFamily: "Helvetica-Bold",
-    color: "#666666",
+    color: "#888888",
   },
 
   languageBarWrap: {
@@ -393,15 +411,17 @@ function SidebarSection({
   section: Cv["sidebar"][number];
   isFirst?: boolean;
 }) {
+  const isSecondary = section.title === "Hobbies and interests" || section.title === "Certifications";
+  
   return (
     <View
       style={isFirst ? styles.sidebarSectionFirst : styles.sidebarSection}
       wrap={false}
     >
-      <Text style={styles.sidebarHeading}>{section.title}</Text>
+      <Text style={isSecondary ? styles.sidebarHeadingSecondary : styles.sidebarHeading}>{section.title}</Text>
 
       {section.paragraphs?.map((p) => (
-        <Text key={p} style={styles.sidebarParagraph}>
+        <Text key={p} style={isSecondary ? styles.sidebarParagraphSecondary : styles.sidebarParagraph}>
           {p}
         </Text>
       ))}
