@@ -56,7 +56,7 @@ export default function CvPage() {
 
         {cv.sidebar.find((s) => s.title === "AI experience") && (
           <section className={styles.section}>
-            <h2 className={styles.sectionHeading}>AI Experience</h2>
+            <h2 className={styles.sectionHeadingAlt}>AI Experience</h2>
             <ul className={styles.bulletList}>
               {cv.sidebar
                 .find((s) => s.title === "AI experience")
