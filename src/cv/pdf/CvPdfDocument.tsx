@@ -91,6 +91,11 @@ const styles = StyleSheet.create({
     height: 10,
   },
 
+  contactLink: {
+    color: "#666666",
+    textDecoration: "none",
+  },
+
   headerDivider: {
     marginTop: 10,
     borderBottomWidth: 1,
@@ -334,12 +339,12 @@ function PinIcon({ color = "#666666" }: { color?: string }) {
   );
 }
 
-function PortfolioIcon() {
+function PortfolioIcon({ color = "#666666" }: { color?: string }) {
   return (
     <Svg viewBox="0 0 24 24" style={styles.sidebarLinkIcon}>
       <Path
         d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
-        stroke="#ffffff"
+        stroke={color}
         strokeWidth={1.7}
         fill="none"
         strokeLinecap="round"
@@ -347,7 +352,7 @@ function PortfolioIcon() {
       />
       <Path
         d="M9 22V12h6v10"
-        stroke="#ffffff"
+        stroke={color}
         strokeWidth={1.7}
         fill="none"
         strokeLinecap="round"
@@ -498,6 +503,14 @@ export default function CvPdfDocument({ cv }: { cv: Cv }) {
               <PinIcon />
               <Text>{cv.header.location}</Text>
             </View>
+            {cv.header.website && (
+              <View style={styles.contactItem}>
+                <PortfolioIcon />
+                <Link src={`https://${cv.header.website}`} style={styles.contactLink} >
+                  <Text>{cv.header.website}</Text>
+                </Link>
+              </View>
+            )}
           </View>
           <View style={styles.headerDivider} />
 
@@ -535,14 +548,6 @@ export default function CvPdfDocument({ cv }: { cv: Cv }) {
                 <View style={styles.languageTop}>
                   <Text style={styles.languageName}>{`${l.name}: ${l.levelLabel}`}</Text>
                   <Text style={styles.languageCode}>{l.levelCode || ""}</Text>
-                </View>
-                <View style={styles.languageBarWrap}>
-                  <View
-                    style={{
-                      ...styles.languageBarFill,
-                      width: `${languageLevelToPercent(l.levelLabel, l.levelCode)}%`,
-                    }}
-                  />
                 </View>
               </View>
             ))}

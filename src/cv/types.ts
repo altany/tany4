@@ -10,7 +10,7 @@ export type CvHeader = {
   title: string;
   email: string;
   location: string;
-  links: CvLink[];
+  website?: string;
 };
 
 export type CvSidebarSection = {

@@ -7,29 +7,13 @@ export const cv: Cv = {
     title: "Senior Front-End Engineer & Tech Lead",
     email: CONTACT_EMAIL,
     location: "United Kingdom / Greece",
-    links: [
-      { label: "tany4.com", href: "https://tany4.com" },
-      {
-        label: "linkedin.com/in/taniapapazaf",
-        href: "https://linkedin.com/in/taniapapazaf",
-      },
-    ],
+    website: "tany4.com",
   },
   sidebar: [
     {
       title: "Summary",
       paragraphs: [
         "Senior Front-End Engineer & Tech Lead with 10+ years of experience building and leading scalable React and React Native applications. Strong focus on high-quality UI architecture, performance, accessibility, and developer experience. Experienced mentoring engineers, leading technical decisions, and delivering impact across multiple product areas.",
-      ],
-    },
-    {
-      title: "Websites, portfolios and profiles",
-      links: [
-        { label: "tany4.com", href: "https://tany4.com" },
-        {
-          label: "linkedin.com/in/taniapapazaf",
-          href: "https://linkedin.com/in/taniapapazaf",
-        },
       ],
     },
     {
