@@ -218,11 +218,7 @@ const styles = StyleSheet.create({
     lineHeight: 1.5,
   },
 
-  sidebarLinkIcon: {
-    width: 10,
-    height: 10,
-    marginRight: 6,
-  },
+  
 
   sidebarLinkRow: {
     flexDirection: "row",
@@ -313,7 +309,15 @@ function MailIcon({ color = "#666666" }: { color?: string }) {
   return (
     <Svg viewBox="0 0 24 24" style={styles.contactIcon}>
       <Path
-        d="M4 6h16v12H4V6zm1.6 1.6v.1l6.9 5.4c1 .8 2.1.8 3.1 0l6.9-5.4v-.1"
+        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+        stroke={color}
+        strokeWidth={1.7}
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <Path
+        d="M22 6l-10 7L2 6"
         stroke={color}
         strokeWidth={1.7}
         fill="none"
@@ -341,7 +345,7 @@ function PinIcon({ color = "#666666" }: { color?: string }) {
 
 function PortfolioIcon({ color = "#666666" }: { color?: string }) {
   return (
-    <Svg viewBox="0 0 24 24" style={styles.sidebarLinkIcon}>
+    <Svg viewBox="0 0 24 24" style={styles.contactIcon}>
       <Path
         d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
         stroke={color}
@@ -362,20 +366,7 @@ function PortfolioIcon({ color = "#666666" }: { color?: string }) {
   );
 }
 
-function LinkedInIcon() {
-  return (
-    <Svg viewBox="0 0 24 24" style={styles.sidebarLinkIcon}>
-      <Path
-        d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"
-        stroke="#ffffff"
-        strokeWidth={1.7}
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </Svg>
-  );
-}
+
 
 function languageLevelToPercent(levelLabel: string, levelCode?: string): number {
   const code = (levelCode || "").toUpperCase();
@@ -415,22 +406,7 @@ function SidebarSection({
         </Text>
       ))}
 
-      {section.links && (
-        <View style={styles.sidebarList}>
-          {section.links.map((l) => (
-            <View key={l.href} style={styles.sidebarLinkRow}>
-              {l.icon === "portfolio" && <PortfolioIcon />}
-              {l.icon === "linkedin" && <LinkedInIcon />}
-              <Text style={styles.sidebarListItem}>
-                <Link src={l.href} style={styles.sidebarLink}>
-                  {l.display || l.label}
-                </Link>
-              </Text>
-            </View>
-          ))}
-        </View>
-      )}
-
+      
       {section.bullets && (
         <View style={styles.sidebarList}>
           {section.bullets.map((b) => (
