@@ -267,22 +267,22 @@ const styles = StyleSheet.create({
     marginLeft: 6,
   },
 
-  languageRow: {
-    borderTopWidth: 1,
-    borderTopColor: "#e5e5e5",
-    borderTopStyle: "solid",
-    paddingTop: 8,
-    marginBottom: 6,
-  },
-
-  languageTop: {
+  languagesRow: {
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "baseline",
+  },
+
+  languageItem: {
+    flex: 1,
   },
 
   languageName: {
     fontSize: 10,
+  },
+
+  languageLevel: {
+    fontSize: 10,
+    color: "#666666",
   },
 
   languageCode: {
@@ -518,13 +518,13 @@ export default function CvPdfDocument({ cv }: { cv: Cv }) {
           <View style={styles.sectionDivider} />
 
           <Text style={styles.sectionHeading}>Languages</Text>
-          <View wrap={false}>
+          <View style={styles.languagesRow} wrap={false}>
             {cv.languages.map((l) => (
-              <View key={l.name} style={styles.languageRow} wrap={false}>
-                <View style={styles.languageTop}>
-                  <Text style={styles.languageName}>{`${l.name}: ${l.levelLabel}`}</Text>
-                  <Text style={styles.languageCode}>{l.levelCode || ""}</Text>
-                </View>
+              <View key={l.name} style={styles.languageItem}>
+                <Text style={styles.languageName}>{l.name}</Text>
+                <Text style={styles.languageLevel}>
+                  {l.levelLabel}{l.levelCode ? ` (${l.levelCode})` : ""}
+                </Text>
               </View>
             ))}
           </View>
