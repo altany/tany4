@@ -13,13 +13,13 @@ export const cv: Cv = {
     {
       title: "Summary",
       paragraphs: [
-        "Senior Front-End Engineer & Tech Lead with 10+ years of experience building and leading scalable React and React Native applications. Strong focus on high-quality UI architecture, performance, accessibility, and developer experience. Experienced mentoring engineers, leading technical decisions, and delivering impact across multiple product areas.",
+        "Front-End Engineer with 10+ years of experience building and leading scalable React and React Native applications. Strong focus on architecture, performance, accessibility, and developer experience. Comfortable operating as both a senior IC and a front-end tech lead."
       ],
     },
     {
       title: "AI experience",
       bullets: [
-        "Daily user of AI-assisted development tools for debugging, documentation, repo-wide analysis, and improving developer workflows",
+        "Daily user of AI-assisted development tools for coding, debugging, documentation and repo-wide analysis",
         "Support engineers in using AI confidently and safely",
         "Strong interest in prompt engineering and improving developer workflows",
         "Exploring how AI can support front-end applications and workflow automation",
@@ -60,16 +60,14 @@ export const cv: Cv = {
       summary:
         "A growing B2C/B2B scale-up focused on food redistribution. Joined when the engineering team was <20; contributed across its growth to 100+ employees and millions of users.",
       bullets: [
-        "Led and mentored a team of 3-5 engineers, supporting delivery and quality",
-        "Contributed to early planning and technical decisions (scope, feasibility, risks)",
-        "Led and implemented complex front-end features using React, TypeScript, and shared UI patterns across multiple product areas.",
-        "Improved cross-team collaboration and streamlined delivery processes",
-        "Built a partner platform prototype during a hackathon; the concept later informed production features and partner integrations",
-        "Built an AI-assisted appointment planner prototype with product, design and backend",
-        "Reduced tech debt, improved accessibility and strengthened monitoring/debugging",
-        "Helped extend volunteer support from Olio volunteers to charity volunteers",
-        "Interviewed candidates and contributed to hiring and promotion decisions",
-        "Strong IC: wrote code daily and unblocked teammates",
+        "Owned front-end direction across partner and volunteer platforms, balancing product needs, UX quality and maintainability.",
+        "Contributed to early planning and technical decisions, raising feasibility concerns and shaping approaches before delivery.",
+        "Led architectural work in complex React apps, simplifying scheduling/grouping logic and reducing edge cases.",
+        "Worked closely with product, design, operations and backend to turn real-world workflows into clear, maintainable UI solutions.",
+        "Helped extend volunteer support from Olio volunteers to charity volunteers, enabling new flows and broader operational use.",
+        "Prototyped new ideas during internal hackathons (partner platform, AI-assisted appointment planner) to validate concepts and inform next steps.",
+        "Improved performance, accessibility and reliability through refactoring, monitoring and reducing technical debt.",
+        "Mentored engineers through pairing and code reviews while remaining a strong IC, writing production code daily and unblocking teammates.",
       ],
     },
     {
@@ -78,11 +76,13 @@ export const cv: Cv = {
       title: "Senior Front-End Developer",
       company: "Olio",
       bullets: [
-        "Promoted from Mid-Level to Senior within 18 months based on performance",
-        "Helped build Olio’s React Native app within 3 months as part of a small team",
-        "Delivered features, improvements and long-term maintenance across major app areas",
-        "Key contributor to the Volunteers platform migration (Ruby on Rails → React)",
-        "Expanded the Volunteers platform with new features, improved functionality and increased stability",
+        "Promoted from Mid-Level to Senior within 1 year based on performance.",
+        "Key contributor to Olio's React Native app, helping build and stabilise the product within months as part of a small team.",
+        "Delivered and maintained user-facing features across core app areas with a focus on performance and reliability.",
+        "Played a major role in migrating the Volunteers platform from Rails views to a React-based front end.",
+        "Expanded the Volunteers platform beyond the initial migration by designing and implementing new features and improving workflows.",
+        "Improved stability and maintainability by addressing long-standing issues and reducing technical debt.",
+        "Partnered with backend, product and support teams to prioritise work based on real user needs.",
       ],
     },
     {
