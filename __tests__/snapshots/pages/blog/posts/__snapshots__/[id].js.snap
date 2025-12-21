@@ -137,7 +137,7 @@ exports[`renders the blog post unchanged 1`] = `
     </span>
     <a
       class="downloadCv"
-      href="/TaniaPapazafeiropoulou-CV.pdf?version=12-2025"
+      href="/TaniaPapazafeiropoulou-CV.pdf?version=12/2025"
       rel="noopener noreferrer"
       target="_cv"
       title="Download CV"
