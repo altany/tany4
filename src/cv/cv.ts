@@ -47,17 +47,17 @@ export const cv: Cv = {
     {
       title: "Skills",
       bullets: [
-        "React & React Native Development",
-        "TypeScript & Modern JavaScript",
-        "Front-End Architecture & Scalable UI",
-        "State Management",
-        "Mobile App Performance & Optimisation",
-        "API Integration & Back-End Collaboration",
-        "Testing (Jest, React Testing Library, CI/CD)",
-        "Accessibility & Web/Mobile Best Practices",
-        "AI-Assisted Development",
-        "Mentoring, Code Reviews & Cross-Team Collaboration",
-      ],
+  "React & React Native (Production Applications)",
+  "TypeScript & Modern JavaScript (ES6+)",
+  "Front-End Architecture & Scalable UI Systems",
+  "State Management (Redux, Zustand, TanStack Query)",
+  "Mobile Performance Optimisation & Reliability",
+  "API Integration & Back-End Collaboration",
+  "Testing & Quality (Jest, React Testing Library, CI/CD)",
+  "Accessibility (WCAG) & Web/Mobile Best Practices",
+  "AI-Assisted Development & Developer Tooling",
+  "Technical Leadership, Mentoring & Code Reviews"
+],
     },
     {
       title: "Certifications",

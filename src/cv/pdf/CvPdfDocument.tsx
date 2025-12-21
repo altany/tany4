@@ -321,6 +321,24 @@ const styles = StyleSheet.create({
     height: 4,
     backgroundColor: "#2f6f7f",
   },
+
+  strengthsRow: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 8,
+    marginBottom: 4,
+  },
+
+  strengthItem: {
+    fontSize: 9,
+    color: "#444444",
+  },
+
+  strengthBullet: {
+    fontSize: 9,
+    color: "#2f6f7f",
+    marginRight: 4,
+  },
 });
 
 function MailIcon({ color = "#666666" }: { color?: string }) {
@@ -509,6 +527,17 @@ export default function CvPdfDocument({ cv }: { cv: Cv }) {
             )}
           </View>
           <View style={styles.headerDivider} />
+
+          <Text style={styles.sectionHeading}>Key Strengths</Text>
+          <View style={styles.strengthsRow}>
+            {cv.strengths.map((strength, index) => (
+              <Text key={strength.title} style={styles.strengthItem}>
+                <Text style={styles.strengthBullet}>•</Text>
+                {strength.title}
+                {index < cv.strengths.length - 1 ? "   " : ""}
+              </Text>
+            ))}
+          </View>
 
           <Text style={styles.sectionHeading}>Experience</Text>
           {cv.experience.map((role) => (
