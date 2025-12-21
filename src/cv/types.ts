@@ -33,8 +33,15 @@ export type CvLanguage = {
   levelCode?: string;
 };
 
+export type CvStrength = {
+  title: string;
+  description: string;
+};
+
 export type Cv = {
   header: CvHeader;
+  personalStatement: string;
+  strengths: CvStrength[];
   sidebar: CvSidebarSection[];
   experience: CvExperienceRole[];
   education: CvEducationItem[];

@@ -132,6 +132,53 @@
   }
 }
 
+.personalStatement {
+  margin: 0 0 2rem;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: variables.$thirdColor;
+  font-weight: 500;
+  line-height: 1.6;
+
+  @include mixins.breakpoint(mobilePortrait) {
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.strengthsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 700px;
+}
+
+.strengthItem {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid color.adjust(variables.$mainColor, $lightness: 10%);
+
+  &:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+.strengthTitle {
+  margin: 0 0 0.375rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: variables.$textColor;
+}
+
+.strengthDescription {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: color.adjust(variables.$textColor, $lightness: 15%);
+}
+
 .tags {
   display: flex;
   flex-wrap: wrap;
