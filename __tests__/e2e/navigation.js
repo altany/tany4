@@ -42,6 +42,6 @@ test('`blog` link navigates to `Blog` page', async t => {
 test('`resume` link navigates to `CV` page', async t => {
   await t
     .click(Screen.navigation.resumeNav)
-    .expect(screen.queryByRole('heading', {name:'Tania Papazafeiropoulou'}).exists).ok()
+    .expect(Screen.cvPage.heading.exists).ok()
 
 });
