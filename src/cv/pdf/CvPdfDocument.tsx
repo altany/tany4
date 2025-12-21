@@ -461,7 +461,7 @@ function SidebarSection({
 
 function ExperienceRole({ role }: { role: Cv["experience"][number] }) {
   return (
-    <View style={styles.role} wrap={false}>
+    <View style={styles.role}>
       <View style={styles.roleMeta}>
         <Text style={styles.dates}>{`${role.start} - ${role.end}`}</Text>
         <View style={styles.roleTitleRow}>
