@@ -39,20 +39,18 @@ export default function CvPage() {
           </section>
         )}
 
-        {cv.sidebar.find((s) => s.title === "Skills") && (
-          <section className={styles.section}>
-            <h2 className={styles.sectionHeading}>Skills</h2>
-            <div className={styles.tags}>
-              {cv.sidebar
-                .find((s) => s.title === "Skills")
-                ?.bullets?.map((skill) => (
-                  <span key={skill} className={styles.tag}>
-                    {skill}
-                  </span>
-                ))}
-            </div>
-          </section>
-        )}
+        <section className={styles.section}>
+          <p className={styles.personalStatement}>{cv.personalStatement}</p>
+          <h2 className={styles.sectionHeading}>Where I add the most value</h2>
+          <ul className={styles.strengthsList}>
+            {cv.strengths.map((strength) => (
+              <li key={strength.title} className={styles.strengthItem}>
+                <h3 className={styles.strengthTitle}>{strength.title}</h3>
+                <p className={styles.strengthDescription}>{strength.description}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         {cv.sidebar.find((s) => s.title === "AI experience") && (
           <section className={styles.section}>

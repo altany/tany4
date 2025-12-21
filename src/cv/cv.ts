@@ -9,6 +9,25 @@ export const cv: Cv = {
     location: "United Kingdom / Greece",
     website: "tany4.com",
   },
+  personalStatement: "I'm most comfortable where product complexity meets real users.",
+  strengths: [
+    {
+      title: "Shipping complex front-end systems",
+      description: "Building React and React Native applications that handle real-world workflows, edge cases, and scale without becoming brittle.",
+    },
+    {
+      title: "Front-end architecture & maintainability",
+      description: "Designing predictable UI patterns, managing complex state and async data, and keeping large codebases easy to evolve.",
+    },
+    {
+      title: "Performance & accessibility",
+      description: "Improving runtime performance, accessibility and reliability through thoughtful UI design, refactoring and monitoring.",
+    },
+    {
+      title: "Hands-on leadership & cross-functional collaboration",
+      description: "Leading by example through pairing, code reviews and day-to-day implementation, while working closely with product, design, backend and operations to turn complex, messy requirements into clear, usable solutions.",
+    }
+  ],
   sidebar: [
     {
       title: "Summary",
