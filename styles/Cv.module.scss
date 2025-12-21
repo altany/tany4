@@ -324,8 +324,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 0.75rem;
-  background: rgba(variables.$mainColor, 0.3);
-    @include mixins.boxShadow(-1px 1px 1px darken(variables.$mainColor, 10%));
+  background: rgba(variables.$mainColor, 0.1);
+  @include mixins.boxShadow(-1px 1px 1px darken(variables.$mainColor, 10%));
 
   @include mixins.borderRadius(8px);
   gap: 0.3rem;
