@@ -1,9 +1,9 @@
 import type { Cv } from "./types";
-import { CONTACT_EMAIL } from "../../lib/constants";
+import { CONTACT_EMAIL, NAME } from "../../lib/constants";
 
 export const cv: Cv = {
   header: {
-    name: "Tania Papazafeiropoulou",
+    name: NAME,
     title: "Senior Front-End Engineer & Tech Lead",
     email: CONTACT_EMAIL,
     location: "United Kingdom / Greece",
