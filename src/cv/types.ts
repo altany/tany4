@@ -1,10 +1,3 @@
-export type CvLink = {
-  label: string;
-  href: string;
-  display?: string;
-  icon?: "portfolio" | "linkedin";
-};
-
 export type CvHeader = {
   name: string;
   title: string;
@@ -17,7 +10,6 @@ export type CvSidebarSection = {
   title: string;
   paragraphs?: string[];
   bullets?: string[];
-  links?: CvLink[];
 };
 
 export type CvExperienceRole = {
