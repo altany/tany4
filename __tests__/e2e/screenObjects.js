@@ -43,6 +43,12 @@ class BlogPage {
     }
 }
 
+class CvPage {
+    constructor () {
+        this.heading = screen.queryByRole('heading', {name:'Tania Papazafeiropoulou'})
+    }
+}
+
 class PostPage {
     constructor () {
       
@@ -64,6 +70,7 @@ class Screen {
     this.homePage = new HomePage()
     this.workPage = new WorkPage()
     this.blogPage = new BlogPage()
+    this.cvPage = new CvPage()
     this.postPage = new PostPage()
     this.ExternalPage = new ExternalPage()
   }
