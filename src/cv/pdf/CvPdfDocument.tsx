@@ -154,13 +154,13 @@ const styles = StyleSheet.create({
 
   sidebarParagraph: {
     marginBottom: 8,
-    fontSize: 8.5,
+    fontSize: 9.5,
     lineHeight: 1.4,
   },
 
   sidebarParagraphSecondary: {
     marginBottom: 6,
-    fontSize: 8,
+    fontSize: 8.5,
     lineHeight: 1.4,
     color: "rgba(255, 255, 255, 0.85)",
   },
@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
     margin: "4px 0",
     color: "#555555",
     fontFamily: "Helvetica-Oblique",
-    fontSize: 10,
+    fontSize: 9,
     lineHeight: 1.5,
   },
 
