@@ -5,7 +5,7 @@ import useSWR from "swr";
 import dynamic from "next/dynamic";
 import Icon from "./icon";
 import fetcher from "../lib/fetcher";
-import { LINKEDIN, ENVELOPE, RESUME, TWITTER } from "../lib/icons";
+import { LINKEDIN, ENVELOPE, TWITTER } from "../lib/icons";
 import {
   NAME,
   SITE_URL,
@@ -20,15 +20,16 @@ const ChatWidget = dynamic(() => import("./chatWidget"), { ssr: false });
 
 export default function Layout({
   children,
-  noPadding,
-  blog,
-  work,
-  about,
-  seoImage,
-  seoTitle,
-  seoDescription,
-  canonicalUrl,
-  ogType,
+  noPadding = false,
+  blog = false,
+  work = false,
+  about = false,
+  resume = false,
+  seoImage = "",
+  seoTitle = "",
+  seoDescription = "",
+  canonicalUrl = "",
+  ogType = "",
 }) {
   return (
     <>
@@ -39,7 +40,7 @@ export default function Layout({
         canonicalUrl={canonicalUrl}
         ogType={ogType}
       />
-      <Navigation blog={blog} work={work} about={about} />
+      <Navigation blog={blog} work={work} about={about} resume={resume} />
       <StatusBar />
       <Content noPadding={noPadding}>{children}</Content>
       <Footer />
@@ -110,7 +111,7 @@ const HtmlHead = ({ seoImage, seoTitle, seoDescription, canonicalUrl, ogType }) 
   );
 };
 
-const Navigation = ({ blog, work, about }) => (
+const Navigation = ({ blog, work, about, resume }) => (
   <nav className={styles.navigation} data-testid="navigation">
     <div className={styles.container}>
       <ul className={styles.topLinks}>
@@ -119,7 +120,7 @@ const Navigation = ({ blog, work, about }) => (
             <img src="/profile.svg" alt={`${NAME} avatar`} />
           </Link>
         </li>
-        <li className={work && styles.active}>
+        <li className={work ? styles.active : undefined}>
           <Link
             href="/work"
             title="Check out my work"
@@ -128,12 +129,18 @@ const Navigation = ({ blog, work, about }) => (
             <div>Work</div>
           </Link>
         </li>
-        <li className={blog && styles.active}>
+        <li className={blog ? styles.active : undefined}>
           <Link href="/blog" title="Blog">
             <div>Blog</div>
           </Link>
         </li>
-        <li className={about && styles.active}>
+        
+        <li className={resume ? styles.active : undefined}>
+          <Link href="/cv" title="Resume">
+            <div>CV</div>
+          </Link>
+        </li>
+        <li className={about ? styles.active : undefined}>
           <Link href="/about" title="About">
             <div>About</div>
           </Link>
@@ -163,15 +170,6 @@ const BottomLinks = () => {
           title="Twitter profile - @_Tany_"
         >
           <Icon icon={TWITTER} />
-        </a>
-      </li>
-      <li>
-        <a
-          href="/TaniaPapazafeiropoulou-CV.pdf?version=12-2025"
-          target="_cv"
-          title="Resume - Tania Papapazafeiropoulou"
-        >
-          <Icon icon={RESUME} />
         </a>
       </li>
       <li>

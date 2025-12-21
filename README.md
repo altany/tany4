@@ -28,3 +28,15 @@ You can check out [the Next.js GitHub repository](https://github.com/zeit/next.j
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## CV
+
+- **Edit CV content**
+  - Update `src/cv/cv.ts` (single source of truth)
+- **View CV on web**
+  - `http://localhost:3000/cv`
+- **Regenerate PDF**
+  - `npm run cv:pdf`
+  - Output: `public/TaniaPapazafeiropoulou-CV.pdf`
+
+The PDF is generated using `@react-pdf/renderer` from `src/cv/pdf/CvPdfDocument.tsx`. No browser or Playwright required.
