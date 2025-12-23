@@ -1,6 +1,6 @@
 ---
 title: "7 Years at Olio"
-subtitle: "What I've learned growing from mid-level developer to tech lead"
+subtitle: "What I've learned going from mid-level developer to Tech Lead"
 date: "2025-12-19T17:00:00+0000"
 categories: ["Career", "Leadership"]
 highlight: true
@@ -15,112 +15,119 @@ readingTimeMinutes: 14
 
 ---
 
-When I joined Olio in 2018, the engineering team was only 3 people (including me). The company was early-stage, the app was being rebuilt, and I had no idea I'd still be here 7 years later. In that time, I've shipped a React Native MVP in 3 months, helped migrate an entire platform from Rails to React, mentored engineers who went on to lead their own features, and grown into a Tech Lead role I never planned for.
+When I joined Olio in 2018, the engineering team was just three people, including me. The product was early stage, we were rebuilding the app, and honestly, I had no idea I'd still be here seven years later.
 
-This isn't a "how to succeed" post. It's a reflection on what I've learned - the hard way, mostly - about building software, working with teams, and growing as an engineer.
+In that time, I shipped a React Native MVP in about three months, helped migrate a large platform from Rails to React, mentored engineers who later led their own features, and grew into a Tech Lead role I never planned for.
+
+This isn't a guide on how to succeed. It's a reflection on what I learned, mostly through experience, about building software, working with teams, and growing as an engineer. I hope some of it feels familiar.
 
 ## The early days: shipping fast with a tiny team
 
-In my first few months, we shipped the React Native app MVP in 3 months with a small team. It was intense. We made trade-offs we wouldn't make today. But we shipped, and the app now serves millions of users.
+In the first few months, we built the React Native app MVP in about three months with a very small team. It was intense, and we made trade-offs we probably wouldn't make today. But we shipped, and that app now serves millions of people.
 
-Over the years, I worked on everything from map performance (optimizing marker and cluster rendering to avoid unnecessary re-renders) to automated ads display logic. The breadth of a small team means you touch everything.
+Working in such a small team meant touching everything, from map performance to ads logic. It was exhausting and exciting at the same time.
 
 **What I learned:**
-- Speed matters early on. Perfect is the enemy of shipped.
-- The patterns you set in a rush often stick around for years. Try to get the fundamentals right even when moving fast.
-- Small teams can move incredibly quickly when everyone trusts each other.
+- Early speed matters, but fundamentals matter more.
+- Patterns set early tend to stick unless you actively change them.
+- Small teams move fast when there is trust.
 
 ## Owning the release process
 
-For over 4 years, I co-owned the mobile release process, coordinating weekly releases to iOS and Android. It sounds mundane, but it taught me a lot about reliability and communication.
+For over four years, I co-owned the mobile release process, coordinating weekly releases for both iOS and Android. It might sound routine, but it taught me a lot about reliability and communication.
 
 **What I learned:**
-- Release management is about communication as much as code. Stakeholders need to know what's shipping and when.
-- Automating what you can (and documenting what you can't) saves everyone time.
-- Being the person who "just handles it" builds trust, but you also need to share that knowledge so you're not a bottleneck.
+- Release management is as much about people as it is about code.
+- Automating what you can and documenting the rest saves time.
+- Being reliable builds trust, but knowledge should be shared to avoid bottlenecks.
 
-## The Rails → React migration
+## The Rails to React migration
 
-One of the biggest projects I worked on was migrating the Volunteer Hub from server-rendered Rails views to a React SPA. This took over 2 years and involved rewriting critical flows while thousands of volunteers actively used the platform. We migrated them without major issues - no small feat when people depend on the tool for their daily pickups.
-
-**What I learned:**
-- Big rewrites can fail. Incremental migration works better.
-- Business rules are often buried in legacy code. Extract them carefully before writing new code.
-- The patterns you establish during a migration become the foundation for everything that follows. We're still using the routing and navigation patterns I helped set up years ago.
-
-## Leading the Schedule Grouping rearchitecture
-
-More recently, I led one of the largest front-end initiatives: rearchitecting how collections are displayed in the Volunteer Hub. We moved from a flat list to a schedule-grouped view that matches how volunteers actually think about their pickups.
-
-This was technically complex: data transformation, state management, new UI components. But the real challenge was coordinating with backend, product, and ops to get it right.
+One of the bigger projects was migrating the Volunteer Hub from server-rendered Rails views to a React SPA. It took over two years and happened while the tool was actively used by thousands of volunteers.
 
 **What I learned:**
-- The best technical solutions come from understanding the user's mental model. We talked to ops teams and volunteers to understand how they thought about pickups.
-- Complex features need clear ownership. I led the frontend, but we had to coordinate tightly with backend on the data contract.
-- Shipping a rearchitecture without breaking things requires feature flags, careful rollouts, and a lot of testing.
+- Large rewrites only work when done incrementally.
+- Important business logic often lives in unexpected places.
+- Migration decisions shape the codebase for years.
+
+## Leading a large UI rearchitecture
+
+Later on, I led a rearchitecture of schedule grouping in the Volunteer Hub. The goal was to better reflect how volunteers actually think about their pickups.
+
+This work involved data transformations, UI state, and close collaboration with backend, product, and operations.
+
+**What I learned:**
+- Good technical solutions come from understanding real user workflows.
+- Complex features need clear ownership.
+- Feature flags and careful rollouts make a big difference.
 
 ## Mentoring and growing engineers
 
-As I became more senior, I spent more time mentoring. I paired with junior/mid-level engineers on complex features, reviewed their designs, and let them own the implementation while guiding the architecture.
+As I became more senior, mentoring became a bigger part of my role. I paired with engineers on tricky problems, reviewed designs, and helped guide decisions without taking over.
 
-One of my proudest achievements has been watching engineers I mentored get promoted. They'd gone from uncertain about complex features to confidently owning and shipping them.
+One of the most rewarding parts has been seeing people I mentored grow into confident engineers. Over time, this also meant contributing to shared expectations around code quality, collaboration, and what good engineering looked like, regardless of role or title.
 
-**Some hard-earned lessons:**
-- Pairing beats prescribing. Sitting with someone while they work teaches more than a code review comment.
-- Ask questions in reviews rather than dictating changes. "What would happen if X?" helps people think, not just comply.
-- Letting go is hard but necessary. You can't scale yourself by being the person who writes everything.
+
+**Some lessons here:**
+- Pairing teaches more than prescribing.
+- Asking questions helps people learn better than giving answers.
+- Letting go is necessary if you want others to grow.
 
 ## Developer experience matters
 
-I've spent a lot of time on things that aren't "features" - fixing Docker environment issues, adding ESLint automation, enforcing stricter TypeScript, improving PR templates.
+I spent time improving things that are not always visible. Fixing Docker issues, tightening TypeScript, improving templates, and smoothing local setup problems.
 
-I remember spending a full day tracking down a Docker/MySQL port conflict that was randomly breaking everyone's local setup. Not glamorous. But fixing it meant the whole team could actually work again.
+Once, a Docker and MySQL port conflict blocked the whole team. Fixing it wasn't glamorous, but it removed friction for everyone.
 
-These kinds of investments pay off. A day of frustration for me saved weeks of frustration across the team. And gradual strictness works - we enforced TypeScript incrementally, and now it catches bugs before they ship.
+These investments rarely stand out, but they save time and frustration.
 
 ## Prototyping and experimentation
 
-I've built several prototypes, including a partner platform concept during a hackathon that later informed production features and the Sainsbury's partnership, and an AI-assisted appointment planner.
+Over the years, I built several prototypes. Some shipped, many didn't.
 
 **What I learned:**
-- Prototypes are for learning, not shipping. Build the minimum needed to test the idea.
-- The value of a prototype is the decision it enables. Sometimes the answer is "don't build this."
-- I enjoy working in ambiguous, early-stage spaces. Turning loose ideas into something concrete enough to evaluate is satisfying.
+- Prototypes are tools for learning.
+- Their value is often in what they prevent you from building.
+- I enjoy turning unclear ideas into something tangible enough to evaluate.
 
 ## Extending to charity volunteers
 
-A key company milestone was extending the platform from Olio volunteers to charity volunteers. What seemed like "just another user type" ended up touching assumptions across the entire codebase. It was a good reminder that business impact comes from understanding the business, not just the code.
+Expanding the platform to support charity volunteers looked simple at first. In reality, it surfaced assumptions across the system.
+
+It reinforced an important lesson. Impact comes from understanding the business context, not just writing code.
 
 ## Building partner tools
 
-As Tech Lead, I owned the front-end for Olio's partner-facing dashboard, the tools supermarkets and food businesses use to manage their collections. This was a different challenge: building for non-technical business users, handling complex scheduling logic, and internationalizing for global expansion (including adding Chinese language support).
+I also worked on front-end tooling for partners like supermarkets and food businesses. This work came with a different set of constraints, including supporting non-technical users, handling complex scheduling logic, and building interfaces that needed to be reliable and easy to understand.
 
-I also got more involved in the people side: interviewing candidates, contributing to hiring decisions, and helping shape what good looked like for our front-end team.
+In many ways, these challenges were consistent across the products I worked on, and reinforced the importance of clear UX, predictable behaviour, and strong collaboration across teams.
 
 ## Speaking at React Conf
 
-In 2019, I [spoke at React Conf](/blog/posts/react-conf-2019) about how we built and scaled the Olio app. I was genuinely terrified. But preparing that talk forced me to understand our work more deeply than I ever had, and the response from the community reminded me how generous and curious people in tech can be.
+In 2019, I [spoke at React Conf](/blog/posts/react-conf-2019) about how we built and scaled the Olio app. It was intimidating.
+
+Preparing the talk helped me understand our work more deeply, and the response from the community was generous and grounding.
 
 ## What I'd do differently
 
-No reflection is complete without the things I wish I'd done better:
+Looking back, there are things I would change:
 
-- **Earlier TypeScript adoption:** We migrated gradually, but I wish we'd been stricter earlier.
-- **More automated testing:** While we had good coverage, some critical paths could have used more E2E tests.
-- **Documentation:** I could have documented architectural decisions more systematically. Future engineers would have thanked me.
+- Be stricter with TypeScript earlier.
+- Invest more in targeted automated testing.
+- Document architectural decisions more consistently.
 
-## What drives me now
+## What still drives me
 
-After 7 years across four different codebases (consumer app, volunteer platform, partner tools, and even some backend work), what still excites me:
+After seven years and multiple codebases, including the consumer app, volunteer tools, partner tools, and some backend work:
 
-- **Shipping products that matter.** Olio helps redistribute food that would otherwise go to waste. The mission still feels meaningful.
-- **Making complex things simple.** For users and developers alike.
-- **Growing people.** Watching engineers I've worked with become confident, capable leaders.
-- **Using AI to work smarter.** I use AI tools daily and I'm genuinely excited about where this is going.
+- I still enjoy building things that matter.
+- I like simplifying complex systems.
+- I care about helping people grow.
+- I'm excited about using better tools, including AI, to work more thoughtfully.
 
 ---
 
-If you're early in your career, I hope this is useful. The path isn't linear, and the things that matter most - communication, ownership, mentorship - aren't always the things you expect to focus on when you start out.
+If you're early in your career, I hope this helps. Paths are rarely linear, and some of the most important skills take time to notice.
 
-And if you're mid-career and wondering whether to stay somewhere long-term: there is true value in deep knowledge. Seeing a codebase evolve over years, watching engineers you mentored grow, and understanding a product deeply enough to make real architectural decisions are things you only get with time.
+And if you're mid-career and wondering whether staying somewhere long term makes sense, deep knowledge and shared history can be valuable in ways that are hard to measure.
 
