@@ -139,7 +139,7 @@ exports[`renders an blog page with a post unchanged 1`] = `
     </span>
     <a
       class="downloadCv"
-      href="/TaniaPapazafeiropoulou-CV.pdf?version=12/2025"
+      href="/TaniaPapazafeiropoulou-CV.pdf?version=01/2026"
       rel="noopener noreferrer"
       target="_cv"
       title="Download CV"
@@ -363,7 +363,7 @@ exports[`renders an empty blog page unchanged 1`] = `
     </span>
     <a
       class="downloadCv"
-      href="/TaniaPapazafeiropoulou-CV.pdf?version=12/2025"
+      href="/TaniaPapazafeiropoulou-CV.pdf?version=01/2026"
       rel="noopener noreferrer"
       target="_cv"
       title="Download CV"

@@ -192,7 +192,7 @@ const StatusBar = () => (
     </Link>
     <span className={styles.title}>{JOB_TITLE}</span>
     <a
-      href="/TaniaPapazafeiropoulou-CV.pdf?version=12/2025"
+      href="/TaniaPapazafeiropoulou-CV.pdf?version=01/2026"
       className={styles.downloadCv}
       target="_cv"
       rel="noopener noreferrer"
