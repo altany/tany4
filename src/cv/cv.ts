@@ -87,7 +87,7 @@ export const cv: Cv = {
         "Helped extend volunteer support from Olio volunteers to charity volunteers, enabling new flows and broader operational use.",
         "Prototyped new ideas during internal hackathons (partner platform, AI-assisted appointment planner) to validate concepts and inform next steps.",
         "Improved performance, accessibility and reliability through refactoring, monitoring and reducing technical debt.",
-        "Mentored engineers through pairing and code reviews while remaining a strong IC, writing production code daily and unblocking teammates.",
+        "Mentored engineers through pairing and code reviews while remaining a strong IC, writing production code daily and unblocking complex technical problems.",
       ],
     },
     {
