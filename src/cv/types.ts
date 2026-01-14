@@ -41,6 +41,7 @@ export type CvStrength = {
 export type Cv = {
   header: CvHeader;
   personalStatement: string;
+  summary: string;
   strengths: CvStrength[];
   sidebar: CvSidebarSection[];
   experience: CvExperienceRole[];

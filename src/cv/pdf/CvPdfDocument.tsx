@@ -402,26 +402,6 @@ function PortfolioIcon({ color = "#666666" }: { color?: string }) {
   );
 }
 
-
-
-function languageLevelToPercent(levelLabel: string, levelCode?: string): number {
-  const code = (levelCode || "").toUpperCase();
-  if (levelLabel.toLowerCase().includes("first")) return 100;
-  const map: Record<string, number> = {
-    A1: 20,
-    A2: 30,
-    B1: 50,
-    B2: 65,
-    C1: 80,
-    C2: 90,
-  };
-  if (code in map) return map[code];
-  // fallback for labels like "Proficient" etc.
-  if (levelLabel.toLowerCase().includes("proficient")) return 85;
-  if (levelLabel.toLowerCase().includes("beginner")) return 25;
-  return 60;
-}
-
 function SidebarSection({
   section,
   isFirst,
@@ -430,7 +410,6 @@ function SidebarSection({
   isFirst?: boolean;
 }) {
   const isSecondary = section.title === "Hobbies and interests" || section.title === "Certifications";
-  
   return (
     <View
       style={isFirst ? styles.sidebarSectionFirst : styles.sidebarSection}
@@ -439,9 +418,10 @@ function SidebarSection({
       <Text style={isSecondary ? styles.sidebarHeadingSecondary : styles.sidebarHeading}>{section.title}</Text>
 
       {section.paragraphs?.map((p) => (
+        <>
         <Text key={p} style={isSecondary ? styles.sidebarParagraphSecondary : styles.sidebarParagraph}>
           {p}
-        </Text>
+        </Text></>
       ))}
 
       
@@ -491,11 +471,17 @@ export default function CvPdfDocument({ cv }: { cv: Cv }) {
     <Document title={`${cv.header.name} - CV`}>
       <Page size="A4" style={styles.page}>
         <View style={styles.sidebar}>
+
+          <SidebarSection
+            key="personal-summary"
+            section={{ title: "Summary", paragraphs: [cv.personalStatement, cv.summary] }}
+            isFirst={true}
+          />
+          
           {cv.sidebar.map((section, index) => (
             <SidebarSection
-              key={section.title}
+              key={`${section.title}-${index}`}
               section={section}
-              isFirst={index === 0}
             />
           ))}
         </View>

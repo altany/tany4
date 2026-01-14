@@ -10,6 +10,7 @@ export const cv: Cv = {
     website: "tany4.com",
   },
   personalStatement: "I'm most comfortable where product complexity meets real users.",
+  summary: "Front-End Engineer with 10+ years of experience building and leading scalable React and React Native applications. Strong focus on architecture, performance, accessibility, and developer experience. Comfortable operating as a senior IC, leading through ownership, implementation and technical judgement.",
   strengths: [
     {
       title: "Shipping complex front-end systems",
