@@ -31,13 +31,9 @@ export default function CvPage() {
           </div>
         </header>
 
-        {cv.sidebar.find((s) => s.title === "Summary") && (
-          <section className={styles.section}>
-            <p className={styles.summary}>
-              {cv.sidebar.find((s) => s.title === "Summary")?.paragraphs?.[0]}
-            </p>
-          </section>
-        )}
+        <section className={styles.section}>
+          <p className={styles.summary}>{cv.summary}</p>
+        </section>
 
         <section className={styles.section}>
           <p className={styles.personalStatement}>{cv.personalStatement}</p>
