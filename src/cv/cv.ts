@@ -31,12 +31,6 @@ export const cv: Cv = {
   ],
   sidebar: [
     {
-      title: "Summary",
-      paragraphs: [
-        "Front-End Engineer with 10+ years of experience building and leading scalable React and React Native applications. Strong focus on architecture, performance, accessibility, and developer experience. Comfortable operating as both a senior IC and a front-end tech lead."
-      ],
-    },
-    {
       title: "AI experience",
       bullets: [
         "Daily user of AI-assisted development tools for coding, debugging, documentation and repo-wide analysis",
