@@ -214,7 +214,7 @@ const Content = ({ children, noPadding }) => (
 );
 
 const Footer = () => {
-  const { data, error } = useSWR(LAST_COMMIT_ENDPOINT, fetcher);
+  const { data } = useSWR(LAST_COMMIT_ENDPOINT, fetcher);
 
   return (
     <footer className={styles.footer}>
