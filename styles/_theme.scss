@@ -1,0 +1,237 @@
+:root {
+  // Backgrounds
+  --color-bg: #fff8f0;
+  --color-surface: #ffffff;
+  --color-surface-elevated: #ffffff;
+
+  // Text
+  --color-text: #3d5d5d;
+  --color-text-secondary: #5a7a7a;
+
+  // Accent colors
+  --color-accent-teal: #a8f1ed;
+  --color-accent-teal-dark: #003733;
+  --color-accent-coral: #ee7c79;
+
+  // Navigation
+  --color-nav-link: #003751;
+  --color-nav-active-bg: #8dd1cc;
+  --color-nav-active-text: #d4423e;
+  --color-nav-shadow: #e5dbc8;
+  --color-logo-bg: #ffffff;
+
+  // Status bar
+  --color-statusbar-bg: #003733;
+  --color-statusbar-border: #002e2b;
+
+  // Footer
+  --color-footer-bg: #ee7c79;
+  --color-footer-border: #d45c59;
+  --color-footer-text: #fff4e6;
+
+  // Buttons (coral)
+  --color-coral-button-bg: #dc605d;
+  --color-coral-button-hover: #cb4e4b;
+  --color-coral-focus-ring: #f5a09e;
+
+  // Borders & shadows
+  --color-border: rgba(0, 0, 0, 0.06);
+  --color-border-medium: rgba(0, 0, 0, 0.08);
+  --color-border-strong: rgba(0, 0, 0, 0.12);
+  --color-border-input: rgba(0, 0, 0, 0.18);
+  --color-shadow: rgba(0, 0, 0, 0.18);
+  --color-shadow-strong: rgba(0, 0, 0, 0.22);
+
+  // Chat widget
+  --color-chat-user-bubble: #f6d3d1;
+  --color-chat-user-border: rgba(0, 0, 0, 0.08);
+  --color-chat-assistant-bubble: #fffaf3;
+  --color-chat-assistant-border: rgba(0, 0, 0, 0.06);
+
+  // Inline code & blockquote
+  --color-inline-code-bg: rgba(0, 0, 0, 0.06);
+  --color-inline-code-border: rgba(0, 0, 0, 0.06);
+  --color-blockquote-bg: rgba(0, 0, 0, 0.04);
+  --color-blockquote-text: rgba(0, 0, 0, 0.85);
+  --color-blockquote-border: #f5a09e;
+
+  // Tags & badges
+  --color-tag-bg: rgba(0, 0, 0, 0.1);
+  --color-tag-text: rgba(0, 0, 0, 0.85);
+  --color-featured-bg: rgba(0, 0, 0, 0.12);
+  --color-featured-text: rgba(0, 0, 0, 0.85);
+
+  // Error
+  --color-error-bg: rgba(220, 38, 38, 0.12);
+  --color-error-border: rgba(220, 38, 38, 0.25);
+  --color-error-text: #7f1d1d;
+
+  // Code highlighting
+  --color-code-bg: #2d2d2d;
+
+  // Cards & surfaces
+  --color-card-bg: #fffdfb;
+  --color-card-shadow: #fff4e6;
+  --color-card-border: rgba(0, 0, 0, 0.06);
+  --color-card-hover-shadow: #fff4e6;
+
+  // Experience tech text
+  --color-text-muted: rgba(0, 0, 0, 0.75);
+
+  // Post title gradient
+  --color-post-gradient-start: #faf0e0;
+  --color-post-gradient-end: #f3aba8;
+
+  // Breadcrumb
+  --color-breadcrumb: rgba(0, 0, 0, 0.72);
+
+  // Post author border
+  --color-divider: rgba(0, 0, 0, 0.1);
+
+  // Link button
+  --color-link-button-bg: #fffcf7;
+  --color-link-button-border-coral: #f5a09e;
+  --color-link-button-border-teal: #00574f;
+
+  // CV specific
+  --color-cv-heading: #003733;
+  --color-cv-heading-alt: #ee7c79;
+  --color-cv-gradient-teal: #a8f1ed;
+  --color-cv-gradient-coral: #ee7c79;
+  --color-cv-timeline-border: #a8f1ed;
+  --color-cv-timeline-dot-bg: #fff;
+  --color-cv-timeline-dot-border: #ee7c79;
+  --color-cv-section-border: #bef5f0;
+  --color-cv-section-border-alt: #d3f7f4;
+  --color-cv-strength-border: #cef8f4;
+  --color-cv-tag-bg: #fffcf7;
+  --color-cv-tag-shadow: #f0e8d8;
+  --color-cv-edu-bg: #fffcf7;
+  --color-cv-edu-shadow: #e8dfd0;
+  --color-cv-role-summary-bg: #fffcf7;
+  --color-cv-role-summary-shadow: rgba(0, 0, 0, 0.06);
+  --color-cv-language-bg: rgba(168, 241, 237, 0.1);
+  --color-cv-language-shadow: #79c9c3;
+  --color-cv-personal-statement: #ee7c79;
+  --color-cv-contact-divider: #6d8d8d;
+  --color-cv-marker: #ee7c79;
+}
+
+[data-theme="dark"] {
+  // Backgrounds
+  --color-bg: #1a2328;
+  --color-surface: #21303a;
+  --color-surface-elevated: #2a3d48;
+
+  // Text
+  --color-text: #d9e4e4;
+  --color-text-secondary: #9ab4b4;
+
+  // Accent colors
+  --color-accent-teal: #6ec9c4;
+  --color-accent-teal-dark: #4db5b0;
+  --color-accent-coral: #e09590;
+
+  // Navigation
+  --color-nav-link: #7cc4c0;
+  --color-nav-active-bg: rgba(110, 201, 196, 0.15);
+  --color-nav-active-text: #e09590;
+  --color-nav-shadow: rgba(255, 255, 255, 0.05);
+  --color-logo-bg: #c8e6e4;
+
+  // Status bar
+  --color-statusbar-bg: #0f1f1d;
+  --color-statusbar-border: #0a1614;
+
+  // Footer
+  --color-footer-bg: #8b3a38;
+  --color-footer-border: #6e2c2a;
+  --color-footer-text: #d9e4e4;
+
+  // Buttons (coral)
+  --color-coral-button-bg: #c45855;
+  --color-coral-button-hover: #b34845;
+  --color-coral-focus-ring: #e09590;
+
+  // Borders & shadows
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-border-medium: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.12);
+  --color-border-input: rgba(255, 255, 255, 0.18);
+  --color-shadow: rgba(0, 0, 0, 0.4);
+  --color-shadow-strong: rgba(0, 0, 0, 0.5);
+
+  // Chat widget
+  --color-chat-user-bubble: rgba(224, 149, 144, 0.18);
+  --color-chat-user-border: rgba(255, 255, 255, 0.08);
+  --color-chat-assistant-bubble: rgba(110, 201, 196, 0.1);
+  --color-chat-assistant-border: rgba(255, 255, 255, 0.06);
+
+  // Inline code & blockquote
+  --color-inline-code-bg: rgba(255, 255, 255, 0.08);
+  --color-inline-code-border: rgba(255, 255, 255, 0.06);
+  --color-blockquote-bg: rgba(255, 255, 255, 0.05);
+  --color-blockquote-text: rgba(255, 255, 255, 0.85);
+  --color-blockquote-border: #c45855;
+
+  // Tags & badges
+  --color-tag-bg: rgba(255, 255, 255, 0.12);
+  --color-tag-text: rgba(255, 255, 255, 0.85);
+  --color-featured-bg: rgba(255, 255, 255, 0.12);
+  --color-featured-text: rgba(255, 255, 255, 0.85);
+
+  // Error
+  --color-error-bg: rgba(220, 80, 80, 0.15);
+  --color-error-border: rgba(220, 80, 80, 0.3);
+  --color-error-text: #fca5a5;
+
+  // Code highlighting
+  --color-code-bg: #1e1e1e;
+
+  // Cards & surfaces
+  --color-card-bg: #21303a;
+  --color-card-shadow: rgba(0, 0, 0, 0.3);
+  --color-card-border: rgba(255, 255, 255, 0.06);
+  --color-card-hover-shadow: rgba(0, 0, 0, 0.4);
+
+  // Experience tech text
+  --color-text-muted: rgba(255, 255, 255, 0.65);
+
+  // Post title gradient
+  --color-post-gradient-start: #1a2328;
+  --color-post-gradient-end: #3d2524;
+
+  // Breadcrumb
+  --color-breadcrumb: rgba(255, 255, 255, 0.65);
+
+  // Post author border
+  --color-divider: rgba(255, 255, 255, 0.1);
+
+  // Link button
+  --color-link-button-bg: #21303a;
+  --color-link-button-border-coral: #c45855;
+  --color-link-button-border-teal: #4db5b0;
+
+  // CV specific
+  --color-cv-heading: #6ec9c4;
+  --color-cv-heading-alt: #e09590;
+  --color-cv-gradient-teal: #6ec9c4;
+  --color-cv-gradient-coral: #e09590;
+  --color-cv-timeline-border: rgba(110, 201, 196, 0.3);
+  --color-cv-timeline-dot-bg: #1a2328;
+  --color-cv-timeline-dot-border: #e09590;
+  --color-cv-section-border: rgba(110, 201, 196, 0.2);
+  --color-cv-section-border-alt: rgba(110, 201, 196, 0.15);
+  --color-cv-strength-border: rgba(110, 201, 196, 0.15);
+  --color-cv-tag-bg: #21303a;
+  --color-cv-tag-shadow: rgba(0, 0, 0, 0.3);
+  --color-cv-edu-bg: #21303a;
+  --color-cv-edu-shadow: rgba(0, 0, 0, 0.3);
+  --color-cv-role-summary-bg: #21303a;
+  --color-cv-role-summary-shadow: rgba(0, 0, 0, 0.15);
+  --color-cv-language-bg: rgba(110, 201, 196, 0.1);
+  --color-cv-language-shadow: rgba(0, 0, 0, 0.3);
+  --color-cv-personal-statement: #e09590;
+  --color-cv-contact-divider: #9ab4b4;
+  --color-cv-marker: #e09590;
+}

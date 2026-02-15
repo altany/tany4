@@ -6,13 +6,14 @@
   height: variables.$statusBarHeight;
   width: 100%;
   position: fixed;
-  background: variables.$darkmainColor;
+  background: var(--color-statusbar-bg);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid darken(variables.$darkmainColor, 5%);
+  border-bottom: 1px solid var(--color-statusbar-border);
   z-index: 2;
   padding-right: 1rem;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
   @include mixins.breakpoint(mobileLandscape) {
     height: variables.$statusBarHeightLandscape;
     padding-right: 0.75rem;
@@ -55,13 +56,55 @@
   }
 }
 
+.themeToggle {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  cursor: pointer;
+  padding: 3px;
+  @include mixins.borderRadius(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+  transition: background-color 160ms ease, border-color 160ms ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-coral-focus-ring);
+    outline-offset: 3px;
+  }
+
+  @include mixins.breakpoint(mobileLandscape) {
+    padding: 2px;
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  @include mixins.breakpoint(mobilePortrait) {
+    padding: 2px;
+    margin-right: 0.3rem;
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
 .downloadCv {
   position: absolute;
   transform: translateY(-50%);
   right: 14px;
   z-index: 3;
 
-  background: darken(variables.$thirdColor, 6%);
+  background: var(--color-coral-button-bg);
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.25);
   @include mixins.borderRadius(999px);
@@ -70,20 +113,20 @@
   font-size: 0.85rem;
   letter-spacing: 0.02em;
   text-decoration: none;
-  @include mixins.boxShadow(0 3px 10px 0 rgba(0, 0, 0, 0.18));
+  @include mixins.boxShadow(0 3px 10px 0 var(--color-shadow));
   top: 60px;
   transition: transform 160ms ease, background-color 160ms ease, box-shadow 160ms ease,
     border-color 160ms ease;
   will-change: transform;
 
   &:hover {
-    background: darken(variables.$thirdColor, 10%);
+    background: var(--color-coral-button-hover);
     transform: translateY(-50%) translateY(-2px) scale(1.02);
-    @include mixins.boxShadow(0 8px 18px 0 rgba(0, 0, 0, 0.22));
+    @include mixins.boxShadow(0 8px 18px 0 var(--color-shadow-strong));
   }
 
   &:focus-visible {
-    outline: 2px solid lighten(variables.$thirdColor, 10%);
+    outline: 2px solid var(--color-coral-focus-ring);
     outline-offset: 3px;
   }
 
@@ -105,7 +148,7 @@
 .navigation a:focus-visible,
 .statusBar a:focus-visible,
 .footer a:focus-visible {
-  outline: 2px solid lighten(variables.$thirdColor, 10%);
+  outline: 2px solid var(--color-coral-focus-ring);
   outline-offset: 3px;
 }
 
@@ -117,22 +160,22 @@
 }
 
 .chatToggle {
-  background: darken(variables.$thirdColor, 6%);
+  background: var(--color-coral-button-bg);
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.25);
   @include mixins.borderRadius(999px);
   padding: 4px 14px;
   font-weight: bold;
   font-size: 0.85rem;
-  @include mixins.boxShadow(0 8px 18px 0 rgba(0, 0, 0, 0.18));
+  @include mixins.boxShadow(0 8px 18px 0 var(--color-shadow));
   cursor: pointer;
 
   &:hover {
-    background: darken(variables.$thirdColor, 10%);
+    background: var(--color-coral-button-hover);
   }
 
   &:focus-visible {
-    outline: 2px solid lighten(variables.$thirdColor, 10%);
+    outline: 2px solid var(--color-coral-focus-ring);
     outline-offset: 3px;
   }
 }
@@ -155,10 +198,10 @@
   bottom: 52px;
   width: min(360px, calc(100vw - 32px));
   max-height: min(520px, calc(100vh - 120px));
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border-strong);
   @include mixins.borderRadius(12px);
-  @include mixins.boxShadow(0 18px 40px 0 rgba(0, 0, 0, 0.22));
+  @include mixins.boxShadow(0 18px 40px 0 var(--color-shadow-strong));
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -169,7 +212,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 12px;
-  background: variables.$darkmainColor;
+  background: var(--color-statusbar-bg);
   color: #fff;
   font-weight: bold;
 }
@@ -184,7 +227,7 @@
   cursor: pointer;
 
   &:focus-visible {
-    outline: 2px solid lighten(variables.$thirdColor, 10%);
+    outline: 2px solid var(--color-coral-focus-ring);
     outline-offset: 3px;
   }
 }
@@ -199,7 +242,7 @@
 }
 
 .chatEmpty {
-  color: variables.$textColor;
+  color: var(--color-text);
   opacity: 0.85;
   font-size: 0.9rem;
   line-height: 1.4;
@@ -208,9 +251,9 @@
 .chatError {
   padding: 10px;
   @include mixins.borderRadius(10px);
-  background: rgba(220, 38, 38, 0.12);
-  border: 1px solid rgba(220, 38, 38, 0.25);
-  color: #7f1d1d;
+  background: var(--color-error-bg);
+  border: 1px solid var(--color-error-border);
+  color: var(--color-error-text);
   font-size: 0.9rem;
   line-height: 1.4;
 }
@@ -223,20 +266,20 @@
   line-height: 1.35;
   white-space: pre-wrap;
   max-width: 92%;
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--color-border);
 }
 
 .chatUser {
   align-self: flex-end;
-  background: color.adjust(variables.$thirdColor, $lightness: 34%, $saturation: -10%);
-  border-color: rgba(0, 0, 0, 0.08);
+  background: var(--color-chat-user-bubble);
+  border-color: var(--color-chat-user-border);
   font-weight: 600;
 }
 
 .chatAssistant {
   align-self: flex-start;
-  background: color.adjust(variables.$secondColor, $lightness: 26%, $saturation: -8%);
-  border-color: rgba(0, 0, 0, 0.06);
+  background: var(--color-chat-assistant-bubble);
+  border-color: var(--color-chat-assistant-border);
   font-weight: 400;
 }
 
@@ -244,26 +287,28 @@
   display: flex;
   gap: 8px;
   padding: 10px;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-top: 1px solid var(--color-border-medium);
 }
 
 .chatInput {
   flex: 1;
   padding: 10px 10px;
-  border: 1px solid rgba(0, 0, 0, 0.18);
+  border: 1px solid var(--color-border-input);
   @include mixins.borderRadius(10px);
   font-size: 0.9rem;
+  background: var(--color-surface);
+  color: var(--color-text);
 
   &:focus-visible {
-    outline: 2px solid lighten(variables.$thirdColor, 10%);
+    outline: 2px solid var(--color-coral-focus-ring);
     outline-offset: 2px;
   }
 }
 
 .chatSend {
-  background: variables.$thirdColor;
+  background: var(--color-coral-button-bg);
   color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--color-border-medium);
   @include mixins.borderRadius(10px);
   padding: 10px 12px;
   font-weight: bold;
@@ -275,7 +320,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid lighten(variables.$thirdColor, 10%);
+    outline: 2px solid var(--color-coral-focus-ring);
     outline-offset: 2px;
   }
 }
@@ -297,8 +342,9 @@
   @include mixins.navBarWidth;
   height: 100%;
   position: fixed;
-  background: variables.$secondColor;
-  @include mixins.boxShadow(1px 0 1px 0 darken(variables.$secondColor, 10%));
+  background: var(--color-bg);
+  @include mixins.boxShadow(1px 0 1px 0 var(--color-nav-shadow));
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
 
   .container {
     display: flex;
@@ -317,17 +363,18 @@
   @extend .linksSection;
 
   .logo {
-    background-color: white;
+    background-color: var(--color-logo-bg);
     margin-bottom: 0.8rem;
+    transition: background-color 0.25s ease;
   }
 
   li {
     @include mixins.navBarWidth;
     &.active {
       font-weight: bold;
-      background-color: color.adjust(variables.$mainColor, $saturation: -20);
+      background-color: var(--color-nav-active-bg);
       div {
-        color: darken(variables.$thirdColor, 5%);
+        color: var(--color-nav-active-text);
       }
     }
 
@@ -348,20 +395,21 @@
     }
 
     div {
-      color: variables.$navLinkColor;
+      color: var(--color-nav-link);
 
       &:hover {
         @include mixins.breakpoint(tall) {
           font-size: 110%;
           @include mixins.navLinkHoverAnimation(
-            variables.$navLinkColor,
-            darken(variables.$thirdColor, 5%)
+            var(--color-nav-link),
+            var(--color-nav-active-text)
           );
         }
       }
     }
   }
 }
+
 
 .bottomLinks {
   @extend .linksSection;
@@ -370,6 +418,7 @@
     padding-bottom: 0.7rem;
     svg {
       width: 24px;
+      color: var(--color-nav-link);
     }
   }
 
@@ -423,16 +472,17 @@
   width: 100%;
   position: fixed;
   bottom: 0;
-  background: variables.$thirdColor;
+  background: var(--color-footer-bg);
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  border-top: 1px solid darken(variables.$thirdColor, 10);
+  border-top: 1px solid var(--color-footer-border);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
   @include mixins.breakpoint(mobileLandscape) {
     height: variables.$footerHeightLandscape;
   }
   .created {
-    color: variables.$secondColor;
+    color: var(--color-footer-text);
     font-size: 0.6rem;
     padding: 0 0.6rem;
     @include mixins.breakpoint(mobile) {
@@ -440,7 +490,7 @@
     }
 
     a {
-      color: variables.$secondColor;
+      color: var(--color-footer-text);
     }
   }
 }
