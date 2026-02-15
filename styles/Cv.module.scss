@@ -20,14 +20,14 @@
   text-align: center;
   margin-bottom: 3rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid color.adjust(variables.$mainColor, $lightness: -10%);
+  border-bottom: 1px solid var(--color-cv-section-border);
 }
 
 .name {
   margin: 0 0 0.375rem;
   font-size: 2.75rem;
   font-weight: 800;
-  color: variables.$textColor;
+  color: var(--color-text);
   line-height: 1.1;
   letter-spacing: -0.02em;
 
@@ -39,7 +39,7 @@
 .title {
   margin: 0 0 1.25rem;
   font-size: 1.25rem;
-  color: variables.$darkmainColor;
+  color: var(--color-cv-heading);
   font-weight: 600;
 
   @include mixins.breakpoint(mobilePortrait) {
@@ -54,7 +54,7 @@
   align-items: center;
   gap: 0.375rem 0.75rem;
   font-size: 0.95rem;
-  color: variables.$textColor;
+  color: var(--color-text);
 
   @include mixins.breakpoint(mobilePortrait) {
     font-size: 0.875rem;
@@ -63,7 +63,7 @@
 }
 
 .contactLink {
-  color: variables.$thirdColor;
+  color: var(--color-accent-coral);
   text-decoration: none;
   font-weight: 500;
 
@@ -73,13 +73,13 @@
 }
 
 .contactDivider {
-  color: color.adjust(variables.$textColor, $lightness: 20%);
+  color: var(--color-cv-contact-divider);
 }
 
 .section {
   margin-bottom: 2.5rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid color.adjust(variables.$mainColor, $lightness: 5%);
+  border-bottom: 1px solid var(--color-cv-section-border-alt);
 
   &:last-child {
     border-bottom: none;
@@ -91,7 +91,7 @@
   margin: 0 0 1.25rem;
   font-size: 1.25rem;
   font-weight: 700;
-  color: variables.$darkmainColor;
+  color: var(--color-cv-heading);
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -100,7 +100,7 @@
     content: "";
     flex: 1;
     height: 2px;
-    background: linear-gradient(to right, variables.$mainColor, transparent);
+    background: linear-gradient(to right, var(--color-cv-gradient-teal), transparent);
   }
 }
 
@@ -108,7 +108,7 @@
   margin: 0 0 1.25rem;
   font-size: 1.25rem;
   font-weight: 700;
-  color: variables.$thirdColor;
+  color: var(--color-cv-heading-alt);
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -117,7 +117,7 @@
     content: "";
     flex: 1;
     height: 2px;
-    background: linear-gradient(to right, variables.$thirdColor, transparent 70%);
+    background: linear-gradient(to right, var(--color-cv-gradient-coral), transparent 70%);
   }
 }
 
@@ -125,7 +125,7 @@
   margin: 0;
   font-size: 1.05rem;
   line-height: 1.75;
-  color: variables.$textColor;
+  color: var(--color-text);
 
   @include mixins.breakpoint(mobilePortrait) {
     font-size: 1rem;
@@ -136,7 +136,7 @@
   margin: 0 0 2rem;
   font-size: 1.15rem;
   font-style: italic;
-  color: variables.$thirdColor;
+  color: var(--color-cv-personal-statement);
   font-weight: 500;
   line-height: 1.6;
 
@@ -155,7 +155,7 @@
 .strengthItem {
   margin-bottom: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid color.adjust(variables.$mainColor, $lightness: 10%);
+  border-bottom: 1px solid var(--color-cv-strength-border);
 
   &:last-child {
     margin-bottom: 0;
@@ -168,14 +168,14 @@
   margin: 0 0 0.375rem;
   font-size: 1rem;
   font-weight: 700;
-  color: variables.$textColor;
+  color: var(--color-text);
 }
 
 .strengthDescription {
   margin: 0;
   font-size: 0.875rem;
   line-height: 1.6;
-  color: color.adjust(variables.$textColor, $lightness: 15%);
+  color: var(--color-text-secondary);
 }
 
 .tags {
@@ -192,12 +192,12 @@
 .tag {
   display: inline-block;
   padding: 0.375rem 0.75rem;
-  background: color.adjust(variables.$secondColor, $lightness: 3%);
-  color: variables.$darkmainColor;
+  background: var(--color-cv-tag-bg);
+  color: var(--color-cv-heading);
   font-size: 0.8rem;
   font-weight: 500;
   @include mixins.borderRadius(4px);
-  @include mixins.boxShadow(-1px 1px 2px 1px darken(variables.$secondColor, 5%));
+  @include mixins.boxShadow(-1px 1px 2px 1px var(--color-cv-tag-shadow));
 
   @include mixins.breakpoint(mobilePortrait) {
     background: transparent;
@@ -208,7 +208,7 @@
 
     &::before {
       content: "• ";
-      color: variables.$thirdColor;
+      color: var(--color-accent-coral);
     }
   }
 }
@@ -218,7 +218,7 @@
   padding-left: 1.25rem;
   font-size: 0.95rem;
   line-height: 1.7;
-  color: variables.$textColor;
+  color: var(--color-text);
   list-style-type: circle;
 
   li {
@@ -230,7 +230,7 @@
     }
 
     &::marker {
-      color: variables.$thirdColor;
+      color: var(--color-cv-marker);
     }
   }
 }
@@ -238,7 +238,7 @@
 .timeline {
   position: relative;
   padding-left: 1.5rem;
-  border-left: 2px solid variables.$mainColor;
+  border-left: 2px solid var(--color-cv-timeline-border);
 
   @include mixins.breakpoint(mobilePortrait) {
     padding-left: 1rem;
@@ -258,8 +258,8 @@
     top: 0.375rem;
     width: 12px;
     height: 12px;
-    background: #fff;
-    border: 2px solid variables.$thirdColor;
+    background: var(--color-cv-timeline-dot-bg);
+    border: 2px solid var(--color-cv-timeline-dot-border);
     @include mixins.borderRadius(50%);
     transform: translateX(-50%);
 
@@ -282,7 +282,7 @@
 
 .dates {
   font-size: 0.8rem;
-  color: color.adjust(variables.$textColor, $lightness: 20%);
+  color: var(--color-text-secondary);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -296,27 +296,27 @@
   margin: 0.25rem 0 0.125rem;
   font-size: 1.125rem;
   font-weight: 800;
-  color: variables.$textColor;
+  color: var(--color-text);
 }
 
 .company {
   margin: 0 0 0.5rem;
   font-size: 0.95rem;
   font-weight: 500;
-  color: variables.$thirdColor;
+  color: var(--color-accent-coral);
 }
 
 .roleSummary {
   margin: 0.5rem 0 0.75rem;
   padding: 0.75rem 1rem;
-  background: color.adjust(variables.$secondColor, $lightness: 3%);
-  border-left: 3px solid variables.$thirdColor;
+  background: var(--color-cv-role-summary-bg);
+  border-left: 3px solid var(--color-accent-coral);
   font-size: 0.9rem;
-  color: variables.$textColor;
+  color: var(--color-text);
   font-style: italic;
   line-height: 1.6;
   @include mixins.borderRadii(0, 16px, 16px, 0);
-  @include mixins.boxShadow(0 1px 4px rgba(0, 0, 0, 0.06));
+  @include mixins.boxShadow(0 1px 4px var(--color-cv-role-summary-shadow));
 }
 
 .eduGrid {
@@ -327,16 +327,16 @@
 
 .eduCard {
   padding: 0.875rem 1rem;
-  background: color.adjust(variables.$secondColor, $lightness: 3%);
+  background: var(--color-cv-edu-bg);
   @include mixins.borderRadius(8px);
-  @include mixins.boxShadow(-1px 1px 2px darken(variables.$secondColor, 10%));
+  @include mixins.boxShadow(-1px 1px 2px var(--color-cv-edu-shadow));
 }
 
 .eduDate {
   display: inline-block;
   font-size: 0.7rem;
   font-weight: 600;
-  color: color.adjust(variables.$textColor, $lightness: 20%);
+  color: var(--color-text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.03em;
   margin-bottom: 0.25rem;
@@ -346,13 +346,13 @@
   margin: 0 0 0.25rem;
   font-size: 0.95rem;
   font-weight: 700;
-  color: variables.$textColor;
+  color: var(--color-text);
 }
 
 .eduDegree {
   margin: 0;
   font-size: 0.85rem;
-  color: color.adjust(variables.$textColor, $lightness: 15%);
+  color: var(--color-text-secondary);
 }
 
 .languagesList {
@@ -370,8 +370,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 0.75rem;
-  background: rgba(variables.$mainColor, 0.1);
-  @include mixins.boxShadow(-1px 1px 1px darken(variables.$mainColor, 10%));
+  background: var(--color-cv-language-bg);
+  @include mixins.boxShadow(-1px 1px 1px var(--color-cv-language-shadow));
 
   @include mixins.borderRadius(8px);
   gap: 0.3rem;
@@ -383,12 +383,12 @@
 .languageName {
   font-size: 0.85rem;
   font-weight: 600;
-  color: variables.$textColor;
+  color: var(--color-text);
 }
 
 .languageLevel {
   font-size: 0.75rem;
-  color: color.adjust(variables.$textColor, $lightness: 20%);
+  color: var(--color-text-secondary);
   font-weight: 500;
 }
 
@@ -411,7 +411,7 @@
   margin: 0 0 0.375rem;
   font-size: 0.9rem;
   line-height: 1.6;
-  color: variables.$textColor;
+  color: var(--color-text);
 
   &:last-child {
     margin-bottom: 0;

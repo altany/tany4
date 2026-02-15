@@ -5,7 +5,7 @@ const Icon = ({icon}) => {
   const iconData = icons[icon];
   return (
     <svg viewBox="0 0 1024 1024">
-      <path d={iconData.path} fill={iconData.color}></path>
+      <path d={iconData.path} fill="currentColor"></path>
     </svg>
   );
 };

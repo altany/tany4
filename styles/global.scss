@@ -1,4 +1,5 @@
 @use "../styles/variables";
+@use "../styles/theme";
 @use "../styles/codeHighlight";
 @use "../styles/mixins";
 
@@ -11,6 +12,8 @@ body {
   line-height: 1.6;
   font-size: 18px;
   height: 100%;
+  background-color: var(--color-bg);
+  transition: background-color 0.25s ease, color 0.25s ease;
 
   @include mixins.breakpoint(mobile) {
     font-size: 1rem;
@@ -24,7 +27,7 @@ body {
   > div {
     height: 100%;
   }
-  color: variables.$textColor;
+  color: var(--color-text);
 }
 
 * {
@@ -59,7 +62,7 @@ ul {
 
 article {
   a {
-    color: variables.$navLinkColor;
+    color: var(--color-nav-link);
   }
 }
 
