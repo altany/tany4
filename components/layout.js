@@ -254,7 +254,7 @@ const StatusBar = () => (
     <span className={styles.title}>{JOB_TITLE}</span>
     <ThemeToggle />
     <a
-      href="/TaniaPapazafeiropoulou-CV.pdf?version=01/2026"
+      href="/TaniaPapazafeiropoulou-CV.pdf?version=03/2026"
       className={styles.downloadCv}
       target="_cv"
       rel="noopener noreferrer"
