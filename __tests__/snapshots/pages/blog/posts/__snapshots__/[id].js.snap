@@ -159,7 +159,7 @@ exports[`renders the blog post unchanged 1`] = `
     </button>
     <a
       class="downloadCv"
-      href="/TaniaPapazafeiropoulou-CV.pdf?version=01/2026"
+      href="/TaniaPapazafeiropoulou-CV.pdf?version=03/2026"
       rel="noopener noreferrer"
       target="_cv"
       title="Download CV"
