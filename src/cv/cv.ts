@@ -100,8 +100,8 @@ export const cv: Cv = {
       ],
     },
     {
-      start: "01/2017",
-      end: "01/2018",
+      start: "08/2017",
+      end: "08/2018",
       title: "Front-End & App Developer",
       company: "Esquared Technologies",
       bullets: [
@@ -109,8 +109,8 @@ export const cv: Cv = {
       ],
     },
     {
-      start: "01/2016",
-      end: "12/2017",
+      start: "03/2016",
+      end: "08/2017",
       title: "Web Developer",
       company: "Cult Beauty",
       bullets: [
@@ -118,8 +118,8 @@ export const cv: Cv = {
       ],
     },
     {
-      start: "01/2015",
-      end: "12/2016",
+      start: "07/2014",
+      end: "02/2016",
       title: "Web Developer",
       company: "IDG UK",
       bullets: [
@@ -127,8 +127,8 @@ export const cv: Cv = {
       ],
     },
     {
-      start: "01/2014",
-      end: "12/2015",
+      start: "01/2013",
+      end: "07/2014",
       title: "Junior Software Developer",
       company: "Kantar Worldpanel",
       bullets: ["Built internal data tools and reporting automations"],
