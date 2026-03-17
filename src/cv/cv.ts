@@ -10,7 +10,7 @@ export const cv: Cv = {
     website: "tany4.com",
   },
   personalStatement: "I'm most comfortable where product complexity meets real users.",
-  summary: "Front-End Engineer with 10+ years of experience building and leading scalable React and React Native applications. Strong focus on architecture, performance, accessibility, and developer experience. Comfortable operating as a senior IC, leading through ownership, implementation and technical judgement.",
+  summary: "Front-End Engineer with 10+ years of experience building React and React Native applications used by millions of users. Strong focus on performance, accessibility, and shipping reliable UI that holds up at scale. Comfortable owning complex systems end-to-end and working closely with product, design and backend teams.",
   strengths: [
     {
       title: "Shipping complex front-end systems",
@@ -25,9 +25,9 @@ export const cv: Cv = {
       description: "Improving runtime performance, accessibility and reliability through thoughtful UI design, refactoring and monitoring.",
     },
     {
-      title: "Hands-on leadership & cross-functional collaboration",
-      description: "Leading by example through pairing, code reviews and day-to-day implementation, while working closely with product, design, backend and operations to turn complex, messy requirements into clear, usable solutions.",
-    }
+      title: "Cross-functional collaboration",
+      description: "Working closely with product, design, backend and operations to turn complex, messy requirements into clear, maintainable solutions.",
+    },
   ],
   sidebar: [
     {
@@ -42,17 +42,17 @@ export const cv: Cv = {
     {
       title: "Skills",
       bullets: [
-  "React & React Native (Production Applications)",
-  "TypeScript & Modern JavaScript (ES6+)",
-  "Front-End Architecture & Scalable UI Systems",
-  "State Management (Redux, Zustand, TanStack Query)",
-  "Mobile Performance Optimisation & Reliability",
-  "API Integration & Back-End Collaboration",
-  "Testing & Quality (Jest, React Testing Library, CI/CD)",
-  "Accessibility (WCAG) & Web/Mobile Best Practices",
-  "AI-Assisted Development & Developer Tooling",
-  "Technical Leadership, Mentoring & Code Reviews"
-],
+        "React & React Native (Production Applications)",
+        "TypeScript & Modern JavaScript (ES6+)",
+        "Front-End Architecture & Scalable UI Systems",
+        "State Management (Redux, Zustand, TanStack Query)",
+        "Mobile Performance Optimisation & Reliability",
+        "API Integration & Back-End Collaboration",
+        "Testing & Quality (Jest, React Testing Library, CI/CD)",
+        "Accessibility (WCAG) & Web/Mobile Best Practices",
+        "AI-Assisted Development & Developer Tooling",
+        "Technical Leadership, Mentoring & Code Reviews",
+      ],
     },
     {
       title: "Certifications",
@@ -75,12 +75,11 @@ export const cv: Cv = {
         "A growing B2C/B2B scale-up focused on food redistribution. Joined when the engineering team was <20; contributed across its growth to 100+ employees and millions of users.",
       bullets: [
         "Owned front-end direction across partner and volunteer platforms, balancing product needs, UX quality and maintainability.",
-        "Contributed to early planning and technical decisions, raising feasibility concerns and shaping approaches before delivery.",
-        "Led architectural work in complex React apps, simplifying scheduling/grouping logic and reducing edge cases.",
-        "Worked closely with product, design, operations and backend to turn real-world workflows into clear, maintainable UI solutions.",
-        "Helped extend volunteer support from Olio volunteers to charity volunteers, enabling new flows and broader operational use.",
-        "Prototyped new ideas during internal hackathons (partner platform, AI-assisted appointment planner) to validate concepts and inform next steps.",
+        "Led re-architecture of a 10-year-old scheduling system. Incremental migration with feature flags and rollback, zero user disruption, eliminated long-standing bugs.",
+        "Led i18n initiative across the partner platform: Luxon integration for locale-aware date/time handling, added Chinese language support.",
         "Improved performance, accessibility and reliability through refactoring, monitoring and reducing technical debt.",
+        "Worked closely with product, design, operations and backend to turn complex workflows into clear, maintainable UI solutions.",
+        "Prototyped new ideas during internal hackathons (partner platform, AI-assisted appointment planner) to validate concepts and inform next steps.",
         "Mentored engineers through pairing and code reviews while remaining a strong IC, writing production code daily and unblocking complex technical problems.",
       ],
     },
@@ -91,12 +90,11 @@ export const cv: Cv = {
       company: "Olio",
       bullets: [
         "Promoted from Mid-Level to Senior within 1 year based on performance.",
-        "Key contributor to Olio's React Native app, helping build and stabilise the product within months as part of a small team.",
-        "Delivered and maintained user-facing features across core app areas with a focus on performance and reliability.",
-        "Played a major role in migrating the Volunteers platform from Rails views to a React-based front end.",
-        "Expanded the Volunteers platform beyond the initial migration by designing and implementing new features and improving workflows.",
-        "Improved stability and maintainability by addressing long-standing issues and reducing technical debt.",
-        "Partnered with backend, product and support teams to prioritise work based on real user needs.",
+        "Key contributor to building and stabilising Olio's React Native consumer app from scratch. Helped ship the initial version within 3 months as part of a small team.",
+        "Managed regular App Store and Google Play release cycles, coordinating with product, QA and backend teams.",
+        "Optimised map marker and cluster rendering so it only runs when data changes, improving performance on list and map views.",
+        "Led migration of the Volunteers platform from Rails views to a modern React SPA. Established routing, navigation, and component patterns from scratch.",
+        "Extended the Volunteers platform beyond the initial migration: designed and built new flows to support charity volunteers alongside Olio volunteers.",
       ],
     },
     {
@@ -105,7 +103,7 @@ export const cv: Cv = {
       title: "Front-End & App Developer",
       company: "Esquared Technologies",
       bullets: [
-        "Delivered features on an Angular2 app, working closely with founders and designers",
+        "Delivered features on an Angular2 app, working closely with founders and designers.",
       ],
     },
     {
@@ -114,7 +112,7 @@ export const cv: Cv = {
       title: "Web Developer",
       company: "Cult Beauty",
       bullets: [
-        "Built UI features and improved performance for a high-traffic e-commerce site",
+        "Built UI features for a high-traffic e-commerce site. Worked on checkout and payment flows, integrating third-party payment methods including Klarna and PayPal. Contributed to both frontend and backend PHP code.",
       ],
     },
     {
@@ -123,7 +121,7 @@ export const cv: Cv = {
       title: "Web Developer",
       company: "IDG UK",
       bullets: [
-        "Developed editorial and publishing tools for websites including PC Advisor, Macworld, ComputerWorld, Digital Arts Online and TechWorld",
+        "Developed editorial and publishing tools for websites including PC Advisor, Macworld, ComputerWorld, Digital Arts Online and TechWorld.",
       ],
     },
     {
@@ -131,7 +129,7 @@ export const cv: Cv = {
       end: "07/2014",
       title: "Junior Software Developer",
       company: "Kantar Worldpanel",
-      bullets: ["Built internal data tools and reporting automations"],
+      bullets: ["Built internal data tools and reporting automations."],
     },
   ],
   education: [

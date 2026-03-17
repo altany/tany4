@@ -44,10 +44,10 @@ const styles = StyleSheet.create({
 
   main: {
     marginLeft: 210,
-    paddingTop: 24,
-    paddingRight: 40,
+    paddingTop: 8,
+    paddingRight: 32,
     paddingBottom: 24,
-    paddingLeft: 36,
+    paddingLeft: 26,
   },
 
   pageHeader: {
