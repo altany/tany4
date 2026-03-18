@@ -133,7 +133,7 @@ exports[`renders the whole page unchanged 1`] = `
     <span
       class="title"
     >
-      Front-End Tech Lead & Senior React / React Native Engineer
+      Senior Front-End Engineer & Tech Lead
     </span>
     <button
       aria-label="Switch to dark mode"
@@ -186,11 +186,11 @@ exports[`renders the whole page unchanged 1`] = `
             ,
           </h1>
           <h2>
-            Front-End Tech Lead & Senior React / React Native Engineer
+            Senior Front-End Engineer & Tech Lead
           </h2>
         </header>
         <p>
-          I build mobile and web products that people actually want to use. Over 10 years in front-end engineering, I've shipped apps to millions of users, led teams through complex migrations, and helped junior engineers grow into confident contributors.
+          I build mobile and web products that people actually want to use. Over 10 years in front-end engineering, I've shipped apps to millions of users, led complex migrations, and collaborated with engineers to deliver at scale.
         </p>
         <p>
           What drives me:
@@ -201,9 +201,6 @@ exports[`renders the whole page unchanged 1`] = `
           </li>
           <li>
             Making complex things simple for users and developers alike
-          </li>
-          <li>
-            Growing teams and creating environments where people do their best work
           </li>
           <li>
             Accessibility as a baseline, not an afterthought
