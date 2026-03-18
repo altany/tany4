@@ -4,14 +4,14 @@ date: "2025-11-14T18:52:00+0000"
 categories: ["AI", "Tooling", "Fullstack"]
 banner: "github-mcp-server-fullstack.png"
 color: "#0d1117"
-description: "Notes from experimenting with GitHub’s MCP Server as a front-end dev: cross-repo debugging, better types, and docs without cloning extra repos."
+description: "Notes from using GitHub’s MCP Server as a front-end developer: how it helped me understand back-end code faster, improve my types, and stay in flow without jumping between repos."
 updated: "2025-11-21T18:52:00+0000"
 readingTimeMinutes: 5
 ---
 
-Lately I’ve been playing with GitHub’s MCP Server on Windsurf to see how far I can push it as a front-end developer. My goal was to write better code, faster, without constantly jumping between repos or tapping someone on the shoulder to ask how an API works.
+Lately I’ve been playing with GitHub’s MCP Server to see how useful it is as a front-end developer. I wanted to write better code, faster, without constantly jumping between repos or interrupting someone to ask how an API works. What surprised me is how much it helped once I connected it to our API repos.
 
-What surprised me is how useful MCP became once I hooked it up to our API repos. Suddenly I could:
+Suddenly I could:
 
 - Ask questions about parts of the back-end I don’t have checked out at all
 - Cross-reference front-end errors with back-end logic

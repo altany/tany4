@@ -4,15 +4,13 @@ date: "2025-11-21T18:52:00+0000"
 categories: ["AI", "Tooling", "QA"]
 banner: "github-mcp-server-qa.png"
 color: "#051025"
-description: "How GitHub MCP Server helped me QA a back-end PR with almost no context, and the subtle mistake that proved why humans still need to verify."
+description: "I had to QA a back-end PR with almost no context. GitHub MCP Server helped me do it properly; and then made one subtle mistake that reminded me why humans still need to check the output."
 readingTimeMinutes: 6
 ---
 
 Part 1: [Experimenting with GitHub MCP Server as a Front-End Dev](/blog/posts/experimenting-with-github-mcp-server-as-a-frontend-dev)
 
-After spending a bit more time pairing with GitHub’s MCP Server, I started doing things I normally wouldn’t feel comfortable doing - at least not with confidence.
-
-I’m a front-end developer. I live in components, hooks, UI states, and TypeScript. Back-end logic, API setup details, server-side workflows… I understand them conceptually, but I don’t swim in that water daily. So when a back-end ticket landed on my plate to QA - part of a bigger project, with very little context - I felt the usual mix of “I love a challenge” and “I definitely don’t know enough for this.”
+I’m a front-end developer. I live in components, hooks, UI states, and TypeScript. Back-end logic I understand conceptually, but I don’t work in it every day. So when a back-end ticket landed on my plate to QA, with very little context and no testing steps, I felt the usual mix of “I love a challenge” and “I definitely don’t know enough for this.”
 
 To make it more fun, the developer drafting the PR hadn’t left any testing steps. The only note was: “Refer to the previous PR; this one amends that.” And that developer was busy somewhere else. 🙈
 

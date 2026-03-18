@@ -4,11 +4,11 @@ date: "2020-01-25T14:00:50+0200"
 categories: ["Testing", "React Native"]
 banner: "rn-jest.png"
 color: "#222222"
-description: "A simple explanation of how to mock React Native 0.61 modules with Jest, why mocks broke after the Haste removal, and how to fix common testing errors."
+description: "React Native 0.61 removed Haste and broke a lot of Jest mocks. Here's why it happened and how to fix it properly."
 readingTimeMinutes: 6
 ---
 
-**TL;DR**: React Native 0.61 removed Haste, which broke many Jest mocks. This post explains why filename-based mocks stopped working and shows how to mock `react-native` modules correctly using `jest.doMock` and a custom interface.
+**TL;DR**: React Native 0.61 removed Haste, which broke a lot of Jest mocks. This post explains why filename-based mocks stopped working and shows a more robust way to mock react-native modules.
 
 ## Why mocks broke in React Native 0.61
 

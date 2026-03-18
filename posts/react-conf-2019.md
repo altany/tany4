@@ -6,7 +6,7 @@ categories: [ "Conference talk", "React Native",]
 highlight: true
 banner: "reactconf-banner.jpg"
 color: "#401b57"
-description: "Conference talk on how Olio migrated its entire app to React Native with a small team, the performance and testing challenges we faced, and the lessons that can help other engineering teams."
+description: "My talk at React Conf 2019 on how we built and migrated the Olio app to React Native with a tiny team, what broke, and what we'd do differently."
 readingTimeMinutes: 4
 ---
 
