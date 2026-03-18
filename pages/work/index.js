@@ -30,9 +30,9 @@ export default function Work() {
         <header>
           <h1>My work</h1>
           <h3>
-            Front-End Tech Lead & Senior React / React Native Engineer. Here
-            you will find highlights from key projects, plus my Git
-            and developer profiles below.
+            Senior Front-End Engineer & Tech Lead. Here you will find
+            highlights from key projects, plus my Git and developer profiles
+            below.
           </h3>
         </header>
         <div>
@@ -104,7 +104,7 @@ export default function Work() {
         </div>
         <section className={styles.workIntroSection}>
           <p>
-            As a Front-End Tech Lead and seasoned Senior React / React Native Engineer, I've had the privilege of driving the development of user-facing products and leading high-performing teams. Below, you'll find a curated selection of projects that showcase my technical expertise and leadership capabilities.
+            I've built user-facing products across mobile and web, owning complex systems end-to-end. Below, you'll find a curated selection of projects that showcase my technical expertise.
           </p>
         </section>
 
@@ -144,13 +144,34 @@ export default function Work() {
                 Helped migrate the volunteer platform from server-rendered Rails views to a React SPA, establishing patterns the team still uses today.
               </li>
               <li>
-                Led a major rearchitecture of how collections are displayed, grouping by schedule to match how volunteers actually think about their pickups.
-              </li>
-              <li>
                 Extended the platform to support charity volunteers alongside Olio volunteers, a key step in the company&apos;s growth.
               </li>
               <li>
                 Cleaned up years of accumulated feature flags and deprecated code, making the codebase easier for new joiners to navigate.
+              </li>
+            </ul>
+          </article>
+
+          <article className={styles.experienceCard}>
+            <h2>Collection re-architecture</h2>
+            <p className={styles.experienceRole}>
+              Tech lead & sole front-end engineer
+            </p>
+            <p className={styles.experienceTech}>
+              React, TypeScript
+            </p>
+            <ul>
+              <li>
+                Rearchitected how collections are displayed across the volunteer platform, grouping by schedule to match how volunteers actually think about their pickups.
+              </li>
+              <li>
+                Shipped with zero disruption to existing users — no rollback, no incidents.
+              </li>
+              <li>
+                Eliminated long-standing bugs in the process, removing edge cases that had existed for years.
+              </li>
+              <li>
+                Support tickets related to collection display dropped noticeably after the release.
               </li>
             </ul>
           </article>

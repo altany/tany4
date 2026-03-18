@@ -19,12 +19,11 @@ export default function Home() {
           <h1>Hi, I'm {NAME},</h1>
           <h2>{JOB_TITLE}</h2>
         </header>
-        <p>I build mobile and web products that people actually want to use. Over 10 years in front-end engineering, I&apos;ve shipped apps to millions of users, led teams through complex migrations, and helped junior engineers grow into confident contributors.</p>
+        <p>I build mobile and web products that people actually want to use. Over 10 years in front-end engineering, I&apos;ve shipped apps to millions of users, led complex migrations, and collaborated with engineers to deliver at scale.</p>
         <p>What drives me:</p>
         <ul>
           <li>Shipping products that make a real difference</li>
           <li>Making complex things simple for users and developers alike</li>
-          <li>Growing teams and creating environments where people do their best work</li>
           <li>Accessibility as a baseline, not an afterthought</li>
           <li>Using AI tools to work smarter, not just faster</li>
         </ul>
