@@ -4,13 +4,13 @@ date: "2025-12-15T12:00:00+0000"
 categories: ["AI", "Vibe coding", "Chatbot"]
 banner: "vercel-aisdk.png"
 color: "#1d7be2"
-description: "A light evening experiment: I vibe-coded a small AI chatbot into my website using the Vercel AI SDK, a tiny bit of retrieval, and a lot of trial-and-error."
+description: "One evening I built a small AI chatbot into this site using the Vercel AI SDK. It only answers questions about my actual work. Here's what I built and what I learned."
 readingTimeMinutes: 4
 new: true
 updated: "2025-12-16T12:00:00+0000"
 ---
 
-**TL;DR**: I vibe-coded a chatbot into this website over an evening. It answers questions about my work using content already on the site and my CV, and it refuses to make things up. I did not go into this as an “LLM expert”. I mostly got it working by asking the coding assistant a lot of questions, nudging things until they behaved, and then being slightly surprised when they actually did.
+**TL;DR**: I built a chatbot into this website one evening. It answers questions about my work using content from the site and my CV, and it refuses to make things up. I had no idea what I was doing at the start. I mostly got it working by asking the AI a lot of questions and nudging things until they behaved.
 
 ## The idea
 

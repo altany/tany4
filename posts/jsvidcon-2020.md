@@ -5,7 +5,7 @@ date: "2020-05-07T23:30:00+0200"
 categories: ["Conference talk", "React Native", ]
 banner: "jsvidcon-banner.jpeg"
 color: "#03a7af"
-description: "Online conference talk on how Olio uses React Native to reduce food waste, migrate a production app quickly, and keep performance, testing, and developer experience under control."
+description: "My JS VidCon talk on how Olio uses React Native to reduce food waste — how we migrated a production app quickly and kept performance and developer experience under control."
 readingTimeMinutes: 4
 ---
 
