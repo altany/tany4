@@ -133,7 +133,7 @@ exports[`renders the blog post unchanged 1`] = `
     <span
       class="title"
     >
-      Front-End Tech Lead & Senior React / React Native Engineer
+      Senior Front-End Engineer & Tech Lead
     </span>
     <button
       aria-label="Switch to dark mode"
@@ -230,7 +230,7 @@ exports[`renders the blog post unchanged 1`] = `
               Written by 
               Tania Papazafeiropoulou
                - 
-              Front-End Tech Lead & Senior React / React Native Engineer
+              Senior Front-End Engineer & Tech Lead
               .
             </p>
           </div>
