@@ -9,28 +9,23 @@ description: "My JS VidCon talk on how Olio uses React Native to reduce food was
 readingTimeMinutes: 4
 ---
 
-**TL;DR**: This is a remote follow-up to my React Conf talk, recorded during 2020 when most conferences went online. I share how we used React Native at Olio to reduce food waste, keep a production app moving quickly, and balance performance, testing, and developer experience.
+**TL;DR**: A follow-up to my React Conf talk, recorded online during COVID. I revisit the same story a year later and focus on what it actually means to run a React Native app in production.
 
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/BJBCL2PNOgo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+In May 2020, when everything had moved online because of COVID, I spoke at JS VidCon about how we use React Native at Olio to reduce food waste.
 
-In May 2020, at the height of COVID when everything had moved online, I spoke at JS VidCon about how our team was using React Native to "save the world" by reducing food waste.
+It's essentially part 2 of the [React Conf 2019](/blog/posts/react-conf-2019) talk. I revisit the migration story - 3 months, 3 developers, millions of users - but with a year of production experience behind me.
 
-Food waste is one of the biggest environmental and social challenges facing the planet. Olio helps people connect and share surplus food - and, like in my React Conf talk, the app is built in React Native.
+**What held up**
+A lot of the original lessons turned out to be right. The performance monitoring approach, the testing patterns, and the code structure we adopted all survived real-world use.
 
-During my presentation I talked about how we migrated the entire Olio application to React Native over a period of 3 months with a front-end team of just 3 developers. I talked about some of the issues we faced as an inexperienced React team (performance issues, code structure, testing, etc), how we overcame these and how our lessons could help others.
+**What we changed**
+As complexity grew and the user base scaled, a few things needed rethinking. What works at small scale doesn't always hold up in production.
 
-In this talk I revisit the migration story from [React Conf 2019](/blog/posts/react-conf-2019), share what changed in the year since, and focus more on the practical realities of running a React Native app in production.
+**The reality of React Native in production**
+What it actually means to maintain a React Native app that real people use every day - from release cycles to debugging to developer experience.
 
-## Key takeaways
+JS VidCon was one of the first fully remote conferences during the pandemic. The format was very different from React Conf, but the response from the community was just as warm.
 
-- JS VidCon 2020 was a fully remote conference during COVID, which changed how we shared and consumed talks.
-- React Native continued to power Olio’s app as we scaled usage and feature complexity.
-- Many of the lessons from the original React Conf talk still applied, but we had a clearer picture of what worked (and what didn’t) in production.
+*Update: The recording of this talk is no longer available online. The JS VidCon YouTube channel was hacked a few years ago and the backup couldn't be recovered.*
 
-You can watch this as a "part 2" to my original talk:
-
-- [React Conf 2019](/blog/posts/react-conf-2019)
-
-<a id="jsvidconBanner" href="https://www.youtube.com/watch?v=BJBCL2PNOgo" title="JS VidCon - Tania Papazafeiropoulou">
-    <img src="/blog/jsvidcon-banner-tania.png" alt="JS VidCon banner - Tania Papazafeiropoulou"/>
-</a>
+If you haven't seen the original talk, start there: [React Conf 2019](/blog/posts/react-conf-2019)
