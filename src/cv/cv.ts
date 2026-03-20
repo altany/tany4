@@ -72,7 +72,7 @@ export const cv: Cv = {
       title: "Front-End Tech Lead",
       company: "Olio",
       summary:
-        "A growing B2C/B2B scale-up focused on food redistribution. Joined when the engineering team was <20; contributed across its growth to 100+ employees and millions of users.",
+        "A growing B2C/B2B scale-up focused on food redistribution. Joined when the company had <20 employees and 3 developers; contributed across its growth to 100+ employees and millions of users.",
       bullets: [
         "Owned front-end direction across partner and volunteer platforms, balancing product needs, UX quality and maintainability.",
         "Led re-architecture of a 10-year-old scheduling system. Incremental migration with feature flags and rollback, zero user disruption, eliminated long-standing bugs.",
