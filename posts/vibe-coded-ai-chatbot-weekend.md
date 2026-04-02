@@ -3,7 +3,7 @@ title: "Vibe coding an AI chatbot into my website"
 date: "2025-12-15T12:00:00+0000"
 categories: ["AI", "Vibe coding", "Chatbot"]
 banner: "vercel-aisdk.png"
-color: "#1d7be2"
+color: "#f66f6e"
 description: "One evening I built a small AI chatbot into this site using the Vercel AI SDK. It only answers questions about my actual work. Here's what I built and what I learned."
 readingTimeMinutes: 4
 updated: "2025-12-16T12:00:00+0000"
