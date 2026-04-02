@@ -79,7 +79,7 @@ It's a scaffold, not a script. The research is there so I can focus on the actua
 
 The server is built on the Model Context Protocol SDK. It connects to Claude Desktop via stdio, and to ChatGPT via a small Express HTTP server I expose locally with Cloudflare Tunnel. All the Google Sheets and Docs interactions go through the MCP server using a service account - no third-party services, no cloud database.
 
-Most of the actual intelligence is the agent's. The server's job is to construct good prompts, load my preferences and background as context, manage the Sheets/Docs state, and return structured responses. I learned from my previous [chatbot work](/blog/posts/vibe-coded-ai-chatbot-weekend) that the hard part of these tools isn't getting the AI to respond, but it's making sure the context is right and the guardrails hold.
+The model provides the reasoning, while the server handles the context, persistence, and overall workflow. The server's job is to construct good prompts, load my preferences and background as context, manage the Sheets/Docs state, and return structured responses. I learned from my previous [chatbot work](/blog/posts/vibe-coded-ai-chatbot-weekend) that the hard part of these tools isn't getting the AI to respond, but it's making sure the context is right and the guardrails hold.
 
 ## What surprised me
 
