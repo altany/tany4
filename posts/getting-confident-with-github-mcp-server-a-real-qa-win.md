@@ -3,7 +3,7 @@ title: "Getting Confident with GitHub MCP Server: A Real QA Win"
 date: "2025-11-21T18:52:00+0000"
 categories: ["AI", "Tooling", "QA"]
 banner: "github-mcp-server-qa.png"
-color: "#051025"
+color: "#fdba31"
 description: "I had to QA a back-end PR with almost no context. GitHub MCP Server helped me do it properly; and then made one subtle mistake that reminded me why humans still need to check the output."
 readingTimeMinutes: 6
 ---
