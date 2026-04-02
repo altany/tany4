@@ -3,7 +3,6 @@ title: "React Conf 2019"
 subtitle: '"Using React Native to save the world"'
 date: "2019-10-30T20:00:50+0200"
 categories: [ "Conference talk", "React Native",]
-highlight: true
 banner: "reactconf-banner.jpg"
 color: "#401b57"
 description: "My talk at React Conf 2019 on how we built and migrated the Olio app to React Native with a tiny team, what broke, and what we'd do differently."

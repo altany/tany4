@@ -6,7 +6,6 @@ banner: "vercel-aisdk.png"
 color: "#1d7be2"
 description: "One evening I built a small AI chatbot into this site using the Vercel AI SDK. It only answers questions about my actual work. Here's what I built and what I learned."
 readingTimeMinutes: 4
-new: true
 updated: "2025-12-16T12:00:00+0000"
 ---
 
