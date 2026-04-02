@@ -3,7 +3,7 @@ title: "Building a job-hunting MCP server"
 date: "2026-04-01T12:00:00+0000"
 categories: ["AI", "Tooling", "MCP"]
 banner: "job-hunter-mcp.png"
-color: "#0f2420"
+color: "#cee2fd"
 description: "I built a personal MCP server that helps me research companies, score job fits, and track my application pipeline. Here's what I built and what surprised me."
 readingTimeMinutes: 5
 new: true
