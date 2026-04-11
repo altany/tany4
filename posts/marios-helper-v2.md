@@ -15,7 +15,7 @@ new: true
 
 My dog Mario has an eye care and pain-killer routine. Every day, several times a day, he needs Hylogel drops. Twice a day, 20 minutes after the Hylogel, he needs Lacrimmune. And there are other medications on top of that.
 
-Getting the timing right is annoying. So about a year ago I built a small React Native app using Expo to handle the reminders. Daily scheduled notifications, sticky behaviour so I don't swipe accidentally, a "done" button and a snooze button. That's it.
+Getting the timing right is annoying, and missing a dose isn't an option. So about a year ago I built a small React Native app using Expo to handle the reminders. The core requirement was simple: the notification had to be impossible to miss. That meant it should stay in the drawer until I actively acknowledge it, not disappear because I accidentally swiped or closed the app - a sticky notification. Daily scheduled notifications, a "done" button and a snooze button. That's it.
 
 I built it myself. I'm a frontend developer by trade but expo-notifications is fiddly. It took longer than I expected but it worked.
 
@@ -25,7 +25,7 @@ A few things bothered me constantly.
 
 The first: the notification sound only worked when the app was open. When it was closed or in the background it would be silent. Not very helpful indeed.
 
-The second: if I swiped the notification away from the drawer, it was gone. No record, no retry. The notification was marked `sticky: true` via expo-notifications, which maps to `setOngoing(true)` in Android (which *should* prevent swipe-dismiss) but on my OnePlus the OEM overrides that and lets you swipe it away regardless.
+The second: if I swiped the notification away from the drawer, it was gone. No record, no retry.
 
 There were smaller things too. Some duplicate notifications being triggered. No way to change the notification times without editing code. No way to adjust which chain steps fired when. The app was basically hardcoded.
 
@@ -33,15 +33,15 @@ There were smaller things too. Some duplicate notifications being triggered. No 
 
 About a year later I had access to Claude Code (Sonnet 4.6) and decided to finally deal with it.
 
-The sound bug turned out to be a misconfiguration in how the notification content was passing the `sound` field. expo-notifications has a quirk where passing the string `'default'` instead of the boolean `true` causes the notification builder to call `setSilent(true)` on Android, which silences it regardless of the channel settings. One character fix.
+The sound bug turned out to be a misconfiguration in how the notification content was passing the `sound` field. expo-notifications has a quirk where passing the string `'default'` instead of the boolean `true` causes the notification builder to call `setSilent(true)` on Android, which silences it regardless of the channel settings. One word fix.
 
-The duplicate notifications were a double-firing issue — both `getLastNotificationResponseAsync` (which runs on app resume) and `addNotificationResponseReceivedListener` were handling the same notification response. The fix was a simple guard in AsyncStorage: store the last handled notification ID and skip it if it's already been processed.
+The duplicate notifications were a double-firing issue - both `getLastNotificationResponseAsync` (which runs on app resume) and `addNotificationResponseReceivedListener` were handling the same notification response. The fix was a simple guard in AsyncStorage: store the last handled notification ID and skip it if it's already been processed.
 
 The fixes took a couple of hours of back and forth. Mostly me describing what I was seeing, Claude reading the relevant files and proposing changes, me testing.
 
 ## Then I kept going
 
-Once the bugs were fixed I realised the app was still pretty rigid. Every time Mario's prescription changed (which can be often) I'd have to edit the code directly. That felt wrong.
+Once the bugs were fixed I realised the app was still pretty rigid. Every time Mario's prescription changed (which can be often) I'd have to edit the code directly and that was inconvenient.
 
 So I asked Claude to add a settings page. Not just time pickers, but full chain management - the ability to add medications, define chain steps, set which hours each step should fire, adjust delays between steps. It ended up being more complex than I expected because the chain logic had to stay consistent: if I apply Hylogel at 09:00, 15:00 and 21:00, then I set Lacrimmune to chain after only 9:00 and 21:00 any upcoming chained medication should have 9:00 and 21:00 options available, not all 3 of Hylogel's daily times.
 
@@ -59,7 +59,7 @@ The `sticky: true` issue was the last thing. `setOngoing(true)` works fine on st
 
 A fix for this is to attach a `deleteIntent` to the notification, a `PendingIntent` that fires when the notification is dismissed. If it's dismissed, we immediately re-post it.
 
-The expo-notifications library doesn't expose this natively, so we patched `ExpoNotificationBuilder.java` directly (using `patch-package` to persist the change across installs) to attach a delete intent to every sticky notification. The intent triggers a `BroadcastReceiver` we wrote in the app's Android project, which unmarshals the original `NotificationRequest` and re-posts the full notification — including the action buttons — using expo's own `CategoryAwareNotificationBuilder`.
+The expo-notifications library doesn't expose this natively, so we patched `ExpoNotificationBuilder.java` directly (using `patch-package` to persist the change across installs) to attach a delete intent to every sticky notification. The intent triggers a `BroadcastReceiver` we wrote in the app's Android project, which unmarshals the original `NotificationRequest` and re-posts the full notification - including the action buttons - using expo's own `CategoryAwareNotificationBuilder`.
 
 So if I swipe it, it comes straight back. The only way to clear it is to tap a button.
 
