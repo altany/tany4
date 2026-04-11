@@ -1,9 +1,9 @@
 ---
 title: "Fixing the app I built for my dog's medication schedule"
 date: "2026-04-11T12:00:00+0000"
-categories: ["React Native", "Expo", "AI", "Claude Code"]
+categories: [ "AI", "React Native", "Expo"]
 banner: "marios-helper.png"
-color: "#317181"
+color: "#556f30"
 description: "A year ago I built a small Expo app to remind me to give my dog his eye drops. It worked, mostly. Recently I came back to it with Claude Code and fixed what was broken, then kept going."
 readingTimeMinutes: 6
 new: true
@@ -13,7 +13,7 @@ new: true
 
 ## The background
 
-My dog Mario has a post-operative eye care routine. Every day, several times a day, he needs Hylogel drops. Twice a day, 20 minutes after the Hylogel, he needs Lacrimmune. And there are other medications on top of that.
+My dog Mario has an eye care and pain-killer routine. Every day, several times a day, he needs Hylogel drops. Twice a day, 20 minutes after the Hylogel, he needs Lacrimmune. And there are other medications on top of that.
 
 Getting the timing right is annoying. So about a year ago I built a small React Native app using Expo to handle the reminders. Daily scheduled notifications, sticky behaviour so I don't swipe accidentally, a "done" button and a snooze button. That's it.
 
@@ -32,6 +32,10 @@ There were smaller things too. Some duplicate notifications being triggered. No 
 ## Coming back to it with Claude Code
 
 About a year later I had access to Claude Code (Sonnet 4.6) and decided to finally deal with it.
+
+The sound bug turned out to be a misconfiguration in how the notification content was passing the `sound` field. expo-notifications has a quirk where passing the string `'default'` instead of the boolean `true` causes the notification builder to call `setSilent(true)` on Android, which silences it regardless of the channel settings. One character fix.
+
+The duplicate notifications were a double-firing issue — both `getLastNotificationResponseAsync` (which runs on app resume) and `addNotificationResponseReceivedListener` were handling the same notification response. The fix was a simple guard in AsyncStorage: store the last handled notification ID and skip it if it's already been processed.
 
 The fixes took a couple of hours of back and forth. Mostly me describing what I was seeing, Claude reading the relevant files and proposing changes, me testing.
 
@@ -59,10 +63,20 @@ The expo-notifications library doesn't expose this natively, so we patched `Expo
 
 So if I swipe it, it comes straight back. The only way to clear it is to tap a button.
 
+## One more edge case
+
+There was one last thing: if a notification fires while the app is open, we show an in-app modal instead of the system banner. But if you close the app without tapping anything, the modal disappears and the notification is gone with nothing in the drawer, no way to know it fired.
+
+One fix I tried was to schedule a backup notification with a short delay. But that doesn't work: if the app is still in the foreground when the backup fires, `shouldShowAlert: false` suppresses it. The notification goes nowhere.
+
+The actual fix: listen to `AppState`. The moment the app transitions to `background` while the modal is visible, post the notification immediately, at that exact point the app IS in background, so it appears in the drawer normally. The modal promise resolves with a `BACKGROUND` sentinel to skip further processing. When the user taps the drawer notification later, it goes through the normal response handler.
+
 ## What I took away
 
 The bugs I couldn't fix a year ago weren't particularly hard. They just required knowing where to look and being willing to read through the notification library's source code. Claude did both of those things quickly.
 
 The bigger thing: once the blockers were gone, I found it easy to keep adding things. There was a lot of back and forth, but the friction of making changes was low enough that it was worth trying.
 
-The app works properly now. I don't miss Mario's drops.
+The app works properly now. I don't miss Mario's drops and I had fun building it.
+
+The repo is on GitHub: [altany/marios-helper](https://github.com/altany/marios-helper).
