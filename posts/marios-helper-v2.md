@@ -35,7 +35,7 @@ About a year later I had access to Claude Code (Sonnet 4.6) and decided to final
 
 The sound bug turned out to be a misconfiguration in how the notification content was passing the `sound` field. expo-notifications has a quirk where passing the string `'default'` instead of the boolean `true` causes the notification builder to call `setSilent(true)` on Android, which silences it regardless of the channel settings. One word fix.
 
-The duplicate notifications were a double-firing issue - both `getLastNotificationResponseAsync` (which runs on app resume) and `addNotificationResponseReceivedListener` were handling the same notification response. The fix was a simple guard in AsyncStorage: store the last handled notification ID and skip it if it's already been processed.
+The duplicate notifications I thought were fixed but weren't (more on that below).
 
 The fixes took a couple of hours of back and forth. Mostly me describing what I was seeing, Claude reading the relevant files and proposing changes, me testing.
 
@@ -70,6 +70,16 @@ There was one last thing: if a notification fires while the app is open, we show
 One fix I tried was to schedule a backup notification with a short delay. But that doesn't work: if the app is still in the foreground when the backup fires, `shouldShowAlert: false` suppresses it. The notification goes nowhere.
 
 The actual fix: listen to `AppState`. The moment the app transitions to `background` while the modal is visible, post the notification immediately, at that exact point the app IS in background, so it appears in the drawer normally. The modal promise resolves with a `BACKGROUND` sentinel to skip further processing. When the user taps the drawer notification later, it goes through the normal response handler.
+
+## The duplicates were still there
+
+After all of this I was still occasionally getting duplicate notifications on snooze, sometimes four of them. I couldn't reliably reproduce it, but I had a hunch it was related to my Garmin Fenix watch.
+
+The original guard used AsyncStorage to track which notifications had already been processed. The problem: AsyncStorage reads are async. Both handlers can call `getItem` before either has called `setItem`, so both pass the guard and both schedule a snooze notification. That's where the duplicates came from and it was there from the beginning, the watch interaction just made it easier to trigger.
+
+The fix: replace the AsyncStorage guard with an in-memory `Set`. JavaScript is single-threaded, so a synchronous `Set.has()` check is atomic so the second handler always sees the ID already there and skips. We also added a cancel-before-schedule step: before scheduling any snooze or chain notification, cancel any existing one-shot notifications for the same medication. Belt and braces.
+
+The watch also had its own issue. Tapping snooze from the Garmin gave no visible feedback - the notification stayed in the drawer, nothing happened on the phone - but the action was likely processed silently in the background, scheduling a new snooze notification on top of the sticky one still showing. The fix: the snooze button now applies a fixed 10-minute snooze directly without needing the app open, and explicitly dismisses the original. The time picker only appears when you tap the notification body on the phone.
 
 ## What I took away
 
