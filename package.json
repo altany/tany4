@@ -5,7 +5,7 @@
   "author": "Tania Papazafeiropoulou",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next-sitemap",
     "start": "cross-env NODE_ENV=production node server.js",
     "cv:pdf": "tsx scripts/generate-cv-pdf.tsx",
     "test-e2e": "node __tests__/e2eRunner.js",
@@ -16,6 +16,7 @@
   "dependencies": {
     "@ai-sdk/openai": "^2.0.86",
     "@ai-sdk/react": "^2.0.115",
+    "@react-pdf/renderer": "^3.4.5",
     "ai": "^5.0.113",
     "cross-env": "^7.0.3",
     "date-fns": "^2.12.0",
@@ -24,7 +25,6 @@
     "next": "16.0.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@react-pdf/renderer": "^3.4.5",
     "react-gtm-module": "^2.0.11",
     "recharts": "^2.1.12",
     "remark": "^14.0.2",
@@ -43,10 +43,11 @@
     "eslint-config-next": "16.0.7",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
+    "next-sitemap": "^4.2.3",
     "playwright": "^1.49.1",
+    "testcafe": "3.7.2",
     "tsx": "^4.19.2",
-    "typescript": "^5.7.2",
-    "testcafe": "3.7.2"
+    "typescript": "^5.7.2"
   },
   "engines": {
     "node": ">=20.16.0 <21"
