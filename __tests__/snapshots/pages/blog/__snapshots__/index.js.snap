@@ -135,7 +135,7 @@ exports[`renders an blog page with a post unchanged 1`] = `
     <span
       class="title"
     >
-      Senior Front-End Engineer & Tech Lead
+      Senior Front-End & Mobile Engineer
     </span>
     <button
       aria-label="Switch to dark mode"
@@ -381,7 +381,7 @@ exports[`renders an empty blog page unchanged 1`] = `
     <span
       class="title"
     >
-      Senior Front-End Engineer & Tech Lead
+      Senior Front-End & Mobile Engineer
     </span>
     <button
       aria-label="Switch to dark mode"
