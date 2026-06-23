@@ -4,17 +4,17 @@ import { CONTACT_EMAIL, NAME } from "../../lib/constants";
 export const cv: Cv = {
   header: {
     name: NAME,
-    title: "Senior Front-End Engineer & Tech Lead",
+    title: "Senior Front-End & Mobile Engineer & Tech Lead",
     email: CONTACT_EMAIL,
     location: "United Kingdom / Greece",
     website: "tany4.com",
   },
   personalStatement: "I'm most comfortable where product complexity meets real users.",
-  summary: "Front-End Engineer with 10+ years of experience building React and React Native applications used by millions of users. Strong focus on performance, accessibility, and shipping reliable UI that holds up at scale. Comfortable owning complex systems end-to-end and working closely with product, design and backend teams.",
+  summary: "Front-end and mobile engineer with 13 years of experience building React and React Native applications used by millions of users. Strong focus on performance, accessibility, and shipping reliable cross-platform UI that holds up at scale. Comfortable owning complex systems end-to-end and working closely with product, design and backend teams.",
   strengths: [
     {
-      title: "Shipping complex front-end systems",
-      description: "Building React and React Native applications that handle real-world workflows, edge cases, and scale without becoming brittle.",
+      title: "Shipping cross-platform systems",
+      description: "Building React and React Native applications for web, iOS and Android that handle real-world workflows, edge cases, and scale without becoming brittle.",
     },
     {
       title: "Front-end architecture & maintainability",
@@ -44,9 +44,10 @@ export const cv: Cv = {
       bullets: [
         "React & React Native (Production Applications)",
         "TypeScript & Modern JavaScript (ES6+)",
-        "Front-End Architecture & Scalable UI Systems",
+        "Cross-Platform Mobile Architecture & Scalable UI Systems",
         "State Management (Redux, Zustand, TanStack Query)",
         "Mobile Performance Optimisation & Reliability",
+        "App Store & Google Play Release Management",
         "API Integration & Back-End Collaboration",
         "Testing & Quality (Jest, React Testing Library, CI/CD)",
         "Accessibility (WCAG) & Web/Mobile Best Practices",
@@ -67,8 +68,20 @@ export const cv: Cv = {
   ],
   experience: [
     {
+      start: "05/2026",
+      end: "Present",
+      title: "Senior Mobile Engineer (Contract)",
+      company: "The Ready Collective",
+      summary:
+        "Three-month contract to design and launch the R1 platform's cross-platform mobile app. Working alongside a former Olio colleague - the same founding-team setup that shipped Olio's consumer React Native app from scratch within 3 months.",
+      bullets: [
+        "Building the R1 consumer React Native app for iOS and Android from the ground up, targeting a production launch within a 3-month engagement.",
+        "Contributing to the Next.js web app and Node.js/Express backend.",
+      ],
+    },
+    {
       start: "08/2023",
-      end: "Current",
+      end: "03/2026",
       title: "Front-End Tech Lead",
       company: "Olio",
       summary:
