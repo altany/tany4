@@ -135,7 +135,7 @@ exports[`renders the work page unchanged 1`] = `
     <span
       class="title"
     >
-      Senior Front-End Engineer & Tech Lead
+      Senior Front-End & Mobile Engineer
     </span>
     <button
       aria-label="Switch to dark mode"

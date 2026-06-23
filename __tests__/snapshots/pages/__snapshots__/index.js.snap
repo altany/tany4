@@ -133,7 +133,7 @@ exports[`renders the whole page unchanged 1`] = `
     <span
       class="title"
     >
-      Senior Front-End Engineer & Tech Lead
+      Senior Front-End & Mobile Engineer
     </span>
     <button
       aria-label="Switch to dark mode"
@@ -186,11 +186,11 @@ exports[`renders the whole page unchanged 1`] = `
             ,
           </h1>
           <h2>
-            Senior Front-End Engineer & Tech Lead
+            Senior Front-End & Mobile Engineer
           </h2>
         </header>
         <p>
-          I build mobile and web products that people actually want to use. Over 10 years in front-end engineering, I've shipped apps to millions of users, led complex migrations, and collaborated with engineers to deliver at scale.
+          I build mobile and web products that people actually want to use. Over 13 years in front-end and mobile engineering, I've shipped apps to millions of users, led complex migrations, and collaborated with engineers to deliver at scale.
         </p>
         <p>
           What drives me:
