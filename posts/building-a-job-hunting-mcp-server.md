@@ -6,8 +6,9 @@ banner: "job-hunter-mcp.png"
 color: "#006e8f"
 description: "I built a personal MCP server that helps me research companies, score job fits, and track my application pipeline. Here's what I built and what surprised me."
 readingTimeMinutes: 5
-new: true
 ---
+
+Part 1 of 2 - [Part 2: Taking my job-hunting MCP server remote](/blog/posts/taking-my-job-hunting-mcp-server-remote)
 
 **TL;DR**: Job searching can be exhausting and most of the friction isn't the actual applying, it's the research, evaluation, and bookkeeping around each role. I built a small MCP server that plugs into Claude or ChatGPT and takes care of the repetitive parts: pulling together company research, scoring fit, and keeping my pipeline organised so I can focus on the decisions and conversations that matter.
 
@@ -93,6 +94,10 @@ The thing that still frustrates me is context drift. It happens in two ways. The
 
 I haven't solved this yet. One direction I'm exploring is [skills](https://docs.anthropic.com/en/docs/claude-code/tutorials#create-custom-slash-commands) - saved prompt templates that pre-load context and can be re-invoked mid-conversation to re-anchor the rules when things start drifting. They'd reduce some of the friction, but they're a workaround rather than a fix. The more complete solution is probably a persistent memory layer that the server manages explicitly, so the state lives in the tool rather than in the conversation. It's on the list.
 
-## It's private for now
+## What's next
 
-The repo is private on GitHub. It's built as a personal tool and it's not in a state I'd call shareable yet (thought it's getting there). If you'd like access or you're curious about the implementation and want to build something similar, feel free to [get in touch](mailto:hello@tany4.com).
+This started as a private, laptop-only tool. Since writing it I've taken it remote and made the code public, which is what part two covers. If you're curious about the implementation or want to build something similar, [get in touch](mailto:hello@tany4.com).
+
+---
+
+Part 2: [Taking my job-hunting MCP server remote](/blog/posts/taking-my-job-hunting-mcp-server-remote)
