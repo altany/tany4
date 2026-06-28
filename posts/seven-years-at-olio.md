@@ -4,7 +4,6 @@ subtitle: "What I've learned going from mid-level developer to Tech Lead"
 date: "2025-12-19T17:00:00+0000"
 categories: ["Career", "Leadership"]
 highlight: true
-new: true
 color: "#f6256f"
 banner: "olio-logo.svg"
 description: "Reflections on 7 years at Olio, going from mid-level developer to Tech Lead. What I learned about architecture, shipping products, and working with people along the way."

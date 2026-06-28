@@ -6,7 +6,6 @@ banner: "marios-helper.png"
 color: "#556f30"
 description: "A year ago I built a small Expo app to remind me to give my dog his eye drops. It worked, mostly. Recently I came back to it with Claude Code and fixed what was broken, then kept going."
 readingTimeMinutes: 6
-new: true
 ---
 
 **TL;DR**: I built a medication reminder app for my dog using Expo. It worked well enough but had a few bugs I couldn't fix on my own. A year later I came back to it with Claude Code, fixed the bugs in a couple of sessions, and ended up rewriting most of the app while I was at it.
