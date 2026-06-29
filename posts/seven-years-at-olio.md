@@ -10,7 +10,7 @@ description: "Reflections on 7 years at Olio, going from mid-level developer to 
 readingTimeMinutes: 14
 ---
 
-**TL;DR**: I've spent over 7 years at Olio, going from mid-level developer to Tech Lead. This post is a reflection on what I learned about building products, working with other people, and growing as an engineer. Hopefully some of it is useful regardless of where you work.
+**TL;DR**: I've spent over 7 years at Olio, going from mid-level developer to Tech Lead. This post is a reflection on what I learned about building products, working with people, and growing as an engineer. Some of it might be useful wherever you work.
 
 ## The early days: shipping fast with a tiny team
 
@@ -24,7 +24,7 @@ I learnt that early speed matters, but the patterns you set early tend to stick.
 
 For over four years I co-owned the mobile release process, coordinating weekly releases for iOS and Android. It sounds routine, but it taught me a lot.
 
-Release management is as much about people as it is about code. Automating what you can and documenting the rest saves time. Being reliable builds trust, but knowledge needs to be shared so you don't become a bottleneck.
+It's as much about people as it is about code. Automating what you can and documenting the rest saves time, and being reliable builds trust, but you have to share what you know or you turn into a bottleneck.
 
 ## The Rails to React migration
 
@@ -42,7 +42,7 @@ Good technical solutions come from understanding real user workflows, not just t
 
 As I got more senior, mentoring became a bigger part of what I did. I paired with engineers on hard problems, reviewed their designs, and tried to help them think through decisions without taking over.
 
-One of the most rewarding things has been watching people I worked with grow into confident engineers. Some of the lessons here are simple: pairing teaches more than prescribing. Asking questions helps people learn better than giving answers. And letting go is necessary if you want others to grow.
+One of the most rewarding things has been watching people I worked with grow into confident engineers. A few things I learned: pairing teaches more than telling people what to do, asking questions helps more than handing over answers, and you have to let go if you want people to grow.
 
 ## Developer experience matters
 
@@ -52,7 +52,7 @@ These investments rarely stand out. But they save time and frustration, and they
 
 ## Prototyping and experimentation
 
-Over the years I built several prototypes. Some shipped, most didn't. What I learned is that prototypes are tools for learning and their value is not only always in what you release. I enjoy taking unclear ideas and turning them into something concrete enough to evaluate.
+Over the years I built several prototypes. Some shipped, most didn't. What I learned is that prototypes are for learning, and the value isn't only in what you ship. I enjoy taking unclear ideas and turning them into something concrete enough to evaluate.
 
 ## Expanding to charity volunteers
 
@@ -74,4 +74,4 @@ Be stricter with TypeScript earlier. Invest more in targeted automated testing. 
 
 After seven years and multiple codebases, including the consumer app, volunteer tools, partner tools, and some backend work, I still enjoy building things that matter. I like simplifying complex systems. I care about helping people grow. And I'm genuinely excited about using better tools, including AI, to work more thoughtfully.
 
-If you're early in your career, I hope some of this helps. Paths are rarely linear, and some of the most important skills take time to notice. And if you're mid-career and wondering whether staying somewhere long term makes sense, deep knowledge and shared history can be valuable in ways that are hard to measure.
+If you're early in your career, I hope some of this helps. Careers are rarely linear, and some of the most useful skills take a while to notice. And if you're mid-career and wondering whether staying somewhere long-term is worth it: deep knowledge and shared history count for more than they look like they do.

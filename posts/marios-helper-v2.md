@@ -22,7 +22,7 @@ I built it myself. I'm a frontend developer by trade but expo-notifications is f
 
 A few things bothered me constantly.
 
-The first: the notification sound only worked when the app was open. When it was closed or in the background it would be silent. Not very helpful indeed.
+The first: the notification sound only worked when the app was open. When it was closed or in the background it would be silent. Not very helpful.
 
 The second: if I swiped the notification away from the drawer, it was gone. No record, no retry.
 
@@ -48,9 +48,9 @@ That constraint took a few rounds to get right. The settings UI and the preview 
 
 ## The redesign
 
-At some point during all this the app really looked like it was built in a hurry, which it was. I asked Claude to redo the styling: proper dark/light mode support, consistent card-based layout, sleek styling.
+At some point during all this the app really looked like it was built in a hurry, which it was. I asked Claude to redo the styling: proper dark/light mode support and a consistent card-based layout.
 
-It also reorganised the tabs to make the app more user-friendly. The app used to open on the doctor's instructions screen which was plain text. Now it opens on the notifications tab, which shows a live summary of the current schedule and any pending chain notifications.
+It also reorganised the tabs. The app used to open on the doctor's instructions screen which was plain text. Now it opens on the notifications tab, which shows a live summary of the current schedule and any pending chain notifications.
 
 ## The sticky notification problem, properly
 

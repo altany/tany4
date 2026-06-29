@@ -26,7 +26,7 @@ React Native 0.61 dropped Haste. That meant filename-based mocks stopped working
 
 ## Two ways to mock modules
 
-The React team recommends[two approaches](https://github.com/facebook/react-native/issues/26579#issuecomment-535244001).
+The React team recommends [two approaches](https://github.com/facebook/react-native/issues/26579#issuecomment-535244001).
 
 **1. Specify the full path:**
 
@@ -148,7 +148,7 @@ That's it. With this setup we were finally able to mock everything properly and 
 
 Haste removal in 0.61 breaks all filename-based Jest mocks. Full module paths work but are brittle. Mocking the react-native interface in `__mocks__` is more robust and easier to maintain. And for platform detection, just overwrite `Platform.OS` directly in the test.
 
-Looking for more on React Native in production? Check out my conference talks:
+For more on React Native in production, here are two talks I gave:
 
 - [React Conf 2019](/blog/posts/react-conf-2019)
 - [JS VidCon 2020](/blog/posts/jsvidcon-2020)
