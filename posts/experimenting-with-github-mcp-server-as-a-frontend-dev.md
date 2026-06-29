@@ -25,7 +25,7 @@ And all of this without cloning extra repos or relying on other developers as mu
 
 ## How it helps front-end developers
 
-Most of us have been here: a bug appears on the client, it smells like an API issue, but checking takes time or interrupts someone else's flow.
+You know the situation: a bug appears on the client, it looks like an API issue, but checking it takes time or interrupts someone else.
 
 With MCP I could ask:
 
@@ -37,34 +37,34 @@ I could also ask it to compare my code against the API:
 
 > Here's the front-end function. Does it match how the API actually behaves?
 
-It became a bridging layer between the two worlds; not replacing conversations with colleagues, just reducing the back-and-forth.
+It sat between the two, not replacing conversations with colleagues, just reducing the back-and-forth.
 
 ## Debugging with cross-repo context
 
-One of my favourite things was feeding MCP a front-end error and asking it to trace where the data originally came from in the back-end. It felt like having a senior engineer sitting next to me doing pair programming.
+One of my favourite things was feeding MCP a front-end error and asking it to trace where the data originally came from in the back-end. It was a bit like pairing with someone who already knew the back-end.
 
-I'd give it a confusing TypeScript error, ask it to find the relevant API model, then ask it to rewrite my types to match the actual shape. It didn't always get it right, but it got me 80% of the context in seconds. That alone saved me hours.
+I'd give it a confusing TypeScript error, ask it to find the relevant API model, then ask it to rewrite my types to match the actual shape. It didn't always get it right, but it got me most of the context in seconds, which saved hours.
 
 ## Adding documentation to the context
 
-Very few developers enjoy reading back-end documentation, but we all end up doing it. The big win here was that MCP could read the API repo, including the README and any existing docs, and turn it into something actionable for what I was building.
+Very few developers enjoy reading back-end documentation, but we all end up doing it. What helped was that MCP could read the API repo, README and existing docs included, and apply it to what I was building.
 
 Instead of spending hours becoming an expert on a service I don't normally touch, I could ask:
 
 > Based on the README and implementation, how am I supposed to use this endpoint from the front-end?
 
-Then follow up with questions about the response shape, required fields, and edge cases. It massively reduced the ramp-up time.
+Then follow up with questions about the response shape, required fields, and edge cases. It saved a lot of ramp-up time.
 
-## Catching AI errors before they catch you
+## Catching AI errors
 
-This part is important. AI is helpful, but it's also confidently wrong sometimes. A few habits I developed that saved me from committing nonsense:
+AI is helpful, but it's also confidently wrong sometimes. A few habits that stopped me committing nonsense:
 
 1. Ask for the source of truth.
 
 Instead of "what does this endpoint do?", ask: 
 > Show me the exact file and code where this logic lives.
 
-If the answer isn't what you expected, that's your sign.
+If the answer isn't what you expected, something's off.
 
 2. Ask it to explain its reasoning.
 
@@ -72,7 +72,7 @@ If something feels off:
 
 > Explain step by step how you arrived at this conclusion.
 
-AI hallucinations usually fall apart under scrutiny.
+Made-up answers usually don't survive the follow-up.
 
 3. Use diff-style requests.
 
@@ -84,13 +84,13 @@ It forces precision and makes errors obvious.
 
 4. Keep responsibility on yourself.
 
-The AI is fast, but you know the project best. Always double-check anything that looks too magical.
+The AI is fast, but you know the project best. Double-check anything that looks too good.
 
 ## Where this leaves front-end engineering
 
-I'm not replacing my workflow with AI. But I've added a tool that helps me ask better questions, understand the back-end faster, avoid wasting time on obvious mistakes, write cleaner types and documentation, and stay in flow without switching repos.
+I'm not replacing my workflow with AI. But it's a useful tool: it helps me ask better questions, understand the back-end faster, and write cleaner types without switching repos.
 
-There are still limits; and you'll hit them quickly. But even with those limitations, the impact on my daily work has been real. I'll keep experimenting, especially with automating PR reviews and generating tests, and I'll share more once I've broken things enough times.
+There are limits, and you hit them quickly. But it's made a real difference to my daily work. I'll keep experimenting, especially with PR reviews and generating tests.
 
 ---
 

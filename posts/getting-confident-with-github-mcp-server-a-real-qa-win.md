@@ -16,7 +16,7 @@ To make it more interesting, the developer who wrote the PR hadn't left any test
 
 ## How MCP Server helped me untangle it
 
-This was the moment where MCP Server stopped being "a cool tool" and actually changed how I work.
+This is where MCP Server went from a cool tool to something that changed how I work.
 
 I referenced the PR by number; no cloning needed, no hunting for paths. Then I asked MCP to:
 
@@ -26,11 +26,11 @@ I referenced the PR by number; no cloning needed, no hunting for paths. Then I a
 
 What I got back was exactly what I needed.
 
-A clear list of what to set up locally, environment steps and any data I needed to prepare before starting QA. A complete set of test scenarios (happy path, unhappy path, edge cases) with descriptions of how each one should behave. Step-by-step instructions for each scenario that explained not just what to do but why it mattered.
+A clear list of what to set up locally, environment steps and any data I needed to prepare before starting QA. A full set of test scenarios (happy path, unhappy path, edge cases) with how each one should behave. Step-by-step instructions for each scenario, with the reason each one mattered.
 
-For someone with limited back-end knowledge, that context was gold. It gave me enough confidence to QA the PR properly and feel that my work was actually meaningful, not guessy.
+For someone with limited back-end knowledge, that was exactly what I needed. It gave me enough to QA the PR properly instead of guessing.
 
-(Though, as you’ll see below, "confident" does not mean "correct.")
+(Though, as I found out, confident didn't mean correct.)
 
 ## When MCP helps and still gets it wrong
 
@@ -48,13 +48,13 @@ Two things from this experience stuck with me.
 
 AI can help you work outside your area of expertise. I was able to QA back-end logic I barely understood, produce detailed test scenarios, and communicate clearly with my back-end colleague. I couldn't have done that on my own, at least not without several hours of back-and-forth.
 
-But AI will still get important details wrong. The tests ran. The commands worked. The scenario logic looked correct. But the wrong data setup meant the unhappy path wasn't actually being tested. That's the kind of thing that can slip into production if you're not paying attention. Having an expert review your plan or report isn't optional, it's the point.
+But AI will still get important details wrong. The tests ran. The commands worked. The scenario logic looked correct. But the wrong data setup meant the unhappy path wasn't actually being tested. That's the kind of thing that slips into production if you're not paying attention. Having someone who knows the domain review your plan matters.
 
 ## Final thoughts
 
-MCP Server hasn't made me a back-end engineer. But it's made me more capable and more confident when I step outside my usual domain. It helps me understand back-end PRs quickly, generate detailed test scenarios, trace linked logic without navigating repos manually, and communicate more effectively with back-end colleagues.
+MCP Server hasn't made me a back-end engineer, but it's made me more capable when I step outside my usual domain: understanding back-end PRs, writing test scenarios, and tracing linked logic without navigating repos by hand.
 
-It also constantly reminds me that AI is powerful but not infallible. Use it to accelerate your thinking, not replace it.
+It's also a reminder that AI is powerful but not infallible. It speeds up my thinking; it doesn't replace it.
 
 ---
 
