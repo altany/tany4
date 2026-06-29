@@ -18,7 +18,7 @@ When I joined Olio in 2018, the engineering team was three people including me. 
 
 In the first few months we built the React Native app MVP in about three months. It was intense. We made trade-offs we probably wouldn't make today, but we shipped it and that app now serves millions of people. Being in such a small team meant touching everything, from map performance to ads logic. It was exhausting and exciting at the same time.
 
-I learnt that early speed matters, but the patterns you set early tend to stick. Small teams move fast when there's trust.
+What stuck with me from that period: you move fast early, but the patterns you set then are hard to undo, and a small team only moves that fast when there's real trust.
 
 ## Owning the release process
 
@@ -30,13 +30,13 @@ It's as much about people as it is about code. Automating what you can and docum
 
 One of the bigger projects was migrating the Volunteer Hub from server-rendered Rails views to a React SPA. It took over two years and happened while the platform was actively used by thousands of volunteers.
 
-Large rewrites only work when done incrementally. Important business logic tends to live in unexpected places. And the decisions you make during a migration shape the codebase for years.
+That migration taught me a few things: a rewrite that big only works incrementally, important business logic turns up in places you don't expect, and the decisions you make along the way stay in the codebase for years.
 
 ## Leading a large UI rearchitecture
 
 Later I led a rearchitecture of schedule grouping in the Volunteer Hub. The goal was to make the UI reflect how volunteers actually think about their pickups, rather than how the data was structured on the backend.
 
-Good technical solutions come from understanding real user workflows, not just the spec. Complex work needs clear ownership. Feature flags and careful rollouts make a big difference.
+It reminded me that the best technical solution comes from understanding how people actually work, not just the spec. Work like that also needs clear ownership, and feature flags and careful rollouts made a real difference.
 
 ## Mentoring and growing engineers
 
