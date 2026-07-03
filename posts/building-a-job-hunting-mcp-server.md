@@ -8,7 +8,7 @@ description: "I built a personal MCP server that helps me research companies, sc
 readingTimeMinutes: 5
 ---
 
-Part 1 of 2 - [Part 2: Taking my job-hunting MCP server remote](/blog/posts/taking-my-job-hunting-mcp-server-remote)
+Part 1 of 3 - [Part 2: Taking it remote](/blog/posts/taking-my-job-hunting-mcp-server-remote) · [Part 3: Teaching it what it can do](/blog/posts/teaching-my-job-hunting-mcp-server-what-it-can-do)
 
 **TL;DR**: Job searching can be exhausting and most of the friction isn't the actual applying, it's the research, evaluation, and bookkeeping around each role. I built a small MCP server that plugs into Claude or ChatGPT and takes care of the repetitive parts: pulling together company research, scoring fit, and keeping my pipeline organised so I can focus on the decisions and conversations that matter.
 
@@ -37,7 +37,7 @@ When I come across a role that looks interesting, I paste the job description in
 
 What comes back is a scored breakdown across several dimensions: skills match, salary, remote/WLB, product fit, culture, and how this role compares to others already in my pipeline. Alongside the score, it surfaces red flags, interesting signals from the research, and a clear recommendation: Apply, Save for later, or Skip.
 
-I've found it genuinely useful, not because it tells me what to do (I still decide), but because it forces a more structured question: *why* would I apply to this role? The research it pulls together in seconds would have taken me 30–40 minutes to do manually.
+I've found it genuinely useful, not because it tells me what to do (I still decide), but because it forces a more structured question: *why* would I apply to this role? The research it pulls together in seconds would have taken me 30-40 minutes to do manually.
 
 ## What it looks like in practice
 
@@ -45,15 +45,15 @@ A typical session: I come across a Product Engineer role at a mid-sized SaaS com
 
 A few seconds later I get back something like:
 
-> **Skills match: 9/10** — Strong overlap with React, TypeScript, and testing. Some unfamiliarity with their backend stack but not a blocker.
+> **Skills match: 9/10**. Strong overlap with React, TypeScript, and testing. Some unfamiliarity with their backend stack but not a blocker.
 >
-> **Salary: 6/10** — No range listed. Market data suggests this level pays below my target. Worth clarifying but not an immediate dealbreaker.
+> **Salary: 6/10**. No range listed. Market data suggests this level pays below my target. Worth clarifying but not an immediate dealbreaker.
 >
-> **Remote/WLB: 5/10** — Hybrid, 3 days in London. Your preference is remote-first. Worth clarifying expectations before investing further.
+> **Remote/WLB: 5/10**. Hybrid, 3 days in London. Your preference is remote-first. Worth clarifying expectations before investing further.
 >
-> **Culture: 7/10** — Reviews suggest a collaborative engineering team. Some mentions of fast pace and shifting priorities. Engineering blog is active and technically interesting.
+> **Culture: 7/10**. Reviews suggest a collaborative engineering team. Some mentions of fast pace and shifting priorities. Engineering blog is active and technically interesting.
 >
-> **Recommendation: Save** — Good skills fit and interesting product, but hybrid requirement and unclear salary are worth validating on a first call before applying.
+> **Recommendation: Save**. Good skills fit and interesting product, but hybrid requirement and unclear salary are worth validating on a first call before applying.
 
 That output helps me decide how to proceed. "Save" doesn't mean no, it means there are specific things to clarify first. And if I do get on a call and the answers are good, I update the status in my pipeline and the tool moves it forward.
 
@@ -100,4 +100,4 @@ This started as a private, laptop-only tool. Since writing it I've taken it remo
 
 ---
 
-Part 2: [Taking my job-hunting MCP server remote](/blog/posts/taking-my-job-hunting-mcp-server-remote)
+Part 2: [Taking my job-hunting MCP server remote](/blog/posts/taking-my-job-hunting-mcp-server-remote) · Part 3: [Teaching my job-hunting MCP server what it can do](/blog/posts/teaching-my-job-hunting-mcp-server-what-it-can-do)
