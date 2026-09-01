@@ -3,7 +3,7 @@ title: "Greek voice commands for Android Auto"
 date: "2026-09-01T12:00:00+0000"
 categories: ["AI", "Android", "Kotlin"]
 banner: "mila.svg"
-color: "#1f3f63"
+color: "#0e1a2a"
 description: "Google Assistant doesn't understand Greek in the car, so I built a small Android Auto app that does. Notes on matching Greek speech against contacts saved in Greeklish, and why 'κάλεσε' (kalese, \"call\") kept turning into 'θάλασσα' (thalassa, \"sea\")."
 readingTimeMinutes: 6
 new: true
