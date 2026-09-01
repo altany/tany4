@@ -6,7 +6,6 @@ banner: "job-hunter-mcp.png"
 color: "#006e8f"
 description: "I turned my personal job-hunting MCP server from a laptop-only tool into a remote server I can use from my phone. Notes on the transport switch, free hosting, and a 502 that only showed up in ChatGPT."
 readingTimeMinutes: 5
-new: true
 ---
 
 Part 2 of 3 - [Part 1: Building a job-hunting MCP server](/blog/posts/building-a-job-hunting-mcp-server) · [Part 3: Teaching it what it can do](/blog/posts/teaching-my-job-hunting-mcp-server-what-it-can-do)

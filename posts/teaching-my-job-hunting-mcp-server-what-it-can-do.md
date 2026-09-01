@@ -6,7 +6,6 @@ banner: "job-hunter-mcp.png"
 color: "#006e8f"
 description: "Once my job-hunting MCP server was remote, the agent kept pushing back: 'that's not possible', duplicate rows, refusing to use a doc I'd linked. The problem wasn't the model. It was my tool descriptions."
 readingTimeMinutes: 5
-new: true
 ---
 
 Part 3 of 3 - [Part 1: Building a job-hunting MCP server](/blog/posts/building-a-job-hunting-mcp-server) · [Part 2: Taking it remote](/blog/posts/taking-my-job-hunting-mcp-server-remote)
