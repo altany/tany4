@@ -115,4 +115,9 @@ What I keep coming back to isn't technical. This was a daily frustration that no
 
 I can talk to my car in Greek now, which is all I wanted.
 
+Greek isn't special here — Android Auto supports a fixed list of languages and
+plenty of others aren't on it either. The README has notes on what to change if
+you want to fork it for another one: the recognition locale, the command words,
+and the name matching, which is the only part that's genuinely Greek.
+
 The repo is on GitHub: [altany/mila](https://github.com/altany/mila).
