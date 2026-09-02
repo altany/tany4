@@ -75,11 +75,39 @@ Getting a sideloaded app to appear takes a few steps that aren't obvious. Androi
 
 One thing worth knowing if you try this: stop that head unit server before you drive anywhere. Android Auto projects one session at a time, and a server left running keeps the phone busy serving an emulator that isn't there any more.
 
+## What worked and what didn't
+
+The app worked on Android Auto's desktop emulator from early on: it appears on
+the launcher, starts listening in Greek on its own, matches contacts, and hands
+off to Maps.
+
+It did not appear in my car, and that took two days to explain. Android Auto
+only lists car apps that were installed by the Play Store. A sideloaded one
+isn't rejected with an error — it's never looked at at all. The "Unknown
+sources" developer setting didn't change that. Neither did faking the installer
+name with `adb install -i com.android.vending`, adding a second app category,
+clearing Android Auto's data, re-pairing the car, checking battery
+restrictions, or switching between wireless and cable.
+
+Two tests settled it. Sideloading a different, known-working car app onto the
+same phone produced exactly the same silence, which ruled out my code.
+And every app my car does show turned out to have been installed by Play.
+
+Downgrading Android Auto is not a way around it: older versions install fine
+but fail the car's security check and won't connect at all.
+
+What fixed it was publishing to a Google Play internal testing track — private,
+no public listing — and installing from the tester link. Same app, same phone,
+same car. It appeared straight away.
+
+The emulator doesn't enforce this rule, so it will happily tell you your car app
+works when it can't run in a car at all.
+
 ## Where it is now
 
 The app opens on the car screen, starts listening straight away, and understands Greek. Navigation and calling both work. It's built as a single Kotlin module with no backend, no analytics and no dependencies beyond the Android libraries.
 
-Every version is built by GitHub Actions and attached to a release, signed with the same key as my local builds so updates install over each other. That means I can change something, push a tag, and download the new APK onto my phone from the car park, without a laptop.
+Every version is built by GitHub Actions and attached to a release, so there's always an APK to grab. For the car it has to come from Play, so new builds go to the internal testing track instead and arrive on the phone as an ordinary app update.
 
 Almost all of the work turned out to be the Greek part - matching a name I say against a contact saved in Greeklish, and handling the words the recognizer gets wrong. The rest was ordinary Android work.
 
