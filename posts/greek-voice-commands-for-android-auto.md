@@ -81,9 +81,9 @@ The app worked on Android Auto's desktop emulator from early on: it appears on
 the launcher, starts listening in Greek on its own, matches contacts, and hands
 off to Maps.
 
-It did not appear in my car, and that took two days to explain. Android Auto
-only lists car apps that were installed by the Play Store. A sideloaded one
-isn't rejected with an error — it's never looked at at all. The "Unknown
+It did not appear in my car, and that took two days to explain. On my car,
+every app Android Auto listed had been installed by the Play Store. The
+sideloaded ones weren't rejected with an error — they were never looked at. The "Unknown
 sources" developer setting didn't change that. Neither did faking the installer
 name with `adb install -i com.android.vending`, adding a second app category,
 clearing Android Auto's data, re-pairing the car, checking battery
@@ -93,15 +93,39 @@ Two tests settled it. Sideloading a different, known-working car app onto the
 same phone produced exactly the same silence, which ruled out my code.
 And every app my car does show turned out to have been installed by Play.
 
-Downgrading Android Auto is not a way around it: older versions install fine
-but fail the car's security check and won't connect at all.
+Downgrading Android Auto didn't help either. 15.4 installed fine, but my car
+refused the connection with a security-check error, so I never got far enough
+to find out whether it would have shown the app.
 
 What fixed it was publishing to a Google Play internal testing track — private,
 no public listing — and installing from the tester link. Same app, same phone,
 same car. It appeared straight away.
 
-The emulator doesn't enforce this rule, so it will happily tell you your car app
-works when it can't run in a car at all.
+The emulator doesn't enforce any of this, which is why it told me the app was
+working for two days while my car disagreed.
+
+## What the first drive changed
+
+Three things, within minutes of it working.
+
+I said "πάρε τηλέφωνο το Δημήτρη". It correctly took πάρε as a call, but only
+stripped that one word, so it searched my contacts for "τηλέφωνο του δημήτρη"
+and found nobody. Greek command phrases run longer than one word, so it now
+drops the whole phrase. Writing the test for it turned up a second bug: the
+genitive articles were missing from the strip list, and because normalising a
+word folds final sigma, "της" and "τους" had never matched anything either.
+
+I have several Δημήτρηδες and one of them is who I actually ring. Saying just
+the first name gave me the pick list every time, correctly but uselessly.
+Contacts starred as favourites now get a nudge — enough to be dialled outright
+when several people match equally well, not enough to override naming someone
+specifically, so the other Δημήτρηδες are still reachable.
+
+Tapping the screen is the thing you least want to do while driving, and a
+failed hearing needed a tap to retry. Now the microphone reopens by itself,
+twice, then stops so a noisy car can't leave it listening forever. The pick
+list has a row that goes straight back to listening, instead of going back and
+then finding the retry button.
 
 ## Where it is now
 
@@ -111,7 +135,7 @@ Every version is built by GitHub Actions and attached to a release, so there's a
 
 Almost all of the work turned out to be the Greek part - matching a name I say against a contact saved in Greeklish, and handling the words the recognizer gets wrong. The rest was ordinary Android work.
 
-What I keep coming back to isn't technical. This was a daily frustration that nobody was going to fix - Greek is too small a market for Google to bother with - and I was able to build my own way around it.
+What I keep coming back to isn't technical. This was a daily frustration that wasn't going to get fixed for me, and I was able to build my own way around it.
 
 I can talk to my car in Greek now, which is all I wanted.
 
