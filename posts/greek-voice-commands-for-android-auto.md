@@ -59,7 +59,7 @@ I said "κάλεσε το Δημήτρη" (kalese to Dimitri) - call Dimitris. M
 
 The recognizer had heard "θάλασσα" - thalassa, the sea. The app did exactly what it was told.
 
-Two things were wrong. The first was mine: the app had Navigate selected, and I'd assumed people would tap the right mode before speaking. They don't. The verb already says what you want. So now an opening verb decides the action regardless of which button is selected - κάλεσε, πάρε and τηλεφώνησε all place a call, πήγαινε and πλοήγηση start navigation - and the verb and its article are stripped off before matching, so it searches for "Δημήτρη" (Dimitri) and not the whole sentence.
+Two things were wrong. The first was mine: Navigate is the default mode, and I'd assumed people would tap the right one before speaking. They don't. The verb already says what you want. So now an opening verb decides the action regardless of which button is selected - κάλεσε, πάρε and τηλεφώνησε all place a call, πήγαινε and πλοήγηση start navigation - and the verb and its article are stripped off before matching, so it searches for "Δημήτρη" (Dimitri) and not the whole sentence.
 
 The second was that "κάλεσε" and "θάλασσα" genuinely sound similar - KA-le-se against THA-la-sa, three syllables, stress on the first, mostly the same vowels - and no amount of code makes Google hear better. But the app was already asking the recognizer for three alternative transcriptions and throwing away all but the first. If the top guess is a beach, the right word is often sitting in guess two or three.
 
