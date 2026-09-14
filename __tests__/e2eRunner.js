@@ -37,7 +37,22 @@ const waitForServer = (url, timeoutMs) => new Promise((resolve, reject) => {
 
 // Serve the production build. Started here rather than with TestCafe's startApp,
 // which spawns through a shell and triggers Node's DEP0190 warning.
-const app = spawn('npm', ['start'], { cwd: root, env: { ...process.env, PORT: '3000' }, stdio: 'inherit' });
+// detached gives npm, its shell and the server their own process group. Stopping the
+// whole group matters on Linux, where sh (dash) doesn't pass signals on to the server.
+const app = spawn('npm', ['start'], { cwd: root, env: { ...process.env, PORT: '3000' }, stdio: 'inherit', detached: true });
+const stopApp = () => {
+    try {
+        process.kill(-app.pid, 'SIGTERM')
+    } catch (e) {
+        // Already stopped
+    }
+}
+for (const signal of ['SIGINT', 'SIGTERM']) {
+    process.on(signal, () => {
+        stopApp()
+        process.exit(1)
+    })
+}
 
 let testcafe
 waitForServer('http://localhost:3000', 60000)
@@ -48,7 +63,7 @@ waitForServer('http://localhost:3000', 60000)
     })
     .finally(() => {
         if (testcafe) testcafe.close()
-        app.kill()
+        stopApp()
     })
     .then(failedCount=>{
         if(failedCount>0) {
