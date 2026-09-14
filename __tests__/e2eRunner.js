@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
+const http = require('http');
+const { execSync, spawn } = require('child_process');
 const createTestCafe = require('testcafe');
 
 const root = path.join(__dirname, '..');
@@ -25,15 +26,31 @@ if (!fs.existsSync(buildId)) {
     execSync('npm run build', { cwd: root, stdio: 'inherit' });
 }
 
+const waitForServer = (url, timeoutMs) => new Promise((resolve, reject) => {
+    const deadline = Date.now() + timeoutMs;
+    const attempt = () => http.get(url, res => { res.resume(); resolve(); })
+        .on('error', () => Date.now() > deadline
+            ? reject(new Error(`The app did not start on ${url}`))
+            : setTimeout(attempt, 250));
+    attempt();
+});
+
+// Serve the production build. Started here rather than with TestCafe's startApp,
+// which spawns through a shell and triggers Node's DEP0190 warning.
+const app = spawn('npm', ['start'], { cwd: root, env: { ...process.env, PORT: '3000' }, stdio: 'inherit' });
+
 let testcafe
-createTestCafe('localhost', 3001, 3002)
+waitForServer('http://localhost:3000', 60000)
+    .then(() => createTestCafe('localhost', 3001, 3002))
     .then(testcafeInstance => {
         testcafe = testcafeInstance
-        return testcafe.createRunner()
-            .startApp('PORT=3000 npm start', 1000) // serve the production build
-            .run()
-    }).then(failedCount=>{
-        testcafe.close()
+        return testcafe.createRunner().run()
+    })
+    .finally(() => {
+        if (testcafe) testcafe.close()
+        app.kill()
+    })
+    .then(failedCount=>{
         if(failedCount>0) {
             throw new Error(`${failedCount} tests failed`)
         }
