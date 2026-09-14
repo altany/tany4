@@ -76,7 +76,9 @@ const remarkIgnoredModules = [
   'stringify-entities',
   'character-entities-legacy',
   'character-entities-html4',
-  'ccount'
+  'ccount',
+  'mdast-util-phrasing',
+  'trim-lines'
 ].join('|')
 
 // and wrap it...

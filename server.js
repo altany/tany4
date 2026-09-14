@@ -35,7 +35,7 @@ app.prepare().then(() => {
     next();
   });
 
-  server.all("*", (req, res) => {
+  server.use((req, res) => {
     return handle(req, res);
   });
 
