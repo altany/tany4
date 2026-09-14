@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "author": "Tania Papazafeiropoulou",
+  "cacheDirectories": [".next/cache"],
   "scripts": {
     "dev": "next dev",
     "build": "next build && next-sitemap",
