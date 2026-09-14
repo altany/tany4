@@ -62,7 +62,6 @@ export default async function handler(req, res) {
     try {
       context = await getKeywordContext(lastUserText || "");
     } catch (e) {
-      // eslint-disable-next-line no-console
       console.error("[api/chat] retrieval failed");
       res.status(500).json({
         error: "Chat is temporarily unavailable. Please try again.",
@@ -78,7 +77,6 @@ export default async function handler(req, res) {
     try {
       modelMessages = convertToModelMessages(trimmedMessages);
     } catch (e) {
-      // eslint-disable-next-line no-console
       console.error("[api/chat] invalid messages payload");
       res.status(400).json({
         error: "Invalid request.",
@@ -98,7 +96,6 @@ export default async function handler(req, res) {
     res.status(200).json({ text: result.text || "" });
   } catch (e) {
     const message = typeof e?.message === "string" ? e.message : "Chat failed";
-    // eslint-disable-next-line no-console
     console.error("[api/chat] generateText failed:", message);
 
     const isPermissions = message.toLowerCase().includes("missing scopes");
