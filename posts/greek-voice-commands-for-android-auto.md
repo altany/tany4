@@ -2,7 +2,7 @@
 title: "Greek voice commands for Android Auto"
 date: "2026-09-01T12:00:00+0000"
 categories: ["AI", "Android", "Kotlin"]
-banner: "mila.svg"
+banner: "pesto.svg"
 color: "#1f3f63"
 description: "Google Assistant doesn't understand Greek in the car, so I built a small Android Auto app that does. Notes on matching Greek speech against contacts saved in Greeklish, and why 'κάλεσε' (kalese, \"call\") kept turning into 'θάλασσα' (thalassa, \"sea\")."
 readingTimeMinutes: 6
@@ -145,3 +145,11 @@ you want to fork it for another one: the recognition locale, the command words,
 and the name matching, which is the only part that's genuinely Greek.
 
 The repo is on GitHub: [altany/mila](https://github.com/altany/mila).
+
+## Update: it's called Pesto now
+
+My steering wheel button opens the phone's assistant, which can open apps by name. Neither Google Assistant nor Gemini listens in Greek on my phone, so saying "Mila" normally didn't work. Assistant heard it as "Myla", "Miele" or "my". What did work was spelling it out in an English accent: "open the M-I-L-A app". That's awkward to say every time I want to call someone or start navigation, especially with people in the car.
+
+So I renamed the app to Pesto. English speech recognition already knows the word, and it sounds the same when I say it in Greek.
+
+Only the visible name changed. It's the same app underneath, so it arrives as a normal update, and the repo is still [altany/mila](https://github.com/altany/mila).
