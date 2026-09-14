@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "author": "Tania Papazafeiropoulou",
-  "cacheDirectories": [".next/cache"],
+  "cacheDirectories": [
+    ".next/cache"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build && next-sitemap",
+    "dev": "cross-env NEXT_TELEMETRY_DISABLED=1 next dev",
+    "build": "cross-env NEXT_TELEMETRY_DISABLED=1 next build && next-sitemap",
     "start": "cross-env NODE_ENV=production node server.js",
     "cv:pdf": "tsx scripts/generate-cv-pdf.tsx",
     "test-e2e": "node __tests__/e2eRunner.js",
@@ -37,7 +39,7 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.3.0",
+    "@testing-library/react": "^14.3.1",
     "@testing-library/testcafe": "^4.4.1",
     "@types/node": "^22.10.2",
     "eslint": "^9.0.0",
