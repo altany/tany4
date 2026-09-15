@@ -16,7 +16,7 @@ export default function Home() {
       <section className={styles.home}>
         <header className={styles.header}>
           <p>Welcome to my website!</p>
-          <h1>Hi, I'm {NAME},</h1>
+          <h1>Hi, I&apos;m {NAME},</h1>
           <h2>{JOB_TITLE}</h2>
         </header>
         <p>I build mobile and web products that people actually want to use. Over 13 years in front-end and mobile engineering, I&apos;ve shipped apps to millions of users, led complex migrations, and collaborated with engineers to deliver at scale.</p>

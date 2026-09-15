@@ -12,7 +12,7 @@ export default function NotFound() {
       </Head>
       <div className={styles.notFound}>
         <h1>404</h1>
-        <p>This page doesn't exist.</p>
+        <p>This page doesn&apos;t exist.</p>
         <Link href="/">Go home</Link>
       </div>
     </Layout>

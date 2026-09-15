@@ -12,15 +12,11 @@ async function toNodeBuffer(value: unknown): Promise<Buffer> {
   if (
     value &&
     typeof value === "object" &&
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     typeof (value as any).getReader === "function"
   ) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const reader = (value as any).getReader();
     const chunks: Uint8Array[] = [];
-    // eslint-disable-next-line no-constant-condition
     while (true) {
-      // eslint-disable-next-line no-await-in-loop
       const { done, value: chunk } = await reader.read();
       if (done) break;
       if (chunk) chunks.push(chunk);
@@ -32,14 +28,11 @@ async function toNodeBuffer(value: unknown): Promise<Buffer> {
   if (
     value &&
     typeof value === "object" &&
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     typeof (value as any).on === "function" &&
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     typeof (value as any).pipe === "function"
   ) {
     return new Promise<Buffer>((resolve, reject) => {
       const chunks: Buffer[] = [];
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const stream = value as any;
 
       stream.on("data", (c: Buffer | Uint8Array) => {
@@ -71,12 +64,10 @@ async function main() {
   const buffer = await toNodeBuffer(output);
   fs.writeFileSync(outputPath, buffer);
 
-  // eslint-disable-next-line no-console
   console.log(`Generated: ${outputPath}`);
 }
 
 main().catch((err) => {
-  // eslint-disable-next-line no-console
   console.error(err);
   process.exit(1);
 });
