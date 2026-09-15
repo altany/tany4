@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "cross-env NEXT_TELEMETRY_DISABLED=1 next dev",
     "build": "cross-env NEXT_TELEMETRY_DISABLED=1 next build && next-sitemap",
-    "start": "cross-env NODE_ENV=production node server.js",
+    "start": "next start",
     "cv:pdf": "tsx scripts/generate-cv-pdf.tsx",
     "test-e2e": "node __tests__/e2eRunner.js",
     "test-unit": "jest",
@@ -23,7 +23,6 @@
     "ai": "^5.0.257",
     "cross-env": "^7.0.3",
     "date-fns": "^2.12.0",
-    "express": "^5.2.1",
     "gray-matter": "^4.0.2",
     "next": "16.3.4",
     "prismjs": "^1.30.0",
