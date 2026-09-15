@@ -30,7 +30,7 @@ export default async function handler(req, res) {
   ]);
 
   try {
-    const id = await sendReport(buildReport({ label: range.label, vercel, cloudflare, errors }));
+    const id = await sendReport(buildReport({ label: range.label, shortLabel: range.shortLabel, vercel, cloudflare, errors }));
     res.status(200).json({ sent: true, id, problems: errors.length });
   } catch (e) {
     console.error("[weekly-analytics] email:", e.message);
