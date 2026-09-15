@@ -1,35 +1,23 @@
 import "../styles/global.scss";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
-import TagManager from "react-gtm-module";
-import { NEXT_PUBLIC_GTM_TRACKING_ID } from "../lib/constants";
+import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { CLOUDFLARE_WEB_ANALYTICS_TOKEN } from "../lib/constants";
 
-const MyApp = ({ Component, pageProps }) => {
-  const router = useRouter();
-
-  // Initialise GTM once, only where a container ID is configured
-  useEffect(() => {
-    if (!NEXT_PUBLIC_GTM_TRACKING_ID) return;
-    TagManager.initialize({ gtmId: NEXT_PUBLIC_GTM_TRACKING_ID });
-  }, []);
-
-  // Send a pageview event to the GTM dataLayer on every route change
-  useEffect(() => {
-    if (!NEXT_PUBLIC_GTM_TRACKING_ID) return;
-    const handleRouteChange = (url) => {
-      TagManager.dataLayer({
-        dataLayer: {
-          event: "pageview",
-          page: url,
-        },
-      });
-    };
-
-    router.events.on("routeChangeComplete", handleRouteChange);
-    return () => router.events.off("routeChangeComplete", handleRouteChange);
-  }, [router.events]);
-
-  return <Component {...pageProps} />;
-};
+const MyApp = ({ Component, pageProps }) => (
+  <>
+    <Component {...pageProps} />
+    <Analytics />
+    <SpeedInsights />
+    {/* Cloudflare Web Analytics, only where a site token is configured */}
+    {CLOUDFLARE_WEB_ANALYTICS_TOKEN && (
+      <Script
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={JSON.stringify({ token: CLOUDFLARE_WEB_ANALYTICS_TOKEN })}
+        strategy="afterInteractive"
+      />
+    )}
+  </>
+);
 
 export default MyApp;
