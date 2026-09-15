@@ -7,13 +7,15 @@ import { NEXT_PUBLIC_GTM_TRACKING_ID } from "../lib/constants";
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
 
-  // Initialise GTM once
+  // Initialise GTM once, only where a container ID is configured
   useEffect(() => {
+    if (!NEXT_PUBLIC_GTM_TRACKING_ID) return;
     TagManager.initialize({ gtmId: NEXT_PUBLIC_GTM_TRACKING_ID });
   }, []);
 
   // Send a pageview event to the GTM dataLayer on every route change
   useEffect(() => {
+    if (!NEXT_PUBLIC_GTM_TRACKING_ID) return;
     const handleRouteChange = (url) => {
       TagManager.dataLayer({
         dataLayer: {
