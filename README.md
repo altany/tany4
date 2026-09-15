@@ -49,3 +49,19 @@ All cookieless, so no consent banner is needed:
   - Clicks on external links, email links and file downloads are recorded as page views under `/out/<site>` (e.g. `/out/linkedin.com`, `/out/email`) and `/download/<file>` (e.g. `/download/TaniaPapazafeiropoulou-CV.pdf`), because custom events need a paid plan. They add to the page-view total.
 - **Vercel Speed Insights** (`@vercel/speed-insights`): real-visitor performance score. Vercel project → Speed Insights.
 - **Cloudflare Web Analytics**: loaded only when `NEXT_PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN` is set (production only). Cloudflare dashboard → Web Analytics. 6 months of history.
+
+### Weekly email
+
+Every Monday around 05:00 UTC, Vercel Cron calls `/api/cron/weekly-analytics`, which emails last week's numbers (Monday to Sunday, UTC) to hello@tany4.com. It sends over SMTP from an existing mailbox: Gmail with an app password by default. It includes visitors and page views against the week before, top pages, referrers, countries and link clicks from Vercel, plus Cloudflare's visits and page views. It flags days with unusual spikes and runs of days with no traffic.
+
+Vercel project environment variables (Production):
+
+- `CRON_SECRET`: random string. Vercel sends it to the endpoint, and requests without it are rejected.
+- `VERCEL_ANALYTICS_TOKEN`: Vercel access token scoped to the personal account, used to read Web Analytics
+- `SMTP_USER`: the mailbox that sends the email, e.g. the Gmail address
+- `SMTP_PASSWORD`: that mailbox's app password (Google Account → Security → 2-Step Verification → App passwords)
+- `SMTP_HOST` (optional): defaults to `smtp.gmail.com`; e.g. `smtp.zoho.com` for a Zoho plan with SMTP access
+- `CLOUDFLARE_API_TOKEN`: Cloudflare API token with Account Analytics Read
+- `CLOUDFLARE_ACCOUNT_ID`: Cloudflare account ID
+
+If a data source fails, the email still goes out and says what couldn't be loaded. To send a test email for the last 7 days, trigger the cron job from the Vercel dashboard, or call the endpoint with the `CRON_SECRET` header and `?range=last-7-days`.
