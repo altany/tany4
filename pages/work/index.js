@@ -104,7 +104,7 @@ export default function Work() {
         </div>
         <section className={styles.workIntroSection}>
           <p>
-            I've built user-facing products across mobile and web, owning complex systems end-to-end. Below, you'll find a curated selection of projects that showcase my technical expertise.
+            I&apos;ve built user-facing products across mobile and web, owning complex systems end-to-end. Below, you&apos;ll find a curated selection of projects that showcase my technical expertise.
           </p>
         </section>
 

@@ -76,4 +76,6 @@ class Screen {
   }
 }
 
-export default new Screen()
+const appScreen = new Screen()
+
+export default appScreen
