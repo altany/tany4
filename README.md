@@ -51,13 +51,15 @@ All cookieless, so no consent banner is needed:
 
 ### Weekly email
 
-Every Monday around 05:00 UTC, Vercel Cron calls `/api/cron/weekly-analytics`, which emails last week's numbers (Monday to Sunday, UTC) to hello@tany4.com. It includes visitors and page views against the week before, top pages, referrers, countries and link clicks from Vercel, plus Cloudflare's visits and page views. It flags days with unusual spikes and runs of days with no traffic.
+Every Monday around 05:00 UTC, Vercel Cron calls `/api/cron/weekly-analytics`, which emails last week's numbers (Monday to Sunday, UTC) to hello@tany4.com. It sends over SMTP from an existing mailbox: Gmail with an app password by default. It includes visitors and page views against the week before, top pages, referrers, countries and link clicks from Vercel, plus Cloudflare's visits and page views. It flags days with unusual spikes and runs of days with no traffic.
 
 Vercel project environment variables (Production):
 
 - `CRON_SECRET`: random string. Vercel sends it to the endpoint, and requests without it are rejected.
 - `VERCEL_ANALYTICS_TOKEN`: Vercel access token scoped to the personal account, used to read Web Analytics
-- `RESEND_API_KEY`: Resend API key. Sends from `analytics@send.tany4.com`, a domain verified in Resend.
+- `SMTP_USER`: the mailbox that sends the email, e.g. the Gmail address
+- `SMTP_PASSWORD`: that mailbox's app password (Google Account → Security → 2-Step Verification → App passwords)
+- `SMTP_HOST` (optional): defaults to `smtp.gmail.com`; e.g. `smtp.zoho.com` for a Zoho plan with SMTP access
 - `CLOUDFLARE_API_TOKEN`: Cloudflare API token with Account Analytics Read
 - `CLOUDFLARE_ACCOUNT_ID`: Cloudflare account ID
 

@@ -1,7 +1,22 @@
+import nodemailer from 'nodemailer'
 import { getVercelWeek } from '../../../lib/analyticsDigest/vercel'
 import { getCloudflareWeek } from '../../../lib/analyticsDigest/cloudflare'
 import { sendReport } from '../../../lib/analyticsDigest/email'
 import handler from '../../../pages/api/cron/weekly-analytics'
+
+jest.mock('nodemailer')
+
+// Captures messages instead of connecting to an SMTP server
+const mockMailer = () => {
+  const sent = []
+  nodemailer.createTransport.mockImplementation((options) => ({
+    sendMail: async (message) => {
+      sent.push({ options, message })
+      return { messageId: `<message-${sent.length}>` }
+    },
+  }))
+  return sent
+}
 
 const week = {
   since: '2026-09-07T00:00:00.000Z',
@@ -19,7 +34,8 @@ beforeEach(() => {
     CLOUDFLARE_API_TOKEN: 'cf-test',
     CLOUDFLARE_ACCOUNT_ID: 'a'.repeat(32),
     NEXT_PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN: 'b'.repeat(32),
-    RESEND_API_KEY: 're_test',
+    SMTP_USER: 'sender@example.com',
+    SMTP_PASSWORD: 'app-password-test',
     CRON_SECRET: 'cron-test',
   }
 })
@@ -95,17 +111,35 @@ describe('getCloudflareWeek', () => {
 })
 
 describe('sendReport', () => {
-  it('sends to hello@tany4.com from the analytics sender', async () => {
-    let sent
-    global.fetch = async (input, init) => {
-      sent = { url: input, headers: init.headers, body: JSON.parse(init.body) }
-      return json({ id: 'email_1' })
-    }
+  it('sends to hello@tany4.com through Gmail by default', async () => {
+    const sent = mockMailer()
     const id = await sendReport({ subject: 's', text: 't', html: '<p>h</p>' })
-    expect(id).toBe('email_1')
-    expect(sent.url).toBe('https://api.resend.com/emails')
-    expect(sent.headers.Authorization).toBe('Bearer re_test')
-    expect(sent.body).toMatchObject({ from: 'tany4.com analytics <analytics@send.tany4.com>', to: ['hello@tany4.com'], subject: 's' })
+    expect(id).toBe('<message-1>')
+    expect(sent[0].options).toEqual({
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
+      auth: { user: 'sender@example.com', pass: 'app-password-test' },
+    })
+    expect(sent[0].message).toMatchObject({
+      from: 'tany4.com analytics <sender@example.com>',
+      to: 'hello@tany4.com',
+      subject: 's',
+      text: 't',
+      html: '<p>h</p>',
+    })
+  })
+
+  it('uses another SMTP host when set', async () => {
+    process.env.SMTP_HOST = 'smtp.zoho.com'
+    const sent = mockMailer()
+    await sendReport({ subject: 's', text: 't', html: '' })
+    expect(sent[0].options.host).toBe('smtp.zoho.com')
+  })
+
+  it('fails clearly without mailbox credentials', async () => {
+    delete process.env.SMTP_PASSWORD
+    await expect(sendReport({ subject: 's', text: 't', html: '' })).rejects.toThrow('SMTP_USER or SMTP_PASSWORD is not set')
   })
 })
 
@@ -127,23 +161,16 @@ describe('weekly-analytics endpoint', () => {
 
   it('still emails when a source fails', async () => {
     delete process.env.CLOUDFLARE_API_TOKEN
-    const vercelCalls = []
-    let email
-    global.fetch = async (input, init) => {
-      if (String(input).includes('api.resend.com')) {
-        email = JSON.parse(init.body)
-        return json({ id: 'email_2' })
-      }
-      return vercelFetch(vercelCalls)(input)
-    }
+    global.fetch = vercelFetch([])
+    const sent = mockMailer()
     const spy = jest.spyOn(console, 'error').mockImplementation(() => {})
     const res = response()
     await handler({ headers: { authorization: 'Bearer cron-test' }, query: {} }, res)
     spy.mockRestore()
 
     expect(res.statusCode).toBe(200)
-    expect(res.body).toEqual({ sent: true, id: 'email_2', problems: 1 })
-    expect(email.text).toContain('Could not load Cloudflare Web Analytics')
-    expect(email.text).toContain('Vercel Web Analytics')
+    expect(res.body).toEqual({ sent: true, id: '<message-1>', problems: 1 })
+    expect(sent[0].message.text).toContain('Could not load Cloudflare Web Analytics')
+    expect(sent[0].message.text).toContain('Vercel Web Analytics')
   })
 })
