@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "author": "Tania Papazafeiropoulou",
-  "cacheDirectories": [
-    ".next/cache"
-  ],
   "scripts": {
     "dev": "cross-env NEXT_TELEMETRY_DISABLED=1 next dev",
     "build": "cross-env NEXT_TELEMETRY_DISABLED=1 next build && next-sitemap",
