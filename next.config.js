@@ -10,8 +10,37 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www\\.(?<host>.+)' }],
+        destination: 'https://:host/:path*',
+        permanent: true,
+      },
+      // Hosts that terminate TLS in front of the app send the original protocol here
+      {
+        source: '/:path*',
+        has: [
+          { type: 'header', key: 'x-forwarded-proto', value: 'http' },
+          { type: 'host', value: '(?<host>.+)' },
+        ],
+        destination: 'https://:host/:path*',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=31536000; includeSubDomains; preload',
+          },
+        ],
+      },
       {
         source: '/:path*.:ext(png|jpg|jpeg|gif|webp|svg|ico|pdf)',
         headers: [
