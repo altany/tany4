@@ -7,6 +7,11 @@ describe('period', () => {
     expect(week.since).toBe('2026-09-14T00:00:00.000Z')
     expect(week.until).toBe('2026-09-20T23:59:59.999Z')
     expect(week.label).toBe('14 Sept – 20 Sept 2026')
+    expect(week.shortLabel).toBe('14–20 Sept')
+  })
+
+  it('names both months in a short label when the week spans two', () => {
+    expect(previousWeek(new Date('2026-09-07T05:00:00Z')).shortLabel).toBe('31 Aug – 6 Sept')
   })
 
   it('gives the same week on any day of the following week', () => {
@@ -68,8 +73,8 @@ describe('buildReport', () => {
   }
 
   it('summarises both sources', () => {
-    const { subject, text } = buildReport({ label: '14 Sept – 20 Sept 2026', vercel, cloudflare })
-    expect(subject).toBe('tany4.com weekly analytics, 14 Sept – 20 Sept 2026: 40 visitors')
+    const { subject, text } = buildReport({ label: '14 Sept – 20 Sept 2026', shortLabel: '14–20 Sept', vercel, cloudflare })
+    expect(subject).toBe('📊 tany4.com analytics · 14–20 Sept: 40 visitors')
     expect(text).toContain('Visitors: 40 (-20% vs the week before)')
     expect(text).toContain('Direct / unknown: 20')
     expect(text).toContain('Greece: 12')
@@ -86,7 +91,7 @@ describe('buildReport', () => {
       cloudflare: null,
       errors: ['Vercel Web Analytics (VERCEL_ANALYTICS_TOKEN is not set)'],
     })
-    expect(subject).toContain('data unavailable (needs a look)')
+    expect(subject).toBe('⚠️ tany4.com analytics · x: data unavailable (needs a look)')
     expect(text).toContain('Could not load Vercel Web Analytics')
     expect(html).toContain('Needs a look')
   })

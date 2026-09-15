@@ -2,6 +2,7 @@ import nodemailer from 'nodemailer'
 import { getVercelWeek } from '../../../lib/analyticsDigest/vercel'
 import { getCloudflareWeek } from '../../../lib/analyticsDigest/cloudflare'
 import { sendReport } from '../../../lib/analyticsDigest/email'
+import { buildReport } from '../../../lib/analyticsDigest/report'
 import handler from '../../../pages/api/cron/weekly-analytics'
 
 jest.mock('nodemailer')
@@ -80,6 +81,20 @@ describe('getVercelWeek', () => {
     expect(result.previousTotals.visitors).toBe(50)
     expect(result.pages).toEqual([{ name: '/blog', pageviews: 30 }])
     expect(result.outbound).toEqual([{ name: '/out/linkedin.com', pageviews: 5 }])
+    expect(result.days).toHaveLength(7)
+    expect(result.days[0]).toEqual({ date: week.since, pageviews: 12 })
+    expect(result.days[6]).toEqual({ date: '2026-09-13T00:00:00.000Z', pageviews: 0 })
+    expect(result.baselineDays).toHaveLength(21)
+  })
+
+  it('warns when the whole week had no traffic', async () => {
+    global.fetch = async (input) => {
+      const url = new URL(input)
+      return json({ data: url.pathname.endsWith('/count') ? { visitors: 0, pageviews: 0 } : [] })
+    }
+    const { subject, text } = buildReport({ label: week.label, vercel: await getVercelWeek(week), cloudflare: null })
+    expect(subject).toContain('(needs a look)')
+    expect(text).toContain('7 days in a row with no page views')
   })
 
   it('fails clearly without a token', async () => {
