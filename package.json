@@ -14,7 +14,7 @@
     "test-e2e": "node __tests__/e2eRunner.js",
     "test-unit": "jest",
     "test": "npm run test-e2e && npm run test-unit",
-    "lint": "next lint"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@ai-sdk/openai": "^2.0.127",
@@ -44,7 +44,7 @@
     "@types/node": "^24.13.4",
     "@types/react": "^18.3.31",
     "eslint": "^9.0.0",
-    "eslint-config-next": "16.0.7",
+    "eslint-config-next": "16.3.4",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "next-sitemap": "^4.2.3",
