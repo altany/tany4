@@ -50,3 +50,11 @@ The site is hosted on Vercel (Hobby plan).
   - Output: `public/TaniaPapazafeiropoulou-CV.pdf`
 
 The PDF is generated using `@react-pdf/renderer` from `src/cv/pdf/CvPdfDocument.tsx`. No browser or Playwright required.
+
+## Analytics
+
+All cookieless, so no consent banner is needed:
+
+- **Vercel Web Analytics** (`@vercel/analytics`): visitors, pages, referrers, countries, devices. Vercel project → Analytics. Free up to 50,000 events a month, 30 days of history.
+- **Vercel Speed Insights** (`@vercel/speed-insights`): real-visitor performance score. Vercel project → Speed Insights.
+- **Cloudflare Web Analytics**: loaded only when `NEXT_PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN` is set (production only). Cloudflare dashboard → Web Analytics. 6 months of history.
