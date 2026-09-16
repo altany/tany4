@@ -34,7 +34,6 @@ beforeEach(() => {
     VERCEL_ANALYTICS_TOKEN: 'vercel-test',
     CLOUDFLARE_API_TOKEN: 'cf-test',
     CLOUDFLARE_ACCOUNT_ID: 'a'.repeat(32),
-    NEXT_PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN: 'b'.repeat(32),
     SMTP_USER: 'sender@example.com',
     SMTP_PASSWORD: 'app-password-test',
     CRON_SECRET: 'cron-test',
@@ -109,14 +108,35 @@ describe('getCloudflareWeek', () => {
     global.fetch = async (input, init) => {
       bodies.push(JSON.parse(init.body).query)
       return json({
-        data: { viewer: { accounts: [{ rumPageloadEventsAdaptiveGroups: [{ count: 80, sum: { visits: 30 }, avg: { sampleInterval: 1 } }] }] } },
+        data: {
+          viewer: {
+            accounts: [
+              {
+                pageloads: [{ count: 80, sum: { visits: 30 }, avg: { sampleInterval: 1 } }],
+                performance: [{ count: 70, quantiles: { pageLoadTimeP50: 1234567 } }],
+              },
+            ],
+          },
+        },
       })
     }
     const result = await getCloudflareWeek(week)
     expect(bodies).toHaveLength(2)
-    expect(bodies[0]).toContain(`siteTag: "${'b'.repeat(32)}"`)
+    expect(bodies[0]).toContain('requestHost_in: ["tany4.com","www.tany4.com"]')
     expect(bodies[0]).toContain(`datetime_geq: "${week.since}"`)
-    expect(result.current).toEqual({ pageviews: 80, visits: 30, sampleInterval: 1 })
+    expect(result.current).toEqual({ pageviews: 80, visits: 30, sampleInterval: 1, loadTimeMs: 1235 })
+  })
+
+  it('has no load time for a week without performance data', async () => {
+    global.fetch = async () =>
+      json({ data: { viewer: { accounts: [{ pageloads: [], performance: [{ count: 0, quantiles: { pageLoadTimeP50: 0 } }] }] } } })
+    const result = await getCloudflareWeek(week)
+    expect(result.current).toEqual({ pageviews: 0, visits: 0, sampleInterval: 1, loadTimeMs: null })
+  })
+
+  it('fails clearly when the token cannot read the account', async () => {
+    global.fetch = async () => json({ data: { viewer: { accounts: [] } } })
+    await expect(getCloudflareWeek(week)).rejects.toThrow('cannot read')
   })
 
   it('surfaces GraphQL errors', async () => {

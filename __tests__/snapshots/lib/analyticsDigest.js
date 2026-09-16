@@ -68,8 +68,8 @@ describe('buildReport', () => {
     outbound: [{ name: '/download/TaniaPapazafeiropoulou-CV.pdf', pageviews: 3 }],
   }
   const cloudflare = {
-    current: { pageviews: 80, visits: 30, sampleInterval: 1 },
-    previous: { pageviews: 70, visits: 20, sampleInterval: 10 },
+    current: { pageviews: 80, visits: 30, sampleInterval: 1, loadTimeMs: 1200 },
+    previous: { pageviews: 70, visits: 20, sampleInterval: 10, loadTimeMs: 7149 },
   }
 
   it('summarises both sources', () => {
@@ -80,6 +80,7 @@ describe('buildReport', () => {
     expect(text).toContain('Greece: 12')
     expect(text).toContain('/download/TaniaPapazafeiropoulou-CV.pdf: 3')
     expect(text).toContain('Visits: 30 (+50% vs the week before)')
+    expect(text).toContain('Median page load time: 1,200 ms (-83% vs the week before)')
     expect(text).toContain('estimates')
     expect(text).toContain('Nothing unusual.')
   })
