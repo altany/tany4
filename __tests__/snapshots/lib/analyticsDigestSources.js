@@ -21,9 +21,9 @@ const mockMailer = () => {
 }
 
 const week = {
-  since: '2026-09-07T00:00:00.000Z',
-  until: '2026-09-13T23:59:59.999Z',
-  label: '7 Sept – 13 Sept 2026',
+  since: '2026-09-21T00:00:00.000Z',
+  until: '2026-09-27T23:59:59.999Z',
+  label: '21 Sept – 27 Sept 2026',
 }
 
 const json = (body) => ({ ok: true, status: 200, json: async () => body, text: async () => JSON.stringify(body) })
@@ -54,7 +54,7 @@ const vercelFetch = (calls) => async (input) => {
     return json({ data: p.since === week.since ? { visitors: 40, pageviews: 95 } : { visitors: 50, pageviews: 100 } })
   }
   const rows = {
-    day: [{ timestamp: '2026-09-07T00:00:00.000Z', visitors: 5, pageviews: 12 }],
+    day: [{ timestamp: '2026-09-21T00:00:00.000Z', visitors: 5, pageviews: 12 }],
     requestPath: [
       { requestPath: '/blog', visitors: 20, pageviews: 30 },
       { requestPath: '/out/linkedin.com', visitors: 4, pageviews: 5 },
@@ -72,7 +72,7 @@ describe('getVercelWeek', () => {
     const result = await getVercelWeek(week)
 
     const counts = calls.filter((u) => u.pathname.endsWith('/count'))
-    expect(counts.map((u) => u.searchParams.get('until'))).toContain('2026-09-14T00:00:00.000Z')
+    expect(counts.map((u) => u.searchParams.get('until'))).toContain('2026-09-28T00:00:00.000Z')
     const aggregates = calls.filter((u) => u.pathname.endsWith('/aggregate') && u.searchParams.get('since') === week.since)
     expect(aggregates.every((u) => u.searchParams.get('until') === week.until)).toBe(true)
     expect(calls.every((u) => u.searchParams.get('projectId') && u.searchParams.get('teamId'))).toBe(true)
@@ -81,10 +81,16 @@ describe('getVercelWeek', () => {
     expect(result.previousTotals.visitors).toBe(50)
     expect(result.pages).toEqual([{ name: '/blog', pageviews: 30 }])
     expect(result.outbound).toEqual([{ name: '/out/linkedin.com', pageviews: 5 }])
+
+    const early = await getVercelWeek({ since: '2026-09-14T00:00:00.000Z', until: '2026-09-20T23:59:59.999Z', label: 'x' })
+    expect(early.days.map((d) => d.date.slice(0, 10))[0]).toBe('2026-09-15')
+    expect(early.trackedWholeWeek).toBe(false)
     expect(result.days).toHaveLength(7)
     expect(result.days[0]).toEqual({ date: week.since, pageviews: 12 })
-    expect(result.days[6]).toEqual({ date: '2026-09-13T00:00:00.000Z', pageviews: 0 })
-    expect(result.baselineDays).toHaveLength(21)
+    expect(result.days[6]).toEqual({ date: '2026-09-27T00:00:00.000Z', pageviews: 0 })
+    // The three weeks before run 31 Aug – 20 Sept; tracking began on 15 Sept
+    expect(result.baselineDays).toHaveLength(6)
+    expect(result.trackedWholeWeek).toBe(true)
   })
 
   it('warns when the whole week had no traffic', async () => {
