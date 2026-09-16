@@ -76,6 +76,9 @@ describe('getVercelWeek', () => {
     const aggregates = calls.filter((u) => u.pathname.endsWith('/aggregate') && u.searchParams.get('since') === week.since)
     expect(aggregates.every((u) => u.searchParams.get('until') === week.until)).toBe(true)
     expect(calls.every((u) => u.searchParams.get('projectId') && u.searchParams.get('teamId'))).toBe(true)
+    const daily = calls.filter((u) => u.searchParams.get('by') === 'day')
+    expect(daily).toHaveLength(2)
+    expect(daily.every((u) => u.searchParams.get('filter').includes("not startswith(requestPath,'/out/')"))).toBe(true)
 
     expect(result.totals).toEqual({ visitors: 40, pageviews: 90 })
     expect(result.previousTotals.visitors).toBe(50)

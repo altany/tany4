@@ -104,6 +104,11 @@ describe('buildReport', () => {
     expect(text).toContain('started on 15 Sept 2026, so this week is incomplete')
   })
 
+  it('notes a week entirely before tracking started', () => {
+    const { text } = buildReport({ label: 'x', vercel: { ...vercel, days: [], trackedWholeWeek: false }, cloudflare: null })
+    expect(text).toContain('after this week, so it has no numbers for it')
+  })
+
   it('still sends when a source fails, and says so', () => {
     const { subject, text, html } = buildReport({
       label: 'x',
