@@ -4,6 +4,7 @@ import { getCloudflareWeek } from '../../../lib/analyticsDigest/cloudflare'
 import { sendReport } from '../../../lib/analyticsDigest/email'
 import { buildReport } from '../../../lib/analyticsDigest/report'
 import handler from '../../../pages/api/cron/weekly-analytics'
+import previewHandler from '../../../pages/api/cron/weekly-analytics-preview'
 
 jest.mock('nodemailer')
 
@@ -207,5 +208,32 @@ describe('weekly-analytics endpoint', () => {
     expect(res.body).toEqual({ sent: true, id: '<message-1>', problems: 1 })
     expect(sent[0].message.text).toContain('Could not load Cloudflare Web Analytics')
     expect(sent[0].message.text).toContain('Vercel Web Analytics')
+  })
+
+  it('previews the email in the logs without sending it', async () => {
+    delete process.env.CLOUDFLARE_API_TOKEN
+    global.fetch = vercelFetch([])
+    const sent = mockMailer()
+    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
+    const logSpy = jest.spyOn(console, 'log').mockImplementation(() => {})
+    const res = response()
+    await previewHandler({ headers: { authorization: 'Bearer cron-test' }, query: {} }, res)
+    const logged = logSpy.mock.calls.map((c) => c.join(' ')).join('\n')
+    errorSpy.mockRestore()
+    logSpy.mockRestore()
+
+    expect(sent).toHaveLength(0)
+    expect(res.statusCode).toBe(200)
+    expect(res.body.sent).toBe(false)
+    expect(res.body.reports).toHaveLength(2)
+    expect(res.body.reports.every((r) => r.problems === 1)).toBe(true)
+    expect(logged).toContain('[weekly-analytics-preview]')
+    expect(logged).toContain('Vercel Web Analytics')
+  })
+
+  it('rejects previews without the cron secret', async () => {
+    const res = response()
+    await previewHandler({ headers: {}, query: {} }, res)
+    expect(res.statusCode).toBe(401)
   })
 })
