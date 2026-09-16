@@ -60,7 +60,10 @@ describe('buildReport', () => {
   const vercel = {
     totals: { visitors: 40, pageviews: 90 },
     previousTotals: { visitors: 50, pageviews: 100 },
-    days: [{ date: '2026-09-14T00:00:00.000Z', pageviews: 10 }],
+    downloads: 3,
+    previousDownloads: 0,
+    trackedWholeWeek: true,
+    days: [{ date: '2026-09-21T00:00:00.000Z', pageviews: 10 }],
     baselineDays: [],
     pages: [{ name: '/blog', pageviews: 30 }],
     referrers: [{ name: '', visitors: 20 }, { name: 'www.linkedin.com', visitors: 5 }],
@@ -75,14 +78,30 @@ describe('buildReport', () => {
   it('summarises both sources', () => {
     const { subject, text } = buildReport({ label: '14 Sept – 20 Sept 2026', shortLabel: '14–20 Sept', vercel, cloudflare })
     expect(subject).toBe('📊 tany4.com analytics · 14–20 Sept: 40 visitors')
-    expect(text).toContain('Visitors: 40 (-20% vs the week before)')
-    expect(text).toContain('Direct / unknown: 20')
+    expect(text).toContain('Visitors: 40 (down 20% on the week before)')
+    expect(text).toContain('CV downloads: 3 (no earlier week to compare)')
+    expect(text).toContain('Page load time: 1,200 ms (down 83% on the week before)')
+    expect(text).toContain('Direct or unknown: 20')
+    expect(text).toContain('linkedin.com: 5')
     expect(text).toContain('Greece: 12')
-    expect(text).toContain('/download/TaniaPapazafeiropoulou-CV.pdf: 3')
-    expect(text).toContain('Visits: 30 (+50% vs the week before)')
-    expect(text).toContain('Median page load time: 1,200 ms (-83% vs the week before)')
-    expect(text).toContain('estimates')
-    expect(text).toContain('Nothing unusual.')
+    expect(text).toContain('CV (PDF): 3')
+    expect(text).toContain('Cloudflare counted 30 visits (up 50% on the week before)')
+    expect(text).toContain('sampled estimates')
+    expect(text).not.toContain('Needs a look')
+    expect(text).not.toContain('incomplete')
+  })
+
+  it('shows changes in the HTML, with a slower page as bad news', () => {
+    const slower = { ...cloudflare, current: { ...cloudflare.current, loadTimeMs: 900 }, previous: { ...cloudflare.previous, loadTimeMs: 600 } }
+    const { html } = buildReport({ label: 'x', vercel, cloudflare: slower })
+    expect(html).toContain('▼ 20%</div>')
+    expect(html).toMatch(/color:#b91c1c[^"]*">▲ 50%/)
+    expect(html).toContain('🇬🇷')
+  })
+
+  it('notes a week from before tracking started', () => {
+    const { text } = buildReport({ label: 'x', vercel: { ...vercel, trackedWholeWeek: false }, cloudflare: null })
+    expect(text).toContain('started on 15 Sept 2026, so this week is incomplete')
   })
 
   it('still sends when a source fails, and says so', () => {
