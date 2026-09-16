@@ -210,28 +210,32 @@ describe('weekly-analytics endpoint', () => {
     expect(sent[0].message.text).toContain('Vercel Web Analytics')
   })
 
-  it('previews the email in the logs without sending it', async () => {
+  it('returns the email on preview deployments without sending it', async () => {
+    process.env.VERCEL_ENV = 'preview'
     delete process.env.CLOUDFLARE_API_TOKEN
     global.fetch = vercelFetch([])
     const sent = mockMailer()
-    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
-    const logSpy = jest.spyOn(console, 'log').mockImplementation(() => {})
+    const spy = jest.spyOn(console, 'error').mockImplementation(() => {})
     const res = response()
-    await previewHandler({ headers: { authorization: 'Bearer cron-test' }, query: {} }, res)
-    const logged = logSpy.mock.calls.map((c) => c.join(' ')).join('\n')
-    errorSpy.mockRestore()
-    logSpy.mockRestore()
+    await previewHandler({ headers: {}, query: {} }, res)
+    spy.mockRestore()
 
     expect(sent).toHaveLength(0)
     expect(res.statusCode).toBe(200)
-    expect(res.body).toMatchObject({ sent: false, problems: 1 })
-    expect(logged).toContain('[weekly-analytics-preview]')
-    expect(logged).toContain('Vercel Web Analytics')
+    expect(res.body.problems).toBe(1)
+    expect(res.body.subject).toContain('tany4.com analytics')
+    expect(res.body.text).toContain('Could not load Cloudflare Web Analytics')
   })
 
-  it('rejects previews without the cron secret', async () => {
-    const res = response()
-    await previewHandler({ headers: {}, query: {} }, res)
-    expect(res.statusCode).toBe(401)
+  it('does not exist outside preview deployments', async () => {
+    global.fetch = jest.fn()
+    for (const env of ['production', undefined]) {
+      process.env.VERCEL_ENV = env
+      if (env === undefined) delete process.env.VERCEL_ENV
+      const res = response()
+      await previewHandler({ headers: { authorization: 'Bearer cron-test' }, query: {} }, res)
+      expect(res.statusCode).toBe(404)
+    }
+    expect(global.fetch).not.toHaveBeenCalled()
   })
 })

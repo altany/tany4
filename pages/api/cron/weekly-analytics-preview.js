@@ -1,16 +1,18 @@
-import { last7Days } from "../../../lib/analyticsDigest/period";
-import { isCronRequest, collectReport } from "../../../lib/analyticsDigest/run";
+import { previousWeek, last7Days } from "../../../lib/analyticsDigest/period";
+import { collectReport } from "../../../lib/analyticsDigest/run";
 
-// Builds the weekly email for the last 7 days and writes it to the function logs
-// instead of sending it, to check the real numbers without filling the inbox.
-// Run it with `vercel crons run /api/cron/weekly-analytics-preview`, then `vercel logs`.
+// Returns the weekly email as JSON instead of sending it, so a pull request can be
+// checked against real analytics before merging. Only on preview deployments, which
+// Vercel Authentication keeps private; open it with
+// `vercel curl /api/cron/weekly-analytics-preview --deployment <preview url>`.
+// `?range=last-7-days` for the last 7 days instead of last week.
 export default async function handler(req, res) {
-  if (!isCronRequest(req)) {
-    res.status(401).json({ error: "Unauthorized" });
+  if (process.env.VERCEL_ENV !== "preview") {
+    res.status(404).json({ error: "Not found" });
     return;
   }
 
-  const { report, problems } = await collectReport(last7Days());
-  console.log(`[weekly-analytics-preview] ${report.subject}\n\n${report.text}`);
-  res.status(200).json({ sent: false, subject: report.subject, problems });
+  const range = req.query.range === "last-7-days" ? last7Days() : previousWeek();
+  const { report, problems } = await collectReport(range);
+  res.status(200).json({ problems, subject: report.subject, text: report.text });
 }
