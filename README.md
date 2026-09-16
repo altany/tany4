@@ -66,9 +66,8 @@ Vercel project environment variables (Production):
 
 If a data source fails, the email still goes out and says what couldn't be loaded. To send a test email for the last 7 days, trigger the cron job from the Vercel dashboard, or call the endpoint with the `CRON_SECRET` header and `?range=last-7-days`.
 
-To check the real numbers without sending an email, run the preview job. It builds the email for the last 7 days and writes it to the function logs. It is registered as a cron job (once a year, on 1 January) only so it can be triggered on demand:
+To check a pull request against real numbers without sending an email, open the preview endpoint on its preview deployment. It returns the email as JSON and only works on preview deployments, which need a Vercel login. `VERCEL_ANALYTICS_TOKEN`, `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` must also be enabled for Preview; the SMTP settings stay Production only.
 
 ```bash
-vercel crons run /api/cron/weekly-analytics-preview
-vercel logs --environment production --since 5m
+vercel curl "/api/cron/weekly-analytics-preview?range=last-7-days" --deployment <preview deployment url>
 ```
