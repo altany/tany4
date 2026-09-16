@@ -36,7 +36,7 @@ The site is hosted on Vercel (Hobby plan).
 
 - Every push to `main` deploys to production at https://tany4.com
 - Every pull request gets a preview deployment
-- Environment variables are set in the Vercel project: `OPENAI_API_KEY` (chat) and `NEXT_PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN` (production only)
+- Environment variables are set in the Vercel project: `OPENAI_API_KEY` (chat) and `NEXT_PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN` (production only), plus the ones the weekly email needs (see Analytics)
 - A Vercel Firewall rule rate-limits `/api/chat` to 10 requests per minute per IP
 
 ## CV
