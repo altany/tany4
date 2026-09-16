@@ -52,7 +52,7 @@ All cookieless, so no consent banner is needed:
 
 ### Weekly email
 
-Every Monday around 05:00 UTC, Vercel Cron calls `/api/cron/weekly-analytics`, which emails last week's numbers (Monday to Sunday, UTC) to hello@tany4.com. It sends over SMTP from an existing mailbox: Gmail with an app password by default. It includes visitors and page views against the week before, top pages, referrers, countries and link clicks from Vercel, plus Cloudflare's visits and page views. It flags days with unusual spikes and runs of days with no traffic.
+Every Monday around 05:00 UTC, Vercel Cron calls `/api/cron/weekly-analytics`, which emails last week's numbers (Monday to Sunday, UTC) to hello@tany4.com. It sends over SMTP from an existing mailbox: Gmail with an app password by default. It includes visitors and page views against the week before, top pages, referrers, countries and link clicks from Vercel, plus Cloudflare's visits, page views and median page load time. It flags days with unusual spikes and runs of days with no traffic.
 
 Vercel project environment variables (Production):
 
@@ -65,3 +65,10 @@ Vercel project environment variables (Production):
 - `CLOUDFLARE_ACCOUNT_ID`: Cloudflare account ID
 
 If a data source fails, the email still goes out and says what couldn't be loaded. To send a test email for the last 7 days, trigger the cron job from the Vercel dashboard, or call the endpoint with the `CRON_SECRET` header and `?range=last-7-days`.
+
+To check the real numbers without sending an email, run the preview job. It builds the email for the last 7 days and writes it to the function logs. It is registered as a cron job (once a year, on 1 January) only so it can be triggered on demand:
+
+```bash
+vercel crons run /api/cron/weekly-analytics-preview
+vercel logs --environment production --since 5m
+```
