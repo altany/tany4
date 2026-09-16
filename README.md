@@ -66,7 +66,7 @@ Vercel project environment variables (Production):
 
 If a data source fails, the email still goes out and says what couldn't be loaded. To send a test email for the last 7 days, trigger the cron job from the Vercel dashboard, or call the endpoint with the `CRON_SECRET` header and `?range=last-7-days`.
 
-To check the real numbers without sending an email, run the preview job. It builds the email for the last 7 days and writes it to the function logs. It is registered as a cron job (once a year, on 1 January) only so it can be triggered on demand:
+To check the real numbers without sending an email, run the preview job. It builds the email for last week and for the last 7 days and writes both to the function logs. It is registered as a cron job (once a year, on 1 January) only so it can be triggered on demand:
 
 ```bash
 vercel crons run /api/cron/weekly-analytics-preview

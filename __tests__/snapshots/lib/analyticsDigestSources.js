@@ -224,7 +224,9 @@ describe('weekly-analytics endpoint', () => {
 
     expect(sent).toHaveLength(0)
     expect(res.statusCode).toBe(200)
-    expect(res.body).toMatchObject({ sent: false, problems: 1 })
+    expect(res.body.sent).toBe(false)
+    expect(res.body.reports).toHaveLength(2)
+    expect(res.body.reports.every((r) => r.problems === 1)).toBe(true)
     expect(logged).toContain('[weekly-analytics-preview]')
     expect(logged).toContain('Vercel Web Analytics')
   })
