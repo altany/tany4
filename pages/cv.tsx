@@ -27,7 +27,6 @@ export default function CvPage() {
       </Head>
 
       <SplitPage
-        stickySide={false}
         side={
           <>
             {skills?.bullets && (
