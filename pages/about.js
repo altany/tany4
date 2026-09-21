@@ -50,7 +50,7 @@ export default function About() {
         </p>
 
         <figure className={styles.aboutPhoto}>
-          <img src="/Mario.png" alt="Mario" loading="lazy" />
+          <img src="/Mario-720.webp" alt="Mario" loading="lazy" decoding="async" />
           <figcaption>Mario, making sure I take screen breaks.</figcaption>
         </figure>
 

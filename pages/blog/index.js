@@ -5,6 +5,7 @@ import styles from "../../styles/utils.module.scss";
 import { getSortedPostsData } from "../../lib/posts";
 import Date from "../../components/date";
 import { SITE_TITLE, SITE_URL } from "../../lib/constants";
+import { smallBanner } from "../../lib/images";
 
 export default function Blog({ posts = [] }) {
   const seoDescription =
@@ -46,7 +47,7 @@ export default function Blog({ posts = [] }) {
             .map(({ id, date, title, subtitle, banner, color, categories, highlight, description, new: isNew }) => (
               <li key={id} style={{ backgroundColor: color }}>
                 <Link href={`/blog/posts/${id}`}>
-                  <img src={`blog/${banner}`} alt={`${title} - banner`} />
+                  <img src={smallBanner(banner)} alt={`${title} - banner`} loading="lazy" decoding="async" />
                   <div className={styles.content}>
                     {(isNew || highlight) && (
                       <div className={styles.badges}>
