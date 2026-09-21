@@ -208,10 +208,9 @@ export default function Work() {
             keeping dependencies up to date and logs clean, so real problems stand out.
           </p>
           <p>
-            I enjoy pairing, mentoring, and working closely with back-end and design to find solutions that make sense
-            technically and still feel good to use. I&apos;m also comfortable talking with non-technical stakeholders
-            and explaining technical considerations in a straightforward way, without making promises we can&apos;t
-            keep.
+            I like pairing and mentoring, and working with backend and design until something makes sense technically
+            and still feels good to use. I can explain technical trade-offs to people who aren&apos;t engineers,
+            plainly and without promising things we can&apos;t deliver.
           </p>
         </div>
       </SplitPage>
