@@ -402,6 +402,8 @@ exports[`renders the work page unchanged 1`] = `
               </li>
               <li>
                 <a
+                  aria-current="location"
+                  class="outlineOn"
                   href="#how-i-work"
                 >
                   How I work as a tech lead
