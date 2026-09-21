@@ -73,8 +73,8 @@ export default function Blog({ posts = [] }) {
       >
         <h1 className={styles.title}>Blog</h1>
         <p className={styles.lede}>
-          I write about React, React Native, AI tooling, debugging, testing, performance and general engineering
-          practices. These posts capture lessons learned from real-world work, conference talks, and experiments.
+          Notes on things I&apos;ve built or learned, at work and in side projects: React, React Native, AI tools,
+          testing and debugging, plus my conference talks.
         </p>
         <Terminal
           label="Posts by topic"
