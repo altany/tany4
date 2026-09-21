@@ -10,7 +10,7 @@ export const cv: Cv = {
     website: "tany4.com",
   },
   personalStatement: "I'm most comfortable where product complexity meets real users.",
-  summary: "Front-end and mobile engineer with 13 years of experience building React and React Native applications used by millions of users. Strong focus on performance, accessibility, and shipping reliable cross-platform UI that holds up at scale. Comfortable owning complex systems end-to-end and working closely with product, design and backend teams.",
+  summary: "Developer for 13 years, most of them on React and React Native apps used by millions of people. I own systems end to end, work closely with product, design and backend, and care about performance and accessibility.",
   strengths: [
     {
       title: "Shipping cross-platform systems",
