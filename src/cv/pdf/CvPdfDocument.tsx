@@ -440,25 +440,31 @@ function SidebarSection({
 }
 
 function ExperienceRole({ role }: { role: Cv["experience"][number] }) {
+  const [firstBullet, ...otherBullets] = role.bullets;
+  const bullet = (b: string) => (
+    <Text key={b} style={styles.bulletItem}>
+      {`• ${b}`}
+    </Text>
+  );
+
   return (
     <View style={styles.role}>
-      <View style={styles.roleMeta}>
-        <Text style={styles.dates}>{`${role.start} - ${role.end}`}</Text>
-        <View style={styles.roleTitleRow}>
-          <Text style={styles.roleTitle}>{role.title} </Text>
-          <Text style={styles.company}>{'  - '}{role.company}</Text>
+      {/* Keep the title with its summary and first bullet, so a role never starts at the foot of a page */}
+      <View wrap={false}>
+        <View style={styles.roleMeta}>
+          <Text style={styles.dates}>{`${role.start} - ${role.end}`}</Text>
+          <View style={styles.roleTitleRow}>
+            <Text style={styles.roleTitle}>{role.title} </Text>
+            <Text style={styles.company}>{'  - '}{role.company}</Text>
+          </View>
         </View>
+
+        {role.summary ? <Text style={styles.roleSummary}>{role.summary}</Text> : null}
+
+        {firstBullet ? <View style={[styles.bullets, { marginBottom: 0 }]}>{bullet(firstBullet)}</View> : null}
       </View>
 
-      {role.summary ? <Text style={styles.roleSummary}>{role.summary}</Text> : null}
-
-      <View style={styles.bullets}>
-        {role.bullets.map((b) => (
-          <Text key={b} style={styles.bulletItem}>
-            {`• ${b}`}
-          </Text>
-        ))}
-      </View>
+      {otherBullets.length > 0 ? <View style={[styles.bullets, { marginTop: 0 }]}>{otherBullets.map(bullet)}</View> : null}
     </View>
   );
 }

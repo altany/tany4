@@ -18,6 +18,14 @@ body {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+}
+
 a {
   color: inherit;
 }
