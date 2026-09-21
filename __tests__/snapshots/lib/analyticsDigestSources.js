@@ -57,6 +57,7 @@ const vercelFetch = (calls) => async (input) => {
     day: [{ timestamp: '2026-09-21T00:00:00.000Z', visitors: 5, pageviews: 12 }],
     requestPath: [
       { requestPath: '/blog', visitors: 20, pageviews: 30 },
+      { requestPath: '/blog/posts/marios-helper-v2', visitors: 3, pageviews: 4 },
       { requestPath: '/out/linkedin.com', visitors: 4, pageviews: 5 },
     ],
     referrerHostname: [{ referrerHostname: '', visitors: 20 }],
@@ -82,7 +83,11 @@ describe('getVercelWeek', () => {
 
     expect(result.totals).toEqual({ visitors: 40, pageviews: 90 })
     expect(result.previousTotals.visitors).toBe(50)
-    expect(result.pages).toEqual([{ name: '/blog', pageviews: 30 }])
+    expect(result.pages).toEqual([
+      { name: '/blog', title: undefined, pageviews: 30 },
+      // Title read from posts/marios-helper-v2.md
+      { name: '/blog/posts/marios-helper-v2', title: "Fixing the app I built for my dog's medication schedule", pageviews: 4 },
+    ])
     expect(result.outbound).toEqual([{ name: '/out/linkedin.com', pageviews: 5 }])
 
     const early = await getVercelWeek({ since: '2026-09-14T00:00:00.000Z', until: '2026-09-20T23:59:59.999Z', label: 'x' })
