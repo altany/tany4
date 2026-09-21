@@ -153,7 +153,6 @@ export default function Work() {
           </>
         }
       >
-        <div className={styles.kicker}>Work</div>
         <h1 className={styles.title}>My work</h1>
         <p className={styles.lede}>Selected projects, most recent first.</p>
 
