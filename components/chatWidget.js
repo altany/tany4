@@ -78,7 +78,9 @@ export default function ChatWidget() {
           <span>Chat</span>
           <img
             className={styles.chatToggleIcon}
-            src="/ai-logo.png"
+            src="/ai-logo-64.webp"
+            width={32}
+            height={32}
             alt=""
             aria-hidden="true"
           />
