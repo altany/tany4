@@ -74,30 +74,22 @@ export default function ChatWidget() {
         aria-expanded={open}
         aria-controls="chat-panel"
       >
-        <span className={styles.chatToggleContent}>
-          <span>Chat</span>
-          <img
-            className={styles.chatToggleIcon}
-            src="/ai-logo-64.webp"
-            width={32}
-            height={32}
-            alt=""
-            aria-hidden="true"
-          />
-        </span>
+        <b aria-hidden="true">?</b>ask about my work
       </button>
 
       {open && (
         <div className={styles.chatPanel} id="chat-panel" role="dialog" aria-label="Chat with Tania">
           <div className={styles.chatHeader}>
-            <div>Ask about my work</div>
+            <div>
+              <span>tania@tany4</span> ~ % ask
+            </div>
             <button
               type="button"
               className={styles.chatClose}
               onClick={() => setOpen(false)}
               aria-label="Close chat"
             >
-              Close
+              close
             </button>
           </div>
 

@@ -9,11 +9,11 @@ class Navigation {
     constructor () {
         this.element = screen.queryByTestId('navigation')
         
-        this.about = within(this.element).queryByRole('link', {name: 'About'})
-        this.work = within(this.element).queryByRole('link', {name: 'Check out my work'})
-        this.blog = within(this.element).queryByRole('link', {name: 'Blog'})
-        this.resumeNav = within(this.element).queryByRole('link', {name: 'CV'})
-        this.avatar = within(this.element).queryByAltText(`${NAME} avatar`)
+        this.about = within(this.element).queryByRole('link', {name: 'about'})
+        this.work = within(this.element).queryByRole('link', {name: 'work'})
+        this.blog = within(this.element).queryByRole('link', {name: 'blog'})
+        this.resumeNav = within(this.element).queryByRole('link', {name: 'cv'})
+        this.avatar = within(this.element).queryByRole('link', {name: `${NAME}, home`})
 
         this.linkedin = within(this.element).queryByTitle('Linkedin profile - in/taniapapazaf')
         this.twitter = within(this.element).queryByTitle('Twitter profile - @_Tany_')
@@ -24,8 +24,8 @@ class Navigation {
 
 class HomePage {
   constructor () {
-    this.heading = screen.queryByRole('heading', {name:"Hi, I'm Tania Papazafeiropoulou,"})
-    this.workLink = screen.queryByRole('link', {name: 'my work'})
+    this.heading = screen.queryByRole('heading', {name:"Hi, I'm Tania. I've been building web and mobile apps for 13 years."})
+    this.workLink = screen.queryByRole('link', {name: 'see my work'})
   }
 }
 

@@ -1,11 +1,19 @@
 import Head from "next/head";
 import Layout from "../components/layout";
-import styles from "../styles/Cv.module.scss";
+import SplitPage from "../components/splitPage";
+import styles from "../styles/page.module.scss";
 import { cv } from "../src/cv/cv";
-import { SITE_TITLE, SITE_URL } from "../lib/constants";
+import { SITE_TITLE, SITE_URL, CV_PDF_URL } from "../lib/constants";
+
+// The web CV and the PDF share src/cv/cv.ts, so both always say the same thing
+const sidebar = (title: string) => cv.sidebar.find((s) => s.title === title);
 
 export default function CvPage() {
   const title = `Resume - ${SITE_TITLE}`;
+  const skills = sidebar("Skills");
+  const ai = sidebar("AI experience");
+  const certifications = sidebar("Certifications");
+  const interests = sidebar("Hobbies and interests");
 
   return (
     <Layout
@@ -18,137 +26,123 @@ export default function CvPage() {
         <title>{title}</title>
       </Head>
 
-      <div className={styles.container}>
-        <header className={styles.hero}>
-          <h1 className={styles.name}>{cv.header.name}</h1>
-          <p className={styles.title}>{cv.header.title}</p>
-          <div className={styles.contact}>
-            <a href={`mailto:${cv.header.email}`} className={styles.contactLink}>
-              {cv.header.email}
-            </a>
-            <span className={styles.contactDivider}>•</span>
-            <span>{cv.header.location}</span>
-          </div>
-        </header>
-
-        <section className={styles.section}>
-          <p className={styles.summary}>{cv.summary}</p>
-        </section>
-
-        <section className={styles.section}>
-          <p className={styles.personalStatement}>{cv.personalStatement}</p>
-          <h2 className={styles.sectionHeading}>Where I add the most value</h2>
-          <ul className={styles.strengthsList}>
-            {cv.strengths.map((strength) => (
-              <li key={strength.title} className={styles.strengthItem}>
-                <h3 className={styles.strengthTitle}>{strength.title}</h3>
-                <p className={styles.strengthDescription}>{strength.description}</p>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        {cv.sidebar.find((s) => s.title === "AI experience") && (
-          <section className={styles.section}>
-            <h2 className={styles.sectionHeadingAlt}>AI Experience</h2>
-            <ul className={styles.bulletList}>
-              {cv.sidebar
-                .find((s) => s.title === "AI experience")
-                ?.bullets?.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-            </ul>
-          </section>
-        )}
-
-        <section className={styles.section}>
-          <h2 className={styles.sectionHeading}>Experience</h2>
-          <div className={styles.timeline}>
-            {cv.experience.map((role) => (
-              <article
-                key={`${role.company}-${role.title}-${role.start}`}
-                className={styles.timelineItem}
-              >
-                <div className={styles.timelineMeta}>
-                  <span className={styles.dates}>
-                    {role.start} — {role.end}
+      <SplitPage
+        side={
+          <>
+            {skills?.bullets && (
+              <>
+                <div className={styles.label}>Skills</div>
+                <ul className={styles.kv}>
+                  {skills.bullets.map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ul>
+              </>
+            )}
+            {ai?.bullets && (
+              <>
+                <div className={styles.label}>AI experience</div>
+                <ul className={styles.kv}>
+                  {ai.bullets.map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ul>
+              </>
+            )}
+            <div className={styles.label}>Education</div>
+            <ul className={styles.kv}>
+              {cv.education.map((edu) => (
+                <li key={`${edu.institution}-${edu.date}`}>
+                  <span>
+                    {edu.degree}
+                    <br />
+                    <span className={styles.rowMeta}>
+                      {edu.institution} · {edu.date}
+                    </span>
                   </span>
-                </div>
-                <div className={styles.timelineContent}>
-                  <h3 className={styles.roleTitle}>{role.title}</h3>
-                  <p className={styles.company}>{role.company}</p>
-                  {role.summary && (
-                    <p className={styles.roleSummary}>{role.summary}</p>
-                  )}
-                  <ul className={styles.bulletList}>
-                    {role.bullets.map((b) => (
-                      <li key={b}>{b}</li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className={styles.section}>
-          <h2 className={styles.sectionHeading}>Education</h2>
-          <div className={styles.eduGrid}>
-            {cv.education.map((edu) => (
-              <div
-                key={`${edu.institution}-${edu.date}`}
-                className={styles.eduCard}
-              >
-                <span className={styles.eduDate}>{edu.date}</span>
-                <h3 className={styles.eduSchool}>{edu.institution}</h3>
-                <p className={styles.eduDegree}>{edu.degree}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className={styles.section}>
-          <h2 className={styles.sectionHeading}>Languages</h2>
-          <div className={styles.languagesList}>
-            {cv.languages.map((l) => (
-              <div key={l.name} className={styles.languageItem}>
-                <span className={styles.languageName}>{l.name}</span>
-                <span className={styles.languageLevel}>
-                  {l.levelLabel}
-                  {l.levelCode && ` (${l.levelCode})`}
-                </span>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <div className={styles.twoCol}>
-          {cv.sidebar.find((s) => s.title === "Certifications") && (
-            <section className={styles.section}>
-              <h2 className={styles.sectionHeading}>Certifications</h2>
-              {cv.sidebar
-                .find((s) => s.title === "Certifications")
-                ?.paragraphs?.map((p) => (
-                  <p key={p} className={styles.smallText}>
-                    {p}
-                  </p>
-                ))}
-            </section>
-          )}
-          {cv.sidebar.find((s) => s.title === "Hobbies and interests") && (
-            <section className={styles.section}>
-              <h2 className={styles.sectionHeading}>Interests</h2>
-              {cv.sidebar
-                .find((s) => s.title === "Hobbies and interests")
-                ?.paragraphs?.map((p) => (
-                  <p key={p} className={styles.smallText}>
-                    {p}
-                  </p>
-                ))}
-            </section>
-          )}
+                </li>
+              ))}
+            </ul>
+            <div className={styles.label}>Languages</div>
+            <ul className={styles.kv}>
+              {cv.languages.map((l) => (
+                <li key={l.name}>
+                  <span>{l.name}</span>
+                  <b>
+                    {l.levelLabel}
+                    {l.levelCode && ` (${l.levelCode})`}
+                  </b>
+                </li>
+              ))}
+            </ul>
+            {certifications?.paragraphs && (
+              <>
+                <div className={styles.label}>Certifications</div>
+                <ul className={styles.kv}>
+                  <li>
+                    <span>{certifications.paragraphs[0]}</span>
+                    <b>{certifications.paragraphs[1]}</b>
+                  </li>
+                </ul>
+              </>
+            )}
+            {interests?.paragraphs && (
+              <>
+                <div className={styles.label}>Interests</div>
+                <p className={styles.rowText}>{interests.paragraphs[0]}</p>
+              </>
+            )}
+          </>
+        }
+      >
+        <div className={styles.kicker}>CV</div>
+        <h1 className={styles.title}>{cv.header.name}</h1>
+        <div className={styles.meta}>
+          {cv.header.title} · {cv.header.location} ·{" "}
+          <a href={`mailto:${cv.header.email}`}>{cv.header.email}</a>
         </div>
-      </div>
+        <p className={styles.lede}>{cv.personalStatement}</p>
+        <div className={styles.prose}>
+          <p>{cv.summary}</p>
+        </div>
+        <div className={styles.buttons}>
+          <a className={`${styles.button} ${styles.primary}`} href={CV_PDF_URL} target="_cv" rel="noopener noreferrer">
+            ↓ download pdf
+          </a>
+        </div>
+
+        <h2 className={styles.heading}>Where I add the most value</h2>
+        <div className={styles.strengths}>
+          {cv.strengths.map((s) => (
+            <div key={s.title} className={styles.card}>
+              <h3>{s.title}</h3>
+              <p>{s.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <h2 className={styles.heading}>Experience</h2>
+        {cv.experience.map((role) => (
+          <article key={`${role.company}-${role.title}-${role.start}`} className={styles.role}>
+            <div className={styles.dates}>
+              {role.start} – {role.end}
+            </div>
+            <div>
+              <h3>
+                {role.title} <span>· {role.company}</span>
+              </h3>
+              {role.summary && <p>{role.summary}</p>}
+              {role.bullets.length > 0 && (
+                <ul className={styles.bullets}>
+                  {role.bullets.map((b) => (
+                    <li key={b}>{b}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </article>
+        ))}
+      </SplitPage>
     </Layout>
   );
 }
