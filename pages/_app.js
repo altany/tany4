@@ -1,11 +1,26 @@
 import "../styles/global.scss";
 import { useEffect } from "react";
 import Script from "next/script";
+import { Be_Vietnam_Pro, Spline_Sans_Mono } from "next/font/google";
 import { pageview } from "@vercel/analytics";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { CLOUDFLARE_WEB_ANALYTICS_TOKEN } from "../lib/constants";
 import { outboundPath } from "../lib/outboundLink";
+
+// Self-hosted at build time, so visitors don't fetch fonts from Google
+const sans = Be_Vietnam_Pro({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-sans",
+  display: "swap",
+});
+const mono = Spline_Sans_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 const MyApp = ({ Component, pageProps }) => {
   // Record clicks on external links, email and file downloads as Vercel page views
@@ -28,7 +43,7 @@ const MyApp = ({ Component, pageProps }) => {
   }, []);
 
   return (
-    <>
+    <div className={`${sans.variable} ${mono.variable} ${sans.className}`}>
       <Component {...pageProps} />
       <Analytics />
       <SpeedInsights />
@@ -40,7 +55,7 @@ const MyApp = ({ Component, pageProps }) => {
           strategy="afterInteractive"
         />
       )}
-    </>
+    </div>
   );
 };
 

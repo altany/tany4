@@ -1,12 +1,10 @@
 import Head from "next/head";
-import styles from "./layout.module.scss";
 import Link from "next/link";
 import useSWR from "swr";
 import dynamic from "next/dynamic";
-import Icon from "./icon";
+import styles from "./layout.module.scss";
 import fetcher from "../lib/fetcher";
 import useTheme from "../hooks/useTheme";
-import { LINKEDIN, ENVELOPE, TWITTER } from "../lib/icons";
 import {
   NAME,
   SITE_URL,
@@ -16,13 +14,20 @@ import {
   JOB_TITLE,
   CONTACT_EMAIL,
 } from "../lib/constants";
-import { useState, useEffect } from "react";
 
 const ChatWidget = dynamic(() => import("./chatWidget"), { ssr: false });
 
+const PAGES = [
+  { href: "/", label: "home", key: "home" },
+  { href: "/work", label: "work", key: "work" },
+  { href: "/blog", label: "blog", key: "blog" },
+  { href: "/cv", label: "cv", key: "resume" },
+  { href: "/about", label: "about", key: "about" },
+];
+
 export default function Layout({
   children,
-  noPadding = false,
+  home = false,
   blog = false,
   work = false,
   about = false,
@@ -33,6 +38,8 @@ export default function Layout({
   canonicalUrl = "",
   ogType = "",
 }) {
+  const active = { home, blog, work, about, resume };
+
   return (
     <>
       <HtmlHead
@@ -42,10 +49,10 @@ export default function Layout({
         canonicalUrl={canonicalUrl}
         ogType={ogType}
       />
-      <Navigation blog={blog} work={work} about={about} resume={resume} />
-      <StatusBar />
-      <Content noPadding={noPadding}>{children}</Content>
-      <Footer />
+      <div className={styles.shell}>
+        <Navigation active={active} />
+        <main className={styles.main}>{children}</main>
+      </div>
       <ChatWidget />
     </>
   );
@@ -104,196 +111,91 @@ const HtmlHead = ({ seoImage, seoTitle, seoDescription, canonicalUrl, ogType }) 
         content={`${SITE_URL}${resolvedImage.replace(/^\//, "")}`}
       />
       <meta name="twitter:image:alt" content={resolvedTitle} />
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-      />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="apple-touch-icon" href={`${SITE_URL}profile.png`} />
     </Head>
   );
 };
 
-const Navigation = ({ blog, work, about, resume }) => (
-  <nav className={styles.navigation} data-testid="navigation">
-    <div className={styles.container}>
-      <ul className={styles.topLinks}>
-        <li className={styles.logo}>
-          <Link href="/" title="Home">
-            <img src="/profile.svg" alt={`${NAME} avatar`} />
-          </Link>
-        </li>
-        <li className={work ? styles.active : undefined}>
+const Navigation = ({ active }) => (
+  <nav className={styles.rail} data-testid="navigation" aria-label="Main">
+    <Link href="/" className={styles.brand} aria-label={`${NAME}, home`}>
+      <span className={styles.avatar} aria-hidden="true" />
+      tania
+    </Link>
+    <ul className={styles.links}>
+      {PAGES.map(({ href, label, key }) => (
+        <li key={href}>
           <Link
-            href="/work"
-            title="Check out my work"
-            aria-label="Check out my work"
+            href={href}
+            className={active[key] ? styles.active : undefined}
+            aria-current={active[key] ? "page" : undefined}
           >
-            <div>Work</div>
+            {label}
           </Link>
         </li>
-        <li className={blog ? styles.active : undefined}>
-          <Link href="/blog" title="Blog">
-            <div>Blog</div>
-          </Link>
-        </li>
-        
-        <li className={resume ? styles.active : undefined}>
-          <Link href="/cv" title="Resume">
-            <div>CV</div>
-          </Link>
-        </li>
-        <li className={about ? styles.active : undefined}>
-          <Link href="/about" title="About">
-            <div>About</div>
-          </Link>
-        </li>
-      </ul>
-      <BottomLinks />
-    </div>
+      ))}
+    </ul>
+    <span className={styles.grow} />
+    <ThemeToggle />
+    <Footer />
   </nav>
 );
 
-const BottomLinks = () => {
-  return (
-    <ul className={styles.bottomLinks}>
-      <li>
-        <a
-          href="http://www.linkedin.com/in/taniapapazaf"
-          target="_linkedin"
-          title="Linkedin profile - in/taniapapazaf"
-        >
-          <Icon icon={LINKEDIN} />
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/_Tany_"
-          target="_twitter"
-          title="Twitter profile - @_Tany_"
-        >
-          <Icon icon={TWITTER} />
-        </a>
-      </li>
-      <li>
-        <a
-          href={`mailto:${CONTACT_EMAIL}`}
-          target="_email"
-          title={`Email - ${CONTACT_EMAIL}`}
-        >
-          <Icon icon={ENVELOPE} />
-        </a>
-      </li>
-    </ul>
-  );
-};
-
 const ThemeToggle = () => {
   const { theme, toggle } = useTheme();
-  const isDark = theme === "dark";
 
+  // The server can't know the theme, so render an empty button of the same size until hydration
   if (!theme) {
-    return (
-      <span className={styles.themeToggle} style={{ width: 18, height: 18 }} />
-    );
+    return <span className={styles.themeToggle} aria-hidden="true" />;
   }
 
+  const next = theme === "dark" ? "light" : "dark";
   return (
     <button
       type="button"
       onClick={toggle}
       className={styles.themeToggle}
-      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      title={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      aria-label={`Switch to ${next} mode`}
+      title={`Switch to ${next} mode`}
     >
-      {isDark ? (
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden="true"
-        >
-          <circle cx="12" cy="12" r="5" />
-          <line x1="12" y1="1" x2="12" y2="3" />
-          <line x1="12" y1="21" x2="12" y2="23" />
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-          <line x1="1" y1="12" x2="3" y2="12" />
-          <line x1="21" y1="12" x2="23" y2="12" />
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-        </svg>
-      ) : (
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden="true"
-        >
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-        </svg>
-      )}
+      ◐ {theme}
     </button>
   );
 };
-
-const StatusBar = () => (
-  <aside className={styles.statusBar}>
-    <Link href="/" className={styles.name}>
-      Tania
-    </Link>
-    <span className={styles.title}>{JOB_TITLE}</span>
-    <ThemeToggle />
-    <a
-      href="/TaniaPapazafeiropoulou-CV.pdf?version=17032026"
-      className={styles.downloadCv}
-      target="_cv"
-      rel="noopener noreferrer"
-      title="Download CV"
-    >
-      Download CV
-    </a>
-  </aside>
-);
-
-const Content = ({ children, noPadding }) => (
-  <div
-    className={`${styles.contentContainer} ${
-      noPadding ? styles.noPadding : ""
-    }`}
-  >
-    <main>{children}</main>
-  </div>
-);
 
 const Footer = () => {
   const { data } = useSWR(LAST_COMMIT_ENDPOINT, fetcher);
 
   return (
-    <footer className={styles.footer}>
-      <aside className={styles.created}>
-        {`Created by `}
-        <a href="http://www.linkedin.com/in/taniapapazaf" target="_linkedin">
-          <b>{NAME}</b>
-        </a>
-        {data && (
-          <span>
-            {` |  Last updated: `}
-            <a href={data.link} target="_lastCommit">
-              <b>{data.date}</b>
-            </a>
-          </span>
-        )}
-      </aside>
-    </footer>
+    <div className={styles.foot}>
+      <a
+        href="http://www.linkedin.com/in/taniapapazaf"
+        target="_linkedin"
+        title="Linkedin profile - in/taniapapazaf"
+      >
+        linkedin
+      </a>
+      {" · "}
+      <a href="http://www.github.com/altany" target="_github" title="Github profile - altany">
+        github
+      </a>
+      {" · "}
+      <a href="https://twitter.com/_Tany_" target="_twitter" title="Twitter profile - @_Tany_">
+        twitter
+      </a>
+      <br />
+      <a href={`mailto:${CONTACT_EMAIL}`} title={`Email - ${CONTACT_EMAIL}`}>
+        {CONTACT_EMAIL}
+      </a>
+      {data && (
+        <div className={styles.updated}>
+          updated{" "}
+          <a href={data.link} target="_lastCommit">
+            {data.date}
+          </a>
+        </div>
+      )}
+    </div>
   );
 };

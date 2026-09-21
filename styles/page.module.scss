@@ -1,0 +1,640 @@
+// Page content: a main pane and a white side pane, like a split editor.
+$mono: var(--font-mono), ui-monospace, Menlo, monospace;
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.75fr);
+  min-height: 100vh;
+
+  @media (max-width: 1040px) {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+}
+
+.pane {
+  padding: 68px clamp(22px, 4.4vw, 64px) 90px;
+  min-width: 0;
+
+  @media (max-width: 800px) {
+    padding: 34px 20px 64px;
+  }
+}
+
+.side {
+  border-left: 1px solid var(--color-line);
+  background: var(--color-surface);
+
+  @media (max-width: 1040px) {
+    border-left: 0;
+    border-top: 1px solid var(--color-line);
+  }
+}
+
+// The side pane stays in view like an editor panel; when it's taller than the
+// screen (the CV), it scrolls on its own instead of hiding its end
+.sticky {
+  position: sticky;
+  top: 40px;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-faint) transparent;
+  margin-right: -12px;
+  padding-right: 12px;
+
+  @media (max-width: 1040px) {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    margin-right: 0;
+    padding-right: 0;
+  }
+}
+
+// ---------- type ----------
+.kicker {
+  font: 11.5px $mono;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 16px;
+
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.title {
+  font-size: clamp(30px, 3.4vw, 42px);
+  line-height: 1.16;
+  font-weight: 600;
+  color: var(--color-ink);
+  letter-spacing: -0.03em;
+  margin: 0 0 18px;
+
+  span {
+    color: var(--color-soft);
+    font-weight: 400;
+  }
+}
+
+.subtitle {
+  font-size: 19px;
+  font-weight: 400;
+  color: var(--color-soft);
+  margin: -8px 0 18px;
+  letter-spacing: -0.01em;
+}
+
+.meta {
+  font: 12.5px $mono;
+  color: var(--color-soft);
+  margin: -6px 0 28px;
+}
+
+.lede {
+  font-size: 17px;
+  max-width: 56ch;
+  margin: 0 0 18px;
+}
+
+.label {
+  font: 11.5px $mono;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-soft);
+  margin: 0 0 14px;
+
+  & + & {
+    margin-top: 0;
+  }
+}
+
+.spaced {
+  margin-top: 34px;
+}
+
+.heading {
+  font-size: 21px;
+  line-height: 1.3;
+  font-weight: 600;
+  color: var(--color-ink);
+  letter-spacing: -0.02em;
+  margin: 44px 0 12px;
+  scroll-margin-top: 24px;
+}
+
+.inline a,
+.lede a,
+.prose a {
+  color: var(--color-ink);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--color-accent-wash);
+
+  &:hover {
+    border-bottom-color: var(--color-accent);
+    color: var(--color-accent-ink);
+  }
+}
+
+.prose {
+  max-width: 64ch;
+
+  p {
+    margin: 0 0 16px;
+  }
+}
+
+// ---------- the one terminal per page ----------
+.term {
+  background: var(--color-term-bg);
+  border-radius: 14px;
+  padding: 18px 20px;
+  font: 13.5px/1.8 $mono;
+  color: var(--color-term-text);
+  box-shadow: 0 24px 44px -30px var(--color-shadow);
+  margin: 10px 0 28px;
+  max-width: 580px;
+  overflow-x: auto;
+
+  .prompt {
+    color: var(--color-term-green);
+  }
+  .mark {
+    color: var(--color-warm);
+  }
+  .dim {
+    color: var(--color-term-dim);
+  }
+  a {
+    color: var(--color-term-text);
+    text-decoration: underline;
+    text-decoration-color: var(--color-term-dim);
+    text-underline-offset: 3px;
+
+    &:hover {
+      color: var(--color-term-green);
+      text-decoration-color: currentColor;
+    }
+  }
+}
+
+.termCompact {
+  padding: 12px 16px;
+  font-size: 12.5px;
+  margin: 0 0 28px;
+}
+
+.caret {
+  display: inline-block;
+  width: 7px;
+  height: 14px;
+  background: var(--color-accent);
+  vertical-align: -2px;
+  border-radius: 1px;
+  animation: blink 1.1s steps(1) infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+// ---------- buttons ----------
+.buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0 0 40px;
+}
+
+.button {
+  font: 500 13.5px $mono;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--color-faint);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  transition: 0.15s;
+  display: inline-block;
+
+  &:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent-ink);
+  }
+}
+
+.withIcon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.primary {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-bg);
+
+  &:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #fff;
+  }
+}
+
+// ---------- lists ----------
+.rows {
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+
+  a {
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--color-line);
+    text-decoration: none;
+
+    &:hover .rowTitle {
+      color: var(--color-accent-ink);
+    }
+  }
+}
+
+.rowTitle {
+  display: block;
+  color: var(--color-ink);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.rowText {
+  display: block;
+  font-size: 14.5px;
+  margin: 3px 0 2px;
+}
+
+.rowMeta {
+  font: 11.5px $mono;
+  color: var(--color-soft);
+
+  i {
+    font-style: normal;
+    color: var(--color-warm-ink);
+  }
+}
+
+.more {
+  font: 500 12.5px $mono;
+  color: var(--color-accent);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+}
+
+.bullets {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  font-size: 15px;
+
+  li {
+    padding-left: 22px;
+    position: relative;
+    margin-bottom: 6px;
+
+    &::before {
+      content: "›";
+      position: absolute;
+      left: 4px;
+      color: var(--color-accent);
+      font-family: $mono;
+    }
+  }
+}
+
+// ---------- cards ----------
+.card {
+  display: block;
+  background: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  border-radius: 16px;
+  padding: 20px 22px;
+  margin-bottom: 14px;
+  scroll-margin-top: 24px;
+
+  h3 {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--color-ink);
+    letter-spacing: -0.01em;
+    margin: 4px 0 0;
+  }
+
+  p {
+    font-size: 15px;
+    margin: 8px 0 0;
+  }
+
+  .buttons {
+    margin: 14px 0 4px;
+  }
+}
+
+.cardMeta {
+  font: 11.5px $mono;
+  color: var(--color-accent);
+}
+
+// ---------- tags ----------
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font: 12px $mono;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-faint);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+button.tag:hover,
+.tagOn {
+  background: var(--color-accent-wash);
+  border-color: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+
+.badgeNew {
+  font: 11px $mono;
+  padding: 1px 8px;
+  border-radius: 999px;
+  margin-left: 8px;
+  vertical-align: 2px;
+  background: var(--color-warm-wash);
+  color: var(--color-warm-ink);
+}
+
+// ---------- side panes ----------
+.outline {
+  list-style: none;
+  margin: 0 0 34px;
+  padding: 0 0 0 14px;
+  border-left: 1px solid var(--color-faint);
+  font: 13px $mono;
+
+  a {
+    display: block;
+    padding: 4px 0;
+    color: var(--color-soft);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.15s;
+
+    &:hover {
+      color: var(--color-accent-ink);
+    }
+  }
+
+  // the section being read: a lilac bar over the outline's line
+  .outlineOn {
+    color: var(--color-ink);
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: -15px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      border-radius: 2px;
+      background: var(--color-accent);
+    }
+  }
+}
+
+.kv {
+  list-style: none;
+  margin: 0 0 30px;
+  padding: 0;
+  font: 13px $mono;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--color-line);
+  }
+
+  b,
+  a {
+    color: var(--color-ink);
+    font-weight: 500;
+    text-align: right;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--color-accent-ink);
+  }
+}
+
+.photo {
+  margin: 0 0 30px;
+
+  img {
+    width: 100%;
+    border-radius: 14px;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  figcaption {
+    font: 12px $mono;
+    color: var(--color-soft);
+    margin-top: 10px;
+  }
+}
+
+// ---------- blog post ----------
+.banner {
+  width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+  border-radius: 12px;
+  margin: 0 0 28px;
+}
+
+.article {
+  max-width: 68ch;
+  font-size: 16.5px;
+
+  h2,
+  h3 {
+    color: var(--color-ink);
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    margin: 2.2rem 0 0.7rem;
+    scroll-margin-top: 24px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  p {
+    margin: 0 0 1rem;
+  }
+
+  ul,
+  ol {
+    margin: 0 0 1rem;
+    padding-left: 1.4rem;
+  }
+
+  li {
+    margin: 0.3rem 0;
+  }
+
+  li::marker {
+    color: var(--color-accent);
+  }
+
+  strong {
+    color: var(--color-ink);
+  }
+
+  a {
+    color: var(--color-accent-ink);
+    text-decoration: underline;
+    text-decoration-color: var(--color-faint);
+    text-underline-offset: 3px;
+
+    &:hover {
+      text-decoration-color: var(--color-accent);
+    }
+  }
+
+  :not(pre) > code {
+    font: 0.86em $mono;
+    background: var(--color-accent-wash);
+    color: var(--color-accent-ink);
+    padding: 1px 6px;
+    border-radius: 5px;
+  }
+
+  pre {
+    border-radius: 12px;
+    font-size: 13.5px;
+  }
+
+  blockquote {
+    margin: 1.25rem 0;
+    padding: 0.75rem 1rem;
+    border-left: 3px solid var(--color-accent);
+    background: var(--color-accent-wash);
+    border-radius: 0 10px 10px 0;
+    color: var(--color-ink);
+
+    > :first-child {
+      margin-top: 0;
+    }
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  img {
+    border-radius: 10px;
+    margin: 1rem auto;
+  }
+
+  table {
+    border-collapse: collapse;
+    font-size: 15px;
+    margin: 1rem 0;
+    display: block;
+    overflow-x: auto;
+  }
+
+  th,
+  td {
+    border-bottom: 1px solid var(--color-line);
+    padding: 6px 12px 6px 0;
+    text-align: left;
+  }
+}
+
+.author {
+  margin-top: 48px;
+  padding-top: 18px;
+  border-top: 1px solid var(--color-line);
+  font: 12.5px $mono;
+  color: var(--color-soft);
+}
+
+// ---------- CV ----------
+.role {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 18px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--color-line);
+
+  h3 {
+    font-size: 16.5px;
+    font-weight: 500;
+    color: var(--color-ink);
+    margin: 0;
+    letter-spacing: -0.01em;
+
+    span {
+      color: var(--color-accent);
+      font-weight: 400;
+    }
+  }
+
+  p {
+    font-size: 15px;
+    margin: 6px 0 0;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+}
+
+.dates {
+  font: 12px $mono;
+  color: var(--color-soft);
+  padding-top: 3px;
+}
+
+.notFound {
+  text-align: left;
+}
