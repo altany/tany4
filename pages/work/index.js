@@ -15,17 +15,17 @@ const R1 = {
     "I joined the live app in May 2026 and work across the React Native app and the Node.js backend.",
   ],
   stores: [
-    { label: "App Store", href: "https://apps.apple.com/us/app/youth-ready-first-r1/id6761061980" },
-    { label: "▶ Google Play", href: "https://play.google.com/store/apps/details?id=org.readycollective.r1methodapp" },
+    { label: "App Store", icon: "apple", href: "https://apps.apple.com/us/app/youth-ready-first-r1/id6761061980" },
+    { label: "Google Play", icon: "play", href: "https://play.google.com/store/apps/details?id=org.readycollective.r1methodapp" },
   ],
   bullets: [
-    "Built food logging. Athletes log what they eat and each food gets one of three ratings, never calories or macros, because the users are children. Behind it: a classification pipeline, a food catalogue mirrored into Postgres with nightly syncs, and an LLM step that reads a label into its ingredients, with its cost per request capped and logged.",
-    "Designed the feature-flag system. Risky changes ship dark behind a flag declared per environment in the backend repo, so turning one on is a reviewed commit. The app never keeps its own flags: an endpoint returns 404 when its flag is off, and the app hides that screen.",
-    "Built the zone engines for Mind and Energy. An athlete's zone moves on what they actually do over rolling windows, like logging and completed sessions, not on how they rate themselves. Most of the work was reconciling the spec, the founder's decisions and code that had drifted from both.",
-    "Built most of R1 Now, the free tools a family can use before starting the programme. It's the first screen every new account sees. I also extended the browser preview mode we use to demo the app without a phone.",
-    "Built the backend for sharing a child with a second parent and a coach, where access follows the child, not whoever pays. It shipped behind a flag with a staged rollout, because it changes who can see a child's data.",
-    "Built the daily check-in reminder and the welcome-back flow for athletes who've been away. Reminders never show a child's name on a lock screen.",
-    "Wrote the release smoke-test protocol and the iOS simulator setup that runs it. Before each release it checks every stored record against the database.",
+    "Built food logging for young athletes. It rates food in simple, child-appropriate terms instead of counting calories, and uses an LLM with its running cost kept under control.",
+    "Designed how the team ships risky changes: each one goes out switched off and is turned on through code review, so releases stay small and easy to undo.",
+    "Built the progress logic for Mind and Energy, which responds to what athletes actually do. Much of the work was turning product and specialist decisions into rules the code follows.",
+    "Built most of R1 Now, the free part of the app every new account starts in, and extended the browser demo mode used to show the app.",
+    "Built the backend that lets a child be shared with a second parent and a coach, rolled out in stages because it changes who can see a child's data.",
+    "Built daily check-in reminders and a welcome-back flow for athletes returning after a break, with children's privacy built in.",
+    "Wrote the release smoke-test protocol the team runs before every release.",
   ],
 };
 
@@ -66,7 +66,7 @@ const OLIO = [
     name: "Partner tools",
     meta: "Olio · Front-End Tech Lead · 2023–2026 · React, TypeScript",
     bullets: [
-      "Built Tomorrow's Collections, which shows next-day pickups with windows that differ per business. I kept the timing rules explicit instead of hardcoding them, so later changes stayed small.",
+      "Built Tomorrow's Collections, which shows partners their next-day pickups. I kept its rules explicit instead of hardcoding them, so later changes stayed small.",
       "Redesigned the store confirmation flow on my own, mostly in the partner tools and partly across the other platforms. Issue reports dropped by about 90%.",
       "Led internationalisation: moved date and time handling to Luxon, added Chinese, and set up translation syncing with Loco.",
       "Mentored mid-level engineers through pairing and code review.",
@@ -81,6 +81,14 @@ const OLIO = [
     ],
   },
 ];
+
+// Store logos as inline SVG (from Simple Icons, CC0), so they render the same everywhere
+const STORE_ICONS = {
+  apple:
+    "M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701",
+  play:
+    "M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z",
+};
 
 const PROFILES = [
   { label: "github", value: "altany", href: "http://www.github.com/altany" },
@@ -161,8 +169,11 @@ export default function Work() {
             <p key={p}>{p}</p>
           ))}
           <div className={styles.buttons}>
-            {R1.stores.map(({ label, href }) => (
-              <a key={href} className={styles.button} href={href} target="_store" rel="noopener noreferrer">
+            {R1.stores.map(({ label, icon, href }) => (
+              <a key={href} className={`${styles.button} ${styles.withIcon}`} href={href} target="_store" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="currentColor">
+                  <path d={STORE_ICONS[icon]} />
+                </svg>
                 {label}
               </a>
             ))}
