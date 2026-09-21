@@ -73,10 +73,13 @@ export const cv: Cv = {
       title: "Senior Mobile Engineer (Contract)",
       company: "The Ready Collective",
       summary:
-        "Three-month contract to design and launch the R1 platform's cross-platform mobile app. Working alongside a former Olio colleague - the same founding-team setup that shipped Olio's consumer React Native app from scratch within 3 months.",
+        "Joined the R1 app in May 2026 on a three-month contract, now continuing month to month. Working alongside a former Olio colleague.",
       bullets: [
-        "Building the R1 consumer React Native app for iOS and Android from the ground up, targeting a production launch within a 3-month engagement.",
-        "Contributing to the Next.js web app and Node.js/Express backend.",
+        "Built food logging: food ratings, a classification pipeline, a nightly-synced food catalogue and a cost-capped LLM step.",
+        "Designed the backend feature-flag system used to ship risky changes dark.",
+        "Built the Mind and Energy zone engines and the backend model for sharing a child with a second parent and a coach.",
+        "Wrote the release smoke-test protocol run on the iOS simulator before each release.",
+        "Contributing to the Next.js web app.",
       ],
     },
     {

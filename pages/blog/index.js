@@ -1,98 +1,88 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useState } from "react";
 import Layout from "../../components/layout";
-import styles from "../../styles/utils.module.scss";
+import SplitPage from "../../components/splitPage";
+import PostRows from "../../components/postRows";
 import { getSortedPostsData } from "../../lib/posts";
-import Date from "../../components/date";
 import { SITE_TITLE, SITE_URL } from "../../lib/constants";
-import { smallBanner } from "../../lib/images";
+import styles from "../../styles/page.module.scss";
 
 export default function Blog({ posts = [] }) {
+  const [topic, setTopic] = useState(null);
   const seoDescription =
     "Articles on React, React Native, AI tooling, debugging, testing, performance, and engineering practices.";
 
+  const topics = [...new Set(posts.flatMap((p) => p.categories || []))];
+  const shown = topic ? posts.filter((p) => (p.categories || []).includes(topic)) : posts;
+  const highlights = posts.filter((p) => p.highlight);
+
   return (
-    <Layout
-      blog
-      canonicalUrl= {`${SITE_URL}blog`}
-      seoTitle={ `${SITE_TITLE} - Blog`}
-      seoDescription={seoDescription}
-    >
+    <Layout blog canonicalUrl={`${SITE_URL}blog`} seoTitle={`${SITE_TITLE} - Blog`} seoDescription={seoDescription}>
       <Head>
         <title>{`${SITE_TITLE} - Blog`}</title>
       </Head>
 
-      <section className={styles.blog}>
-        <header className={styles.header}>
-            <h1>Blog</h1>
-          <h2>
-            I write about React, React Native, AI tooling, debugging, testing, performance and general engineering practices. These posts capture lessons
-            learned from real-world work, conference talks, and experiments.
-          </h2>
-        </header>
-        <ul>
-          {posts
-            .slice()
-            .sort((a, b) => {
-              const aHighlight = a.highlight ? 1 : 0;
-              const bHighlight = b.highlight ? 1 : 0;
-              if (aHighlight !== bHighlight) {
-                // highlight:true first
-                return bHighlight - aHighlight;
-              }
-              if (a.date < b.date) return 1;
-              if (a.date > b.date) return -1;
-              return 0;
-            })
-            .map(({ id, date, title, subtitle, banner, color, categories, highlight, description, new: isNew }) => (
-              <li key={id} style={{ backgroundColor: color }}>
-                <Link href={`/blog/posts/${id}`}>
-                  <img src={smallBanner(banner)} alt={`${title} - banner`} loading="lazy" decoding="async" />
-                  <div className={styles.content}>
-                    {(isNew || highlight) && (
-                      <div className={styles.badges}>
-                        {isNew && <span className={styles.newBadge}>New</span>}
-                        {highlight && (
-                          <span className={styles.featuredBadge}>Highlight</span>
-                        )}
-                      </div>
-                    )}
-                    <div className={styles.postTitle}>{title}</div>
-                    {subtitle && (
-                      <div className={styles.postSubtitle}>
-                        <small>{subtitle}</small>
-                      </div>
-                    )}
-                    <small>
-                      <Date dateString={date} />
-                    </small>
-                    {description && (
-                      <p className={styles.postExcerpt}>{description}</p>
-                    )}
-                    {Array.isArray(categories) && categories.length > 0 && (
-                      <div className={styles.postMeta}>
-                        {categories.map((cat) => (
-                          <span key={cat} className={styles.postTag}>
-                            {cat}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </Link>
-              </li>
-            ))}
-        </ul>
-      </section>
+      <SplitPage
+        side={
+          <>
+            <div className={styles.label}>Filter</div>
+            <div className={styles.tags} role="group" aria-label="Filter posts by topic">
+              <button
+                type="button"
+                className={`${styles.tag} ${topic === null ? styles.tagOn : ""}`}
+                aria-pressed={topic === null}
+                onClick={() => setTopic(null)}
+              >
+                all · {posts.length}
+              </button>
+              {topics.map((t) => (
+                <button
+                  key={t}
+                  type="button"
+                  className={`${styles.tag} ${topic === t ? styles.tagOn : ""}`}
+                  aria-pressed={topic === t}
+                  onClick={() => setTopic(topic === t ? null : t)}
+                >
+                  {t.toLowerCase()}
+                </button>
+              ))}
+            </div>
+
+            {highlights.length > 0 && (
+              <>
+                <div className={`${styles.label} ${styles.spaced}`}>Highlight</div>
+                <ul className={styles.rows}>
+                  {highlights.map((p) => (
+                    <li key={p.id}>
+                      <Link href={`/blog/posts/${p.id}`}>
+                        <span className={styles.rowTitle}>{p.title}</span>
+                        {p.subtitle && <span className={styles.rowMeta}>{p.subtitle}</span>}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </>
+        }
+      >
+        <div className={styles.kicker}>Blog</div>
+        <h1 className={styles.title}>Blog</h1>
+        <p className={styles.lede}>
+          I write about React, React Native, AI tooling, debugging, testing, performance and general engineering
+          practices. These posts capture lessons learned from real-world work, conference talks, and experiments.
+        </p>
+        <PostRows posts={shown} withExcerpt />
+      </SplitPage>
     </Layout>
   );
 }
 
 export async function getStaticProps() {
-  const posts = getSortedPostsData();
   return {
     props: {
-      posts,
+      posts: getSortedPostsData(),
     },
   };
 }
