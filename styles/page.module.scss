@@ -635,21 +635,6 @@ button.tag:hover,
   padding-top: 3px;
 }
 
-.strengths {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-
-  @media (max-width: 600px) {
-    grid-template-columns: 1fr;
-  }
-
-  .card {
-    margin: 0;
-    padding: 16px 18px;
-  }
-}
-
 .notFound {
   text-align: left;
 }
