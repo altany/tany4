@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Layout from "../components/layout";
 import SplitPage from "../components/splitPage";
+import Terminal from "../components/terminal";
 import { SITE_TITLE, SITE_URL } from "../lib/constants";
 import styles from "../styles/page.module.scss";
 
@@ -21,19 +22,20 @@ export default function About() {
               <img src="/Mario-720.webp" alt="Mario" loading="lazy" decoding="async" />
               <figcaption>Mario, making sure I take screen breaks.</figcaption>
             </figure>
-            <div className={styles.label}>Also</div>
-            <div className={styles.tags}>
-              {["dancing", "running", "swimming", "movies"].map((t) => (
-                <span key={t} className={styles.tag}>
-                  {t}
-                </span>
-              ))}
-            </div>
           </>
         }
       >
         <div className={styles.kicker}>About</div>
         <h1 className={styles.title}>Outside of code</h1>
+        <Terminal
+          label="Away from the screen"
+          steps={[
+            {
+              command: "cat offline.txt",
+              output: ["dancing · running · swimming", "movies that make you think a bit longer", "time with Mario"],
+            },
+          ]}
+        />
         <div className={styles.prose}>
           <p className={styles.lede}>
             I am someone who enjoys building things, but I don&apos;t think work is the most interesting thing about a

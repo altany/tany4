@@ -138,51 +138,54 @@ exports[`renders the whole page unchanged 1`] = `
           </p>
           <div
             aria-label="What drives me"
-            class="term"
+            class="term "
           >
             <div>
-              <span
-                class="prompt"
-              >
-                tania@tany4
-              </span>
-               ~ % cat what-drives-me.txt
-            </div>
-            <div>
-              <span
-                class="mark"
-              >
-                ›
-              </span>
-               
-              Shipping products that make a real difference
-            </div>
-            <div>
-              <span
-                class="mark"
-              >
-                ›
-              </span>
-               
-              Making complex things simple for users and developers alike
-            </div>
-            <div>
-              <span
-                class="mark"
-              >
-                ›
-              </span>
-               
-              Accessibility as a baseline, not an afterthought
-            </div>
-            <div>
-              <span
-                class="mark"
-              >
-                ›
-              </span>
-               
-              Using AI tools to work smarter, not just faster
+              <div>
+                <span
+                  class="prompt"
+                >
+                  tania@tany4
+                </span>
+                 ~ % 
+                cat what-drives-me.txt
+              </div>
+              <div>
+                <span
+                  class="mark"
+                >
+                  ›
+                </span>
+                 
+                Shipping products that make a real difference
+              </div>
+              <div>
+                <span
+                  class="mark"
+                >
+                  ›
+                </span>
+                 
+                Making complex things simple for users and developers alike
+              </div>
+              <div>
+                <span
+                  class="mark"
+                >
+                  ›
+                </span>
+                 
+                Accessibility as a baseline, not an afterthought
+              </div>
+              <div>
+                <span
+                  class="mark"
+                >
+                  ›
+                </span>
+                 
+                Using AI tools to work smarter, not just faster
+              </div>
             </div>
             <div>
               <span

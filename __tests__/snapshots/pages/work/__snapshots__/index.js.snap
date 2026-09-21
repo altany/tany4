@@ -128,6 +128,45 @@ exports[`renders the work page unchanged 1`] = `
           >
             Selected projects, most recent first.
           </p>
+          <div
+            aria-label="The tools I use most"
+            class="term "
+          >
+            <div>
+              <div>
+                <span
+                  class="prompt"
+                >
+                  tania@tany4
+                </span>
+                 ~ % 
+                cat stack.txt
+              </div>
+              <div>
+                react native · react · typescript · expo
+              </div>
+              <div>
+                next.js · node.js · express
+              </div>
+              <div>
+                redux · zustand · tanstack query
+              </div>
+              <div>
+                jest · react testing library · ci/cd
+              </div>
+            </div>
+            <div>
+              <span
+                class="prompt"
+              >
+                tania@tany4
+              </span>
+               ~ % 
+              <span
+                class="caret"
+              />
+            </div>
+          </div>
           <article
             class="card"
             id="r1"
