@@ -23,7 +23,7 @@ const R1 = {
     "Designed how the team ships risky changes: each one goes out switched off and is turned on through code review, so releases stay small and easy to undo.",
     "Built the progress logic for Mind and Energy, which responds to what athletes actually do. Much of the work was turning product and specialist decisions into rules the code follows.",
     "Co-built a web version of the app used for demos, so it can be shown without a phone.",
-    "Built the backend that lets a child be shared with a second parent and a coach, rolled out in stages because it changes who can see a child's data.",
+    "Built family sharing, so a child can be shared with a second parent and a coach. It was rolled out in stages because it changes who can see a child's data.",
     "Built daily check-in reminders and a welcome-back flow for athletes returning after a break, with children's privacy built in.",
     "Wrote the release smoke-test protocol the team runs before every release.",
   ],

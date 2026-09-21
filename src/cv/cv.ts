@@ -77,7 +77,7 @@ export const cv: Cv = {
       bullets: [
         "Built food logging for young athletes, with child-appropriate food ratings and an LLM step whose running cost is kept under control.",
         "Designed how the team ships risky changes behind feature flags, turned on through code review.",
-        "Built the Mind and Energy progress logic and the backend for sharing a child with a second parent and a coach.",
+        "Built the Mind and Energy progress logic and family sharing, so a child can be shared with a second parent and a coach.",
         "Wrote the release smoke-test protocol the team runs before every release.",
         "Contributing to the Next.js web app.",
       ],
