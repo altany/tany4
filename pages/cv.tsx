@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Layout from "../components/layout";
 import SplitPage from "../components/splitPage";
-import Terminal from "../components/terminal";
+import Terminal, { Mark } from "../components/terminal";
 import styles from "../styles/page.module.scss";
 import { cv } from "../src/cv/cv";
 import { SITE_TITLE, SITE_URL, CV_PDF_URL } from "../lib/constants";
@@ -107,8 +107,16 @@ export default function CvPage() {
           <p>{cv.summary}</p>
         </div>
         <Terminal
-          label="Download the CV"
+          label="Strengths, and the CV as a PDF"
           steps={[
+            {
+              command: "cat strengths.txt",
+              output: cv.strengths.map((s) => (
+                <>
+                  <Mark /> {s.title.toLowerCase()}
+                </>
+              )),
+            },
             {
               command: "open cv.pdf",
               output: [
@@ -119,16 +127,6 @@ export default function CvPage() {
             },
           ]}
         />
-
-        <h2 className={styles.heading}>Where I add the most value</h2>
-        <div className={styles.strengths}>
-          {cv.strengths.map((s) => (
-            <div key={s.title} className={styles.card}>
-              <h3>{s.title}</h3>
-              <p>{s.description}</p>
-            </div>
-          ))}
-        </div>
 
         <h2 className={styles.heading}>Experience</h2>
         {cv.experience.map((role) => (
