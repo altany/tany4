@@ -49,7 +49,6 @@ const OLIO = [
       "One of the first front-end engineers on the React Native app. We shipped the MVP in 3 months with a small team.",
       "Ran the App Store and Google Play releases from 2021 to 2025, coordinating with product, QA and backend.",
       "Led on app performance, spotting problems early and fixing them as they came up, for example on the item list and map views.",
-      "Kept React Native current across major version upgrades.",
     ],
   },
   {
@@ -190,7 +189,8 @@ export default function Work() {
         <div className={styles.prose}>
           <p>
             I aim to keep the front-end simple, predictable and well-tested. I am a fan of small PRs, clear written
-            communication, and being honest about the trade-offs between speed, quality and complexity.
+            communication, and being honest about the trade-offs between speed, quality and complexity. I also like
+            keeping dependencies up to date and logs clean, so real problems stand out.
           </p>
           <p>
             I enjoy pairing, mentoring, and working closely with back-end and design to find solutions that make sense

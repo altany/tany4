@@ -267,9 +267,6 @@ exports[`renders the work page unchanged 1`] = `
               <li>
                 Led on app performance, spotting problems early and fixing them as they came up, for example on the item list and map views.
               </li>
-              <li>
-                Kept React Native current across major version upgrades.
-              </li>
             </ul>
           </article>
           <article
@@ -354,7 +351,7 @@ exports[`renders the work page unchanged 1`] = `
             class="prose"
           >
             <p>
-              I aim to keep the front-end simple, predictable and well-tested. I am a fan of small PRs, clear written communication, and being honest about the trade-offs between speed, quality and complexity.
+              I aim to keep the front-end simple, predictable and well-tested. I am a fan of small PRs, clear written communication, and being honest about the trade-offs between speed, quality and complexity. I also like keeping dependencies up to date and logs clean, so real problems stand out.
             </p>
             <p>
               I enjoy pairing, mentoring, and working closely with back-end and design to find solutions that make sense technically and still feel good to use. I'm also comfortable talking with non-technical stakeholders and explaining technical considerations in a straightforward way, without making promises we can't keep.
