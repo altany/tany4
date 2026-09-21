@@ -118,11 +118,6 @@ exports[`renders the work page unchanged 1`] = `
         <section
           class="pane"
         >
-          <div
-            class="kicker"
-          >
-            Work
-          </div>
           <h1
             class="title"
           >

@@ -118,11 +118,6 @@ exports[`renders an blog page with a post unchanged 1`] = `
         <section
           class="pane"
         >
-          <div
-            class="kicker"
-          >
-            Blog
-          </div>
           <h1
             class="title"
           >
@@ -309,11 +304,6 @@ exports[`renders an empty blog page unchanged 1`] = `
         <section
           class="pane"
         >
-          <div
-            class="kicker"
-          >
-            Blog
-          </div>
           <h1
             class="title"
           >

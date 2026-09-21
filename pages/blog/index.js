@@ -67,7 +67,6 @@ export default function Blog({ posts = [] }) {
           </>
         }
       >
-        <div className={styles.kicker}>Blog</div>
         <h1 className={styles.title}>Blog</h1>
         <p className={styles.lede}>
           I write about React, React Native, AI tooling, debugging, testing, performance and general engineering
