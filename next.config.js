@@ -1,7 +1,22 @@
+const crypto = require('crypto');
+const fs = require('fs');
+
+// A short hash of what the CV PDF is made from. It goes in the PDF link, so the link
+// changes whenever the CV does and browsers fetch the new PDF instead of a cached one.
+const cvVersion = crypto
+  .createHash('sha256')
+  .update(fs.readFileSync('src/cv/cv.ts'))
+  .update(fs.readFileSync('src/cv/pdf/CvPdfDocument.tsx'))
+  .digest('hex')
+  .slice(0, 10);
+
 /**
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
+  env: {
+    NEXT_PUBLIC_CV_VERSION: cvVersion,
+  },
   images: {
     remotePatterns: [
       {

@@ -126,7 +126,7 @@ exports[`renders an blog page with a post unchanged 1`] = `
           <p
             class="lede"
           >
-            I write about React, React Native, AI tooling, debugging, testing, performance and general engineering practices. These posts capture lessons learned from real-world work, conference talks, and experiments.
+            Notes on things I've built or learned, at work and in side projects: React, React Native, AI tools, testing and debugging, plus my conference talks.
           </p>
           <div
             aria-label="Posts by topic"
@@ -339,7 +339,7 @@ exports[`renders an empty blog page unchanged 1`] = `
           <p
             class="lede"
           >
-            I write about React, React Native, AI tooling, debugging, testing, performance and general engineering practices. These posts capture lessons learned from real-world work, conference talks, and experiments.
+            Notes on things I've built or learned, at work and in side projects: React, React Native, AI tools, testing and debugging, plus my conference talks.
           </p>
           <div
             aria-label="Posts by topic"

@@ -9,10 +9,10 @@ import { getSortedPostsData } from "../lib/posts";
 import styles from "../styles/page.module.scss";
 
 const DRIVES = [
-  "Shipping products that make a real difference",
-  "Making complex things simple for users and developers alike",
-  "Accessibility as a baseline, not an afterthought",
-  "Using AI tools to work smarter, not just faster",
+  "Building things people use every day",
+  "Making complicated things simple, for users and for the next developer",
+  "Accessibility from the start",
+  "Using AI tools where they actually help",
 ];
 
 export default function Home({ posts = [] }) {
@@ -38,8 +38,8 @@ export default function Home({ posts = [] }) {
           Hi, I&apos;m Tania. <span>I&apos;ve been building web and mobile apps for 13 years.</span>
         </h1>
         <p className={styles.lede}>
-          I&apos;ve shipped apps to millions of users, led complex migrations, and collaborated with
-          engineers to deliver at scale.
+          Some of the apps I&apos;ve worked on are used by millions of people. I&apos;ve led big migrations on
+          live systems, and I work best close to design, product and backend.
         </p>
 
         <Terminal
@@ -57,9 +57,9 @@ export default function Home({ posts = [] }) {
         />
 
         <p className={`${styles.lede} ${styles.inline}`}>
-          I&apos;ve shared my experience at <Link href="/blog/posts/react-conf-2019">React Conf 2019</Link> and{" "}
-          <Link href="/blog/posts/jsvidcon-2020">JS VidCon 2020</Link>, talking about building and scaling the Olio
-          app from scratch.
+          I spoke at <Link href="/blog/posts/react-conf-2019">React Conf 2019</Link> and{" "}
+          <Link href="/blog/posts/jsvidcon-2020">JS VidCon 2020</Link> about how we built the Olio app in React
+          Native with a small team.
         </p>
 
         <div className={styles.buttons}>

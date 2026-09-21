@@ -9,15 +9,15 @@ export const cv: Cv = {
     location: "United Kingdom / Greece",
     website: "tany4.com",
   },
-  personalStatement: "I'm most comfortable where product complexity meets real users.",
+  personalStatement: "I like working on products with real complexity and real users.",
   summary: "Developer for 13 years, most of them on React and React Native apps used by millions of people. I own systems end to end, work closely with product, design and backend, and care about performance and accessibility.",
   strengths: [
     {
-      title: "Shipping cross-platform systems",
+      title: "Shipping cross-platform apps",
       description: "Building React and React Native applications for web, iOS and Android that handle real-world workflows, edge cases, and scale without becoming brittle.",
     },
     {
-      title: "Front-end architecture & maintainability",
+      title: "Front-end architecture that stays easy to change",
       description: "Designing predictable UI patterns, managing complex state and async data, and keeping large codebases easy to evolve.",
     },
     {
@@ -25,7 +25,7 @@ export const cv: Cv = {
       description: "Improving runtime performance, accessibility and reliability through thoughtful UI design, refactoring and monitoring.",
     },
     {
-      title: "Cross-functional collaboration",
+      title: "Working closely with product, design and backend",
       description: "Working closely with product, design, backend and operations to turn complex, messy requirements into clear, maintainable solutions.",
     },
   ],
@@ -33,26 +33,26 @@ export const cv: Cv = {
     {
       title: "AI experience",
       bullets: [
-        "Daily user of AI-assisted development tools for coding, debugging, documentation and repo-wide analysis",
-        "Support engineers in using AI confidently and safely",
-        "Strong interest in prompt engineering and improving developer workflows",
-        "Exploring how AI can support front-end applications and workflow automation",
+        "Use AI tools every day for coding, debugging, documentation and finding my way around large codebases",
+        "Help other engineers use AI tools well and safely",
+        "Interested in how prompts and tooling change the way developers work",
+        "Build small AI features and automations, in apps and in my own workflow",
       ],
     },
     {
       title: "Skills",
       bullets: [
-        "React & React Native (Production Applications)",
-        "TypeScript & Modern JavaScript (ES6+)",
-        "Cross-Platform Mobile Architecture & Scalable UI Systems",
-        "State Management (Redux, Zustand, TanStack Query)",
-        "Mobile Performance Optimisation & Reliability",
-        "App Store & Google Play Release Management",
-        "API Integration & Back-End Collaboration",
-        "Testing & Quality (Jest, React Testing Library, CI/CD)",
-        "Accessibility (WCAG) & Web/Mobile Best Practices",
-        "AI-Assisted Development & Developer Tooling",
-        "Technical Leadership, Mentoring & Code Reviews",
+        "React & React Native",
+        "TypeScript & JavaScript",
+        "Cross-platform mobile architecture",
+        "State management (Redux, Zustand, TanStack Query)",
+        "Mobile performance & reliability",
+        "App Store & Google Play releases",
+        "APIs & working with backend",
+        "Testing (Jest, React Testing Library, CI/CD)",
+        "Accessibility (WCAG)",
+        "AI-assisted development & tooling",
+        "Tech leadership, mentoring & code review",
       ],
     },
     {
@@ -88,15 +88,15 @@ export const cv: Cv = {
       title: "Front-End Tech Lead",
       company: "Olio",
       summary:
-        "A growing B2C/B2B scale-up focused on food redistribution. Joined when the company had <20 employees and 3 developers; contributed across its growth to 100+ employees and millions of users.",
+        "A food-sharing app used by millions of people. I joined when there were fewer than 20 people and 3 developers, and worked there as it grew to over 100.",
       bullets: [
-        "Owned front-end direction across partner and volunteer platforms, balancing product needs, UX quality and maintainability.",
-        "Led re-architecture of a 10-year-old scheduling system. Incremental migration with feature flags and rollback, zero user disruption, eliminated long-standing bugs.",
-        "Led i18n initiative across the partner platform: Luxon integration for locale-aware date/time handling, added Chinese language support.",
-        "Improved performance, accessibility and reliability through refactoring, monitoring and reducing technical debt.",
-        "Worked closely with product, design, operations and backend to turn complex workflows into clear, maintainable UI solutions.",
-        "Prototyped new ideas during internal hackathons (partner platform, AI-assisted appointment planner) to validate concepts and inform next steps.",
-        "Mentored engineers through pairing and code reviews while remaining a strong IC, writing production code daily and unblocking complex technical problems.",
+        "Set the front-end direction for the partner and volunteer platforms, weighing product needs against UX and long-term maintenance.",
+        "Led the rebuild of a 10-year-old scheduling system, migrated in small steps with feature flags and rollback. No disruption to users, and long-standing bugs gone.",
+        "Led internationalisation of the partner platform: locale-aware dates and times with Luxon, and Chinese as a new language.",
+        "Refactored, monitored and paid down tech debt to keep the apps fast, accessible and reliable.",
+        "Worked with product, design, operations and backend to turn complicated workflows into screens people could actually use.",
+        "Built hackathon prototypes, such as a partner platform and an AI-assisted appointment planner, to test ideas before committing to them.",
+        "Mentored engineers through pairing and code review, while still writing production code every day and helping unblock hard problems.",
       ],
     },
     {
@@ -105,12 +105,12 @@ export const cv: Cv = {
       title: "Senior Front-End Developer",
       company: "Olio",
       bullets: [
-        "Promoted from Mid-Level to Senior within 1 year based on performance.",
-        "Key contributor to building and stabilising Olio's React Native consumer app from scratch. Helped ship the initial version within 3 months as part of a small team.",
-        "Managed regular App Store and Google Play release cycles, coordinating with product, QA and backend teams.",
+        "Promoted from mid-level to senior within a year.",
+        "One of a small team that built Olio's React Native app from scratch and shipped the first version in 3 months.",
+        "Ran the App Store and Google Play releases, coordinating with product, QA and backend.",
         "Led on app performance, spotting problems early and fixing them as they came up, for example on the item list and map views.",
-        "Led migration of the Volunteers platform from Rails views to a modern React SPA. Established routing, navigation, and component patterns from scratch.",
-        "Extended the Volunteers platform beyond the initial migration: designed and built new flows to support charity volunteers alongside Olio volunteers.",
+        "Led the move of the volunteer platform from Rails views to a React SPA, setting up routing, navigation and component patterns from scratch.",
+        "Then designed and built the flows that let charity volunteers use it alongside Olio volunteers.",
       ],
     },
     {
@@ -119,7 +119,7 @@ export const cv: Cv = {
       title: "Front-End & App Developer",
       company: "Esquared Technologies",
       bullets: [
-        "Delivered features on an Angular2 app, working closely with founders and designers.",
+        "Built features for an Angular 2 app, working directly with the founders and designers.",
       ],
     },
     {
@@ -137,7 +137,7 @@ export const cv: Cv = {
       title: "Web Developer",
       company: "IDG UK",
       bullets: [
-        "Developed editorial and publishing tools for websites including PC Advisor, Macworld, ComputerWorld, Digital Arts Online and TechWorld.",
+        "Built editorial and publishing tools for sites including PC Advisor, Macworld, ComputerWorld, Digital Arts Online and TechWorld.",
       ],
     },
     {

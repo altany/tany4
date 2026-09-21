@@ -134,7 +134,7 @@ exports[`renders the whole page unchanged 1`] = `
           <p
             class="lede"
           >
-            I've shipped apps to millions of users, led complex migrations, and collaborated with engineers to deliver at scale.
+            Some of the apps I've worked on are used by millions of people. I've led big migrations on live systems, and I work best close to design, product and backend.
           </p>
           <div
             aria-label="What drives me"
@@ -157,7 +157,7 @@ exports[`renders the whole page unchanged 1`] = `
                   ›
                 </span>
                  
-                Shipping products that make a real difference
+                Building things people use every day
               </div>
               <div>
                 <span
@@ -166,7 +166,7 @@ exports[`renders the whole page unchanged 1`] = `
                   ›
                 </span>
                  
-                Making complex things simple for users and developers alike
+                Making complicated things simple, for users and for the next developer
               </div>
               <div>
                 <span
@@ -175,7 +175,7 @@ exports[`renders the whole page unchanged 1`] = `
                   ›
                 </span>
                  
-                Accessibility as a baseline, not an afterthought
+                Accessibility from the start
               </div>
               <div>
                 <span
@@ -184,7 +184,7 @@ exports[`renders the whole page unchanged 1`] = `
                   ›
                 </span>
                  
-                Using AI tools to work smarter, not just faster
+                Using AI tools where they actually help
               </div>
             </div>
             <div>
@@ -202,7 +202,7 @@ exports[`renders the whole page unchanged 1`] = `
           <p
             class="lede inline"
           >
-            I've shared my experience at 
+            I spoke at 
             <a
               href="/blog/posts/react-conf-2019"
             >
@@ -215,7 +215,7 @@ exports[`renders the whole page unchanged 1`] = `
             >
               JS VidCon 2020
             </a>
-            , talking about building and scaling the Olio app from scratch.
+             about how we built the Olio app in React Native with a small team.
           </p>
           <div
             class="buttons"
@@ -228,7 +228,7 @@ exports[`renders the whole page unchanged 1`] = `
             </a>
             <a
               class="button"
-              href="/TaniaPapazafeiropoulou-CV.pdf?version=21092026"
+              href="/TaniaPapazafeiropoulou-CV.pdf?v=dev"
               rel="noopener noreferrer"
               target="_cv"
             >
