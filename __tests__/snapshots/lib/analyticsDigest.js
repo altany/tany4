@@ -65,7 +65,10 @@ describe('buildReport', () => {
     trackedWholeWeek: true,
     days: [{ date: '2026-09-21T00:00:00.000Z', pageviews: 10 }],
     baselineDays: [],
-    pages: [{ name: '/blog', pageviews: 30 }],
+    pages: [
+      { name: '/blog', pageviews: 30 },
+      { name: '/blog/posts/marios-helper-v2', title: 'Fixing the app I built for my dog', pageviews: 4 },
+    ],
     referrers: [{ name: '', visitors: 20 }, { name: 'www.linkedin.com', visitors: 5 }],
     countries: [{ name: 'GR', visitors: 12 }],
     outbound: [{ name: '/download/TaniaPapazafeiropoulou-CV.pdf', pageviews: 3 }],
@@ -84,6 +87,7 @@ describe('buildReport', () => {
     expect(text).toContain('Direct or unknown: 20')
     expect(text).toContain('linkedin.com: 5')
     expect(text).toContain('Greece: 12')
+    expect(text).toContain('Fixing the app I built for my dog (/blog/posts/marios-helper-v2): 4')
     expect(text).toContain('CV (PDF): 3')
     expect(text).toContain('Cloudflare counted 30 visits (up 50% on the week before)')
     expect(text).toContain('sampled estimates')
@@ -97,6 +101,13 @@ describe('buildReport', () => {
     expect(html).toContain('▼ 20%</div>')
     expect(html).toMatch(/color:#b91c1c[^"]*">▲ 50%/)
     expect(html).toContain('🇬🇷')
+  })
+
+  it('shows post titles above their paths and stops Gmail linking domains', () => {
+    const { html } = buildReport({ label: 'x', vercel, cloudflare: null })
+    expect(html).toMatch(/Fixing the app I built for my dog<div[^>]*>\/blog\/posts\/marios-helper-v2<\/div>/)
+    expect(html).toContain('linkedin.&#8203;com')
+    expect(html).not.toContain('linkedin.com')
   })
 
   it('notes a week from before tracking started', () => {
