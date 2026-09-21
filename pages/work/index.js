@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Layout from "../../components/layout";
 import SplitPage from "../../components/splitPage";
+import Outline from "../../components/outline";
 import { SITE_TITLE, SITE_URL } from "../../lib/constants";
 import styles from "../../styles/page.module.scss";
 
@@ -89,6 +90,11 @@ const PROFILES = [
   { label: "codewars", value: "altany", href: "https://www.codewars.com/users/altany" },
 ];
 
+const OUTLINE = [
+  ...[R1, ...OLIO].map((p) => ({ id: p.id, text: p.name })),
+  { id: "how-i-work", text: "How I work as a tech lead" },
+];
+
 const Project = ({ project, children }) => (
   <article className={styles.card} id={project.id}>
     <span className={styles.cardMeta}>{project.meta}</span>
@@ -121,16 +127,7 @@ export default function Work() {
         side={
           <>
             <div className={styles.label}>Outline</div>
-            <ul className={styles.outline}>
-              {[R1, ...OLIO].map((p) => (
-                <li key={p.id}>
-                  <a href={`#${p.id}`}>{p.name}</a>
-                </li>
-              ))}
-              <li>
-                <a href="#how-i-work">How I work as a tech lead</a>
-              </li>
-            </ul>
+            <Outline items={OUTLINE} />
 
             <div className={styles.label}>Talks</div>
             <ul className={styles.rows}>

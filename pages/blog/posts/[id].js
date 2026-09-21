@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Layout from "../../../components/layout";
 import SplitPage from "../../../components/splitPage";
+import Outline from "../../../components/outline";
 import PostRows from "../../../components/postRows";
 import { getAllPostIds, getPostData, getSortedPostsData } from "../../../lib/posts";
 import Date from "../../../components/date";
@@ -55,13 +56,7 @@ export default function Post({ data, others = [] }) {
             {headings.length > 0 && (
               <>
                 <div className={styles.label}>Outline</div>
-                <ul className={styles.outline}>
-                  {headings.map((h) => (
-                    <li key={h.id}>
-                      <a href={`#${h.id}`}>{h.text}</a>
-                    </li>
-                  ))}
-                </ul>
+                <Outline items={headings} />
               </>
             )}
             {others.length > 0 && (
