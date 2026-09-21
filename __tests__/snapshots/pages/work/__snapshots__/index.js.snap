@@ -201,7 +201,7 @@ exports[`renders the work page unchanged 1`] = `
                 Built the progress logic for Mind and Energy, which responds to what athletes actually do. Much of the work was turning product and specialist decisions into rules the code follows.
               </li>
               <li>
-                Built most of R1 Now, the free part of the app every new account starts in, and extended the browser demo mode used to show the app.
+                Co-built a web version of the app used for demos, so it can be shown without a phone.
               </li>
               <li>
                 Built the backend that lets a child be shared with a second parent and a coach, rolled out in stages because it changes who can see a child's data.
