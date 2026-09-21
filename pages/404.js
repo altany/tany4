@@ -1,8 +1,10 @@
 import Head from "next/head";
 import Link from "next/link";
 import Layout from "../components/layout";
+import SplitPage from "../components/splitPage";
+import Terminal from "../components/terminal";
 import { SITE_TITLE } from "../lib/constants";
-import styles from "../styles/utils.module.scss";
+import styles from "../styles/page.module.scss";
 
 export default function NotFound() {
   return (
@@ -10,11 +12,16 @@ export default function NotFound() {
       <Head>
         <title>{`404 - Page not found | ${SITE_TITLE}`}</title>
       </Head>
-      <div className={styles.notFound}>
-        <h1>404</h1>
-        <p>This page doesn&apos;t exist.</p>
-        <Link href="/">Go home</Link>
-      </div>
+      <SplitPage>
+        <div className={styles.kicker}>404</div>
+        <h1 className={styles.title}>This page doesn&apos;t exist.</h1>
+        <Terminal steps={[{ command: "cd this-page", output: ["cd: no such file or directory"] }]} />
+        <div className={styles.buttons}>
+          <Link className={`${styles.button} ${styles.primary}`} href="/">
+            go home
+          </Link>
+        </div>
+      </SplitPage>
     </Layout>
   );
 }

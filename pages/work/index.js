@@ -1,20 +1,124 @@
 import Head from "next/head";
 import Link from "next/link";
 import Layout from "../../components/layout";
+import SplitPage from "../../components/splitPage";
+import Outline from "../../components/outline";
+import Terminal from "../../components/terminal";
 import { SITE_TITLE, SITE_URL } from "../../lib/constants";
-import Icon from "../../components/icon";
-import {
-  GITHUB,
-  GITLAB,
-  CODEWARS,
-  LINKEDIN,
-  TWITTER,
-} from "../../lib/icons";
-import styles from "../../styles/utils.module.scss";
+import styles from "../../styles/page.module.scss";
+
+const R1 = {
+  id: "r1",
+  name: "Ready First (R1)",
+  meta: "The Ready Collective · Senior Mobile Engineer · 2026– · React Native, Expo, TypeScript, Node.js",
+  intro: [
+    "A readiness app for youth athletes aged 6 to 17, used by families and coaches. Parents do simple daily check-ins, and R1 turns them into a daily readiness signal (Rebuilding, Rising or Ready) across Mind, Body and Energy, with guidance on movement, confidence and recovery.",
+    "I joined the live app in May 2026 and work across the React Native app and the Node.js backend.",
+  ],
+  stores: [
+    { label: "App Store", icon: "apple", href: "https://apps.apple.com/us/app/youth-ready-first-r1/id6761061980" },
+    { label: "Google Play", icon: "play", href: "https://play.google.com/store/apps/details?id=org.readycollective.r1methodapp" },
+  ],
+  bullets: [
+    "Built food logging for young athletes. It rates food in simple, child-appropriate terms instead of counting calories, and uses an LLM with its running cost kept under control.",
+    "Designed how the team ships risky changes: each one goes out switched off and is turned on through code review, so releases stay small and easy to undo.",
+    "Built the progress logic for Mind and Energy, which responds to what athletes actually do. Much of the work was turning product and specialist decisions into rules the code follows.",
+    "Co-built a web version of the app used for demos, so it can be shown without a phone.",
+    "Built family sharing, so a child can be shared with a second parent and a coach. It was rolled out in stages because it changes who can see a child's data.",
+    "Built daily check-in reminders and a welcome-back flow for athletes returning after a break, with children's privacy built in.",
+    "Wrote the release smoke-test protocol the team runs before every release.",
+  ],
+};
+
+const OLIO = [
+  {
+    id: "collections",
+    name: "Collection re-architecture",
+    meta: "Olio · Tech lead, sole front-end engineer · 2025 · React, TypeScript",
+    bullets: [
+      "Volunteers pick up surplus food from stores in timeslots set by each business. The scheduling system behind this was 10 years old, and small changes kept breaking things.",
+      "With the backend tech lead, I documented how it actually behaved before changing it, then migrated it in production in small steps, behind feature flags with one-click rollback.",
+      "Rolled out over about two weeks with no disruption to volunteers. Two long-standing bugs that caused support tickets every week are gone.",
+      "Added E2E tests for core flows that had none. The charity work that followed became a small change instead of a rewrite.",
+    ],
+  },
+  {
+    id: "consumer-app",
+    name: "Olio React Native consumer app",
+    meta: "Olio · Core contributor, release owner · 2018–2025 · React Native, TypeScript",
+    bullets: [
+      "One of the first front-end engineers on the React Native app. We shipped the MVP in 3 months with a small team.",
+      "Ran the App Store and Google Play releases from 2021 to 2025, coordinating with product, QA and backend.",
+      "Led on app performance, spotting problems early and fixing them as they came up, for example on the item list and map views.",
+    ],
+  },
+  {
+    id: "volunteers",
+    name: "Volunteer platform",
+    meta: "Olio · Key architect · 2019–2025 · React, TypeScript",
+    bullets: [
+      "Moved the platform from Rails views to a React SPA, setting up routing, navigation, configuration and linting from scratch. Thousands of volunteers moved over without major issues.",
+      "Extended it from Olio volunteers to charity volunteers, with their own collection flows.",
+    ],
+  },
+  {
+    id: "partners",
+    name: "Partner tools",
+    meta: "Olio · Front-End Tech Lead · 2023–2026 · React, TypeScript",
+    bullets: [
+      "Built Tomorrow's Collections, which shows partners their next-day pickups. I kept its rules explicit instead of hardcoding them, so later changes stayed small.",
+      "Redesigned the store confirmation flow on my own, mostly in the partner tools and partly across the other platforms. Issue reports dropped by about 90%.",
+      "Led internationalisation: moved date and time handling to Luxon, added Chinese, and set up translation syncing with Loco.",
+      "Mentored mid-level engineers through pairing and code review.",
+    ],
+  },
+  {
+    id: "prototypes",
+    name: "Prototypes",
+    meta: "Olio · Hackathons & discovery · React, React Native, AI tooling",
+    bullets: [
+      "An early partner platform concept that fed into the Sainsbury's trial, and an AI-assisted appointment planner.",
+    ],
+  },
+];
+
+// Store logos as inline SVG (from Simple Icons, CC0), so they render the same everywhere
+const STORE_ICONS = {
+  apple:
+    "M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701",
+  play:
+    "M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z",
+};
+
+const PROFILES = [
+  { label: "github", value: "altany", href: "http://www.github.com/altany" },
+  { label: "gitlab", value: "altany", href: "https://gitlab.com/brief-challenges" },
+  { label: "linkedin", value: "/taniapapazaf", href: "http://www.linkedin.com/in/taniapapazaf" },
+  { label: "twitter", value: "@_Tany_", href: "https://twitter.com/_Tany_" },
+  { label: "codewars", value: "altany", href: "https://www.codewars.com/users/altany" },
+];
+
+const OUTLINE = [
+  ...[R1, ...OLIO].map((p) => ({ id: p.id, text: p.name })),
+  { id: "how-i-work", text: "How I work as a tech lead" },
+];
+
+const Project = ({ project, children }) => (
+  <article className={styles.card} id={project.id}>
+    <span className={styles.cardMeta}>{project.meta}</span>
+    <h3>{project.name}</h3>
+    {children}
+    <ul className={styles.bullets}>
+      {project.bullets.map((b) => (
+        <li key={b}>{b}</li>
+      ))}
+    </ul>
+  </article>
+);
 
 export default function Work() {
   const seoDescription =
-    "Selected projects and leadership impact across React, React Native, TypeScript, testing, performance and accessibility.";
+    "Selected projects across React, React Native, TypeScript and Node.js.";
 
   return (
     <Layout
@@ -26,244 +130,91 @@ export default function Work() {
       <Head>
         <title>{`${SITE_TITLE} - My work`}</title>
       </Head>
-      <div className={styles.work}>
-        <header>
-          <h1>My work</h1>
-          <h3>
-            Senior Front-End Engineer & Tech Lead. Here you will find
-            highlights from key projects, plus my Git and developer profiles
-            below.
-          </h3>
-        </header>
-        <div>
-          <section className={styles.git}>
-            <div className={styles.label}>GIT</div>
-            <div className={styles.curly}>{"{"}</div>
-            <ul>
-              <li>
-                <a
-                  href="http://www.github.com/altany"
-                  target="_github"
-                  title="Github profile - altany"
-                >
-                  <b>Hub</b>
-                  <Icon icon={GITHUB} />
-                  altany
-                </a>
-              </li>
 
+      <SplitPage
+        side={
+          <>
+            <div className={styles.label}>Outline</div>
+            <Outline items={OUTLINE} />
+
+            <div className={styles.label}>Talks</div>
+            <ul className={styles.rows}>
               <li>
-                <a
-                  href="https://gitlab.com/brief-challenges"
-                  target="_gitlab"
-                  title="Gitlab profile - altany"
-                >
-                  <b>Lab</b>
-                  <Icon icon={GITLAB} />
-                  altany
-                </a>
+                <Link href="/blog/posts/react-conf-2019">
+                  <span className={styles.rowTitle}>Using React Native to save the world</span>
+                  <span className={styles.rowMeta}>React Conf 2019 · JS VidCon 2020</span>
+                </Link>
               </li>
             </ul>
-          </section>
-          <ul className={styles.links}>
-            <li>
-              <a
-                href="https://twitter.com/_Tany_"
-                target="_twitter"
-                title="Twitter profile - @_Tany_"
-              >
-                <Icon icon={TWITTER} />
-                @_Tany_
+
+            <div className={`${styles.label} ${styles.spaced}`}>Elsewhere</div>
+            <ul className={styles.kv}>
+              {PROFILES.map(({ label, value, href }) => (
+                <li key={label}>
+                  <span>{label}</span>
+                  <a href={href} target={`_${label}`}>
+                    {value}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </>
+        }
+      >
+        <h1 className={styles.title}>My work</h1>
+        <p className={styles.lede}>Selected projects, most recent first.</p>
+        <Terminal
+          label="The tools I use most"
+          steps={[
+            {
+              command: "cat stack.txt",
+              output: [
+                "react native · react · typescript · expo",
+                "next.js · node.js · express",
+                "redux · zustand · tanstack query",
+                "jest · react testing library · ci/cd",
+              ],
+            },
+          ]}
+        />
+
+        <Project project={R1}>
+          {R1.intro.map((p) => (
+            <p key={p}>{p}</p>
+          ))}
+          <div className={styles.buttons}>
+            {R1.stores.map(({ label, icon, href }) => (
+              <a key={href} className={`${styles.button} ${styles.withIcon}`} href={href} target="_store" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="currentColor">
+                  <path d={STORE_ICONS[icon]} />
+                </svg>
+                {label}
               </a>
-            </li>
-            <li>
-              <a
-                href="http://www.linkedin.com/in/taniapapazaf"
-                target="_linkedin"
-                title="Linkedin profile - in/taniapapazaf"
-              >
-                <Icon icon={LINKEDIN} />
-                /taniapapazaf
-              </a>
-            </li>
-          </ul>
-          <section className={styles.codewars}>
-            Do you enjoy code challenges? Find me at CodeWars!
-            <a
-              href="https://www.codewars.com/users/altany"
-              target="_codewars"
-              title="Codewars - altany"
-            >
-              <Icon icon={CODEWARS} />
-              <img
-                src="https://www.codewars.com/users/altany/badges/small"
-                alt="codewars profile badge"
-              />
-            </a>
-          </section>
+            ))}
+          </div>
+        </Project>
+
+        {OLIO.map((project) => (
+          <Project key={project.id} project={project} />
+        ))}
+
+        <h2 className={styles.heading} id="how-i-work">
+          How I work as a tech lead
+        </h2>
+        <div className={styles.prose}>
+          <p>
+            I aim to keep the front-end simple, predictable and well-tested. I am a fan of small PRs, clear written
+            communication, and being honest about the trade-offs between speed, quality and complexity. I also like
+            keeping dependencies up to date and logs clean, so real problems stand out.
+          </p>
+          <p>
+            I enjoy pairing, mentoring, and working closely with back-end and design to find solutions that make sense
+            technically and still feel good to use. I&apos;m also comfortable talking with non-technical stakeholders
+            and explaining technical considerations in a straightforward way, without making promises we can&apos;t
+            keep.
+          </p>
         </div>
-        <section className={styles.workIntroSection}>
-          <p>
-            I&apos;ve built user-facing products across mobile and web, owning complex systems end-to-end. Below, you&apos;ll find a curated selection of projects that showcase my technical expertise.
-          </p>
-        </section>
-
-        <section className={styles.experienceGrid}>
-          <article className={styles.experienceCard}>
-            <h2>Olio React Native consumer app</h2>
-            <p className={styles.experienceRole}>Senior Front-End Engineer, Release Owner</p>
-            <p className={styles.experienceTech}>
-              React Native, TypeScript
-            </p>
-            <ul>
-              <li>
-                Joined as one of the first front-end engineers and helped ship the React Native MVP in 3 months.
-              </li>
-              <li>
-                Owned the release process for 4+ years, coordinating weekly releases to millions of users across iOS and Android.
-              </li>
-              <li>
-                Drove major React Native version upgrades, keeping the app modern while avoiding breaking changes.
-              </li>
-              <li>
-                Fixed long-standing development environment issues that were blocking the team, improving day-to-day productivity.
-              </li>
-            </ul>
-          </article>
-
-          <article className={styles.experienceCard}>
-            <h2>Volunteers platform</h2>
-            <p className={styles.experienceRole}>
-              Key architect during Rails → React migration
-            </p>
-            <p className={styles.experienceTech}>
-              React, TypeScript
-            </p>
-            <ul>
-              <li>
-                Helped migrate the volunteer platform from server-rendered Rails views to a React SPA, establishing patterns the team still uses today.
-              </li>
-              <li>
-                Extended the platform to support charity volunteers alongside Olio volunteers, a key step in the company&apos;s growth.
-              </li>
-              <li>
-                Cleaned up years of accumulated feature flags and deprecated code, making the codebase easier for new joiners to navigate.
-              </li>
-            </ul>
-          </article>
-
-          <article className={styles.experienceCard}>
-            <h2>Collection re-architecture</h2>
-            <p className={styles.experienceRole}>
-              Tech lead & sole front-end engineer
-            </p>
-            <p className={styles.experienceTech}>
-              React, TypeScript
-            </p>
-            <ul>
-              <li>
-                Rearchitected how collections are displayed across the volunteer platform, grouping by schedule to match how volunteers actually think about their pickups.
-              </li>
-              <li>
-                Shipped with zero disruption to existing users — no rollback, no incidents.
-              </li>
-              <li>
-                Eliminated long-standing bugs in the process, removing edge cases that had existed for years.
-              </li>
-              <li>
-                Support tickets related to collection display dropped noticeably after the release.
-              </li>
-            </ul>
-          </article>
-
-          <article className={styles.experienceCard}>
-            <h2>Partner tools</h2>
-            <p className={styles.experienceRole}>Front-End Tech Lead</p>
-            <p className={styles.experienceTech}>
-              React, TypeScript
-            </p>
-            <ul>
-              <li>
-                Led front-end development for the partner-facing dashboard used by supermarkets and food businesses.
-              </li>
-              <li>
-                Built the collections feature, which lets partners see upcoming pickups and plan staffing accordingly.
-              </li>
-              <li>
-                Added multi-language support to enable international expansion, working closely with ops teams to get translations right.
-              </li>
-              <li>
-                Mentored mid-level engineers through complex features, pairing regularly and reviewing code to help them grow.
-              </li>
-            </ul>
-          </article>
-
-          <article className={styles.experienceCard}>
-            <h2>Prototyping & experiments</h2>
-            <p className={styles.experienceRole}>Hackathons & discovery work</p>
-            <p className={styles.experienceTech}>React, React Native, APIs, AI tooling</p>
-            <ul>
-              <li>
-                Built several prototypes, including an early partner platform
-                concept that eventually fed into the Sainsbury&apos;s trial and
-                helped shape Charity SaaS.
-              </li>
-              <li>
-                Created an AI-assisted appointment planner for faster and
-                smarter scheduling.
-              </li>
-              <li>
-                Focused on building simple, realistic prototypes quickly so
-                teams could test ideas with real user flows.
-              </li>
-              <li>
-                Used what we learned from these experiments to help decide what
-                should (or shouldn&apos;t) move into proper development.
-              </li>
-              <li>
-                Enjoy working in early-stage, ambiguous spaces and turning
-                loose ideas into something concrete enough to evaluate.
-              </li>
-              <li>
-                Impact: early insights that influenced product direction before
-                any major build started.
-              </li>
-            </ul>
-          </article>
-        </section>
-
-        <section className={styles.leadershipSection}>
-          <h2>How I work as a tech lead</h2>
-          <p>
-            I aim to keep the front-end simple, predictable and well-tested. I
-            am a fan of small PRs, clear written communication, and being
-            honest about the trade-offs between speed, quality and complexity.
-            I enjoy pairing, mentoring, and working closely with back-end and
-            design to find solutions that make sense technically and still feel
-            good to use. I&apos;m also comfortable talking with non-technical
-            stakeholders and explaining technical considerations in a
-            straightforward way, without making promises we can&apos;t keep.
-          </p>
-        </section>
-
-        <section className={styles.talksSection}>
-          <h2>Talks & writing</h2>
-          <p>
-            Although I don&apos;t actively pursue speaking opportunities, I&apos;ve
-            previously shared engineering learnings at industry events. I also
-            write occasionally about engineering, career reflections, and things
-            I&apos;ve learned along the way.
-          </p>
-          <ul>
-            <li>
-              Using React Native to save the world - presented at <Link href="/blog/posts/react-conf-2019">React Conf 2019</Link> and <Link href="/blog/posts/jsvidcon-2020">JS VidCon 2020</Link>
-            </li>
-            <li>
-              <Link href="/blog">Read my blog</Link> for posts on engineering, AI tooling, and career reflections
-            </li>
-          </ul>
-        </section>
-      </div>
+      </SplitPage>
     </Layout>
   );
 }

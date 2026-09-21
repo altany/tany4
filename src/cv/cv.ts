@@ -10,7 +10,7 @@ export const cv: Cv = {
     website: "tany4.com",
   },
   personalStatement: "I'm most comfortable where product complexity meets real users.",
-  summary: "Front-end and mobile engineer with 13 years of experience building React and React Native applications used by millions of users. Strong focus on performance, accessibility, and shipping reliable cross-platform UI that holds up at scale. Comfortable owning complex systems end-to-end and working closely with product, design and backend teams.",
+  summary: "Developer for 13 years, most of them on React and React Native apps used by millions of people. I own systems end to end, work closely with product, design and backend, and care about performance and accessibility.",
   strengths: [
     {
       title: "Shipping cross-platform systems",
@@ -73,10 +73,13 @@ export const cv: Cv = {
       title: "Senior Mobile Engineer (Contract)",
       company: "The Ready Collective",
       summary:
-        "Three-month contract to design and launch the R1 platform's cross-platform mobile app. Working alongside a former Olio colleague - the same founding-team setup that shipped Olio's consumer React Native app from scratch within 3 months.",
+        "Joined the R1 app in May 2026 on a three-month contract, now continuing month to month. Working alongside a former Olio colleague.",
       bullets: [
-        "Building the R1 consumer React Native app for iOS and Android from the ground up, targeting a production launch within a 3-month engagement.",
-        "Contributing to the Next.js web app and Node.js/Express backend.",
+        "Built food logging for young athletes, with child-appropriate food ratings and an LLM step whose running cost is kept under control.",
+        "Designed how the team ships risky changes behind feature flags, turned on through code review.",
+        "Built the Mind and Energy progress logic and family sharing, so a child can be shared with a second parent and a coach.",
+        "Wrote the release smoke-test protocol the team runs before every release.",
+        "Contributing to the Next.js web app.",
       ],
     },
     {
@@ -105,7 +108,7 @@ export const cv: Cv = {
         "Promoted from Mid-Level to Senior within 1 year based on performance.",
         "Key contributor to building and stabilising Olio's React Native consumer app from scratch. Helped ship the initial version within 3 months as part of a small team.",
         "Managed regular App Store and Google Play release cycles, coordinating with product, QA and backend teams.",
-        "Optimised map marker and cluster rendering so it only runs when data changes, improving performance on list and map views.",
+        "Led on app performance, spotting problems early and fixing them as they came up, for example on the item list and map views.",
         "Led migration of the Volunteers platform from Rails views to a modern React SPA. Established routing, navigation, and component patterns from scratch.",
         "Extended the Volunteers platform beyond the initial migration: designed and built new flows to support charity volunteers alongside Olio volunteers.",
       ],
