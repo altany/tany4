@@ -228,7 +228,7 @@ exports[`renders the whole page unchanged 1`] = `
             </a>
             <a
               class="button"
-              href="/TaniaPapazafeiropoulou-CV.pdf?version=21092026"
+              href="/TaniaPapazafeiropoulou-CV.pdf?v=dev"
               rel="noopener noreferrer"
               target="_cv"
             >
