@@ -5,6 +5,7 @@ import { getAllPostIds, getPostData } from "../../../lib/posts";
 import Date from "../../../components/date";
 import styles from "../../../styles/utils.module.scss";
 import { NAME, SITE_URL, JOB_TITLE } from "../../../lib/constants";
+import { smallBanner } from "../../../lib/images";
 
 export default function Post({ data }) {
   const baseUrl = SITE_URL.endsWith("/") ? SITE_URL.slice(0, -1) : SITE_URL;
@@ -77,7 +78,7 @@ export default function Post({ data }) {
         <article>
           {data.banner && (
             <img
-              src={`/blog/${data.banner}`}
+              src={smallBanner(data.banner)}
               alt={data.title}
               className={styles.postBanner}
               style={{backgroundColor:data.color || 'white'}}

@@ -195,7 +195,9 @@ exports[`renders an blog page with a post unchanged 1`] = `
             >
               <img
                 alt="I am the titel - banner"
-                src="blog/banner-path"
+                decoding="async"
+                loading="lazy"
+                src="/blog/small/banner-path.webp"
               />
               <div
                 class="content"
