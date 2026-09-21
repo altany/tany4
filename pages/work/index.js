@@ -203,7 +203,7 @@ export default function Work() {
         </h2>
         <div className={styles.prose}>
           <p>
-            I aim to keep the front-end simple, predictable and well-tested. I am a fan of small PRs, clear written
+            I aim to keep the front-end simple, predictable and well-tested. I&apos;m a fan of small PRs, clear written
             communication, and being honest about the trade-offs between speed, quality and complexity. I also like
             keeping dependencies up to date and logs clean, so real problems stand out.
           </p>

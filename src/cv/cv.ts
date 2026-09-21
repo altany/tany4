@@ -9,15 +9,15 @@ export const cv: Cv = {
     location: "United Kingdom / Greece",
     website: "tany4.com",
   },
-  personalStatement: "I'm most comfortable where product complexity meets real users.",
+  personalStatement: "I like working on products with real complexity and real users.",
   summary: "Developer for 13 years, most of them on React and React Native apps used by millions of people. I own systems end to end, work closely with product, design and backend, and care about performance and accessibility.",
   strengths: [
     {
-      title: "Shipping cross-platform systems",
+      title: "Shipping cross-platform apps",
       description: "Building React and React Native applications for web, iOS and Android that handle real-world workflows, edge cases, and scale without becoming brittle.",
     },
     {
-      title: "Front-end architecture & maintainability",
+      title: "Front-end architecture that stays easy to change",
       description: "Designing predictable UI patterns, managing complex state and async data, and keeping large codebases easy to evolve.",
     },
     {
@@ -25,7 +25,7 @@ export const cv: Cv = {
       description: "Improving runtime performance, accessibility and reliability through thoughtful UI design, refactoring and monitoring.",
     },
     {
-      title: "Cross-functional collaboration",
+      title: "Working closely with product, design and backend",
       description: "Working closely with product, design, backend and operations to turn complex, messy requirements into clear, maintainable solutions.",
     },
   ],
@@ -45,7 +45,7 @@ export const cv: Cv = {
         "React & React Native",
         "TypeScript & JavaScript",
         "Cross-platform mobile architecture",
-        "State Management (Redux, Zustand, TanStack Query)",
+        "State management (Redux, Zustand, TanStack Query)",
         "Mobile performance & reliability",
         "App Store & Google Play releases",
         "APIs & working with backend",
