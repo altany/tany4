@@ -29,6 +29,26 @@ export default function CvPage() {
       <SplitPage
         side={
           <>
+            {skills?.bullets && (
+              <>
+                <div className={styles.label}>Skills</div>
+                <ul className={styles.kv}>
+                  {skills.bullets.map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ul>
+              </>
+            )}
+            {ai?.bullets && (
+              <>
+                <div className={styles.label}>AI experience</div>
+                <ul className={styles.kv}>
+                  {ai.bullets.map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ul>
+              </>
+            )}
             <div className={styles.label}>Education</div>
             <ul className={styles.kv}>
               {cv.education.map((edu) => (
@@ -66,6 +86,12 @@ export default function CvPage() {
                 </ul>
               </>
             )}
+            {interests?.paragraphs && (
+              <>
+                <div className={styles.label}>Interests</div>
+                <p className={styles.rowText}>{interests.paragraphs[0]}</p>
+              </>
+            )}
           </>
         }
       >
@@ -95,30 +121,6 @@ export default function CvPage() {
           ))}
         </div>
 
-        {ai?.bullets && (
-          <>
-            <h2 className={styles.heading}>AI experience</h2>
-            <ul className={styles.bullets}>
-              {ai.bullets.map((b) => (
-                <li key={b}>{b}</li>
-              ))}
-            </ul>
-          </>
-        )}
-
-        {skills?.bullets && (
-          <>
-            <h2 className={styles.heading}>Skills</h2>
-            <div className={styles.tags}>
-              {skills.bullets.map((s) => (
-                <span key={s} className={styles.tag}>
-                  {s}
-                </span>
-              ))}
-            </div>
-          </>
-        )}
-
         <h2 className={styles.heading}>Experience</h2>
         {cv.experience.map((role) => (
           <article key={`${role.company}-${role.title}-${role.start}`} className={styles.role}>
@@ -140,15 +142,6 @@ export default function CvPage() {
             </div>
           </article>
         ))}
-
-        {interests?.paragraphs && (
-          <>
-            <h2 className={styles.heading}>Interests</h2>
-            <div className={styles.prose}>
-              <p>{interests.paragraphs[0]}</p>
-            </div>
-          </>
-        )}
       </SplitPage>
     </Layout>
   );
