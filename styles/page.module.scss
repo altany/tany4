@@ -35,8 +35,7 @@ $mono: var(--font-mono), ui-monospace, Menlo, monospace;
   position: sticky;
   top: 40px;
 
-  // on narrow or short screens the side pane may not fit, so it scrolls with the page
-  @media (max-width: 1040px), (max-height: 720px) {
+  @media (max-width: 1040px) {
     position: static;
   }
 }
