@@ -31,12 +31,25 @@ $mono: var(--font-mono), ui-monospace, Menlo, monospace;
   }
 }
 
+// The side pane stays in view like an editor panel; when it's taller than the
+// screen (the CV), it scrolls on its own instead of hiding its end
 .sticky {
   position: sticky;
   top: 40px;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-faint) transparent;
+  margin-right: -12px;
+  padding-right: 12px;
 
   @media (max-width: 1040px) {
     position: static;
+    max-height: none;
+    overflow: visible;
+    margin-right: 0;
+    padding-right: 0;
   }
 }
 
