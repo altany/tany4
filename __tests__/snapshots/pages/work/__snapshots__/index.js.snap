@@ -390,7 +390,7 @@ exports[`renders the work page unchanged 1`] = `
             class="prose"
           >
             <p>
-              I aim to keep the front-end simple, predictable and well-tested. I am a fan of small PRs, clear written communication, and being honest about the trade-offs between speed, quality and complexity. I also like keeping dependencies up to date and logs clean, so real problems stand out.
+              I aim to keep the front-end simple, predictable and well-tested. I'm a fan of small PRs, clear written communication, and being honest about the trade-offs between speed, quality and complexity. I also like keeping dependencies up to date and logs clean, so real problems stand out.
             </p>
             <p>
               I like pairing and mentoring, and working with backend and design until something makes sense technically and still feels good to use. I can explain technical trade-offs to people who aren't engineers, plainly and without promising things we can't deliver.
