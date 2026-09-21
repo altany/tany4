@@ -108,7 +108,7 @@ export const cv: Cv = {
         "Promoted from Mid-Level to Senior within 1 year based on performance.",
         "Key contributor to building and stabilising Olio's React Native consumer app from scratch. Helped ship the initial version within 3 months as part of a small team.",
         "Managed regular App Store and Google Play release cycles, coordinating with product, QA and backend teams.",
-        "Optimised map marker and cluster rendering so it only runs when data changes, improving performance on list and map views.",
+        "Led on app performance, spotting problems early and fixing them as they came up, for example on the item list and map views.",
         "Led migration of the Volunteers platform from Rails views to a modern React SPA. Established routing, navigation, and component patterns from scratch.",
         "Extended the Volunteers platform beyond the initial migration: designed and built new flows to support charity volunteers alongside Olio volunteers.",
       ],

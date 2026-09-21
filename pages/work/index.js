@@ -48,7 +48,7 @@ const OLIO = [
     bullets: [
       "One of the first front-end engineers on the React Native app. We shipped the MVP in 3 months with a small team.",
       "Ran the App Store and Google Play releases from 2021 to 2025, coordinating with product, QA and backend.",
-      "Made map markers and clusters re-render only when their data changes, which fixed slow list and map views.",
+      "Led on app performance, spotting problems early and fixing them as they came up, for example on the item list and map views.",
       "Kept React Native current across major version upgrades.",
     ],
   },
