@@ -4,6 +4,7 @@ import { useState } from "react";
 import Layout from "../../components/layout";
 import SplitPage from "../../components/splitPage";
 import PostRows from "../../components/postRows";
+import Terminal from "../../components/terminal";
 import { getSortedPostsData } from "../../lib/posts";
 import { SITE_TITLE, SITE_URL } from "../../lib/constants";
 import styles from "../../styles/page.module.scss";
@@ -16,6 +17,9 @@ export default function Blog({ posts = [] }) {
   const topics = [...new Set(posts.flatMap((p) => p.categories || []))];
   const shown = topic ? posts.filter((p) => (p.categories || []).includes(topic)) : posts;
   const highlights = posts.filter((p) => p.highlight);
+  const byTopic = topics
+    .map((t) => [t, posts.filter((p) => (p.categories || []).includes(t)).length])
+    .sort((a, b) => b[1] - a[1]);
 
   return (
     <Layout blog canonicalUrl={`${SITE_URL}blog`} seoTitle={`${SITE_TITLE} - Blog`} seoDescription={seoDescription}>
@@ -72,6 +76,19 @@ export default function Blog({ posts = [] }) {
           I write about React, React Native, AI tooling, debugging, testing, performance and general engineering
           practices. These posts capture lessons learned from real-world work, conference talks, and experiments.
         </p>
+        <Terminal
+          label="Posts by topic"
+          steps={[
+            {
+              command: "ls posts | count-by topic",
+              output: byTopic.slice(0, 5).map(([t, n]) => (
+                <>
+                  <span className={styles.dim}>{String(n).padStart(2, " ")}</span> {t.toLowerCase()}
+                </>
+              )),
+            },
+          ]}
+        />
         <PostRows posts={shown} withExcerpt />
       </SplitPage>
     </Layout>

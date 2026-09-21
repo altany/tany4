@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Layout from "../components/layout";
 import SplitPage from "../components/splitPage";
+import Terminal from "../components/terminal";
 import styles from "../styles/page.module.scss";
 import { cv } from "../src/cv/cv";
 import { SITE_TITLE, SITE_URL, CV_PDF_URL } from "../lib/constants";
@@ -105,11 +106,19 @@ export default function CvPage() {
         <div className={styles.prose}>
           <p>{cv.summary}</p>
         </div>
-        <div className={styles.buttons}>
-          <a className={`${styles.button} ${styles.primary}`} href={CV_PDF_URL} target="_cv" rel="noopener noreferrer">
-            ↓ download pdf
-          </a>
-        </div>
+        <Terminal
+          label="Download the CV"
+          steps={[
+            {
+              command: "open cv.pdf",
+              output: [
+                <a key="pdf" href={CV_PDF_URL} target="_cv" rel="noopener noreferrer">
+                  ↓ TaniaPapazafeiropoulou-CV.pdf
+                </a>,
+              ],
+            },
+          ]}
+        />
 
         <h2 className={styles.heading}>Where I add the most value</h2>
         <div className={styles.strengths}>

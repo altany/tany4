@@ -3,6 +3,7 @@ import Link from "next/link";
 import Layout from "../components/layout";
 import SplitPage from "../components/splitPage";
 import PostRows from "../components/postRows";
+import Terminal, { Mark } from "../components/terminal";
 import { SITE_TITLE, JOB_TITLE, CV_PDF_URL } from "../lib/constants";
 import { getSortedPostsData } from "../lib/posts";
 import styles from "../styles/page.module.scss";
@@ -41,19 +42,19 @@ export default function Home({ posts = [] }) {
           engineers to deliver at scale.
         </p>
 
-        <div className={styles.term} aria-label="What drives me">
-          <div>
-            <span className={styles.prompt}>tania@tany4</span> ~ % cat what-drives-me.txt
-          </div>
-          {DRIVES.map((line) => (
-            <div key={line}>
-              <span className={styles.mark}>›</span> {line}
-            </div>
-          ))}
-          <div>
-            <span className={styles.prompt}>tania@tany4</span> ~ % <span className={styles.caret} />
-          </div>
-        </div>
+        <Terminal
+          label="What drives me"
+          steps={[
+            {
+              command: "cat what-drives-me.txt",
+              output: DRIVES.map((line) => (
+                <>
+                  <Mark /> {line}
+                </>
+              )),
+            },
+          ]}
+        />
 
         <p className={`${styles.lede} ${styles.inline}`}>
           I&apos;ve shared my experience at <Link href="/blog/posts/react-conf-2019">React Conf 2019</Link> and{" "}

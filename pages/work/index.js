@@ -3,6 +3,7 @@ import Link from "next/link";
 import Layout from "../../components/layout";
 import SplitPage from "../../components/splitPage";
 import Outline from "../../components/outline";
+import Terminal from "../../components/terminal";
 import { SITE_TITLE, SITE_URL } from "../../lib/constants";
 import styles from "../../styles/page.module.scss";
 
@@ -162,6 +163,20 @@ export default function Work() {
       >
         <h1 className={styles.title}>My work</h1>
         <p className={styles.lede}>Selected projects, most recent first.</p>
+        <Terminal
+          label="The tools I use most"
+          steps={[
+            {
+              command: "cat stack.txt",
+              output: [
+                "react native · react · typescript · expo",
+                "next.js · node.js · express",
+                "redux · zustand · tanstack query",
+                "jest · react testing library · ci/cd",
+              ],
+            },
+          ]}
+        />
 
         <Project project={R1}>
           {R1.intro.map((p) => (

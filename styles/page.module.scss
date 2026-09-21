@@ -168,6 +168,26 @@ $mono: var(--font-mono), ui-monospace, Menlo, monospace;
   .mark {
     color: var(--color-warm);
   }
+  .dim {
+    color: var(--color-term-dim);
+  }
+  a {
+    color: var(--color-term-text);
+    text-decoration: underline;
+    text-decoration-color: var(--color-term-dim);
+    text-underline-offset: 3px;
+
+    &:hover {
+      color: var(--color-term-green);
+      text-decoration-color: currentColor;
+    }
+  }
+}
+
+.termCompact {
+  padding: 12px 16px;
+  font-size: 12.5px;
+  margin: 0 0 28px;
 }
 
 .caret {

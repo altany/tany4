@@ -3,6 +3,7 @@ import Link from "next/link";
 import Layout from "../../../components/layout";
 import SplitPage from "../../../components/splitPage";
 import Outline from "../../../components/outline";
+import Terminal from "../../../components/terminal";
 import PostRows from "../../../components/postRows";
 import { getAllPostIds, getPostData, getSortedPostsData } from "../../../lib/posts";
 import Date from "../../../components/date";
@@ -74,17 +75,28 @@ export default function Post({ data, others = [] }) {
         </div>
         <h1 className={styles.title}>{data.title}</h1>
         {data.subtitle && <p className={styles.subtitle}>{data.subtitle}</p>}
-        <div className={styles.meta}>
-          <Date dateString={data.date} />
-          {typeof data.readingTimeMinutes === "number" && ` · ${data.readingTimeMinutes} min read`}
-          {data.updated && (
-            <>
-              {" · updated "}
-              <Date dateString={data.updated} />
-            </>
-          )}
-          {data.new && <span className={styles.badgeNew}>new</span>}
-        </div>
+        <Terminal
+          compact
+          caret={false}
+          steps={[
+            {
+              command: `stat ${data.id}.md`,
+              output: [
+                <>
+                  published <Date dateString={data.date} />
+                  {typeof data.readingTimeMinutes === "number" && ` · ${data.readingTimeMinutes} min read`}
+                  {data.updated && (
+                    <>
+                      {" · updated "}
+                      <Date dateString={data.updated} />
+                    </>
+                  )}
+                  {data.new && <span className={styles.mark}> · new</span>}
+                </>,
+              ],
+            },
+          ]}
+        />
 
         {data.banner && (
           <img
