@@ -75,10 +75,10 @@ export const cv: Cv = {
       summary:
         "Joined the R1 app in May 2026 on a three-month contract, now continuing month to month. Working alongside a former Olio colleague.",
       bullets: [
-        "Built food logging: food ratings, a classification pipeline, a nightly-synced food catalogue and a cost-capped LLM step.",
-        "Designed the backend feature-flag system used to ship risky changes dark.",
-        "Built the Mind and Energy zone engines and the backend model for sharing a child with a second parent and a coach.",
-        "Wrote the release smoke-test protocol run on the iOS simulator before each release.",
+        "Built food logging for young athletes, with child-appropriate food ratings and an LLM step whose running cost is kept under control.",
+        "Designed how the team ships risky changes behind feature flags, turned on through code review.",
+        "Built the Mind and Energy progress logic and the backend for sharing a child with a second parent and a coach.",
+        "Wrote the release smoke-test protocol the team runs before every release.",
         "Contributing to the Next.js web app.",
       ],
     },

@@ -215,6 +215,12 @@ $mono: var(--font-mono), ui-monospace, Menlo, monospace;
   }
 }
 
+.withIcon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .primary {
   background: var(--color-ink);
   border-color: var(--color-ink);
