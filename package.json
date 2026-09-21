@@ -5,7 +5,7 @@
   "author": "Tania Papazafeiropoulou",
   "scripts": {
     "dev": "cross-env NEXT_TELEMETRY_DISABLED=1 next dev",
-    "build": "cross-env NEXT_TELEMETRY_DISABLED=1 next build && next-sitemap",
+    "build": "npm run cv:pdf && cross-env NEXT_TELEMETRY_DISABLED=1 next build && next-sitemap",
     "start": "next start",
     "cv:pdf": "tsx scripts/generate-cv-pdf.tsx",
     "images": "node scripts/optimize-images.mjs",
