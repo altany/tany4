@@ -4,57 +4,45 @@ date: "2025-11-21T18:52:00+0000"
 categories: ["AI", "MCP", "Testing"]
 banner: "github-mcp-server-qa.png"
 color: "#fdba31"
-description: "I had to QA a back-end PR with almost no context. GitHub MCP Server helped me do it properly; and then made one subtle mistake that reminded me why humans still need to check the output."
+description: "I had to QA a back-end PR with almost no context. GitHub MCP Server helped me do it, and also got one important detail wrong."
 readingTimeMinutes: 6
 ---
 
 Part 2 of 2 - [Part 1: Experimenting with GitHub MCP Server as a Front-End Dev](/blog/posts/experimenting-with-github-mcp-server-as-a-frontend-dev)
 
-I'm a front-end developer. I live in components, hooks, UI states, and TypeScript. Back-end logic I understand conceptually, but I don't work in it every day. So when a back-end ticket landed on my plate to QA - with very little context and no testing steps - I felt the usual mix of "I love a challenge" and "I definitely don't know enough for this."
+I'm a front-end developer. I understand back-end logic, but I don't work on it every day. So when I had to QA a back-end ticket with very little context, I wasn't sure I knew enough to do it.
 
-To make it more interesting, the developer who wrote the PR hadn't left any testing steps. The only note was: "Refer to the previous PR - this one amends that." And that developer was busy somewhere else.
+The developer who wrote the PR hadn't left any testing steps. The only note was: "Refer to the previous PR - this one amends that." And that developer was busy somewhere else.
 
 ## How MCP Server helped me untangle it
 
-This is where MCP Server went from a cool tool to something that changed how I work.
-
-I referenced the PR by number; no cloning needed, no hunting for paths. Then I asked MCP to:
+I gave it the PR number, with no cloning or looking for paths, and asked MCP to:
 
 - Review the PR code and description
 - Follow any links, including the previously merged PR that did have testing steps
 - Pull all of that together into something I, as a front-end developer, could actually understand
 
-What I got back was exactly what I needed.
+It gave me a list of what to set up locally, including environment steps and any data to prepare before starting QA. A full set of test scenarios (happy path, unhappy path, edge cases) with how each one should behave. Step-by-step instructions for each scenario, with the reason each one mattered.
 
-A clear list of what to set up locally, environment steps and any data I needed to prepare before starting QA. A full set of test scenarios (happy path, unhappy path, edge cases) with how each one should behave. Step-by-step instructions for each scenario, with the reason each one mattered.
-
-For someone with limited back-end knowledge, that was exactly what I needed. It gave me enough to QA the PR properly instead of guessing.
-
-(Though, as I found out, confident didn't mean correct.)
+That was enough for me to QA the PR properly instead of guessing.
 
 ## When MCP helps and still gets it wrong
 
-Once I'd tested all the scenarios - with Windsurf helping me keep track - I asked MCP to produce a full test report for the back-end developer. The report was clean, structured, and detailed.
+Once I'd tested all the scenarios - with Windsurf helping me keep track - I asked MCP to produce a full test report for the back-end developer. The report was clear and detailed.
 
-But the back-end dev spotted something immediately.
+The back-end developer spotted a problem straight away.
 
-One scenario required test data with an array. For the happy path it needed one or more elements. For the unhappy path it needed to be `undefined`. MCP initialised the unhappy-path data as `[]` instead; a subtle but important difference.
+One scenario required test data with an array. For the happy path it needed one or more elements. For the unhappy path it needed to be `undefined`. MCP set up the unhappy-path data as `[]` instead, which isn't the same thing.
 
-Because the report was so clear, the dev could point it out quickly. I fed the correction back, adjusted the data setup, reran the scenarios, and produced a corrected report. Everything then behaved as expected.
+Because the report was clear, the developer could point it out quickly. I fed the correction back, adjusted the data setup, reran the scenarios, and produced a corrected report. Everything then behaved as expected.
 
-## Why this matters
+## What I learned
 
-Two things from this experience stuck with me.
+AI helped me work outside my area. I could QA back-end logic I barely understood, write detailed test scenarios, and explain the results clearly to my back-end colleague. On my own that would have taken hours of back and forth.
 
-AI can help you work outside your area of expertise. I was able to QA back-end logic I barely understood, produce detailed test scenarios, and communicate clearly with my back-end colleague. I couldn't have done that on my own, at least not without several hours of back-and-forth.
+It still got an important detail wrong. The tests ran and the scenarios looked right, but because of the wrong data the unhappy path wasn't tested at all. That kind of thing can reach production. It helps to have someone who knows the back-end review the plan.
 
-But AI will still get important details wrong. The tests ran. The commands worked. The scenario logic looked correct. But the wrong data setup meant the unhappy path wasn't actually being tested. That's the kind of thing that slips into production if you're not paying attention. Having someone who knows the domain review your plan matters.
-
-## Final thoughts
-
-MCP Server hasn't made me a back-end engineer, but it's made me more capable when I step outside my usual domain: understanding back-end PRs, writing test scenarios, and tracing linked logic without navigating repos by hand.
-
-It's also a reminder that AI is powerful but not infallible. It speeds up my thinking; it doesn't replace it.
+It hasn't made me a back-end engineer, but I can now understand back-end PRs, write test scenarios and follow linked logic without going through repos by hand.
 
 ---
 
