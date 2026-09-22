@@ -1,7 +1,7 @@
 ---
 title: "Fixing the app I built for my dog's medication schedule"
 date: "2026-04-11T12:00:00+0000"
-categories: [ "AI", "React Native", "Expo"]
+categories: ["AI", "React Native", "Mobile", "Side projects"]
 banner: "marios-helper.png"
 color: "#556f30"
 description: "A year ago I built a small Expo app to remind me to give my dog his eye drops. It worked, mostly. Recently I came back to it with Claude Code and fixed what was broken, then kept going."

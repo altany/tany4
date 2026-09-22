@@ -2,7 +2,7 @@
 title: "JS VidCon 2020"
 subtitle: '"How we are using React Native to save the world"'
 date: "2020-05-07T23:30:00+0200"
-categories: ["Conference talk", "React Native", ]
+categories: ["Talks", "React Native", "Mobile"]
 banner: "jsvidcon-banner.jpeg"
 color: "#03a7af"
 description: "My JS VidCon talk on how Olio uses React Native to reduce food waste: how we migrated a production app quickly and kept performance and developer experience under control."

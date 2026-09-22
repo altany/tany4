@@ -2,7 +2,7 @@
 title: "7 Years at Olio"
 subtitle: "What I've learned going from mid-level developer to Tech Lead"
 date: "2025-12-19T17:00:00+0000"
-categories: ["Career", "Leadership"]
+categories: ["Career"]
 highlight: true
 color: "#f6256f"
 banner: "olio-logo.svg"
