@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" font-family="Menlo, 'SF Mono', monospace">
+  <!-- An abstract version of the hub board: same structure, no real content -->
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#2f2a45" flood-opacity="0.14"/>
+    </filter>
+    <g id="bar"><rect width="1" height="10" rx="5"/></g>
+  </defs>
+
+  <rect width="1200" height="820" fill="#f3f0ff"/>
+
+  <!-- window -->
+  <g filter="url(#shadow)"><rect x="60" y="50" width="1080" height="720" rx="22" fill="#ffffff"/></g>
+  <circle cx="92" cy="80" r="6" fill="#f5a3b5"/><circle cx="112" cy="80" r="6" fill="#f7d58b"/><circle cx="132" cy="80" r="6" fill="#a8dcc6"/>
+  <line x1="60" y1="108" x2="1140" y2="108" stroke="#ebe8f5"/>
+
+  <text x="100" y="152" font-size="22" font-weight="700" fill="#2f2a45">PR Hub</text>
+  <rect x="210" y="138" width="130" height="10" rx="5" fill="#ebe7f7"/>
+
+  <!-- column headers -->
+  <g font-size="12" fill="#857f9e" letter-spacing="1.5">
+    <text x="100" y="196">ITEM</text><text x="230" y="196">STATE</text><text x="440" y="196">TESTED</text><text x="640" y="196">NEXT ACTION</text><text x="990" y="196">LANE</text>
+  </g>
+  <line x1="100" y1="208" x2="1100" y2="208" stroke="#ebe8f5"/>
+
+  <!-- group: me -->
+  <text x="100" y="238" font-size="12" font-weight="700" fill="#5f4fd6" letter-spacing="1.5">NEEDS ME</text>
+  <g>
+    <rect x="100" y="254" width="70" height="12" rx="6" fill="#7c6cf0"/>
+    <rect x="230" y="250" width="92" height="22" rx="11" fill="#e2f5ee"/><text x="244" y="265" font-size="12" fill="#2a8a68">approved</text>
+    <rect x="440" y="250" width="78" height="22" rx="11" fill="#e2f5ee"/><text x="454" y="265" font-size="12" fill="#2a8a68">passed</text>
+    <rect x="530" y="255" width="70" height="10" rx="5" fill="#ebe7f7"/>
+    <rect x="640" y="255" width="210" height="10" rx="5" fill="#d9d2ff"/>
+    <rect x="990" y="250" width="70" height="22" rx="11" fill="#fff0ea"/>
+  </g>
+  <g>
+    <rect x="100" y="294" width="70" height="12" rx="6" fill="#7c6cf0"/>
+    <rect x="230" y="290" width="110" height="22" rx="11" fill="#fff0ea"/><text x="244" y="305" font-size="12" fill="#c4623f">2 threads</text>
+    <rect x="440" y="290" width="80" height="22" rx="11" fill="#fff5dc"/><text x="454" y="305" font-size="12" fill="#a8761a">partial</text>
+    <rect x="530" y="295" width="90" height="10" rx="5" fill="#ebe7f7"/>
+    <rect x="640" y="295" width="160" height="10" rx="5" fill="#d9d2ff"/>
+    <rect x="990" y="290" width="84" height="22" rx="11" fill="#efecff"/>
+  </g>
+
+  <!-- group: colleague -->
+  <text x="100" y="352" font-size="12" font-weight="700" fill="#5f4fd6" letter-spacing="1.5">WITH MY COLLEAGUE</text>
+  <g>
+    <rect x="100" y="368" width="70" height="12" rx="6" fill="#7c6cf0"/>
+    <rect x="230" y="364" width="150" height="22" rx="11" fill="#efecff"/><text x="244" y="379" font-size="12" fill="#5f4fd6">awaiting review</text>
+    <rect x="440" y="364" width="78" height="22" rx="11" fill="#e2f5ee"/><text x="454" y="379" font-size="12" fill="#2a8a68">passed</text>
+    <rect x="530" y="369" width="60" height="10" rx="5" fill="#ebe7f7"/>
+    <rect x="640" y="369" width="190" height="10" rx="5" fill="#ebe7f7"/>
+    <rect x="990" y="364" width="64" height="22" rx="11" fill="#e2f5ee"/>
+  </g>
+  <g>
+    <rect x="100" y="408" width="70" height="12" rx="6" fill="#7c6cf0"/>
+    <rect x="230" y="404" width="150" height="22" rx="11" fill="#efecff"/><text x="244" y="419" font-size="12" fill="#5f4fd6">awaiting review</text>
+    <rect x="440" y="404" width="78" height="22" rx="11" fill="#e2f5ee"/><text x="454" y="419" font-size="12" fill="#2a8a68">passed</text>
+    <rect x="530" y="409" width="80" height="10" rx="5" fill="#ebe7f7"/>
+    <rect x="640" y="409" width="140" height="10" rx="5" fill="#ebe7f7"/>
+    <rect x="990" y="404" width="90" height="22" rx="11" fill="#fff5dc"/>
+  </g>
+
+  <!-- group: building -->
+  <text x="100" y="466" font-size="12" font-weight="700" fill="#5f4fd6" letter-spacing="1.5">BUILDING</text>
+  <g>
+    <rect x="100" y="482" width="70" height="12" rx="6" fill="#d9d2ff"/>
+    <rect x="230" y="478" width="96" height="22" rx="11" fill="#f1f0f5"/><text x="244" y="493" font-size="12" fill="#857f9e">CI running</text>
+    <rect x="440" y="478" width="118" height="22" rx="11" fill="#f1f0f5"/><text x="454" y="493" font-size="12" fill="#857f9e">not tested</text>
+    <rect x="640" y="483" width="120" height="10" rx="5" fill="#ebe7f7"/>
+    <rect x="990" y="478" width="70" height="22" rx="11" fill="#fff0ea"/>
+  </g>
+
+  <!-- sessions -->
+  <line x1="100" y1="540" x2="1100" y2="540" stroke="#ebe8f5"/>
+  <text x="100" y="578" font-size="16" font-weight="700" fill="#2f2a45">Sessions</text>
+  <g font-size="12" fill="#857f9e" letter-spacing="1.5">
+    <text x="100" y="612">LANE</text><text x="300" y="612">HOLDS</text><text x="560" y="612">DOING NOW</text><text x="880" y="612">NEEDS YOU</text>
+  </g>
+  <g>
+    <circle cx="108" cy="642" r="7" fill="#9ad9bb"/><rect x="124" y="637" width="80" height="10" rx="5" fill="#d9d2ff"/>
+    <rect x="300" y="637" width="150" height="10" rx="5" fill="#ebe7f7"/><rect x="560" y="637" width="200" height="10" rx="5" fill="#ebe7f7"/>
+    <text x="880" y="646" font-size="12" fill="#857f9e">—</text>
+    <circle cx="108" cy="680" r="7" fill="#ff9b7a"/><rect x="124" y="675" width="64" height="10" rx="5" fill="#d9d2ff"/>
+    <rect x="300" y="675" width="120" height="10" rx="5" fill="#ebe7f7"/><rect x="560" y="675" width="170" height="10" rx="5" fill="#ebe7f7"/>
+    <rect x="880" y="670" width="96" height="22" rx="11" fill="#fff0ea"/><text x="894" y="685" font-size="12" fill="#c4623f">a decision</text>
+    <circle cx="108" cy="718" r="7" fill="#a597ff"/><rect x="124" y="713" width="96" height="10" rx="5" fill="#d9d2ff"/>
+    <rect x="300" y="713" width="170" height="10" rx="5" fill="#ebe7f7"/><rect x="560" y="713" width="140" height="10" rx="5" fill="#ebe7f7"/>
+    <text x="880" y="722" font-size="12" fill="#857f9e">—</text>
+  </g>
+</svg>
