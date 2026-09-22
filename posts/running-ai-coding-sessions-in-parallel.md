@@ -36,6 +36,8 @@ The board is one table with a row per PR or feature, grouped by who needs to act
 - whether it's been tested, how, and links to the evidence
 - one line on what's needed to merge it
 
+![An abstract version of the hub board: work grouped by who needs to act next, with its state, whether it's tested, and the next action, and the sessions listed underneath](/blog/parallel-sessions-hub.png)
+
 I read my own group first, because that's where I'm the one holding things up. Then what's waiting on my colleague. Then I look at the rest.
 
 In the morning I ask the hub for a short summary and an up-to-date board, and have it check which sessions are still running. At the end of the day I tell every session to wrap up and leave its state on the board, so the next day starts from there.
