@@ -1,7 +1,7 @@
 ---
 title: "Running AI coding sessions in parallel"
 date: "2026-09-22T12:00:00+0000"
-categories: ["AI", "Tooling"]
+categories: ["AI"]
 banner: "parallel-sessions.png"
 color: "#f3f0ff"
 description: "How I went from two or three AI coding sessions to as many as fifteen at once on a two-person team, what broke along the way, and the hub session I added to keep track of it all."
@@ -9,7 +9,7 @@ readingTimeMinutes: 5
 new: true
 ---
 
-I'm one of two developers on an app for young athletes and their families. There's a lot to build and not much time. Because the users are children, quality is non-negotiable.
+I'm one of two developers building R1 at The Ready Collective, an app for young athletes and their families. There's a lot to build and not much time. Because the users are children, quality is non-negotiable.
 
 We use AI agents a lot, but it isn't vibe coding. The repos have detailed agent rules and documentation, and everything new gets tested properly. We could go faster by lowering the bar, but that's not an option. So to go faster I started running sessions in parallel.
 

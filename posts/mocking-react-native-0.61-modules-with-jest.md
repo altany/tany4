@@ -1,7 +1,7 @@
 ---
 title: "Mocking React Native 0.61 modules with Jest"
 date: "2020-01-25T14:00:50+0200"
-categories: ["Testing", "React Native"]
+categories: ["Testing", "React Native", "Mobile"]
 banner: "rn-jest.png"
 color: "#222222"
 description: "React Native 0.61 removed Haste and broke a lot of Jest mocks. Here's why it happened and how to fix it properly."

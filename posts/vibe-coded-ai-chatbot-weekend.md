@@ -1,7 +1,7 @@
 ---
 title: "Vibe coding an AI chatbot into my website"
 date: "2025-12-15T12:00:00+0000"
-categories: ["AI", "Vibe coding", "Chatbot"]
+categories: ["AI", "Side projects"]
 banner: "vercel-aisdk.png"
 color: "#f66f6e"
 description: "One evening I built a small AI chatbot into this site with the Vercel AI SDK. It only answers questions about my actual work."

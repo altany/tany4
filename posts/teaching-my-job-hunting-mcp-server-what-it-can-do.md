@@ -1,7 +1,7 @@
 ---
 title: "Teaching my job-hunting MCP server what it can do"
 date: "2026-07-02T12:00:00+0000"
-categories: ["AI", "Tooling", "MCP"]
+categories: ["AI", "MCP", "Side projects"]
 banner: "job-hunter-mcp.png"
 color: "#006e8f"
 description: "Once my job-hunting MCP server was remote, the agent kept pushing back: 'that's not possible', duplicate rows, refusing to use a doc I'd linked. The problem wasn't the model. It was my tool descriptions."
