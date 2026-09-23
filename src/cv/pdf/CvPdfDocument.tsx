@@ -10,17 +10,41 @@ import {
   Svg,
   Path,
 } from "@react-pdf/renderer";
+import path from "path";
 import type { Cv } from "../types";
 
 Font.registerHyphenationCallback((word) => [word]);
 
+// The site's typeface, so the PDF and tany4.com read as the same thing
+const fonts = path.join(process.cwd(), "src/cv/pdf/fonts");
+Font.register({
+  family: "Be Vietnam Pro",
+  fonts: [
+    { src: path.join(fonts, "BeVietnamPro-Regular.ttf"), fontWeight: 400 },
+    { src: path.join(fonts, "BeVietnamPro-SemiBold.ttf"), fontWeight: 600 },
+    { src: path.join(fonts, "BeVietnamPro-Italic.ttf"), fontWeight: 400, fontStyle: "italic" },
+  ],
+});
+
+// Mirrors the light theme in styles/_theme.scss. The sidebar is a wash rather than a
+// solid block: the same colours as the site, but a page that prints without flooding it.
+const colour = {
+  accent: "#4a3ba8",
+  accentWash: "#f5f3ff",
+  ink: "#2f2a45",
+  text: "#4f4a66",
+  soft: "#857f9e",
+  line: "#ded8f2",
+  surface: "#ffffff",
+};
+
 const styles = StyleSheet.create({
   page: {
     position: "relative",
-    fontFamily: "Helvetica",
+    fontFamily: "Be Vietnam Pro",
     fontSize: 10,
     lineHeight: 1.35,
-    color: "#111111",
+    color: colour.text,
     backgroundColor: "#ffffff",
     paddingTop: 0,
     paddingRight: 0,
@@ -34,12 +58,12 @@ const styles = StyleSheet.create({
     top: 0,
     bottom: 0,
     width: 210,
-    backgroundColor: "#2f6f7f",
+    backgroundColor: colour.accentWash,
     paddingTop: 24,
     paddingRight: 16,
     paddingBottom: 24,
     paddingLeft: 16,
-    color: "#ffffff",
+    color: colour.ink,
   },
 
   main: {
@@ -59,25 +83,25 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     fontSize: 30,
-    fontFamily: "Helvetica-Bold",
+    fontFamily: "Be Vietnam Pro", fontWeight: 600,
     lineHeight: 1.02,
-    color: "#2f6f7f",
+    color: colour.accent,
   },
 
   titleRow: {
     marginTop: 10,
     fontSize: 13,
-    color: "#444444",
-    fontFamily: "Helvetica-Bold",
+    color: colour.text,
+    fontFamily: "Be Vietnam Pro", fontWeight: 600,
   },
 
   contactRow: {
     marginTop: 8,
     flexDirection: "row",
     flexWrap: "wrap",
-    gap: 10,
-    color: "#666666",
-    fontSize: 10,
+    gap: 9,
+    color: colour.soft,
+    fontSize: 9,
   },
 
   contactItem: {
@@ -92,14 +116,14 @@ const styles = StyleSheet.create({
   },
 
   contactLink: {
-    color: "#666666",
+    color: colour.soft,
     textDecoration: "none",
   },
 
   headerDivider: {
     marginTop: 10,
     borderBottomWidth: 1,
-    borderBottomColor: "#2f6f7f",
+    borderBottomColor: colour.line,
     borderBottomStyle: "solid",
   },
 
@@ -107,16 +131,16 @@ const styles = StyleSheet.create({
     marginTop: 14,
     marginBottom: 8,
     fontSize: 9,
-    fontFamily: "Helvetica-Bold",
+    fontFamily: "Be Vietnam Pro", fontWeight: 600,
     letterSpacing: 0.8,
     textTransform: "uppercase",
-    color: "#2f6f7f",
+    color: colour.accent,
   },
 
   sectionDivider: {
     marginTop: 10,
     borderBottomWidth: 1,
-    borderBottomColor: "#2f6f7f",
+    borderBottomColor: colour.line,
     borderBottomStyle: "solid",
   },
 
@@ -124,7 +148,7 @@ const styles = StyleSheet.create({
     marginTop: 12,
     paddingTop: 10,
     borderTopWidth: 1,
-    borderTopColor: "rgba(255, 255, 255, 0.22)",
+    borderTopColor: colour.line,
     borderTopStyle: "solid",
   },
 
@@ -138,7 +162,7 @@ const styles = StyleSheet.create({
   sidebarHeading: {
     marginBottom: 8,
     fontSize: 9,
-    fontFamily: "Helvetica-Bold",
+    fontFamily: "Be Vietnam Pro", fontWeight: 600,
     letterSpacing: 0.7,
     textTransform: "uppercase",
   },
@@ -146,10 +170,10 @@ const styles = StyleSheet.create({
   sidebarHeadingSecondary: {
     marginBottom: 6,
     fontSize: 8,
-    fontFamily: "Helvetica-Bold",
+    fontFamily: "Be Vietnam Pro", fontWeight: 600,
     letterSpacing: 0.5,
     textTransform: "uppercase",
-    color: "rgba(255, 255, 255, 0.8)",
+    color: colour.soft,
   },
 
   sidebarParagraph: {
@@ -162,7 +186,7 @@ const styles = StyleSheet.create({
     marginBottom: 6,
     fontSize: 8.5,
     lineHeight: 1.4,
-    color: "rgba(255, 255, 255, 0.85)",
+    color: colour.text,
   },
 
   sidebarList: {
@@ -183,7 +207,7 @@ const styles = StyleSheet.create({
   sidebarBullet: {
     width: 12,
     fontSize: 8.5,
-    color: "rgba(255, 255, 255, 0.7)",
+    color: colour.soft,
   },
 
   sidebarBulletText: {
@@ -193,8 +217,56 @@ const styles = StyleSheet.create({
   },
 
   sidebarLink: {
-    color: "#ffffff",
+    color: colour.accent,
     textDecoration: "none",
+  },
+
+  // The sidebar's content ends on page one; page two fills the empty column with
+  // education and languages, which are short and read fine in a narrow measure
+  sidebarPageTwo: {
+    position: "absolute",
+    left: 0,
+    top: 0,
+    width: 210,
+    paddingTop: 24,
+    paddingRight: 16,
+    paddingLeft: 16,
+    color: colour.ink,
+  },
+
+  sidebarEduRow: {
+    marginBottom: 10,
+  },
+
+  sidebarEduDate: {
+    fontSize: 8.5,
+    color: colour.soft,
+    marginBottom: 1,
+  },
+
+  sidebarEduSchool: {
+    fontSize: 9.5,
+    fontFamily: "Be Vietnam Pro", fontWeight: 600,
+  },
+
+  sidebarEduDegree: {
+    fontSize: 9,
+    color: colour.text,
+    lineHeight: 1.4,
+  },
+
+  sidebarLanguageRow: {
+    marginBottom: 6,
+  },
+
+  sidebarLanguageName: {
+    fontSize: 9.5,
+    fontFamily: "Be Vietnam Pro", fontWeight: 600,
+  },
+
+  sidebarLanguageLevel: {
+    fontSize: 9,
+    color: colour.soft,
   },
 
   role: {
@@ -206,7 +278,7 @@ const styles = StyleSheet.create({
   },
 
   dates: {
-    color: "#888888",
+    color: colour.soft,
     fontSize: 10,
     marginBottom: 2,
   },
@@ -218,18 +290,18 @@ const styles = StyleSheet.create({
 
   roleTitle: {
     fontSize: 10,
-    fontFamily: "Helvetica-Bold",
+    fontFamily: "Be Vietnam Pro", fontWeight: 600,
   },
 
   company: {
     fontSize: 10,
-    color: "#444444",
+    color: colour.text,
   },
 
   roleSummary: {
     margin: "4px 0",
-    color: "#555555",
-    fontFamily: "Helvetica-Oblique",
+    color: colour.text,
+    fontFamily: "Be Vietnam Pro", fontStyle: "italic",
     fontSize: 9,
     lineHeight: 1.5,
   },
@@ -263,7 +335,7 @@ const styles = StyleSheet.create({
   },
 
   eduDate: {
-    color: "#888888",
+    color: colour.soft,
     fontSize: 10,
     marginBottom: 2,
   },
@@ -275,12 +347,12 @@ const styles = StyleSheet.create({
 
   eduSchool: {
     fontSize: 10,
-    fontFamily: "Helvetica-Bold",
+    fontFamily: "Be Vietnam Pro", fontWeight: 600,
   },
 
   eduDegree: {
     fontSize: 10,
-    color: "#444444",
+    color: colour.text,
     marginLeft: 6,
   },
 
@@ -295,31 +367,31 @@ const styles = StyleSheet.create({
 
   languageName: {
     fontSize: 9,
-    color: "#444444",
+    color: colour.text,
   },
 
   languageLevel: {
     fontSize: 9,
-    color: "#888888",
+    color: colour.soft,
   },
 
   languageCode: {
     fontSize: 9,
-    fontFamily: "Helvetica-Bold",
-    color: "#888888",
+    fontFamily: "Be Vietnam Pro", fontWeight: 600,
+    color: colour.soft,
   },
 
   languageBarWrap: {
     marginTop: 5,
     height: 4,
     borderRadius: 2,
-    backgroundColor: "#d9d9d9",
+    backgroundColor: colour.line,
     overflow: "hidden",
   },
 
   languageBarFill: {
     height: 4,
-    backgroundColor: "#2f6f7f",
+    backgroundColor: colour.accent,
   },
 
   strengthsRow: {
@@ -331,17 +403,17 @@ const styles = StyleSheet.create({
 
   strengthItem: {
     fontSize: 9,
-    color: "#444444",
+    color: colour.text,
   },
 
   strengthBullet: {
     fontSize: 9,
-    color: "#2f6f7f",
+    color: colour.accent,
     marginRight: 4,
   },
 });
 
-function MailIcon({ color = "#666666" }: { color?: string }) {
+function MailIcon({ color = colour.soft }: { color?: string }) {
   return (
     <Svg viewBox="0 0 24 24" style={styles.contactIcon}>
       <Path
@@ -364,7 +436,7 @@ function MailIcon({ color = "#666666" }: { color?: string }) {
   );
 }
 
-function PinIcon({ color = "#666666" }: { color?: string }) {
+function PinIcon({ color = colour.soft }: { color?: string }) {
   return (
     <Svg viewBox="0 0 24 24" style={styles.contactIcon}>
       <Path
@@ -379,7 +451,7 @@ function PinIcon({ color = "#666666" }: { color?: string }) {
   );
 }
 
-function PortfolioIcon({ color = "#666666" }: { color?: string }) {
+function PortfolioIcon({ color = colour.soft }: { color?: string }) {
   return (
     <Svg viewBox="0 0 24 24" style={styles.contactIcon}>
       <Path
@@ -494,6 +566,36 @@ export default function CvPdfDocument({ cv }: { cv: Cv }) {
 
         <View style={styles.pageHeader} fixed render={({ pageNumber }) => (pageNumber > 1 ? <View /> : null)} />
 
+        <View
+          fixed
+          render={({ pageNumber }) =>
+            pageNumber === 2 ? (
+              <View style={styles.sidebarPageTwo}>
+                <Text style={styles.sidebarHeading}>Education</Text>
+                {cv.education.map((edu) => (
+                  <View key={`${edu.institution}-${edu.date}`} style={styles.sidebarEduRow} wrap={false}>
+                    <Text style={styles.sidebarEduDate}>{edu.date}</Text>
+                    <Text style={styles.sidebarEduSchool}>{edu.institution}</Text>
+                    <Text style={styles.sidebarEduDegree}>{edu.degree}</Text>
+                  </View>
+                ))}
+
+                <View style={styles.sidebarSection}>
+                  <Text style={styles.sidebarHeading}>Languages</Text>
+                  {cv.languages.map((l) => (
+                    <View key={l.name} style={styles.sidebarLanguageRow} wrap={false}>
+                      <Text style={styles.sidebarLanguageName}>{l.name}</Text>
+                      <Text style={styles.sidebarLanguageLevel}>
+                        {l.levelLabel}{l.levelCode ? ` (${l.levelCode})` : ""}
+                      </Text>
+                    </View>
+                  ))}
+                </View>
+              </View>
+            ) : null
+          }
+        />
+
         <View style={styles.main}>
           <Text style={styles.nameRow}>
             <Text>{firstName}</Text>
@@ -539,36 +641,6 @@ export default function CvPdfDocument({ cv }: { cv: Cv }) {
             />
           ))}
 
-          <View style={styles.sectionDivider} />
-
-          <Text style={styles.sectionHeading}>Education</Text>
-          <View wrap={false}>
-            {cv.education.map((edu) => (
-              <View key={`${edu.institution}-${edu.date}`} style={styles.eduRow} wrap={false}>
-                <View style={styles.eduMeta}>
-                  <Text style={styles.eduDate}>{edu.date}</Text>
-                  <View style={styles.eduTitleRow}>
-                    <Text style={styles.eduSchool}>{edu.institution}</Text>
-                    <Text style={styles.eduDegree}>{edu.degree}</Text>
-                  </View>
-                </View>
-              </View>
-            ))}
-          </View>
-
-          <View style={styles.sectionDivider} />
-
-          <Text style={styles.sectionHeading}>Languages</Text>
-          <View style={styles.languagesRow} wrap={false}>
-            {cv.languages.map((l) => (
-              <View key={l.name} style={styles.languageItem}>
-                <Text style={styles.languageName}>{l.name}</Text>
-                <Text style={styles.languageLevel}>
-                  {l.levelLabel}{l.levelCode ? ` (${l.levelCode})` : ""}
-                </Text>
-              </View>
-            ))}
-          </View>
         </View>
       </Page>
     </Document>
