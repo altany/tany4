@@ -38,6 +38,8 @@ $mono: var(--font-mono), ui-monospace, Menlo, monospace;
   top: 40px;
   max-height: calc(100vh - 80px);
   overflow-y: auto;
+  // Room for the chat button, which floats over the bottom right corner
+  padding-bottom: 72px;
   overscroll-behavior: contain;
   scrollbar-width: thin;
   scrollbar-color: var(--color-faint) transparent;
@@ -48,6 +50,7 @@ $mono: var(--font-mono), ui-monospace, Menlo, monospace;
     position: static;
     max-height: none;
     overflow: visible;
+    padding-bottom: 0;
     margin-right: 0;
     padding-right: 0;
   }
