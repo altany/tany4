@@ -221,6 +221,54 @@ const styles = StyleSheet.create({
     textDecoration: "none",
   },
 
+  // The sidebar's content ends on page one; page two fills the empty column with
+  // education and languages, which are short and read fine in a narrow measure
+  sidebarPageTwo: {
+    position: "absolute",
+    left: 0,
+    top: 0,
+    width: 210,
+    paddingTop: 24,
+    paddingRight: 16,
+    paddingLeft: 16,
+    color: colour.ink,
+  },
+
+  sidebarEduRow: {
+    marginBottom: 10,
+  },
+
+  sidebarEduDate: {
+    fontSize: 8.5,
+    color: colour.soft,
+    marginBottom: 1,
+  },
+
+  sidebarEduSchool: {
+    fontSize: 9.5,
+    fontFamily: "Be Vietnam Pro", fontWeight: 600,
+  },
+
+  sidebarEduDegree: {
+    fontSize: 9,
+    color: colour.text,
+    lineHeight: 1.4,
+  },
+
+  sidebarLanguageRow: {
+    marginBottom: 6,
+  },
+
+  sidebarLanguageName: {
+    fontSize: 9.5,
+    fontFamily: "Be Vietnam Pro", fontWeight: 600,
+  },
+
+  sidebarLanguageLevel: {
+    fontSize: 9,
+    color: colour.soft,
+  },
+
   role: {
     marginBottom: 12,
   },
@@ -518,6 +566,36 @@ export default function CvPdfDocument({ cv }: { cv: Cv }) {
 
         <View style={styles.pageHeader} fixed render={({ pageNumber }) => (pageNumber > 1 ? <View /> : null)} />
 
+        <View
+          fixed
+          render={({ pageNumber }) =>
+            pageNumber === 2 ? (
+              <View style={styles.sidebarPageTwo}>
+                <Text style={styles.sidebarHeading}>Education</Text>
+                {cv.education.map((edu) => (
+                  <View key={`${edu.institution}-${edu.date}`} style={styles.sidebarEduRow} wrap={false}>
+                    <Text style={styles.sidebarEduDate}>{edu.date}</Text>
+                    <Text style={styles.sidebarEduSchool}>{edu.institution}</Text>
+                    <Text style={styles.sidebarEduDegree}>{edu.degree}</Text>
+                  </View>
+                ))}
+
+                <View style={styles.sidebarSection}>
+                  <Text style={styles.sidebarHeading}>Languages</Text>
+                  {cv.languages.map((l) => (
+                    <View key={l.name} style={styles.sidebarLanguageRow} wrap={false}>
+                      <Text style={styles.sidebarLanguageName}>{l.name}</Text>
+                      <Text style={styles.sidebarLanguageLevel}>
+                        {l.levelLabel}{l.levelCode ? ` (${l.levelCode})` : ""}
+                      </Text>
+                    </View>
+                  ))}
+                </View>
+              </View>
+            ) : null
+          }
+        />
+
         <View style={styles.main}>
           <Text style={styles.nameRow}>
             <Text>{firstName}</Text>
@@ -563,36 +641,6 @@ export default function CvPdfDocument({ cv }: { cv: Cv }) {
             />
           ))}
 
-          <View style={styles.sectionDivider} />
-
-          <Text style={styles.sectionHeading}>Education</Text>
-          <View wrap={false}>
-            {cv.education.map((edu) => (
-              <View key={`${edu.institution}-${edu.date}`} style={styles.eduRow} wrap={false}>
-                <View style={styles.eduMeta}>
-                  <Text style={styles.eduDate}>{edu.date}</Text>
-                  <View style={styles.eduTitleRow}>
-                    <Text style={styles.eduSchool}>{edu.institution}</Text>
-                    <Text style={styles.eduDegree}>{edu.degree}</Text>
-                  </View>
-                </View>
-              </View>
-            ))}
-          </View>
-
-          <View style={styles.sectionDivider} />
-
-          <Text style={styles.sectionHeading}>Languages</Text>
-          <View style={styles.languagesRow} wrap={false}>
-            {cv.languages.map((l) => (
-              <View key={l.name} style={styles.languageItem}>
-                <Text style={styles.languageName}>{l.name}</Text>
-                <Text style={styles.languageLevel}>
-                  {l.levelLabel}{l.levelCode ? ` (${l.levelCode})` : ""}
-                </Text>
-              </View>
-            ))}
-          </View>
         </View>
       </Page>
     </Document>
