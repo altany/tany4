@@ -74,8 +74,8 @@ describe('buildReport', () => {
     outbound: [{ name: '/download/TaniaPapazafeiropoulou-CV.pdf', pageviews: 3 }],
   }
   const cloudflare = {
-    current: { pageviews: 80, visits: 30, sampleInterval: 1, loadTimeMs: 1200 },
-    previous: { pageviews: 70, visits: 20, sampleInterval: 10, loadTimeMs: 7149 },
+    current: { pageviews: 80, visits: 30, sampleInterval: 1, loadTimeMs: 1200, loadTimeSamples: 400 },
+    previous: { pageviews: 70, visits: 20, sampleInterval: 10, loadTimeMs: 7149, loadTimeSamples: 350 },
   }
 
   it('summarises both sources', () => {
@@ -90,9 +90,20 @@ describe('buildReport', () => {
     expect(text).toContain('Fixing the app I built for my dog (/blog/posts/marios-helper-v2): 4')
     expect(text).toContain('CV (PDF): 3')
     expect(text).toContain('Cloudflare counted 30 visits (up 50% on the week before)')
+    expect(text).toContain("median of 400 measured page loads.")
     expect(text).toContain('sampled estimates')
     expect(text).not.toContain('Needs a look')
     expect(text).not.toContain('incomplete')
+  })
+
+  it('does not compare page load time when it comes from too few page loads', () => {
+    const fewer = {
+      current: { ...cloudflare.current, loadTimeSamples: 30 },
+      previous: { ...cloudflare.previous, loadTimeSamples: 40 },
+    }
+    const { text } = buildReport({ label: 'x', vercel, cloudflare: fewer })
+    expect(text).toContain('Page load time: 1,200 ms\n')
+    expect(text).toContain('median of 30 measured page loads, too few to compare with the week before.')
   })
 
   it('shows changes in the HTML, with a slower page as bad news', () => {
