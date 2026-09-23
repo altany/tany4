@@ -7,8 +7,7 @@ color: "#1f3f63"
 description: "Google Assistant doesn't understand Greek in the car, so I built a small Android Auto app that does. Notes on matching Greek speech against contacts saved in Greeklish, and why 'κάλεσε' (kalese, \"call\") kept turning into 'θάλασσα' (thalassa, \"sea\")."
 readingTimeMinutes: 6
 ---
-
-**TL;DR**: I can't speak Greek to my car. Google Assistant and Gemini don't support it in Android Auto, so I can't say a Greek contact name or an address while driving in Greece. I built a small Android Auto app called Mila - μίλα (mila) means "speak" - that listens in Greek and either starts navigation or places a call.
+ **TL;DR**: I can't speak Greek to my car. Google Assistant and Gemini don't support it in Android Auto, so I can't say a Greek contact name or an address while driving in Greece. I built a small Android Auto app called Mila - μίλα (mila) means "speak" - that listens in Greek and either starts navigation or places a call.
 
 ## The problem
 
@@ -22,13 +21,13 @@ There's an existing open source app that does roughly this: [aa-speech-to-text](
 
 I built Mila with Claude Code, and the first thing I had it do was clone that repo and read all of it - about 870 lines of Java - before writing any code of our own.
 
-That saved days. It had already worked out the fiddly parts: the exact manifest declarations that make an app appear on the Android Auto launcher, the host validation that lets a sideloaded app be accepted at all, and how to hand off to Maps and the dialer.
+That saved me days, because it had already worked out the fiddly parts: the exact manifest declarations that make an app appear on the Android Auto launcher, the host validation that lets a sideloaded app be accepted at all, and how to hand off to Maps and the dialer.
 
-I started fresh rather than forking - it's Java against a car app library that has moved on several versions since, and it drives everything from a spoken hot-word where I wanted two buttons on screen. What I took from it is how Android Auto behaves, which is knowledge rather than code.
+I started fresh rather than forking - it's Java against a car app library that has moved on several versions since, and it drives everything from a spoken hot-word where I wanted two buttons on screen. What I took from it was how Android Auto behaves, not code.
 
 ## Which microphone
 
-The car app library has `CarAudioRecord`, which reads from the car's own microphone. The catch is that it only gives you raw audio. It does no speech-to-text at all. To get Greek text out of it I'd need to send that audio to a cloud service or bundle a speech model in the app. Both were more than I wanted for a personal tool.
+The car app library has `CarAudioRecord`, which reads from the car's own microphone. But it only gives you raw audio. It does no speech-to-text at all. To get Greek text out of it I'd need to send that audio to a cloud service or bundle a speech model in the app. Both were more than I wanted for a personal tool.
 
 The other option is Android's built-in `SpeechRecognizer` running on the phone, which does full Greek recognition through Google's speech service. That's what the reference app uses and what I went with.
 
@@ -48,19 +47,19 @@ This is the only part of the app with unit tests. It's the only part where I can
 
 ## Deciding when you've stopped talking
 
-Android's recognizer takes settings for how much silence should end a phrase, but they're hints rather than controls - it endpoints on its own judgement, and it's waiting for real silence. A car is never silent. Set them short and it cuts you off mid-address; set them long and it can hold the microphone open to its own sixty-second limit, by which point you've assumed it's broken and said the whole thing again, and both attempts come back merged into one transcript.
+Android's recognizer takes settings for how much silence should end a phrase, but they're hints rather than controls - it endpoints on its own judgement, and it's waiting for real silence. A car is never silent. With short settings it cut me off mid-address. With long ones it could keep the microphone open for up to sixty seconds. By then I'd think it was broken and say it again, and both attempts came back as one transcript.
 
-So the app ignores them and watches the partial results instead: when about two seconds pass with no new words, that's the end of the sentence. Long enough to survive the pause between a street name and a number, short enough to feel immediate.
+So the app ignores them and watches the partial results instead: when about two seconds pass with no new words, that's the end of the sentence. That's long enough for the pause between a street name and a number, and short enough to feel immediate.
 
 ## "κάλεσε" (call) kept becoming "θάλασσα" (sea)
 
 I said "κάλεσε το Δημήτρη" (kalese to Dimitri) - call Dimitris. Maps opened and started routing me to a beach bar.
 
-The recognizer had heard "θάλασσα" - thalassa, the sea. The app did exactly what it was told.
+The recognizer had heard "θάλασσα" - thalassa, the sea.
 
-Two things were wrong. The first was mine: Navigate is the default mode, and I'd assumed people would tap the right one before speaking. They don't. The verb already says what you want. So now an opening verb decides the action regardless of which button is selected - κάλεσε, πάρε and τηλεφώνησε all place a call, πήγαινε and πλοήγηση start navigation - and the verb and its article are stripped off before matching, so it searches for "Δημήτρη" (Dimitri) and not the whole sentence.
+Two things were wrong. First, Navigate is the default mode, and I'd assumed people would tap the right button before speaking. They don't, and the verb already says what they want. So now an opening verb decides the action regardless of which button is selected - κάλεσε, πάρε and τηλεφώνησε all place a call, πήγαινε and πλοήγηση start navigation - and the verb and its article are stripped off before matching, so it searches for "Δημήτρη" (Dimitri) and not the whole sentence.
 
-The second was that "κάλεσε" and "θάλασσα" genuinely sound similar - KA-le-se against THA-la-sa, three syllables, stress on the first, mostly the same vowels - and no amount of code makes Google hear better. But the app was already asking the recognizer for three alternative transcriptions and throwing away all but the first. If the top guess is a beach, the right word is often sitting in guess two or three.
+Second, "κάλεσε" and "θάλασσα" do sound similar: KA-le-se and THA-la-sa, three syllables, stress on the first, mostly the same vowels. I can't make Google hear better, but the app was already asking the recognizer for three alternative transcriptions and using only the first. The right word was often in the second or third.
 
 Now all three are used. The action comes from the first alternative that starts with a real command verb, and contact matching scores every alternative and keeps each contact's best result. A name mangled in the top transcription can still be found in another one.
 
@@ -72,59 +71,31 @@ You can test all of this without a car. Google ships a Desktop Head Unit emulato
 
 Getting a sideloaded app to appear takes a few steps that aren't obvious. Android Auto has its own developer mode, separate from the phone's - you unlock it by tapping the version number in Android Auto's settings ten times. Then you have to turn on "Unknown sources", because Android Auto hides anything that didn't come from the Play Store. Then start the head unit server from the same menu.
 
-One thing worth knowing if you try this: stop that head unit server before you drive anywhere. Android Auto projects one session at a time, and a server left running keeps the phone busy serving an emulator that isn't there any more.
+If you try this, stop the head unit server before you drive anywhere. Android Auto projects one session at a time, and a server left running keeps the phone busy serving an emulator that isn't there any more.
 
 ## What worked and what didn't
 
-The app worked on Android Auto's desktop emulator from early on: it appears on
-the launcher, starts listening in Greek on its own, matches contacts, and hands
-off to Maps.
+The app worked on Android Auto's desktop emulator from early on: it appears on the launcher, starts listening in Greek on its own, matches contacts, and hands off to Maps.
 
-It did not appear in my car, and that took two days to explain. On my car,
-every app Android Auto listed had been installed by the Play Store. The
-sideloaded ones weren't rejected with an error — they were never looked at. The "Unknown
-sources" developer setting didn't change that. Neither did faking the installer
-name with `adb install -i com.android.vending`, adding a second app category,
-clearing Android Auto's data, re-pairing the car, checking battery
-restrictions, or switching between wireless and cable.
+It didn't appear in my car, and it took me two days to find out why. On my car, every app Android Auto listed had been installed by the Play Store. The sideloaded ones weren't rejected with an error. Android Auto just didn't list them. The "Unknown sources" developer setting didn't change that. Neither did faking the installer name with `adb install -i com.android.vending`, adding a second app category, clearing Android Auto's data, re-pairing the car, checking battery restrictions, or switching between wireless and cable.
 
-Two tests settled it. Sideloading a different, known-working car app onto the
-same phone produced exactly the same silence, which ruled out my code.
-And every app my car does show turned out to have been installed by Play.
+Two tests settled it. Sideloading a different, known-working car app onto the same phone produced exactly the same silence, which ruled out my code. And every app my car does show turned out to have been installed by Play.
 
-Downgrading Android Auto didn't help either. 15.4 installed fine, but my car
-refused the connection with a security-check error, so I never got far enough
-to find out whether it would have shown the app.
+Downgrading Android Auto didn't help either. 15.4 installed fine, but my car refused the connection with a security-check error, so I never got far enough to find out whether it would have shown the app.
 
-What fixed it was publishing to a Google Play internal testing track — private,
-no public listing — and installing from the tester link. Same app, same phone,
-same car. It appeared straight away.
+What fixed it was publishing to a Google Play internal testing track (private, with no public listing) and installing from the tester link. It appeared straight away.
 
-The emulator doesn't enforce any of this, which is why it told me the app was
-working for two days while my car disagreed.
+The emulator doesn't check any of this, which is why the app worked there and not in my car.
 
 ## What the first drive changed
 
-Three things, within minutes of it working.
+I changed three things after the first drive.
 
-I said "πάρε τηλέφωνο το Δημήτρη". It correctly took πάρε as a call, but only
-stripped that one word, so it searched my contacts for "τηλέφωνο του δημήτρη"
-and found nobody. Greek command phrases run longer than one word, so it now
-drops the whole phrase. Writing the test for it turned up a second bug: the
-genitive articles were missing from the strip list, and because normalising a
-word folds final sigma, "της" and "τους" had never matched anything either.
+I said "πάρε τηλέφωνο το Δημήτρη". It correctly took πάρε as a call, but only stripped that one word, so it searched my contacts for "τηλέφωνο του δημήτρη" and found nobody. Greek command phrases run longer than one word, so it now drops the whole phrase. Writing the test for it turned up a second bug: the genitive articles were missing from the strip list, and because normalising a word folds final sigma, "της" and "τους" had never matched anything either.
 
-I have several Δημήτρηδες and one of them is who I actually ring. Saying just
-the first name gave me the pick list every time, correctly but uselessly.
-Contacts starred as favourites now get a nudge — enough to be dialled outright
-when several people match equally well, not enough to override naming someone
-specifically, so the other Δημήτρηδες are still reachable.
+I have several Δημήτρηδες and one of them is who I actually ring. Saying just the first name showed the pick list every time. Contacts starred as favourites now get a small boost. It's enough to dial them straight away when several people match equally well, but not enough to win when I name someone else, so I can still call the other Δημήτρηδες.
 
-Tapping the screen is the thing you least want to do while driving, and a
-failed hearing needed a tap to retry. Now the microphone reopens by itself,
-twice, then stops so a noisy car can't leave it listening forever. The pick
-list has a row that goes straight back to listening, instead of going back and
-then finding the retry button.
+If it didn't hear me, I had to tap the screen to retry, which I don't want to do while driving. Now the microphone reopens by itself, twice, then stops so a noisy car can't leave it listening forever. The pick list has a row that goes straight back to listening, instead of going back and then finding the retry button.
 
 ## Where it is now
 
@@ -134,14 +105,9 @@ Every version is built by GitHub Actions and attached to a release, so there's a
 
 Almost all of the work turned out to be the Greek part - matching a name I say against a contact saved in Greeklish, and handling the words the recognizer gets wrong. The rest was ordinary Android work.
 
-What I keep coming back to isn't technical. This was a daily frustration that wasn't going to get fixed for me, and I was able to build my own way around it.
+I can talk to my car in Greek now.
 
-I can talk to my car in Greek now, which is all I wanted.
-
-Greek isn't special here — Android Auto supports a fixed list of languages and
-plenty of others aren't on it either. The README has notes on what to change if
-you want to fork it for another one: the recognition locale, the command words,
-and the name matching, which is the only part that's genuinely Greek.
+Greek isn't the only language missing. Android Auto supports a fixed list of languages and plenty of others aren't on it. The README has notes on what to change to fork it for another language: the recognition locale, the command words and the name matching, which is the only Greek-specific part.
 
 The repo is on GitHub: [altany/mila](https://github.com/altany/mila).
 
@@ -151,4 +117,4 @@ My steering wheel button opens the phone's assistant, which can open apps by nam
 
 So I renamed the app to Pesto. English speech recognition already knows the word, and it sounds the same when I say it in Greek.
 
-Only the visible name changed. It's the same app underneath, so it arrives as a normal update, and the repo is still [altany/mila](https://github.com/altany/mila).
+Only the visible name changed. It's the same app underneath, so it arrives as a normal update, and the repo is still [altany/mila](https://github.com/altany/mila). 

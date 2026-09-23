@@ -9,22 +9,22 @@ description: "My JS VidCon talk on how Olio uses React Native to reduce food was
 readingTimeMinutes: 4
 ---
 
-**TL;DR**: A follow-up to my React Conf talk, recorded online during COVID. I revisit the same story a year later and focus on what it actually means to run a React Native app in production.
+**TL;DR**: A follow-up to my React Conf talk, recorded online during COVID. I talk about the same app a year later, and what it's like to run React Native in production.
 
 In May 2020, when everything had moved online because of COVID, I spoke at JS VidCon about how we use React Native at Olio to reduce food waste.
 
-It's essentially part 2 of the [React Conf 2019](/blog/posts/react-conf-2019) talk. I revisit the migration story - 3 months, 3 developers, millions of users - but with a year of production experience behind me.
+It's part 2 of the [React Conf 2019](/blog/posts/react-conf-2019) talk: the same migration (3 months, 3 developers, millions of users), a year later.
 
 **What held up**
-A lot of the original lessons turned out to be right. The performance monitoring approach, the testing patterns, and the code structure we adopted all survived real-world use.
+Most of what we did first still worked a year later: the performance monitoring, the testing patterns and the code structure.
 
 **What we changed**
-As complexity grew and the user base scaled, a few things needed rethinking. What works at small scale doesn't always hold up in production.
+As the app and the number of users grew, some things had to change.
 
 **The reality of React Native in production**
-What it actually means to maintain a React Native app that real people use every day - from release cycles to debugging to developer experience.
+What it takes to maintain a React Native app people use every day: releases, debugging and developer experience.
 
-JS VidCon was one of the first fully remote conferences during the pandemic. The format was very different from React Conf, but the response from the community was just as warm.
+JS VidCon was one of the first fully remote conferences during the pandemic, so the format was very different from React Conf.
 
 *Update: The recording of this talk is no longer available online. The JS VidCon YouTube channel was hacked a few years ago and the backup couldn't be recovered.*
 
