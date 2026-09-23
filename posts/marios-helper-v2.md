@@ -14,19 +14,19 @@ readingTimeMinutes: 6
 
 My dog Mario has an eye care and pain-killer routine. Every day, several times a day, he needs Hylogel drops. Twice a day, 20 minutes after the Hylogel, he needs Lacrimmune. And there are other medications on top of that.
 
-Getting the timing right is annoying, and missing a dose isn't an option. So about a year ago I built a small React Native app using Expo to handle the reminders. The core requirement was simple: the notification had to be impossible to miss. That meant it should stay in the drawer until I actively acknowledge it, not disappear because I accidentally swiped or closed the app - a sticky notification. Daily scheduled notifications, a "done" button and a snooze button. That's it.
+It's hard to keep track of the timing, and he can't miss a dose. So about a year ago I built a small React Native app with Expo for the reminders. The notification had to be impossible to miss: it should stay in the drawer until I tap it, not disappear if I swipe it or close the app. Daily scheduled notifications, a "done" button and a snooze button.
 
-I built it myself. I'm a frontend developer by trade but expo-notifications is fiddly. It took longer than I expected but it worked.
+I built it myself. I'm a front-end developer, but expo-notifications is fiddly and it took me longer than I expected.
 
 ## What was broken
 
-A few things bothered me constantly.
+A few things kept going wrong.
 
-The first: the notification sound only worked when the app was open. When it was closed or in the background it would be silent. Not very helpful.
+The first: the notification sound only worked when the app was open. When it was closed or in the background it was silent.
 
 The second: if I swiped the notification away from the drawer, it was gone. No record, no retry.
 
-There were smaller things too. Some duplicate notifications being triggered. No way to change the notification times without editing code. No way to adjust which chain steps fired when. The app was basically hardcoded.
+There were smaller things too. Some notifications fired twice, and I couldn't change the times or which chain steps fired when without editing the code.
 
 ## Coming back to it with Claude Code
 
@@ -40,15 +40,15 @@ The fixes took a couple of hours of back and forth. Mostly me describing what I 
 
 ## Then I kept going
 
-Once the bugs were fixed I realised the app was still pretty rigid. Every time Mario's prescription changed (which can be often) I'd have to edit the code directly and that was inconvenient.
+Once the bugs were fixed I realised the app was still pretty rigid. Every time Mario's prescription changed (which can be often) I had to edit the code.
 
-So I asked Claude to add a settings page. Not just time pickers, but full chain management - the ability to add medications, define chain steps, set which hours each step should fire, adjust delays between steps. It ended up being more complex than I expected because the chain logic had to stay consistent: if I apply Hylogel at 09:00, 15:00 and 21:00, then I set Lacrimmune to chain after only 9:00 and 21:00 any upcoming chained medication should have 9:00 and 21:00 options available, not all 3 of Hylogel's daily times.
+I asked Claude to add a settings page where I can add medications, define chain steps, set which hours each step fires and change the delays between steps. It was more complex than I expected because the chain logic had to stay consistent: if I apply Hylogel at 09:00, 15:00 and 21:00 and set Lacrimmune to follow only the 09:00 and 21:00 ones, any medication after Lacrimmune should only offer 09:00 and 21:00, not all three Hylogel times.
 
 That constraint took a few rounds to get right. The settings UI and the preview summary on the notifications tab had to agree about which hours applied to each step.
 
 ## The redesign
 
-At some point during all this the app really looked like it was built in a hurry, which it was. I asked Claude to redo the styling: proper dark/light mode support and a consistent card-based layout.
+The app looked like it was built in a hurry, which it was. I asked Claude to redo the styling: proper dark/light mode support and a consistent card-based layout.
 
 It also reorganised the tabs. The app used to open on the doctor's instructions screen which was plain text. Now it opens on the notifications tab, which shows a live summary of the current schedule and any pending chain notifications.
 
@@ -72,19 +72,19 @@ The actual fix: listen to `AppState`. The moment the app transitions to `backgro
 
 ## The duplicates were still there
 
-After all of this I was still occasionally getting duplicate notifications on snooze, sometimes four of them. I couldn't reliably reproduce it, but I had a hunch it was related to my Garmin Fenix watch.
+After all of this I was still occasionally getting duplicate notifications on snooze, sometimes four of them. I couldn't reproduce it reliably, but I thought it was related to my Garmin Fenix watch.
 
 The original guard used AsyncStorage to track which notifications had already been processed. The problem: AsyncStorage reads are async. Both handlers can call `getItem` before either has called `setItem`, so both pass the guard and both schedule a snooze notification. That's where the duplicates came from and it was there from the beginning, the watch interaction just made it easier to trigger.
 
-The fix: replace the AsyncStorage guard with an in-memory `Set`. JavaScript is single-threaded, so a synchronous `Set.has()` check is atomic so the second handler always sees the ID already there and skips. We also added a cancel-before-schedule step: before scheduling any snooze or chain notification, cancel any existing one-shot notifications for the same medication. Belt and braces.
+The fix: replace the AsyncStorage guard with an in-memory `Set`. JavaScript is single-threaded, so a synchronous `Set.has()` check is atomic so the second handler always sees the ID already there and skips. We also added a cancel-before-schedule step: before scheduling any snooze or chain notification, cancel any existing one-shot notifications for the same medication.
 
 The watch also had its own issue. Tapping snooze from the Garmin gave no visible feedback - the notification stayed in the drawer, nothing happened on the phone - but the action was likely processed silently in the background, scheduling a new snooze notification on top of the sticky one still showing. The fix: the snooze button now applies a fixed 10-minute snooze directly without needing the app open, and explicitly dismisses the original. The time picker only appears when you tap the notification body on the phone.
 
 ## What I took away
 
-The bugs I couldn't fix a year ago weren't particularly hard. They just required knowing where to look and being willing to read through the notification library's source code. Claude did both of those things quickly.
+The bugs I couldn't fix a year ago weren't that hard. You had to know where to look and read the notification library's source code, and Claude did that quickly.
 
-The bigger thing: once the blockers were gone, I found it easy to keep adding things. There was a lot of back and forth, but the friction of making changes was low enough that it was worth trying.
+Once the bugs were fixed, it was easy to keep adding things. There was a lot of back and forth, but changes were quick to try.
 
 The app works properly now. I don't miss Mario's drops and I had fun building it.
 

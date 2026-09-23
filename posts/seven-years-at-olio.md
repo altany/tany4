@@ -6,72 +6,68 @@ categories: ["Career"]
 highlight: true
 color: "#f6256f"
 banner: "olio-logo.svg"
-description: "Reflections on 7 years at Olio, going from mid-level developer to Tech Lead. What I learned about architecture, shipping products, and working with people along the way."
+description: "What I learned in 7 years at Olio, going from mid-level developer to Tech Lead: architecture, shipping products and working with people."
 readingTimeMinutes: 14
 ---
 
-**TL;DR**: I've spent over 7 years at Olio, going from mid-level developer to Tech Lead. This post is a reflection on what I learned about building products, working with people, and growing as an engineer. Some of it might be useful wherever you work.
+**TL;DR**: I've spent over 7 years at Olio and went from mid-level developer to Tech Lead. These are the things I learned about building products, working with people and growing as an engineer.
 
-## The early days: shipping fast with a tiny team
+## The early days
 
-When I joined Olio in 2018, the engineering team was three people including me. The product was early stage, we were rebuilding the app, and honestly I had no idea I'd still be here seven years later.
+When I joined Olio in 2018, the engineering team was three people including me. The product was early stage and we were rebuilding the app.
 
-In the first few months we built the React Native app MVP in about three months. It was intense. We made trade-offs we probably wouldn't make today, but we shipped it and that app now serves millions of people. Being in such a small team meant touching everything, from map performance to ads logic. It was exhausting and exciting at the same time.
+We built the first version of the React Native app in about three months. We made trade-offs we probably wouldn't make today, but we shipped it, and millions of people use that app now. In such a small team I worked on everything, from map performance to ads logic.
 
-What stuck with me from that period: you move fast early, but the patterns you set then are hard to undo, and a small team only moves that fast when there's real trust.
+What I took from that time: the patterns you set early are hard to undo, and a small team can only move that fast if people trust each other.
 
 ## Owning the release process
 
-For over four years I co-owned the mobile release process, coordinating weekly releases for iOS and Android. It sounds routine, but it taught me a lot.
+For over four years I co-owned the mobile release process, with weekly releases for iOS and Android.
 
-It's as much about people as it is about code. Automating what you can and documenting the rest saves time, and being reliable builds trust, but you have to share what you know or you turn into a bottleneck.
+A lot of it was coordinating people, not code. We automated what we could and documented the rest. I also learned to share what I knew, so releases didn't depend on me.
 
 ## The Rails to React migration
 
-One of the bigger projects was migrating the Volunteer Hub from server-rendered Rails views to a React SPA. It took over two years and happened while the platform was actively used by thousands of volunteers.
+One of the bigger projects was migrating the Volunteer Hub from server-rendered Rails views to a React SPA. It took over two years, while thousands of volunteers were using the platform.
 
-That migration taught me a few things: a rewrite that big only works incrementally, important business logic turns up in places you don't expect, and the decisions you make along the way stay in the codebase for years.
+We did it bit by bit. Important business logic kept turning up in places we didn't expect, and the decisions we made along the way stayed in the codebase for years.
 
 ## Leading a large UI rearchitecture
 
-Later I led a rearchitecture of schedule grouping in the Volunteer Hub. The goal was to make the UI reflect how volunteers actually think about their pickups, rather than how the data was structured on the backend.
+Later I led a rearchitecture of schedule grouping in the Volunteer Hub. The goal was for the UI to match how volunteers think about their pickups, not how the data was structured on the backend.
 
-It reminded me that the best technical solution comes from understanding how people actually work, not just the spec. Work like that also needs clear ownership, and feature flags and careful rollouts made a real difference.
+To get it right I had to understand how volunteers actually work, not only read the spec. We released it behind feature flags, a bit at a time.
 
 ## Mentoring and growing engineers
 
 As I got more senior, mentoring became a bigger part of what I did. I paired with engineers on hard problems, reviewed their designs, and tried to help them think through decisions without taking over.
 
-One of the most rewarding things has been watching people I worked with grow into confident engineers. A few things I learned: pairing teaches more than telling people what to do, asking questions helps more than handing over answers, and you have to let go if you want people to grow.
+I liked seeing people I worked with become confident engineers. Pairing worked better than telling people what to do, and asking questions worked better than giving answers. I also had to let them make their own decisions.
 
-## Developer experience matters
+## Developer experience
 
-I spent a lot of time on things that aren't visible: fixing Docker issues, tightening TypeScript, improving PR templates, smoothing out local setup problems. Once, a Docker and MySQL port conflict blocked the whole team. Fixing it wasn't glamorous, but it removed friction for everyone.
+I spent a lot of time on things that aren't visible: fixing Docker issues, tightening TypeScript, improving PR templates, smoothing out local setup problems. Once, a Docker and MySQL port conflict blocked the whole team until I fixed it.
 
-These investments rarely stand out. But they save time and frustration, and they add up.
+## Prototypes
 
-## Prototyping and experimentation
-
-Over the years I built several prototypes. Some shipped, most didn't. What I learned is that prototypes are for learning, and the value isn't only in what you ship. I enjoy taking unclear ideas and turning them into something concrete enough to evaluate.
+Over the years I built several prototypes. Some shipped, most didn't. I like taking an unclear idea and making it concrete enough for the team to decide on.
 
 ## Expanding to charity volunteers
 
-Expanding the platform to support charity volunteers looked simple at first. In practice it surfaced assumptions buried across the whole system. It reinforced something I've come back to a lot: impact comes from understanding the business context, not just writing code.
+Adding charity volunteers to the platform looked simple at first. In practice, assumptions about volunteers were spread across the whole system, and we had to find and change them.
 
 ## Building partner tools
 
-I also worked on front-end tooling for partners (supermarkets and food businesses). This work had a different set of constraints: non-technical users, complex scheduling logic, interfaces that needed to be reliable and easy to understand. A lot of the same things mattered though: clear UX, predictable behaviour, close collaboration across teams.
+I also worked on front-end tooling for partners (supermarkets and food businesses). The users weren't technical and the scheduling logic was complex, so the interfaces had to be reliable and easy to understand.
 
 ## Speaking at React Conf
 
-In 2019 I [spoke at React Conf](/blog/posts/react-conf-2019) about how we built and scaled the Olio app. It was nerve-wracking. Preparing the talk helped me understand our own work better, and the response from the community was generous.
+In 2019 I [spoke at React Conf](/blog/posts/react-conf-2019) about how we built and scaled the Olio app. I was very nervous. Preparing it helped me understand our own work better.
 
 ## What I'd do differently
 
 Be stricter with TypeScript earlier. Invest more in targeted automated testing. Document architectural decisions as they happen, not after.
 
-## What still drives me
+## What I still enjoy
 
-After seven years and multiple codebases, including the consumer app, volunteer tools, partner tools, and some backend work, I still enjoy building things that matter. I like simplifying complex systems. I care about helping people grow. And I'm genuinely excited about using better tools, including AI, to work more thoughtfully.
-
-If you're early in your career, I hope some of this helps. Careers are rarely linear, and some of the most useful skills take a while to notice. And if you're mid-career and wondering whether staying somewhere long-term is worth it: deep knowledge and shared history count for more than they look like they do.
+I've worked on the consumer app, volunteer tools, partner tools and some backend. I still enjoy building useful things, making complex systems simpler and helping people grow. I'm also looking forward to working with better tools, including AI.

@@ -10,17 +10,17 @@ readingTimeMinutes: 5
 
 Part 2 of 3 - [Part 1: Building a job-hunting MCP server](/blog/posts/building-a-job-hunting-mcp-server) · [Part 3: Teaching it what it can do](/blog/posts/teaching-my-job-hunting-mcp-server-what-it-can-do)
 
-**TL;DR**: In [part one](/blog/posts/building-a-job-hunting-mcp-server) I built a personal MCP server that scores job fits and tracks my pipeline. It only ran on my laptop. I've now turned it into a remote server with a public URL, so I can use it from the Claude and ChatGPT apps on my phone. The transport switch was the easy part. Most of the work was around it: getting personal data out of the code, finding free hosting, and fixing an error that only happened through ChatGPT.
+**TL;DR**: In [part one](/blog/posts/building-a-job-hunting-mcp-server) I built a personal MCP server that scores job fits and tracks my pipeline. It only ran on my laptop. I've now turned it into a remote server with a public URL, so I can use it from the Claude and ChatGPT apps on my phone. Most of the work was getting personal data out of the code, finding free hosting, and fixing an error that only happened in ChatGPT.
 
 ## Why go remote
 
-The original version connected to Claude Desktop over stdio, and to ChatGPT through a local Express server exposed with a Cloudflare tunnel. It worked, but it was tied to my machine. If my laptop was asleep, the tool was too. I couldn't paste a job ad into the app on my phone and get a score back.
+The original version connected to Claude Desktop over stdio, and to ChatGPT through a local Express server exposed with a Cloudflare tunnel. It only worked while my laptop was on, and I couldn't paste a job ad into the app on my phone and get a score back.
 
-A remote MCP server fixes this. You add a public HTTPS endpoint once as a custom connector, and it's available on every device. The goal was to take the same tools and make them reachable from anywhere.
+With a remote MCP server, you add a public HTTPS endpoint once as a custom connector and it works on every device.
 
 ## Keeping both transports
 
-I didn't want to break the desktop setup while building the remote one. That was straightforward because the tool logic was already separate from the transport. All the work (the prompts, the Sheets and Docs calls) lives in one function. The entrypoint picks a transport from an environment variable: stdio by default for the desktop app, or an HTTP server for the remote version. Both use the same tools.
+I didn't want to break the desktop setup while building the remote one. That was easy because the tool logic was already separate from the transport. All the work (the prompts, the Sheets and Docs calls) lives in one function. The entrypoint picks a transport from an environment variable: stdio by default for the desktop app, or an HTTP server for the remote version. Both use the same tools.
 
 ## Auth
 
@@ -30,11 +30,11 @@ A single shared token does that. The server won't start without one, and rejects
 
 ## Cleaning up before going public
 
-I planned to make the repo public, so I went looking for anything that shouldn't be shared. The credentials were fine, the service-account key and config had never been committed. What I didn't expect was that personal details about me had ended up in the source itself: notes and preferences that should have come from my private config were written into the tool prompts instead. Not secrets, but not things I want in a public repo.
+I planned to make the repo public, so I went looking for anything that shouldn't be shared. The credentials were fine, the service-account key and config had never been committed. But personal details had ended up in the source: notes and preferences that should have come from my private config were written into the tool prompts. They weren't secrets, but I didn't want them in a public repo.
 
-The fix was to read all of that from my gitignored config, and to go over the project properly before making it public.
+I moved all of that into my gitignored config, and went through the whole project before making it public.
 
-The point: gitignore only protects you from here on. It's easier to keep personal data out of the source in the first place than to find it later.
+Gitignore only helps from the moment you add it, so it's easier to keep personal data out of the source from the start.
 
 ## Hosting it for free
 
@@ -46,11 +46,9 @@ The downside of free hosting is that the service sleeps after a period of inacti
 
 The server worked in my own tests. Then I connected it to ChatGPT, asked for my applications, and got a 502.
 
-What made it confusing: at the same time ChatGPT was failing, my own request to the same URL worked and returned all my data. The server was up and healthy, but ChatGPT couldn't talk to it.
+At the same time, my own request to the same URL worked and returned all my data. The server was fine, but ChatGPT couldn't talk to it.
 
 The cause was the response format. The MCP HTTP transport replies with a streaming `text/event-stream` by default. Command-line tools handle that fine, and it had worked locally through the Cloudflare tunnel. But ChatGPT's client, behind the free host's proxy, didn't read the stream cleanly and returned a gateway error. The fix was to make the transport reply with plain JSON instead. It doesn't need streaming here, and JSON goes through proxies without trouble.
-
-The lesson: "works on my machine" extends to the network path. When two clients behave differently against the same healthy server, the difference is usually in the layers between them.
 
 ## Marking which tools are safe
 
@@ -58,9 +56,9 @@ By default the assistant treated every tool as potentially destructive and asked
 
 ## Tidying the context
 
-Part one ended on context drift, the way detail fades between sessions and within a long conversation. Going remote made me deal with a related problem. My context had grown into several overlapping files, plus a section of config the tool wasn't even reading anymore. The same facts were written in a few places and had started to disagree with each other.
+Part one ended with the model losing context between and within conversations. Going remote made me deal with a related problem. My context had grown into several overlapping files, plus a section of config the tool wasn't even reading anymore. The same facts were written in a few places and had started to disagree with each other.
 
-So I consolidated. Structured settings stay in config; the rest (background, project write-ups, interview notes) lives in one knowledge base file, with a single command that bundles it for the hosted server. One source is easier to keep accurate, easier to extend, and cheaper to send to the model on each call. It doesn't fix context drift, but it removes the version of the problem I'd created for myself.
+I merged them. Structured settings stay in config, and the rest (background, project write-ups, interview notes) lives in one knowledge base file, with one command that bundles it for the hosted server. One file is easier to keep accurate and cheaper to send to the model on each call. It doesn't stop the model losing context, but the facts no longer disagree.
 
 ## Where it is now
 
