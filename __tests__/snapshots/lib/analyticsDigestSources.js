@@ -139,14 +139,14 @@ describe('getCloudflareWeek', () => {
     expect(bodies).toHaveLength(2)
     expect(bodies[0]).toContain('requestHost_in: ["tany4.com","www.tany4.com"]')
     expect(bodies[0]).toContain(`datetime_geq: "${week.since}"`)
-    expect(result.current).toEqual({ pageviews: 80, visits: 30, sampleInterval: 1, loadTimeMs: 1235 })
+    expect(result.current).toEqual({ pageviews: 80, visits: 30, sampleInterval: 1, loadTimeMs: 1235, loadTimeSamples: 70 })
   })
 
   it('has no load time for a week without performance data', async () => {
     global.fetch = async () =>
       json({ data: { viewer: { accounts: [{ pageloads: [], performance: [{ count: 0, quantiles: { pageLoadTimeP50: 0 } }] }] } } })
     const result = await getCloudflareWeek(week)
-    expect(result.current).toEqual({ pageviews: 0, visits: 0, sampleInterval: 1, loadTimeMs: null })
+    expect(result.current).toEqual({ pageviews: 0, visits: 0, sampleInterval: 1, loadTimeMs: null, loadTimeSamples: 0 })
   })
 
   it('fails clearly when the token cannot read the account', async () => {
