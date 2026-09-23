@@ -90,7 +90,7 @@ describe('buildReport', () => {
     expect(text).toContain('Fixing the app I built for my dog (/blog/posts/marios-helper-v2): 4')
     expect(text).toContain('CV (PDF): 3')
     expect(text).toContain('Cloudflare counted 30 visits (up 50% on the week before)')
-    expect(text).toContain("median of 400 measured page loads.")
+    expect(text).toContain("page views. Page load time is Cloudflare's median of 400 measured page loads.")
     expect(text).toContain('sampled estimates')
     expect(text).not.toContain('Needs a look')
     expect(text).not.toContain('incomplete')
