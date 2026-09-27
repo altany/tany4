@@ -221,19 +221,6 @@ const styles = StyleSheet.create({
     textDecoration: "none",
   },
 
-  // The sidebar's content ends on page one; page two fills the empty column with
-  // education and languages, which are short and read fine in a narrow measure
-  sidebarPageTwo: {
-    position: "absolute",
-    left: 0,
-    top: 0,
-    width: 210,
-    paddingTop: 24,
-    paddingRight: 16,
-    paddingLeft: 16,
-    color: colour.ink,
-  },
-
   sidebarEduRow: {
     marginBottom: 10,
   },
@@ -562,39 +549,32 @@ export default function CvPdfDocument({ cv }: { cv: Cv }) {
               section={section}
             />
           ))}
+
+          <View style={styles.sidebarSection} wrap={false}>
+            <Text style={styles.sidebarHeading}>Education</Text>
+            {cv.education.map((edu) => (
+              <View key={`${edu.institution}-${edu.date}`} style={styles.sidebarEduRow} wrap={false}>
+                <Text style={styles.sidebarEduDate}>{edu.date}</Text>
+                <Text style={styles.sidebarEduSchool}>{edu.institution}</Text>
+                <Text style={styles.sidebarEduDegree}>{edu.degree}</Text>
+              </View>
+            ))}
+          </View>
+
+          <View style={styles.sidebarSection} wrap={false}>
+            <Text style={styles.sidebarHeading}>Languages</Text>
+            {cv.languages.map((l) => (
+              <View key={l.name} style={styles.sidebarLanguageRow} wrap={false}>
+                <Text style={styles.sidebarLanguageName}>{l.name}</Text>
+                <Text style={styles.sidebarLanguageLevel}>
+                  {l.levelLabel}{l.levelCode ? ` (${l.levelCode})` : ""}
+                </Text>
+              </View>
+            ))}
+          </View>
         </View>
 
         <View style={styles.pageHeader} fixed render={({ pageNumber }) => (pageNumber > 1 ? <View /> : null)} />
-
-        <View
-          fixed
-          render={({ pageNumber }) =>
-            pageNumber === 2 ? (
-              <View style={styles.sidebarPageTwo}>
-                <Text style={styles.sidebarHeading}>Education</Text>
-                {cv.education.map((edu) => (
-                  <View key={`${edu.institution}-${edu.date}`} style={styles.sidebarEduRow} wrap={false}>
-                    <Text style={styles.sidebarEduDate}>{edu.date}</Text>
-                    <Text style={styles.sidebarEduSchool}>{edu.institution}</Text>
-                    <Text style={styles.sidebarEduDegree}>{edu.degree}</Text>
-                  </View>
-                ))}
-
-                <View style={styles.sidebarSection}>
-                  <Text style={styles.sidebarHeading}>Languages</Text>
-                  {cv.languages.map((l) => (
-                    <View key={l.name} style={styles.sidebarLanguageRow} wrap={false}>
-                      <Text style={styles.sidebarLanguageName}>{l.name}</Text>
-                      <Text style={styles.sidebarLanguageLevel}>
-                        {l.levelLabel}{l.levelCode ? ` (${l.levelCode})` : ""}
-                      </Text>
-                    </View>
-                  ))}
-                </View>
-              </View>
-            ) : null
-          }
-        />
 
         <View style={styles.main}>
           <Text style={styles.nameRow}>
