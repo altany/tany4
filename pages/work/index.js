@@ -13,7 +13,7 @@ const R1 = {
   meta: "The Ready Collective · Senior Mobile Engineer · 2026– · React Native, Expo, TypeScript, Node.js",
   intro: [
     "A readiness app for youth athletes aged 6 to 17, used by families and coaches. Parents do simple daily check-ins, and R1 turns them into a daily readiness signal (Rebuilding, Rising or Ready) across Mind, Body and Energy, with guidance on movement, confidence and recovery.",
-    "I joined the live app in May 2026 and work across the React Native app and the Node.js backend.",
+    "I joined the live app in May 2026. It is early stage and REMOVED, and I work across its codebases: the React Native and Expo app, the web app, and the Node.js and REMOVED backend.",
   ],
   stores: [
     { label: "App Store", icon: "apple", href: "https://apps.apple.com/us/app/youth-ready-first-r1/id6761061980" },
@@ -48,8 +48,8 @@ const OLIO = [
     meta: "Olio · Core contributor, release owner · 2018–2025 · React Native, TypeScript",
     bullets: [
       "One of the first front-end engineers on the React Native app. We shipped the MVP in 3 months with a small team.",
-      "Ran the App Store and Google Play releases from 2021 to 2025, coordinating with product, QA and backend.",
-      "Led on app performance, spotting problems early and fixing them as they came up, for example on the item list and map views.",
+      "Ran the App Store and Google Play releases as a mid-level and senior developer, coordinating with product, QA and backend.",
+      "Built the map view end to end: marker clustering, filters, a card carousel and current location. Made it faster by rendering markers only when needed.",
     ],
   },
   {
@@ -59,6 +59,7 @@ const OLIO = [
     bullets: [
       "Moved the platform from Rails views to a React SPA, setting up routing, navigation, configuration and linting from scratch. Thousands of volunteers moved over without major issues.",
       "Extended it from Olio volunteers to charity volunteers, with their own collection flows.",
+      "Added Datadog monitoring.",
     ],
   },
   {
@@ -69,6 +70,9 @@ const OLIO = [
       "Built Tomorrow's Collections, which shows partners their next-day pickups. I kept its rules explicit instead of hardcoding them, so later changes stayed small.",
       "Redesigned the store confirmation flow on my own, mostly in the partner tools and partly across the other platforms. Issue reports dropped by about 90%.",
       "Led internationalisation: moved date and time handling to Luxon, added Chinese, and set up translation syncing with Loco.",
+      "Built the impact data dashboard for business partners end to end: impact cards such as households fed, a grid view and a downloadable PDF report.",
+      "Shipped the backend changes these tools needed in the Rails API: collection claiming rules, event tracking, admin tools for store inductions and notification rules.",
+      "Added Sentry error handling, CloudWatch dashboards and Mixpanel tracking.",
       "Mentored mid-level engineers through pairing and code review.",
     ],
   },
