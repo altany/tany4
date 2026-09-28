@@ -49,7 +49,7 @@ const OLIO = [
     bullets: [
       "One of the first front-end engineers on the React Native app. We shipped the MVP in 3 months with a small team.",
       "Ran the App Store and Google Play releases as a mid-level and senior developer, coordinating with product, QA and backend.",
-      "Built the map view end to end: marker clustering, filters, a card carousel and current location. Made it faster by rendering markers only when needed.",
+      "Built the map view end to end: marker clustering, filters, a card carousel and current location. Fixed the app hanging by stopping markers re-rendering too often.",
     ],
   },
   {
