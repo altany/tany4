@@ -221,7 +221,9 @@ describe('weekly-analytics endpoint', () => {
     expect(res.statusCode).toBe(200)
     expect(res.body).toEqual({ sent: true, id: '<message-1>', problems: 1 })
     expect(sent[0].message.text).toContain('Could not load Cloudflare Web Analytics')
-    expect(sent[0].message.text).toContain('Vercel Web Analytics')
+    // The Vercel half still renders. Don't assert on the "started on 15 Sept 2026"
+    // note: it only shows for weeks that began before tracking did.
+    expect(sent[0].message.text).toContain('Visitors:')
   })
 
   it('previews the email in the logs without sending it', async () => {
@@ -242,7 +244,7 @@ describe('weekly-analytics endpoint', () => {
     expect(res.body.reports).toHaveLength(2)
     expect(res.body.reports.every((r) => r.problems === 1)).toBe(true)
     expect(logged).toContain('[weekly-analytics-preview]')
-    expect(logged).toContain('Vercel Web Analytics')
+    expect(logged).toContain('Visitors:')
   })
 
   it('rejects previews without the cron secret', async () => {
