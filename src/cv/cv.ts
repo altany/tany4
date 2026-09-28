@@ -115,7 +115,7 @@ export const cv: Cv = {
         "Promoted from mid-level to senior in about a year.",
         "One of a small team that built Olio's React Native app from scratch and shipped the first version in 3 months.",
         "Ran the App Store and Google Play releases, coordinating with product, QA and backend.",
-        "Built the map view in the React Native app end to end: marker clustering, filters, a card carousel and current location. Made it faster by rendering markers only when needed.",
+        "Built the map view in the React Native app end to end: marker clustering, filters, a card carousel and current location. Fixed the app hanging by stopping markers re-rendering too often.",
         "Led the move of the volunteer platform from Rails views to a React SPA, setting up routing, navigation and component patterns from scratch.",
         "Then designed and built the flows that let charity volunteers use it alongside Olio volunteers.",
         "Added Datadog monitoring to the React volunteer platform.",
