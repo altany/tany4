@@ -56,6 +56,7 @@ describe('questions a recruiter asks', () => {
 
   it('finds the backend work instead of only the front-end pages', async () => {
     const context = await getKeywordContext('Do you have any backend experience?')
-    expect(context).toMatch(/node\.js|rails|mongodb/i)
+    // Not just the word "Node.js" in a page description: the lines that say what was built
+    expect(context).toMatch(/Rails API|Ruby on Rails|REMOVED/i)
   })
 })
