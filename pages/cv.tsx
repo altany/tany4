@@ -2,6 +2,7 @@ import Head from "next/head";
 import Layout from "../components/layout";
 import SplitPage from "../components/splitPage";
 import Terminal, { Mark } from "../components/terminal";
+import DownloadCv from "../components/downloadCv";
 import styles from "../styles/page.module.scss";
 import { cv } from "../src/cv/cv";
 import { SITE_TITLE, SITE_URL, CV_PDF_URL } from "../lib/constants";
@@ -30,6 +31,7 @@ export default function CvPage() {
       <SplitPage
         side={
           <>
+            <DownloadCv compact />
             {skills?.bullets && (
               <>
                 <div className={styles.label}>Skills</div>
@@ -149,6 +151,8 @@ export default function CvPage() {
             </div>
           </article>
         ))}
+
+        <DownloadCv />
       </SplitPage>
     </Layout>
   );
