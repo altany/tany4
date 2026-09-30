@@ -41,4 +41,21 @@ describe('profile context', () => {
     const context = await getKeywordContext('What do you do now?')
     expect(context).toMatch(/Current role: .+ at The Ready Collective/)
   })
+
+  it('carries the whole career length, not one employer tenure', async () => {
+    const context = await getKeywordContext('How many years of experience do you have?')
+    expect(context).toMatch(/Total experience: \d+ years as a developer/)
+  })
+})
+
+describe('questions a recruiter asks', () => {
+  it('finds the big rebuilds when asked for the most complex thing', async () => {
+    const context = await getKeywordContext('What is the most complex thing you have built?')
+    expect(context).toMatch(/scheduling|rebuild|10-year-old/i)
+  })
+
+  it('finds the backend work instead of only the front-end pages', async () => {
+    const context = await getKeywordContext('Do you have any backend experience?')
+    expect(context).toMatch(/node\.js|rails|mongodb/i)
+  })
 })
