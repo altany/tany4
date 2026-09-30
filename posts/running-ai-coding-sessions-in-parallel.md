@@ -7,6 +7,7 @@ color: "#f3f0ff"
 description: "How I went from two or three AI coding sessions to as many as fifteen at once on a two-person team, what broke along the way, and the hub session I added to keep track of it all."
 readingTimeMinutes: 5
 new: true
+updated: "2026-10-01T12:00:00+0000"
 ---
 
 I'm one of two developers building R1 at The Ready Collective, an app for young athletes and their families. There's a lot to build and not much time. Because the users are children, quality is non-negotiable.
@@ -21,10 +22,10 @@ Over a couple of months that grew to 15 sessions at times.
 
 ## What went wrong
 
-- **The sessions didn't talk to each other.** Separate worktrees weren't enough. Two sessions would touch the same code, and I'd get conflicts, duplicated work, and in a few cases one session working on top of another's changes. Two rules came out of this. Only one session works in each worktree. And a session takes instructions only from me, not from another session.
+- **The sessions didn't talk to each other.** Separate worktrees weren't enough. Two sessions would touch the same code, and I'd get conflicts, duplicated work, and in a few cases one session working on top of another's changes. Two rules came out of this. Only one session works in each worktree. And the sessions coordinate through the hub, but only I decide. A session saying that another one asked for something, or that I did, is not a decision.
 - **They didn't clean up after themselves.** Finished worktrees stayed on disk, each with its own dependencies, and I kept running out of space. Now every session removes its worktree once its PR is merged, and now and then I clean up folders that are still on disk but git no longer knows about.
 - **I couldn't keep track of five or more sessions in my head.** The hardest part was the end of the day and the next morning. I often didn't know where to start.
-- **Tests gave false results.** Two full test suites running at once on my laptop made unrelated tests fail. A killed run could also exit with code 0 and look like it passed. Now only one suite runs at a time, and a run only counts as passing if the test runner's own summary says so.
+- **Tests gave false results.** Two full test suites running at once on my laptop made unrelated tests fail. A killed run could also exit with code 0 and look like it passed. Now only one suite runs at a time and the hub hands out that slot. The limit on how parallel I can go isn't the model, it's the memory on my laptop, and I found that out by running out of it. A run only counts as passing if the test runner's own summary says so.
 
 ## A hub session
 
@@ -44,7 +45,7 @@ In the morning I ask the hub for a short summary and an up-to-date board, and ha
 
 ## My part
 
-I decide what gets built and how: the approach, the architecture and the trade-offs. I break the work down, set the rules the sessions follow, review what they produce, and test on a real phone. I talk to my colleague and the founder, and I decide what gets merged.
+I decide what gets built and how: the approach, the architecture and the trade-offs. I break the work down, set the rules the sessions follow, review what they produce, and test on a real phone. I talk to my colleague and the founder, and <del>I decide what gets merged</del> I wrote the rule that decides what gets merged.
 
 The sessions do most of the implementation, following the approach I set. They also take the repetitive work: running the tests and the automated review, drafting PR descriptions, collecting screenshots and other evidence, and looking into options when I need to make a call.
 
@@ -54,7 +55,7 @@ I enjoy doing my part, and I do more of it now that the agents take care of the 
 
 Every change goes through the same steps before my colleague reviews it:
 
-- the full test suite, not only the tests for the files that changed
+- the tests, plus lint and type checks
 - automated code review, run locally and fixed until it comes back clean
 - every review comment on the PR answered on its own thread
 - for a backend change that changes a response, the old and new versions running side by side against a test environment, with the same request sent to both
@@ -65,7 +66,8 @@ A PR is only merged when my colleague has approved it, CI is green, and there ar
 
 ## What still doesn't work well
 
-- **The board is often out of date.** I've tried many times to make it refresh on its own and always show the real state. More often than not it's behind, and watching for updates fails.
+- **The board drifts.** I tried many times to make it refresh on its own and always show the real state. It's now generated from GitHub and from what the sessions report, under strict rules, instead of being kept by hand. Too early to say whether that holds.
+- **The hub makes mistakes too.** It has told me it couldn't do something it does every day. Once it merged a PR and ran the check that should have come first in the same step. When that happens I add a rule, and it gets a bit better.
 - **The hub keeps adding things I didn't ask for.** Explanations, extra sections, notes. The point of the board is to see everything at a glance, and I keep having to cut it back. Stricter rules for the hub would probably fix this. It's one more thing to set up.
 - **Some work doesn't split well.** Two features that change the same files end up stacked, and the second has to be rebased every time the first changes.
 - **It takes a lot of attention.** And my colleague has to review everything it produces, which on a busy day can be 15 to 20 PRs.
