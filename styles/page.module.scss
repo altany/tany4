@@ -187,6 +187,69 @@ $mono: var(--font-mono), ui-monospace, Menlo, monospace;
   }
 }
 
+// ---------- the CV download, a terminal line you can click ----------
+.cvDownload {
+  display: block;
+  background: var(--color-term-bg);
+  border-radius: 14px;
+  padding: 14px 18px;
+  font: 13px/1.7 $mono;
+  color: var(--color-term-text);
+  text-decoration: none;
+  box-shadow: 0 24px 44px -30px var(--color-shadow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 26px 44px -26px var(--color-shadow);
+
+    .cvDownloadFile {
+      color: var(--color-term-green);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    &:hover,
+    &:focus-visible {
+      transform: none;
+    }
+  }
+}
+
+.cvDownloadCommand {
+  display: block;
+  color: var(--color-term-dim);
+}
+
+.cvDownloadFile {
+  display: block;
+  color: var(--color-term-text);
+  font-size: 14px;
+  letter-spacing: 0.01em;
+
+  span[aria-hidden] {
+    color: var(--color-warm);
+    margin-right: 4px;
+  }
+
+  .caret {
+    margin-left: 6px;
+  }
+}
+
+.cvDownloadCompact {
+  padding: 12px 14px;
+  font-size: 12px;
+  margin-bottom: 26px;
+
+  .cvDownloadFile {
+    font-size: 13px;
+  }
+}
+
 .termCompact {
   padding: 12px 16px;
   font-size: 12.5px;
