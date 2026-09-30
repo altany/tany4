@@ -3,7 +3,7 @@
 //
 //   npm run questions              → the last 7 days
 //   npm run questions -- --days 30 → the last 30 days
-//   npm run questions -- --full    → full answers instead of the first lines
+//   npm run questions -- --short   → first 200 characters of each answer
 //
 // It reads the log through the Vercel CLI (`vercel blob get`), so it uses your
 // own Vercel login and needs no token on disk.
@@ -39,7 +39,7 @@ const arg = (name) => {
 };
 
 const days = Number(arg("days") || 7);
-const full = process.argv.includes("--full");
+const short = process.argv.includes("--short");
 const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000);
 
 const monthKey = (d) => `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, "0")}`;
@@ -84,7 +84,7 @@ if (entries.length === 0) {
   process.exit(0);
 }
 
-const short = (text) => {
+const firstPart = (text) => {
   const clean = (text || "").replace(/\s+/g, " ").trim();
   return clean.length > 200 ? `${clean.slice(0, 200)}…` : clean;
 };
@@ -93,7 +93,7 @@ for (const e of entries) {
   const when = new Date(e.at).toLocaleString("en-GB", { timeZone: "UTC", dateStyle: "medium", timeStyle: "short" });
   console.log(`\n${when} UTC${e.country ? ` · ${e.country}` : ""}${e.refused ? " · not covered" : ""}`);
   console.log(`Q: ${e.question}`);
-  console.log(`A: ${full ? (e.answer || "").trim() : short(e.answer)}`);
+  console.log(`A: ${short ? firstPart(e.answer) : (e.answer || "").trim()}`);
   if (e.sources?.length) console.log(`   found: ${e.sources.join(", ")}`);
   if (e.tokens || e.ms) console.log(`   ${e.tokens ?? "?"} tokens · ${e.ms ?? "?"} ms`);
 }
