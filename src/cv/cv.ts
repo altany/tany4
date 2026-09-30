@@ -77,7 +77,7 @@ export const cv: Cv = {
       title: "Senior Mobile Engineer (Contract)",
       company: "The Ready Collective",
       summary:
-        "An early-stage, REMOVED platform for young athletes (R1). Codebases: a React Native and Expo app, a web app, and a Node.js and REMOVED backend. Three-month contract, now continuing month to month.",
+        "A platform for young athletes (R1). I work across the React Native app, the web app and the Node.js backend. Three-month contract, now continuing month to month.",
       bullets: [
         "Built food logging for young athletes, with child-appropriate food ratings and an LLM step whose running cost is kept under control.",
         "Designed how the team ships risky changes behind feature flags, turned on through code review.",

@@ -13,7 +13,7 @@ const R1 = {
   meta: "The Ready Collective · Senior Mobile Engineer · 2026– · React Native, Expo, TypeScript, Node.js",
   intro: [
     "A readiness app for youth athletes aged 6 to 17, used by families and coaches. Parents do simple daily check-ins, and R1 turns them into a daily readiness signal (Rebuilding, Rising or Ready) across Mind, Body and Energy, with guidance on movement, confidence and recovery.",
-    "I joined the live app in May 2026. It is early stage and REMOVED, and I work across its codebases: the React Native and Expo app, the web app, and the Node.js and REMOVED backend.",
+    "I joined the live app in May 2026 and work across the React Native app, the web app and the Node.js backend.",
   ],
   stores: [
     { label: "App Store", icon: "apple", href: "https://apps.apple.com/us/app/youth-ready-first-r1/id6761061980" },
