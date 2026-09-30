@@ -17,7 +17,9 @@ export default function DownloadCv({ compact = false }) {
       </span>
       <span className={styles.cvDownloadFile}>
         <span aria-hidden="true">↓</span> {compact ? "CV.pdf" : "TaniaPapazafeiropoulou-CV.pdf"}
-        <span className={styles.caret} aria-hidden="true" />
+        {/* One blinking caret on the page is enough: the side pane's copy sits
+            next to the CV itself and would be a second thing flashing */}
+        {!compact && <span className={styles.caret} aria-hidden="true" />}
       </span>
     </a>
   );

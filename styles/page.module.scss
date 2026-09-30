@@ -248,6 +248,12 @@ $mono: var(--font-mono), ui-monospace, Menlo, monospace;
   .cvDownloadFile {
     font-size: 13px;
   }
+
+  // Below this the side pane stacks under the CV, which would put this copy
+  // directly under the one at the end of the page
+  @media (max-width: 1040px) {
+    display: none;
+  }
 }
 
 .termCompact {
