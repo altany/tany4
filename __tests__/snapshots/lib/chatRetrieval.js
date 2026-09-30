@@ -35,3 +35,10 @@ describe('chat retrieval', () => {
     expect(sourcesOf(context).some((s) => s.startsWith('blog'))).toBe(true)
   })
 })
+
+describe('profile context', () => {
+  it('always carries the current role, not just the career-wide title', async () => {
+    const context = await getKeywordContext('What do you do now?')
+    expect(context).toMatch(/Current role: .+ at The Ready Collective/)
+  })
+})
