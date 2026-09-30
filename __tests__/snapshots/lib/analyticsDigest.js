@@ -106,6 +106,25 @@ describe('buildReport', () => {
     expect(text).toContain('median of 30 measured page loads, too few to compare with the week before.')
   })
 
+  it('lists the chat questions asked that week', () => {
+    const questions = [
+      { at: '2026-09-15T09:00:00.000Z', question: 'What does she do at Olio?', refused: false },
+      { at: '2026-09-17T18:30:00.000Z', question: 'Does she know Rust?', refused: true },
+    ]
+    const { text, html } = buildReport({ label: 'x', vercel, cloudflare, questions })
+    expect(text).toContain('Questions asked in the chat (2):')
+    expect(text).toContain('What does she do at Olio?')
+    expect(text).toContain('Does she know Rust? [answered: not covered]')
+    expect(html).toContain('Questions asked in the chat')
+    expect(html).toContain('answered: not covered')
+  })
+
+  it('leaves the questions section out when nobody asked anything', () => {
+    const { text, html } = buildReport({ label: 'x', vercel, cloudflare })
+    expect(text).not.toContain('Questions asked')
+    expect(html).not.toContain('Questions asked')
+  })
+
   it('shows changes in the HTML, with a slower page as bad news', () => {
     const slower = { ...cloudflare, current: { ...cloudflare.current, loadTimeMs: 900 }, previous: { ...cloudflare.previous, loadTimeMs: 600 } }
     const { html } = buildReport({ label: 'x', vercel, cloudflare: slower })

@@ -1,5 +1,6 @@
 import { convertToModelMessages, generateText } from "ai";
 import { openai } from "@ai-sdk/openai";
+import { logChatTurn } from "../../lib/chatLog";
 import { getKeywordContext } from "../../lib/chat/retrieval";
 import { CONTACT_EMAIL } from "../../lib/constants";
 
@@ -85,15 +86,28 @@ export default async function handler(req, res) {
       return;
     }
 
+    const startedAt = Date.now();
     const result = await generateText({
       model: openai(MODEL),
       system,
       maxTokens: MAX_TOKENS,
       messages: modelMessages,
     });
+    const answer = result.text || "";
+
+    // Written before the response so it can't be lost when the function freezes
+    await logChatTurn({
+      question: lastUserText,
+      answer,
+      context,
+      refused: answer.includes("isn’t covered on my website"),
+      tokens: result.usage?.totalTokens ?? null,
+      ms: Date.now() - startedAt,
+      country: req.headers["x-vercel-ip-country"] || null,
+    });
 
     res.setHeader("Cache-Control", "no-store");
-    res.status(200).json({ text: result.text || "" });
+    res.status(200).json({ text: answer });
   } catch (e) {
     const message = typeof e?.message === "string" ? e.message : "Chat failed";
     console.error("[api/chat] generateText failed:", message);
