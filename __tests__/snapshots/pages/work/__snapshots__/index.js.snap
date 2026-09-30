@@ -183,7 +183,7 @@ exports[`renders the work page unchanged 1`] = `
               A readiness app for youth athletes aged 6 to 17, used by families and coaches. Parents do simple daily check-ins, and R1 turns them into a daily readiness signal (Rebuilding, Rising or Ready) across Mind, Body and Energy, with guidance on movement, confidence and recovery.
             </p>
             <p>
-              I joined the live app in May 2026. It is early stage and REMOVED, and I work across its codebases: the React Native and Expo app, the web app, and the Node.js and REMOVED backend.
+              I joined the live app in May 2026 and work across the React Native app, the web app and the Node.js backend.
             </p>
             <div
               class="buttons"

@@ -66,9 +66,4 @@ describe('technologies named in the CV', () => {
     const context = await getKeywordContext('What is your experience with Node.js?')
     expect(context).toMatch(/Node\.js/)
   })
-
-  it('finds the database work', async () => {
-    const context = await getKeywordContext('Have you worked with databases?')
-    expect(context).toMatch(/REMOVED/i)
-  })
 })
