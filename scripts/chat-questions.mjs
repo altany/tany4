@@ -9,8 +9,29 @@
 // own Vercel login and needs no token on disk.
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
+import fs from "node:fs";
+import path from "node:path";
 
 const run = promisify(execFile);
+
+// The CLI needs the store's token passed in: it also reads .env.local, where
+// `vercel blob create-store` left VERCEL_OIDC_TOKEN, and refuses to guess
+// between the two. Run `vercel env pull` if .env.local is missing.
+function blobToken() {
+  if (process.env.BLOB_READ_WRITE_TOKEN) return process.env.BLOB_READ_WRITE_TOKEN;
+  const envFile = path.join(process.cwd(), ".env.local");
+  if (fs.existsSync(envFile)) {
+    const line = fs
+      .readFileSync(envFile, "utf8")
+      .split("\n")
+      .find((l) => l.startsWith("BLOB_READ_WRITE_TOKEN="));
+    if (line) return line.slice("BLOB_READ_WRITE_TOKEN=".length).trim().replace(/^"|"$/g, "");
+  }
+  console.error("No BLOB_READ_WRITE_TOKEN. Run `vercel env pull` in this folder first.");
+  process.exit(1);
+}
+
+const token = blobToken();
 
 const arg = (name) => {
   const i = process.argv.indexOf(`--${name}`);
@@ -26,11 +47,18 @@ const months = Array.from(new Set([monthKey(since), monthKey(new Date())]));
 
 async function readMonth(key) {
   try {
-    const { stdout } = await run("vercel", ["blob", "get", `chat/${key}.jsonl`], { maxBuffer: 20 * 1024 * 1024 });
+    const { stdout } = await run(
+      "vercel",
+      ["blob", "get", `chat/${key}.jsonl`, "--access", "private", "--rw-token", token],
+      { maxBuffer: 20 * 1024 * 1024 }
+    );
     return stdout;
   } catch (e) {
-    // No questions that month, or the store isn't reachable
-    return "";
+    const message = `${e.stderr || e.message || ""}`;
+    // A month nobody asked anything in simply has no file
+    if (/not found|does not exist|404/i.test(message)) return "";
+    console.error(`Could not read chat/${key}.jsonl:\n${message.trim()}`);
+    process.exit(1);
   }
 }
 
