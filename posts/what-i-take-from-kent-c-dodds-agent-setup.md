@@ -35,7 +35,7 @@ I put my setup together by trial and error, from what I needed and what I saw wo
 
 **I don't read the implementation either. What I check instead is different.** His gates are good automated reviewers, feature flags, preview environments and backups. Mine are those plus two people: my colleague reviews every pull request, and before it reaches him I run the thing myself on a simulator or a real phone. The users of the app I work on are children, and a quiet mistake there is not a rollback, it's a child seeing something they shouldn't.
 
-**He runs in the cloud. I run locally.** My work only counts as tested when it's run on a simulator or a real phone against a local backend, and the sessions need to reach those.
+**He runs in the cloud. I run locally.** Every change of his gets its own environment, seeded and with the third-party services mocked, so his agents can check their own work against something real. I haven't set that up, because it takes resources. Until I do, my work only counts as tested when it runs on a simulator or a real phone against a local backend, and the sessions have to be where those are.
 
 **He suggests teams should get smaller.** We're two developers, and that works well for us for now.
 
