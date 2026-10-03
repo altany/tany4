@@ -37,7 +37,7 @@ I put my setup together by trial and error, from what I needed and what I saw wo
 
 **He runs in the cloud. I run locally.** Not out of principle. My work only counts as tested when it's run on a simulator or a real phone against a local backend, and the sessions need to reach those.
 
-**He suggests teams should get smaller.** We're two developers, so I can't test that one. What I can say is that the second person is where most of my safety comes from, not the tooling.
+**He suggests teams should get smaller.** We're two developers, so I can't test that one.
 
 One thing he said I agree with completely, and it points the other way from his conclusion: a test isn't much of a gate when the same agent wrote both the code and the test. He takes that as a reason to lean on reviewers and flags. I take it as a reason the human review matters more, not less.
 
