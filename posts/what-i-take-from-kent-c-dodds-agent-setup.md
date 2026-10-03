@@ -4,12 +4,12 @@ date: "2026-10-03T12:00:00+0000"
 categories: ["AI"]
 banner: "kent-setup.png"
 color: "#f1edff"
-description: "Kent C. Dodds ships features to his own product without reading the code. I run parallel AI coding agents too, on an app used by children. Here's where our setups agree, what I'm adopting from his (friction logs, decision records, tested backups), and the parts I won't follow."
+description: "Kent C. Dodds ships features to his own product without reading the code. I run parallel AI coding agents the same way, on an app used by children. Here's where our setups agree, what I'm adopting from his (friction logs, decision records, tested backups), and what I put in place of reading the code."
 readingTimeMinutes: 6
 new: true
 ---
 
-**TL;DR**: I've been running AI coding agents in parallel for a few months. Kent C. Dodds streamed how he does the same thing on his own product, and most of the shape is identical, which was a relief. I'm taking six things from his setup. I'm not taking the main one: he ships without reading the code, and I can't.
+**TL;DR**: I've been running AI coding agents in parallel for a few months. Kent C. Dodds streamed how he does the same thing on his own product, and most of the shape is identical, which was a relief. I'm taking six things from his setup. Like him, I don't read the code the agents write. What differs is what each of us puts in its place.
 
 A couple of weeks ago I wrote about [running AI coding sessions in parallel](/blog/posts/running-ai-coding-sessions-in-parallel): one session per feature, each in its own git worktree, and one extra session that writes no code and keeps track of the rest. Then I watched this, two hours of him building a feature live:
 
@@ -31,9 +31,9 @@ I'd built my setup before the tools that do this existed, and I had no idea whet
 
 **Do it by hand first, then hand it over.** Every automation of mine started as something I did myself for weeks and got tired of. He says the same, and gives the better reason: the pain teaches you what the automation should do.
 
-## Where I don't follow him
+## Where we differ
 
-**He doesn't read the implementation. I do, and my colleague reviews everything.** His gates are good automated reviewers, feature flags and backups. Mine are those plus two people. The users of the app I work on are children, and a quiet mistake there is not a rollback, it's a child seeing something they shouldn't. That's not a gate I'm handing over.
+**I don't read the implementation either, but I don't ship on the bots alone.** His gates are good automated reviewers, feature flags and backups. Mine are those plus two people: my colleague reviews every pull request, and before it reaches him I run the thing myself on a simulator or a real phone and check it behaves. Not reading the code is fine. Not checking the result isn't. The users of the app I work on are children, and a quiet mistake there is not a rollback, it's a child seeing something they shouldn't.
 
 **He runs in the cloud. I run locally.** Not out of principle. My work only counts as tested when it's run on a simulator or a real phone against a local backend, and the sessions need to reach those.
 
