@@ -77,3 +77,5 @@ A PR is only merged when my colleague has approved it, CI is green, and there ar
 Anthropic has just released a new version of Projects in Claude Code, in beta. It's close to what I built: one place to hand out work, parallel sessions on their own branches, and an overview of what's done and what needs me. The main difference is that its sessions run in the cloud. Mine run on my machine, so they can use the simulator, a local backend and the way I test, which is where most of my quality checks happen. That's why my setup works better for me for now, but I'll still try it and see how it compares.
 
 I'm looking forward to seeing what more we can do as agents get better.
+
+A follow-up, after watching someone else's version of this: [what I'm taking from Kent C. Dodds's agent setup, and what I'm not](/blog/posts/what-i-take-from-kent-c-dodds-agent-setup).
