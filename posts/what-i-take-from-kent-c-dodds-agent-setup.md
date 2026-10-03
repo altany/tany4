@@ -33,7 +33,7 @@ I'd built my setup before the tools that do this existed, and the question I kep
 
 ## Where we differ
 
-**I don't read the implementation either, but I don't ship on the bots alone.** His gates are good automated reviewers, feature flags and backups. Mine are those plus two people: my colleague reviews every pull request, and before it reaches him I run the thing myself on a simulator or a real phone and check it behaves. Not reading the code is fine. Not checking the result isn't. The users of the app I work on are children, and a quiet mistake there is not a rollback, it's a child seeing something they shouldn't.
+**I don't read the implementation either. What I check instead is different.** His gates are good automated reviewers, feature flags, preview environments and backups. Mine are those plus two people: my colleague reviews every pull request, and before it reaches him I run the thing myself on a simulator or a real phone. The users of the app I work on are children, and a quiet mistake there is not a rollback, it's a child seeing something they shouldn't.
 
 **He runs in the cloud. I run locally.** Not out of principle. My work only counts as tested when it's run on a simulator or a real phone against a local backend, and the sessions need to reach those.
 
@@ -69,4 +69,4 @@ His rule is that the record lives in the repository, so any agent can be swapped
 
 The friction log, because it's cheap and I already know what the first ten entries are. Then the decision records. Disaster recovery is the one where I don't know what we have, and finding out is the work.
 
-If you run agents in parallel and haven't seen it, the stream is worth the two hours: [How Kent Ships Features Without Reading the Code](https://www.youtube.com/watch?v=3kK3rfb1BZQ). Fair warning, it's also an ad for a paid course.
+If you run agents in parallel and haven't seen it, the stream is worth the two hours: [How Kent Ships Features Without Reading the Code](https://www.youtube.com/watch?v=3kK3rfb1BZQ).
