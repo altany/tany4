@@ -39,7 +39,7 @@ I put my setup together by trial and error, from what I needed and what I saw wo
 
 **He suggests teams should get smaller.** We're two developers, and that works well for us for now.
 
-One thing he said I agree with completely: a test isn't much of a gate when the same agent wrote both the code and the test. He leans on separate reviewers and on flags, and so do I. My colleague's review is agent-assisted too, so nobody on our side is reading the implementation line by line either. What covers that gap for us is using the thing: the feature gets run on a simulator or a real phone before it goes anywhere.
+One thing he said I agree with completely: a test isn't much of a gate when the same agent wrote both the code and the test. He leans on separate reviewers and on flags, and so do I. The automated review does most of the work on both sides: several passes, each in its own context, before anyone looks. Then my colleague peer reviews, and the feature gets run on a simulator or a real phone before it goes anywhere.
 
 ## The thing I have that he didn't mention
 
