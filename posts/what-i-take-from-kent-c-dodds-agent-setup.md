@@ -9,7 +9,7 @@ readingTimeMinutes: 6
 new: true
 ---
 
-**TL;DR**: I've been running AI coding agents in parallel for a few months. Kent C. Dodds streamed how he does the same thing on his own product, and most of the shape is identical, which was a relief. I'm taking six things from his setup. Like him, I don't read the code the agents write. What differs is what each of us puts in its place.
+**TL;DR**: I've been running AI coding agents in parallel for a few months. Kent C. Dodds streamed how he does the same thing on his own product, and most of the shape is identical, which was a relief. I'm taking seven things from his setup. Like him, I don't read the code the agents write. What differs is what each of us puts in its place.
 
 A couple of weeks ago I wrote about [running AI coding sessions in parallel](/blog/posts/running-ai-coding-sessions-in-parallel): one session per feature, each in its own git worktree, and one extra session that writes no code and keeps track of the rest. Then I watched this, two hours of him building a feature live:
 
@@ -19,7 +19,7 @@ I put my setup together myself, without looking at how anyone else was doing it,
 
 ## What came out the same
 
-**One agent that coordinates and writes no code.** He talks to a planning agent, agrees what to build, and hands it to a separate coding agent. He's stopped watching the individual agents work. That's my hub session, and it's the part people find strangest when I describe it.
+**One agent that coordinates and writes no code.** He talks to a planning agent, agrees what to build, and hands it to a separate coding agent. He's stopped watching the individual agents work. That's my hub session.
 
 **Many agents, each in its own isolated environment.** His run in the cloud, each with its own machine. Mine run on my laptop, each in its own git worktree.
 
@@ -29,7 +29,7 @@ I put my setup together myself, without looking at how anyone else was doing it,
 
 **A rule instead of a mood for merging.** His agent merges when everything is green. I wrote the rule down and the hub applies it. Neither of us presses the button because the change feels fine.
 
-**Do it by hand first, then hand it over.** Every automation of mine started as something I did myself for weeks and got tired of. He says the same, and gives the better reason: the pain teaches you what the automation should do.
+**Do it by hand first, then hand it over.** Every automation of mine started as something I did myself and got tired of. He says the same, and gives the better reason: the pain teaches you what the automation should do.
 
 ## Where we differ
 
@@ -67,6 +67,6 @@ His rule is that the record lives in the repository, so any agent can be swapped
 
 ## What I'm doing first
 
-The friction log, because it's cheap and I already know what the first ten entries are. Then the decision records. Disaster recovery is the one where I don't know what we have, and finding out is the work.
+The friction log, because it's cheap and I already know what the first entries are. Then the decision records. Disaster recovery is the one where I don't know what we have, and finding out is the work.
 
 If you run agents in parallel and haven't seen it, the stream is worth the two hours: [How Kent Ships Features Without Reading the Code](https://www.youtube.com/watch?v=3kK3rfb1BZQ).
