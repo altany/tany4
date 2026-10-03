@@ -15,7 +15,7 @@ A couple of weeks ago I wrote about [running AI coding sessions in parallel](/bl
 
 <iframe width="100%" height="400" src="https://www.youtube.com/embed/3kK3rfb1BZQ" title="How Kent Ships Features Without Reading the Code" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-I'd built my setup before the tools that do this existed, and the question I kept asking myself was whether I was being reckless with how much I hand over. The useful part of watching someone else's version wasn't just the tips. It was the confirmation that leaning on what these models can do now isn't naive. They are that good. The work is in the checks you put around them.
+I put my setup together myself, without looking at how anyone else was doing it, and the question I kept asking was whether I was being reckless with how much I hand over. The useful part of watching someone else's version wasn't just the tips. It was the confirmation that leaning on what these models can do now isn't naive. They are that good. The work is in the checks you put around them.
 
 ## What came out the same
 
