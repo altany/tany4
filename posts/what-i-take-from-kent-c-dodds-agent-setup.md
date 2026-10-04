@@ -15,7 +15,7 @@ A couple of weeks ago I wrote about [running AI coding sessions in parallel](/bl
 
 <iframe width="100%" height="400" src="https://www.youtube.com/embed/3kK3rfb1BZQ" title="How Kent Ships Features Without Reading the Code" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-I put my setup together by trial and error, from what I needed and what I saw working, without looking at how anyone else was doing it. The question I kept asking was whether I was being reckless with how much I hand over. The useful part of watching someone else's version wasn't just the tips. It was the confirmation that leaning on what these models can do now isn't naive. They are that good. The work is in the checks you put around them.
+I put my setup together by trial and error, from what I needed and what I saw working, without looking at how anyone else was doing it, and I kept wondering whether I was being reckless with how much I hand over. Watching someone else arrive at the same thing answered that. The tips were useful, but the reassurance was worth more: the models really are that good, and leaning on them isn't naive as long as you build the checks around them.
 
 ## What came out the same
 
@@ -23,11 +23,11 @@ I put my setup together by trial and error, from what I needed and what I saw wo
 
 **Many agents, each in its own isolated environment.** His run in the cloud, each with its own machine. Mine run on my laptop, each in its own git worktree.
 
-**Feature flags as the actual safety net.** Not tests, not review: the flag. Risky work ships switched off and gets turned on separately. He makes the point that a flag turns a decision you can't undo into one you can.
+**Feature flags as the actual safety net.** Not the tests and not the review: the flag. Risky work ships switched off and is turned on separately, which he puts well — a flag turns a decision you can't undo into one you can.
 
 **Automated review that runs separately from the agent that wrote the code.** He uses several, each in its own context, and the implementing agent never reviews itself. His agents are told to check review comments rather than apply them, which is also my rule.
 
-**A rule instead of a mood for merging.** His agent merges when everything is green. I wrote the rule down and the hub applies it. Neither of us presses the button because the change feels fine.
+**A rule instead of a mood for merging.** His agent merges when everything is green, and I wrote my rule down so the hub can apply it, which means neither of us merges because a change feels fine.
 
 **Do it by hand first, then hand it over.** Every automation of mine started as something I did myself and got tired of. He says the same, and gives the better reason: the pain teaches you what the automation should do.
 
@@ -39,15 +39,15 @@ I put my setup together by trial and error, from what I needed and what I saw wo
 
 **He suggests teams should get smaller.** We're two developers, and that works well for us for now.
 
-One thing he said I agree with completely: a test isn't much of a gate when the same agent wrote both the code and the test. He leans on separate reviewers and on flags, and so do I. The automated review does most of the work on both sides: several passes, each in its own context, before anyone looks. Then my colleague peer reviews, and the feature gets run on a simulator or a real phone before it goes anywhere.
+One thing he said I agree with completely: a test isn't much of a gate when the same agent wrote both the code and the test. He leans on separate reviewers and on flags, and so do I. The automated review does most of the work on both sides: several passes, each in its own context, before a person looks at anything.
 
 ## The thing I have that he didn't mention
 
-The limit on how parallel you can go isn't the model. It's one machine's memory. Two test suites at once made unrelated tests fail, and I learned that by running out of it. So the heavy steps queue: the hub hands out the test slot, while reading, writing and review carry on in parallel. If you're running agents locally and wondering why things get flaky past a certain number, it's probably not the agents.
+The limit on how parallel you can go isn't the model, it's one machine's memory, and I found that out by running out of it: two test suites at once made unrelated tests fail. So the heavy steps queue. The hub hands out the test slot, while reading, writing and review carry on in parallel. If you're running agents locally and wondering why things get flaky past a certain number, it's probably not the agents.
 
 ## What I'm taking
 
-**A friction log.** When an agent finishes, it files whatever got in its way: a server that wouldn't start, a stale dependency, a step that needed a workaround. Another agent clears those out regularly. Agents don't complain. They work around the same obstacle forever, in silence, and you pay for it every single time.
+**A friction log.** When an agent finishes, it files whatever got in its way: a server that wouldn't start, a stale dependency, a step that needed a workaround. Another agent clears those out regularly. Agents don't complain, they work around the same obstacle forever and in silence, and you pay for it every time.
 
 **Decision records.** One short note per decision: what we chose, what we rejected, which risk we accepted. Right now that lives in my head and in chat histories. It should sit next to the code, where the next session can read it.
 
@@ -55,15 +55,15 @@ The limit on how parallel you can go isn't the model. It's one machine's memory.
 
 **A weekly clean-up agent.** Agents add code and never remove it. Nobody is paying them to delete. His runs weekly, deletes what's safe, and adds measurement to the parts it can't prove are dead so that next week it can.
 
-**A nightly test-quality agent.** Not more tests. Fewer, better ones: drop the tests that only restate the change, and check that a regression test actually fails without its fix.
+**A nightly test-quality agent.** Not more tests but fewer, better ones: drop the tests that only restate the change, and check that a regression test actually fails without its fix.
 
-**Disaster recovery that gets tested.** Encrypted backups on a different provider, and a restore you run on purpose rather than hope for. He was blunt about it: if you've never tested the restore, you don't have backups. I hadn't thought about it at all, which is its own answer.
+**Disaster recovery that gets tested.** Encrypted backups on a different provider, and a restore you run on purpose rather than hope for. He was blunt about it: if you've never tested the restore, you don't have backups. I hadn't thought about it at all.
 
 **A full audit on every new model.** Each time a new one lands, point it at the whole codebase for security, accessibility, architecture and maintainability, then work the list in priority order.
 
 ## The part I'm least comfortable with
 
-His rule is that the record lives in the repository, so any agent can be swapped for another. Mine doesn't. My setup's memory, the rules it follows and most of what it has learned about my machine sit in a folder tied to one tool on one laptop. That's not a system, it's a habit with good documentation. It's the next thing I'm changing.
+His rule is that the record lives in the repository, so any agent can be swapped for another. Mine doesn't: the memory, the rules it follows and most of what it has learned about my machine sit in a folder tied to one tool on one laptop. That's not a system, it's a habit with good documentation, and it's the next thing I'm changing.
 
 ## What I'm doing first
 
