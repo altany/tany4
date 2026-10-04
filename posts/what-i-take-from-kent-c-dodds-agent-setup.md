@@ -23,7 +23,7 @@ I put my setup together by trial and error, from what I needed and what I saw wo
 
 **Many agents, each in its own isolated environment.** His run in the cloud, each with its own machine. Mine run on my laptop, each in its own git worktree.
 
-**Feature flags as the actual safety net.** Not the tests and not the review: the flag. Risky work ships switched off and is turned on separately, which he puts well — a flag turns a decision you can't undo into one you can.
+**Feature flags as the actual safety net.** Not the tests and not the review: the flag. Risky work ships switched off and is turned on separately. He puts it well: a flag turns a decision you can't undo into one you can.
 
 **Automated review that runs separately from the agent that wrote the code.** He uses several, each in its own context, and the implementing agent never reviews itself. His agents are told to check review comments rather than apply them, which is also my rule.
 
