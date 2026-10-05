@@ -51,7 +51,7 @@ This one doesn't apply to him, because each of his agents gets its own machine i
 
 **Decision records.** A short note for each decision: what we picked, what we turned down, and which risk we were happy to take. Right now that lives in my head or somewhere in a chat history, when it should sit next to the code where the next session can read it.
 
-**A risk level on every change.** He keeps a list of the pieces his system is built from, and every change has to say whether it reused one, extended one, or added a new one. Adding is treated as the expensive option on purpose. If you have ever watched an agent write a fifth way to do something the codebase already does, this is the answer to it.
+**A risk level on every change.** He keeps a list of the pieces his system is built from, which he calls primitives, and every change has to say whether it reused one, extended one, or added a new one. Adding is treated as the expensive option on purpose. If you have ever watched an agent write a fifth way to do something the codebase already does, this is the answer to it.
 
 **A weekly clean-up agent.** Agents add code and never take any away. Nobody is paying them to delete. His runs once a week and removes what is safe to remove, and where it can't tell whether something is still being used, it adds measurement so that next week it can.
 
