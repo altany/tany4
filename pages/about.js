@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Layout from "../components/layout";
 import SplitPage from "../components/splitPage";
 import Terminal from "../components/terminal";
@@ -10,11 +9,12 @@ export default function About() {
     "A more personal (but privacy-conscious) introduction to Tania.";
 
   return (
-    <Layout about canonicalUrl={`${SITE_URL}about`} seoTitle={`${SITE_TITLE} - About`} seoDescription={seoDescription}>
-      <Head>
-        <title>{`${SITE_TITLE} - About`}</title>
-      </Head>
-
+    <Layout
+      active="about"
+      canonicalUrl={`${SITE_URL}about`}
+      seoTitle={`${SITE_TITLE} - About`}
+      seoDescription={seoDescription}
+    >
       <SplitPage
         side={
           <>

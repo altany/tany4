@@ -1,9 +1,9 @@
+import { Fragment } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import useSWR from "swr";
 import dynamic from "next/dynamic";
 import styles from "./layout.module.scss";
-import fetcher from "../lib/fetcher";
 import useTheme from "../hooks/useTheme";
 import {
   NAME,
@@ -13,33 +13,33 @@ import {
   LAST_COMMIT_ENDPOINT,
   JOB_TITLE,
   CONTACT_EMAIL,
+  profile,
 } from "../lib/constants";
 
 const ChatWidget = dynamic(() => import("./chatWidget"), { ssr: false });
 
 const PAGES = [
-  { href: "/", label: "home", key: "home" },
-  { href: "/work", label: "work", key: "work" },
-  { href: "/blog", label: "blog", key: "blog" },
-  { href: "/cv", label: "cv", key: "resume" },
-  { href: "/about", label: "about", key: "about" },
+  { href: "/", label: "home" },
+  { href: "/work", label: "work" },
+  { href: "/blog", label: "blog" },
+  { href: "/cv", label: "cv" },
+  { href: "/about", label: "about" },
 ];
+
+// The accounts the footer links to, in the order they are shown
+const FOOTER_PROFILES = ["linkedin", "github", "twitter"];
+
+const fetcher = (url) => fetch(url).then((r) => r.json());
 
 export default function Layout({
   children,
-  home = false,
-  blog = false,
-  work = false,
-  about = false,
-  resume = false,
+  active = "",
   seoImage = "",
   seoTitle = "",
   seoDescription = "",
   canonicalUrl = "",
   ogType = "",
 }) {
-  const active = { home, blog, work, about, resume };
-
   return (
     <>
       <HtmlHead
@@ -84,6 +84,7 @@ const HtmlHead = ({ seoImage, seoTitle, seoDescription, canonicalUrl, ogType }) 
 
   return (
     <Head>
+      <title>{resolvedTitle}</title>
       <link rel="icon" href="/favicon.ico" />
       <meta name="author" content={NAME} />
       <meta name="description" content={resolvedDescription} />
@@ -124,12 +125,12 @@ const Navigation = ({ active }) => (
       tania
     </Link>
     <ul className={styles.links}>
-      {PAGES.map(({ href, label, key }) => (
+      {PAGES.map(({ href, label }) => (
         <li key={href}>
           <Link
             href={href}
-            className={active[key] ? styles.active : undefined}
-            aria-current={active[key] ? "page" : undefined}
+            className={active === label ? styles.active : undefined}
+            aria-current={active === label ? "page" : undefined}
           >
             {label}
           </Link>
@@ -169,21 +170,17 @@ const Footer = () => {
 
   return (
     <div className={styles.foot}>
-      <a
-        href="http://www.linkedin.com/in/taniapapazaf"
-        target="_linkedin"
-        title="Linkedin profile - in/taniapapazaf"
-      >
-        linkedin
-      </a>
-      {" · "}
-      <a href="http://www.github.com/altany" target="_github" title="Github profile - altany">
-        github
-      </a>
-      {" · "}
-      <a href="https://twitter.com/_Tany_" target="_twitter" title="Twitter profile - @_Tany_">
-        twitter
-      </a>
+      {FOOTER_PROFILES.map((label, i) => {
+        const { value, href } = profile(label);
+        return (
+          <Fragment key={label}>
+            {i > 0 && " · "}
+            <a href={href} target={`_${label}`} title={`${label} profile - ${value}`}>
+              {label}
+            </a>
+          </Fragment>
+        );
+      })}
       <br />
       <a href={`mailto:${CONTACT_EMAIL}`} title={`Email - ${CONTACT_EMAIL}`}>
         {CONTACT_EMAIL}

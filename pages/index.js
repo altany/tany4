@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Link from "next/link";
 import Layout from "../components/layout";
 import SplitPage from "../components/splitPage";
@@ -17,10 +16,7 @@ const DRIVES = [
 
 export default function Home({ posts = [] }) {
   return (
-    <Layout home>
-      <Head>
-        <title>{SITE_TITLE}</title>
-      </Head>
+    <Layout active="home">
 
       <SplitPage
         side={

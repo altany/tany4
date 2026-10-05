@@ -456,16 +456,6 @@ button.tag:hover,
   color: var(--color-accent-ink);
 }
 
-.badgeNew {
-  font: 11px $mono;
-  padding: 1px 8px;
-  border-radius: 999px;
-  margin-left: 8px;
-  vertical-align: 2px;
-  background: var(--color-warm-wash);
-  color: var(--color-warm-ink);
-}
-
 // ---------- side panes ----------
 .outline {
   list-style: none;
@@ -707,6 +697,3 @@ button.tag:hover,
   padding-top: 3px;
 }
 
-.notFound {
-  text-align: left;
-}
