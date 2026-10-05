@@ -41,9 +41,9 @@ I put my setup together by trial and error, from what I needed and what I saw wo
 
 One thing he said I agree with completely: a test isn't much of a gate when the same agent wrote both the code and the test. He leans on separate reviewers and on flags, and so do I. The automated review does most of the work on both sides: several passes, each in its own context, before a person looks at anything.
 
-## The thing I have that he didn't mention
+## What running them on your own machine costs
 
-The limit on how parallel you can go isn't the model, it's one machine's memory, and I found that out by running out of it: two test suites at once made unrelated tests fail. So the heavy steps queue. The hub hands out the test slot, while reading, writing and review carry on in parallel. If you're running agents locally and wondering why things get flaky past a certain number, it's probably not the agents.
+This one doesn't apply to him, because each of his agents gets its own machine in the cloud. If you run them on your laptop like I do, the thing that limits you isn't the model, it's memory. I found that out by running out of it: two test suites going at once, and tests that had nothing to do with each other started failing. So the heavy steps queue now. The hub hands out the test slot, and the reading, writing and reviewing carry on in parallel. If things start going strange past a certain number of sessions, that's where I'd look first.
 
 ## What I'm taking
 
