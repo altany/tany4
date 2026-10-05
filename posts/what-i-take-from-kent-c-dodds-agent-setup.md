@@ -59,7 +59,7 @@ This one doesn't apply to him, because each of his agents gets its own machine i
 
 **A nightly test-quality agent.** Not more tests, fewer and better ones. His throws out the tests that only repeat what the change did. Mine will also check that a regression test really does fail when you take the fix away, which is my own addition after one of ours passed without the fix it was written for.
 
-**Disaster recovery that gets tested.** Encrypted backups with a different provider, and a restore you actually run instead of hoping it would work. His point was that you have to test it and make sure it works. Mine, after hearing it: a restore you have never run isn't a backup. I had not thought about this at all.
+**Disaster recovery that gets tested.** Encrypted backups with a different provider, and a restore you actually run instead of hoping it would work. His point was that you have to test it and make sure it works. The way I read that: a restore you have never run isn't a backup. I had not thought about this at all.
 
 **An audit every time a new model comes out.** Point it at the whole codebase, ask for problems with security, accessibility, architecture and maintainability, then work through what it finds, most important first.
 
