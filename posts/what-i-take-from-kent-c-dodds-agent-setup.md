@@ -61,9 +61,9 @@ This one doesn't apply to him, because each of his agents gets its own machine i
 
 **An audit every time a new model comes out.** Point it at the whole codebase, ask for problems with security, accessibility, architecture and maintainability, then work through what it finds, most important first.
 
-## The part I'm least comfortable with
+## What lives on my laptop instead of in the repo
 
-His rule is that the record lives in the repository, so one agent can be swapped for another whenever he likes. Mine doesn't. The memory, the rules and most of what my setup has learned about my machine sit in a folder that belongs to one tool on one laptop. That makes it a habit with good documentation rather than a system, and it's the next thing I'm changing.
+His rule is that the record lives in the repository, so one agent can be swapped for another whenever he likes. Mine doesn't. The memory, the rules and most of what my setup has learned about my machine sit in a folder that belongs to one tool on one laptop. That makes it a habit with good documentation rather than a system.
 
 ## What I'm doing first
 
