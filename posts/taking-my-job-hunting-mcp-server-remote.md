@@ -4,7 +4,7 @@ date: "2026-06-28T12:00:00+0000"
 categories: ["AI", "MCP", "Side projects"]
 banner: "job-hunter-mcp.png"
 color: "#006e8f"
-description: "I turned my personal job-hunting MCP server from a laptop-only tool into a remote server I can use from my phone. Notes on the transport switch, free hosting, and a 502 that only showed up in ChatGPT."
+description: "I turned my job-hunting MCP server from a laptop-only tool into a remote one I use from my phone: the transport switch, free hosting, and a 502 only ChatGPT hit."
 readingTimeMinutes: 5
 ---
 

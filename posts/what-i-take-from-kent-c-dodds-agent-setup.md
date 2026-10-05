@@ -4,7 +4,7 @@ date: "2026-10-03T12:00:00+0000"
 categories: ["AI"]
 banner: "kent-setup.png"
 color: "#f1edff"
-description: "Kent C. Dodds ships features to his own product without reading the code. I run parallel AI coding agents the same way, on an app used by children. Here's where our setups agree, what I'm adopting from his (friction logs, decision records, tested backups), and what I put in place of reading the code."
+description: "Kent C. Dodds ships code he hasn't read. I run AI coding agents in parallel the same way. What our setups share, what I'm taking from his, and what I'm not."
 readingTimeMinutes: 6
 new: true
 ---
@@ -13,7 +13,7 @@ new: true
 
 A couple of weeks ago I wrote about [running AI coding sessions in parallel](/blog/posts/running-ai-coding-sessions-in-parallel): one session per feature, each in its own git worktree, and one extra session that writes no code and keeps track of the rest. Then I watched this, two hours of him building a feature live:
 
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/3kK3rfb1BZQ" title="How Kent Ships Features Without Reading the Code" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe loading="lazy" width="100%" height="400" src="https://www.youtube.com/embed/3kK3rfb1BZQ" title="How Kent Ships Features Without Reading the Code" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 I put my setup together by trial and error, from what I needed and what I saw working, without looking at how anyone else was doing it, and I kept wondering whether I was being reckless with how much I hand over. Watching someone else arrive at the same thing answered that. The tips were useful, but the reassurance was worth more: the models really are that good, and leaning on them isn't naive as long as you build the checks around them.
 

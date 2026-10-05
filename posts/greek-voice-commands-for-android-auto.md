@@ -4,7 +4,7 @@ date: "2026-09-01T12:00:00+0000"
 categories: ["AI", "Mobile", "Side projects"]
 banner: "pesto.svg"
 color: "#1f3f63"
-description: "Google Assistant doesn't understand Greek in the car, so I built a small Android Auto app that does. Notes on matching Greek speech against contacts saved in Greeklish, and why 'κάλεσε' (kalese, \"call\") kept turning into 'θάλασσα' (thalassa, \"sea\")."
+description: "Google Assistant doesn't speak Greek in the car, so I built an Android Auto app in Kotlin that does: Greek speech, and contacts saved in Greeklish."
 readingTimeMinutes: 6
 ---
  **TL;DR**: I can't speak Greek to my car. Google Assistant and Gemini don't support it in Android Auto, so I can't say a Greek contact name or an address while driving in Greece. I built a small Android Auto app called Mila - μίλα (mila) means "speak" - that listens in Greek and either starts navigation or places a call.

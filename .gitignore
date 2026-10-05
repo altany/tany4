@@ -29,3 +29,8 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 .vercel
+
+# Generated at build time
+public/sitemap.xml
+public/sitemap-0.xml
+public/rss.xml

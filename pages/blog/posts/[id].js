@@ -14,7 +14,9 @@ import { smallBanner } from "../../../lib/images";
 export default function Post({ data, others = [] }) {
   const baseUrl = SITE_URL.endsWith("/") ? SITE_URL.slice(0, -1) : SITE_URL;
   const canonicalUrl = `${baseUrl}/blog/posts/${data.id}`;
-  const seoTitle = `${data.title} - ${NAME}`;
+  // Search results cut titles around 60 characters, so the posts carry their own
+  // title only: the site name is already in the URL and in the site-wide metadata
+  const seoTitle = data.title;
   const seoDescription = data.description || undefined;
   const categories = Array.isArray(data.categories) ? data.categories : [];
   const headings = data.headings || [];
@@ -101,7 +103,7 @@ export default function Post({ data, others = [] }) {
         {data.banner && (
           <img
             src={smallBanner(data.banner)}
-            alt=""
+            alt={data.title}
             className={styles.banner}
             style={{ backgroundColor: data.color || "white" }}
           />

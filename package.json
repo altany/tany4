@@ -5,9 +5,10 @@
   "author": "Tania Papazafeiropoulou",
   "scripts": {
     "dev": "cross-env NEXT_TELEMETRY_DISABLED=1 next dev",
-    "build": "npm run cv:pdf && cross-env NEXT_TELEMETRY_DISABLED=1 next build && next-sitemap",
+    "build": "npm run cv:pdf && npm run rss && cross-env NEXT_TELEMETRY_DISABLED=1 next build && next-sitemap",
     "start": "next start",
     "cv:pdf": "tsx scripts/generate-cv-pdf.tsx",
+    "rss": "node scripts/generate-rss.mjs",
     "questions": "node scripts/chat-questions.mjs",
     "images": "node scripts/optimize-images.mjs",
     "test-e2e": "node __tests__/e2eRunner.js",

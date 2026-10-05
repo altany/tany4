@@ -1,2 +1,10 @@
+# *
 User-agent: *
 Allow: /
+
+# Host
+Host: https://tany4.com
+
+# Sitemaps
+Sitemap: https://tany4.com/sitemap.xml
+Sitemap: https://tany4.com/rss.xml
