@@ -47,26 +47,26 @@ This one doesn't apply to him, because each of his agents gets its own machine i
 
 ## What I'm taking
 
-**A friction log.** When an agent finishes, it files whatever got in its way: a server that wouldn't start, a stale dependency, a step that needed a workaround. Another agent clears those out regularly. An agent won't tell you something is broken. It works around it, quietly, every single time, and you keep paying for that.
+**A friction log.** When an agent finishes a job, it writes down whatever got in its way: a server that wouldn't start, a stale dependency, a step it had to work around. Another agent goes through those and fixes them. The reason this matters is that an agent won't tell you something is broken. It works around it, quietly, every single time, and you keep paying for that.
 
-**Decision records.** One short note per decision: what we chose, what we rejected, which risk we accepted. Right now that lives in my head and in chat histories. It should sit next to the code, where the next session can read it.
+**Decision records.** A short note for each decision: what we picked, what we turned down, and which risk we were happy to take. Right now that lives in my head or somewhere in a chat history, when it should sit next to the code where the next session can read it.
 
-**A risk level per change, from a list of the pieces we already have.** His version is a registry of the system's building blocks, and every change has to say whether it reuses one, extends one, or adds a new one. Adding is deliberately expensive. It's the clearest answer I've seen to agents inventing a fifth way to do something the codebase already does.
+**A risk level on every change.** He keeps a list of the pieces his system is built from, and every change has to say whether it reused one, extended one, or added a new one. Adding is treated as the expensive option on purpose. If you have ever watched an agent write a fifth way to do something the codebase already does, this is the answer to it.
 
-**A weekly clean-up agent.** Agents add code and never remove it. Nobody is paying them to delete. His runs weekly, deletes what's safe, and adds measurement to the parts it can't prove are dead so that next week it can.
+**A weekly clean-up agent.** Agents add code and never take any away. Nobody is paying them to delete. His runs once a week and removes what is safe to remove, and where it can't tell whether something is still being used, it adds measurement so that next week it can.
 
-**A nightly test-quality agent.** Not more tests but fewer, better ones: drop the tests that only restate the change, and check that a regression test actually fails without its fix.
+**A nightly test-quality agent.** Not more tests, fewer and better ones. It throws out the tests that only repeat what the change did, and checks that a regression test really does fail when you take the fix away.
 
-**Disaster recovery that gets tested.** Encrypted backups on a different provider, and a restore you run on purpose rather than hope for. He was blunt about it: if you've never tested the restore, you don't have backups. I hadn't thought about it at all.
+**Disaster recovery that gets tested.** Encrypted backups with a different provider, and a restore you actually run instead of hoping it would work. He was blunt about this: if you have never tested the restore, you don't have backups. I had not thought about it at all.
 
-**A full audit on every new model.** Each time a new one lands, point it at the whole codebase for security, accessibility, architecture and maintainability, then work the list in priority order.
+**An audit every time a new model comes out.** Point it at the whole codebase, ask for problems with security, accessibility, architecture and maintainability, then work through what it finds, most important first.
 
 ## The part I'm least comfortable with
 
-His rule is that the record lives in the repository, so any agent can be swapped for another. Mine doesn't: the memory, the rules it follows and most of what it has learned about my machine sit in a folder tied to one tool on one laptop. That's not a system, it's a habit with good documentation, and it's the next thing I'm changing.
+His rule is that the record lives in the repository, so one agent can be swapped for another whenever he likes. Mine doesn't. The memory, the rules and most of what my setup has learned about my machine sit in a folder that belongs to one tool on one laptop. That makes it a habit with good documentation rather than a system, and it's the next thing I'm changing.
 
 ## What I'm doing first
 
-The friction log, because it's cheap and I already know what the first entries are. Then the decision records. Disaster recovery is the one where I don't know what we have, and finding out is the work.
+The friction log first, because it costs nothing and I already know what the first few entries are. Then the decision records. Disaster recovery is the one I know least about, so there the work is finding out what we actually have.
 
 If you run agents in parallel and haven't seen it, the stream is worth the two hours: [How Kent Ships Features Without Reading the Code](https://www.youtube.com/watch?v=3kK3rfb1BZQ).
