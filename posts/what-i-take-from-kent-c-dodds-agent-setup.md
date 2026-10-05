@@ -65,8 +65,8 @@ This one doesn't apply to him, because each of his agents gets its own machine i
 
 His rule is that the record lives in the repository, so one agent can be swapped for another whenever he likes. Mine doesn't. The memory, the rules and most of what my setup has learned about my machine sit in a folder that belongs to one tool on one laptop. That makes it a habit with good documentation rather than a system.
 
-## What I'm doing first
+## What I've done first
 
-The friction log first, because it costs nothing and I already know what the first few entries are. Then the decision records. Disaster recovery is the one I know least about, so there the work is finding out what we actually have.
+The weekly code check is already set up and running. The friction log is next, because it costs nothing and I already know what the first few entries are, and then the decision records. Disaster recovery is the one I know least about, so there the work is finding out what we actually have.
 
 If you run agents in parallel and haven't seen it, the stream is worth the two hours: [How Kent Ships Features Without Reading the Code](https://www.youtube.com/watch?v=3kK3rfb1BZQ).
