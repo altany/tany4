@@ -63,7 +63,7 @@ This one doesn't apply to him, because each of his agents gets its own machine i
 
 ## What lives on my laptop instead of in the repo
 
-His rule is that the record lives in the repository, so one agent can be swapped for another whenever he likes. Mine doesn't. The memory, the rules and most of what my setup has learned about my machine sit in a folder that belongs to one tool on one laptop. That makes it a habit with good documentation rather than a system.
+His rule is that everything the agents need lives in the repository, so one agent can be swapped for another whenever he likes. Mine doesn't work that way. The rules my sessions follow, and most of what they have learned about this project, sit in a folder that belongs to one tool on one laptop. If I switch to another tool, or work from a different machine, none of it comes with me and a new session starts from nothing. That is the difference between what he has and what I have: his setup belongs to the project, mine belongs to my computer.
 
 ## What I've done first
 
