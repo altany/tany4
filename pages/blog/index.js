@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
 import Layout from "../../components/layout";
@@ -22,10 +21,12 @@ export default function Blog({ posts = [] }) {
     .sort((a, b) => b[1] - a[1]);
 
   return (
-    <Layout blog canonicalUrl={`${SITE_URL}blog`} seoTitle={`${SITE_TITLE} - Blog`} seoDescription={seoDescription}>
-      <Head>
-        <title>{`${SITE_TITLE} - Blog`}</title>
-      </Head>
+    <Layout
+      active="blog"
+      canonicalUrl={`${SITE_URL}blog`}
+      seoTitle={`${SITE_TITLE} - Blog`}
+      seoDescription={seoDescription}
+    >
 
       <SplitPage
         side={

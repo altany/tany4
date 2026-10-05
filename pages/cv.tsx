@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Layout from "../components/layout";
 import SplitPage from "../components/splitPage";
 import Terminal, { Mark } from "../components/terminal";
@@ -19,14 +18,11 @@ export default function CvPage() {
 
   return (
     <Layout
-      resume
+      active="cv"
       canonicalUrl={`${SITE_URL}cv`}
       seoTitle={title}
       seoDescription={`${cv.header.name} - ${cv.header.title}`}
     >
-      <Head>
-        <title>{title}</title>
-      </Head>
 
       <SplitPage
         side={

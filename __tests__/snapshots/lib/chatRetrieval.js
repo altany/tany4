@@ -67,3 +67,16 @@ describe('technologies named in the CV', () => {
     expect(context).toMatch(/Node\.js/)
   })
 })
+
+describe('a question with nothing to search on', () => {
+  it('still hands the model the profile and the pages that introduce her', async () => {
+    const context = await getKeywordContext('???')
+    expect(sourcesOf(context)).toContain('profile')
+    expect(sourcesOf(context).length).toBeGreaterThan(1)
+  })
+
+  it('does not repeat the profile block twice', async () => {
+    const context = await getKeywordContext('???')
+    expect(context.match(/^\[profile\]/gm)).toHaveLength(1)
+  })
+})

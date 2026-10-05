@@ -41,7 +41,7 @@ export default function Post({ data, others = [] }) {
 
   return (
     <Layout
-      blog
+      active="blog"
       seoImage={data.banner ? `/blog/${data.banner}` : undefined}
       canonicalUrl={canonicalUrl}
       seoTitle={seoTitle}
@@ -49,7 +49,6 @@ export default function Post({ data, others = [] }) {
       ogType="article"
     >
       <Head>
-        <title>{seoTitle}</title>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </Head>
 
