@@ -4,7 +4,7 @@ date: "2026-07-02T12:00:00+0000"
 categories: ["AI", "MCP", "Side projects"]
 banner: "job-hunter-mcp.png"
 color: "#006e8f"
-description: "Once my job-hunting MCP server was remote, the agent kept saying things weren't possible, adding duplicate rows and ignoring a doc I'd linked. The fix was better tool descriptions."
+description: "My MCP server's agent kept saying things weren't possible, adding duplicate rows and ignoring a linked doc. The fix was better tool descriptions."
 readingTimeMinutes: 5
 ---
 

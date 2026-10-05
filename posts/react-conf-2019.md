@@ -12,7 +12,7 @@ highlight: true
 
 **TL;DR**: Three of us rebuilt the Olio app in React Native in 3 months. In this talk I cover how we planned it, the problems we hit, and what I'd do differently.
 
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/zVHWugBPGBE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe loading="lazy" width="100%" height="400" src="https://www.youtube.com/embed/zVHWugBPGBE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 In October 2019 I spoke at [React Conf](https://conf.reactjs.org) about how our team migrated the entire Olio app to React Native in three months.
 

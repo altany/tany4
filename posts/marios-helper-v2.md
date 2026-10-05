@@ -4,7 +4,7 @@ date: "2026-04-11T12:00:00+0000"
 categories: ["AI", "React Native", "Mobile", "Side projects"]
 banner: "marios-helper.png"
 color: "#556f30"
-description: "A year ago I built a small Expo app to remind me to give my dog his eye drops. It worked, mostly. Recently I came back to it with Claude Code and fixed what was broken, then kept going."
+description: "A year ago I built an Expo app to remind me about my dog's eye drops. I came back to it with Claude Code, fixed the notification bugs, and rewrote most of it."
 readingTimeMinutes: 6
 ---
 
