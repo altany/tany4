@@ -63,11 +63,11 @@ This one doesn't apply to him, because each of his agents gets its own machine i
 
 ## What lives on my laptop instead of in the repo
 
-His rule is that everything the agents need lives in the repository, so one agent can be swapped for another whenever he likes. Mine doesn't work that way. The rules my sessions follow, and most of what they have learned about this project, sit in a folder that belongs to one tool on one laptop. If I switch to another tool, or work from a different machine, none of it comes with me and a new session starts from nothing. That is the difference between what he has and what I have: his setup belongs to the project, mine belongs to my computer.
+His rule is that everything the agents need lives in the repository, so one agent can be swapped for another whenever he likes. Mine doesn't work that way. The rules my sessions follow, and most of what they have learned about this project, sit in a folder that belongs to one tool on one laptop. If I switch to another tool, or work from a different machine, none of it comes with me and a new session starts from nothing. That is the difference between what he has and what I have: his setup belongs to the project, mine belongs to my computer. I plan to take this one seriously, because moving it into the repo looks useful beyond me: it would make onboarding someone new quick, and it would keep everyone's sessions consistent.
 
 ## What I've done first
 
-The weekly check is the one that's running. An agent reads the whole app codebase and comes back with a report: code nothing reaches any more, things written twice, work that's slower than it needs to be, places where the same idea is done two different ways. Each finding says which files it touches, how risky the change would be and how big it is. It changes nothing, which is the point. I read it and decide what becomes a ticket. His version deletes on its own; mine doesn't, and I'm not in a hurry for it to.
+The weekly check is the one that's running. An agent reads the whole app codebase and writes a report: code nothing reaches any more, things written twice, work that's slower than it needs to be, the same idea done two different ways. Each finding says which files it touches, how risky a change would be and how big. It doesn't change anything. I read it and pick what becomes a ticket. His version deletes code by itself, mine only reports.
 
 The friction log is next, because it costs nothing and I already know what the first few entries are, and then the decision records. Disaster recovery is the one I know least about, so there the work is finding out what we actually have.
 
