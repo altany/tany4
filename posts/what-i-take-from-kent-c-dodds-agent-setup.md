@@ -47,7 +47,7 @@ This one doesn't apply to him, because each of his agents gets its own machine i
 
 ## What I'm taking
 
-**A friction log.** When an agent finishes, it files whatever got in its way: a server that wouldn't start, a stale dependency, a step that needed a workaround. Another agent clears those out regularly. Agents don't complain, they work around the same obstacle forever and in silence, and you pay for it every time.
+**A friction log.** When an agent finishes, it files whatever got in its way: a server that wouldn't start, a stale dependency, a step that needed a workaround. Another agent clears those out regularly. An agent won't tell you something is broken. It works around it, quietly, every single time, and you keep paying for that.
 
 **Decision records.** One short note per decision: what we chose, what we rejected, which risk we accepted. Right now that lives in my head and in chat histories. It should sit next to the code, where the next session can read it.
 
