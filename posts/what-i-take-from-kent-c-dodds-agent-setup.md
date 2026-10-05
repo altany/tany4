@@ -67,6 +67,8 @@ His rule is that the record lives in the repository, so one agent can be swapped
 
 ## What I've done first
 
-The weekly code check is already set up and running. The friction log is next, because it costs nothing and I already know what the first few entries are, and then the decision records. Disaster recovery is the one I know least about, so there the work is finding out what we actually have.
+The weekly check is the one that's running. An agent reads the whole app codebase and comes back with a report: code nothing reaches any more, things written twice, work that's slower than it needs to be, places where the same idea is done two different ways. Each finding says which files it touches, how risky the change would be and how big it is. It changes nothing, which is the point. I read it and decide what becomes a ticket. His version deletes on its own; mine doesn't, and I'm not in a hurry for it to.
+
+The friction log is next, because it costs nothing and I already know what the first few entries are, and then the decision records. Disaster recovery is the one I know least about, so there the work is finding out what we actually have.
 
 If you run agents in parallel and haven't seen it, the stream is worth the two hours: [How Kent Ships Features Without Reading the Code](https://www.youtube.com/watch?v=3kK3rfb1BZQ).
