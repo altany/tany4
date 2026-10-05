@@ -33,11 +33,13 @@ I put my setup together by trial and error, from what I needed and what I saw wo
 
 ## Where we differ
 
-**I don't read the implementation either. What I check instead is different.** His gates are good automated reviewers, feature flags, preview environments and backups. Mine are those plus two people: my colleague reviews every pull request, and before it reaches him I run the thing myself on a simulator or a real phone. The users of the app I work on are children, and a quiet mistake there is not a rollback, it's a child seeing something they shouldn't.
+**I don't read the implementation either. What I check instead is different.** His gates are good automated reviewers, feature flags, preview environments and backups. Mine are the reviewers and the flags, plus two people: my colleague reviews every pull request, and before it reaches him it has been run on a simulator or a real phone. The users of the app I work on are children, and a quiet mistake there is not a rollback, it's a child seeing something they shouldn't.
 
 **He runs in the cloud. I run locally.** Every change of his gets its own environment, seeded and with the third-party services mocked, so his agents can check their own work against something real. I haven't set that up, because it takes resources. Until I do, my work only counts as tested when it runs on a simulator or a real phone against a local backend, and the sessions have to be where those are.
 
 **He suggests teams should get smaller.** We're two developers, and that works well for us for now.
+
+What I'm not taking, at least not now: merging on green without a person, and letting the clean-up agent delete by itself.
 
 One thing he said I agree with completely: a test isn't much of a gate when the same agent wrote both the code and the test. He leans on separate reviewers and on flags, and so do I. The automated review does most of the work on both sides: several passes, each in its own context, before a person looks at anything.
 
@@ -55,9 +57,9 @@ This one doesn't apply to him, because each of his agents gets its own machine i
 
 **A weekly clean-up agent.** Agents add code and never take any away. Nobody is paying them to delete. His runs once a week and removes what is safe to remove, and where it can't tell whether something is still being used, it adds measurement so that next week it can.
 
-**A nightly test-quality agent.** Not more tests, fewer and better ones. It throws out the tests that only repeat what the change did, and checks that a regression test really does fail when you take the fix away.
+**A nightly test-quality agent.** Not more tests, fewer and better ones. His throws out the tests that only repeat what the change did. Mine will also check that a regression test really does fail when you take the fix away, which is my own addition after one of ours passed without the fix it was written for.
 
-**Disaster recovery that gets tested.** Encrypted backups with a different provider, and a restore you actually run instead of hoping it would work. He was blunt about this: if you have never tested the restore, you don't have backups. I had not thought about it at all.
+**Disaster recovery that gets tested.** Encrypted backups with a different provider, and a restore you actually run instead of hoping it would work. His point was that you have to test it and make sure it works. Mine, after hearing it: a restore you have never run isn't a backup. I had not thought about this at all.
 
 **An audit every time a new model comes out.** Point it at the whole codebase, ask for problems with security, accessibility, architecture and maintainability, then work through what it finds, most important first.
 
