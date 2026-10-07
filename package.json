@@ -52,7 +52,7 @@
     "jest-environment-jsdom": "^30.5.2",
     "next-sitemap": "^4.2.3",
     "playwright": "^1.49.1",
-    "sharp": "^0.35.4",
+    "sharp": "^0.35.5",
     "testcafe": "3.7.6",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2"
