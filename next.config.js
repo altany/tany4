@@ -43,6 +43,19 @@ const nextConfig = {
         destination: 'https://:host/:path*',
         permanent: true,
       },
+      // The posts used to live one level up, and search engines and old links still
+      // ask for them there
+      {
+        source: '/posts/:id',
+        destination: '/blog/posts/:id',
+        permanent: true,
+      },
+      // There was a page of GitHub statistics; the work page is what replaced it
+      {
+        source: '/github',
+        destination: '/work',
+        permanent: true,
+      },
     ];
   },
   async headers() {
