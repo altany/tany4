@@ -18,6 +18,14 @@ const field = (name) => {
 const title = field("title");
 const summary = field("summary");
 
+// The three most recent roles, so "where has she worked and when" can be answered
+// without opening the CV as well
+const roles = [...cvSource.matchAll(
+  /start:\s*"([^"]+)",\s*end:\s*"([^"]+)",\s*title:\s*"([^"]+)",\s*company:\s*"([^"]+)"/g
+)]
+  .slice(0, 3)
+  .map(([, start, end, role, company]) => `- **${role}**, ${company} — ${start} to ${end}`);
+
 const posts = fs
   .readdirSync(path.join(process.cwd(), "posts"))
   .filter((file) => file.endsWith(".md"))
@@ -45,6 +53,12 @@ worked and when.
 - [CV](${SITE_URL}/cv): roles, dates, employers and skills. Also available as a [PDF](${SITE_URL}/TaniaPapazafeiropoulou-CV.pdf).
 - [Blog](${SITE_URL}/blog): ${posts.length} posts, newest first.
 - [About](${SITE_URL}/about): the non-work part.
+
+## Experience
+
+${roles.join("\n")}
+
+The [CV](${SITE_URL}/cv) has the full history, the earlier roles and the skills.
 
 ## Writing
 
