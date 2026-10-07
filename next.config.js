@@ -82,6 +82,18 @@ const nextConfig = {
           },
         ],
       },
+      // The CV link carries a version in the query string so browsers fetch a new PDF
+      // when the CV changes. Every one of those is the same file, so this says which
+      // address search engines should treat as the real one.
+      {
+        source: '/TaniaPapazafeiropoulou-CV.pdf',
+        headers: [
+          {
+            key: 'Link',
+            value: '<https://tany4.com/TaniaPapazafeiropoulou-CV.pdf>; rel="canonical"',
+          },
+        ],
+      },
     ];
   },
 };
