@@ -86,6 +86,9 @@ const HtmlHead = ({ seoImage, seoTitle, seoDescription, canonicalUrl, ogType }) 
     <Head>
       <title>{resolvedTitle}</title>
       <link rel="icon" href="/favicon.ico" />
+      {/* What this site is, in plain text, for an assistant that would otherwise
+          work it out by reading every page */}
+      <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
       <meta name="author" content={NAME} />
       <meta name="description" content={resolvedDescription} />
       <link rel="canonical" href={resolvedCanonicalUrl} />
@@ -184,6 +187,10 @@ const Footer = () => {
       <br />
       <a href={`mailto:${CONTACT_EMAIL}`} title={`Email - ${CONTACT_EMAIL}`}>
         {CONTACT_EMAIL}
+      </a>
+      <br />
+      <a href="/llms.txt" title="What this site is, in plain text, for AI assistants">
+        llms.txt
       </a>
       {data && (
         <div className={styles.updated}>
