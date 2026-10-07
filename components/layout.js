@@ -5,8 +5,10 @@ import useSWR from "swr";
 import dynamic from "next/dynamic";
 import styles from "./layout.module.scss";
 import useTheme from "../hooks/useTheme";
+import { cv } from "../src/cv/cv";
 import {
   NAME,
+  SAME_AS,
   SITE_URL,
   SITE_DESCRIPTION,
   SITE_TITLE,
@@ -78,6 +80,16 @@ const HtmlHead = ({ seoImage, seoTitle, seoDescription, canonicalUrl, ogType }) 
         name: NAME,
         jobTitle: JOB_TITLE,
         url: SITE_URL,
+        sameAs: SAME_AS,
+        address: { '@type': 'PostalAddress', addressLocality: 'London', addressCountry: 'GB' },
+        worksFor: {
+          '@type': 'Organization',
+          name: cv.experience[0].company,
+        },
+        alumniOf: cv.education.map((e) => ({
+          '@type': 'CollegeOrUniversity',
+          name: e.institution,
+        })),
       },
     ],
   };
