@@ -107,6 +107,13 @@ exports[`renders the whole page unchanged 1`] = `
         >
           hello@tany4.com
         </a>
+        <br />
+        <a
+          href="/llms.txt"
+          title="What this site is, in plain text, for AI assistants"
+        >
+          llms.txt
+        </a>
       </div>
     </nav>
     <main

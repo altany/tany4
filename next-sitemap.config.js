@@ -24,6 +24,10 @@ module.exports = {
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [{ userAgent: '*', allow: '/' }],
+    // Not a directive anyone honours, but assistants read this file first and the
+    // address is what they need
+    transformRobotsTxt: async (_, robotsTxt) =>
+      `${robotsTxt}\n# What this site is, in plain text: https://tany4.com/llms.txt\n`,
     additionalSitemaps: ['https://tany4.com/rss.xml'],
   },
   transform: async (config, url) => ({

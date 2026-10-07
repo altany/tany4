@@ -107,6 +107,13 @@ exports[`renders an blog page with a post unchanged 1`] = `
         >
           hello@tany4.com
         </a>
+        <br />
+        <a
+          href="/llms.txt"
+          title="What this site is, in plain text, for AI assistants"
+        >
+          llms.txt
+        </a>
       </div>
     </nav>
     <main
@@ -319,6 +326,13 @@ exports[`renders an empty blog page unchanged 1`] = `
           title="Email - hello@tany4.com"
         >
           hello@tany4.com
+        </a>
+        <br />
+        <a
+          href="/llms.txt"
+          title="What this site is, in plain text, for AI assistants"
+        >
+          llms.txt
         </a>
       </div>
     </nav>
