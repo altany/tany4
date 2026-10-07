@@ -5,12 +5,15 @@
   --color-surface: #ffffff;
   --color-ink: #2f2a45;
   --color-text: #4f4a66;
-  --color-soft: #857f9e;
+  --color-soft: #76708f;
   --color-faint: #d8d3ea;
   --color-line: #ebe8f5;
   --color-card-border: #ebe7f7;
 
-  --color-accent: #7c6cf0;
+  // Same value as the ink below: the lighter lilac this used to be only reached 3.8
+  // against the page, and the nav, the kickers and the labels are all small text that
+  // needs 4.5. The two still differ in the dark theme, so both names stay.
+  --color-accent: #5f4fd6;
   --color-accent-ink: #5f4fd6;
   --color-accent-wash: #efecff;
   --color-accent-glow: #e6e0ff;
