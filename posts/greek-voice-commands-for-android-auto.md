@@ -6,6 +6,7 @@ banner: "pesto.svg"
 color: "#1f3f63"
 description: "Google Assistant doesn't speak Greek in the car, so I built an Android Auto app in Kotlin that does: Greek speech, and contacts saved in Greeklish."
 readingTimeMinutes: 6
+updated: "2026-10-11T12:00:00+0000"
 ---
  **TL;DR**: I can't speak Greek to my car. Google Assistant and Gemini don't support it in Android Auto, so I can't say a Greek contact name or an address while driving in Greece. I built a small Android Auto app called Mila - μίλα (mila) means "speak" - that listens in Greek and either starts navigation or places a call.
 
@@ -116,5 +117,11 @@ The repo is on GitHub: [altany/mila](https://github.com/altany/mila).
 My steering wheel button opens the phone's assistant, which can open apps by name. Neither Google Assistant nor Gemini listens in Greek on my phone, so saying "Mila" normally didn't work. Assistant heard it as "Myla", "Miele" or "my". What did work was spelling it out in an English accent: "open the M-I-L-A app". That's awkward to say every time I want to call someone or start navigation, especially with people in the car.
 
 So I renamed the app to Pesto. English speech recognition already knows the word, and it sounds the same when I say it in Greek.
+
+That fixed the recognition and created a smaller problem in its place. A word recognition already knows is a word that already means something. Saying just "Pesto" got me either a short explanation of the sauce or a reply that it couldn't open any apps.
+
+What I use now is "Launch Pesto". Two words, and the verb leaves no room for the sauce. "Open the Pesto app" works too, but it's longer and the article is easy to drop. I've tried "Launch Pesto" over a handful of drives and it's worked every time, which is encouraging rather than proof.
+
+If you fork this for another language, that's the part I'd think about before the code: pick a name English speech recognition knows as a word. The assistant listens in English no matter what language the app itself works in.
 
 Only the visible name changed. It's the same app underneath, so it arrives as a normal update, and the repo is still [altany/mila](https://github.com/altany/mila). 
