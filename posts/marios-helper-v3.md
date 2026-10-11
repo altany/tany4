@@ -96,7 +96,9 @@ The last request was the fun one: "Μπορείς να την κάνεις dog t
 
 The colours come from Mario's photo: cream for his fur, caramel for his ears, and a red ring around his photo for his bandana. Paw prints replace the ticks. A row of them fills in as the day's doses are given, and when they're all done it says "Μπράβο Μάριο!" (well done, Mario) next to a bone.
 
-![The Today screen in the new theme: a paw print for each of the day's doses, the medicine that's due now, and the day's routines. Next to it, a finished day with every paw filled in and "Μπράβο Μάριο!"](/blog/marios-helper-v3-screens.png)
+The app is in Greek, so I've translated the screenshots for this post.
+
+![The Today screen in the new theme: a paw print for each of the day's doses, the medicine that's due now, and the day's routines. Next to it, a finished day with every paw filled in and "Well done, Mario!"](/blog/marios-helper-v3-screens.png)
 
 Titles use a rounded font. The first one Claude picked, Nunito, turned out to have no Greek letters at all, so it's M PLUS Rounded 1c instead, cut down to Latin and Greek so it's 64 KB instead of 3.6 MB.
 
