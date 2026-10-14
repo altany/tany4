@@ -15,7 +15,7 @@ new: true
 
 If you read [the last post](/blog/posts/marios-helper-v2), you've met Mario, my dog, and his eye drops. He has drops several times a day and an eye ointment 20 minutes after some of them, so the drops have time to absorb and the ointment doesn't wash them out. There's also a painkiller every 8 hours. And his medication keeps changing, so whatever I build has to be easy to change too.
 
-(The medicine names in this post and the screenshots are made up. Let's call them Blinkdrops and Tearshield.)
+(The medicine names in this post are made up. Let's call them Blinkdrops and Tearshield.)
 
 Last time I fixed the bugs with Claude Code and called it done. It mostly worked. Mostly.
 
