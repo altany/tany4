@@ -103,7 +103,7 @@ None of it needed a new install, so it arrived as an update like everything else
 
 ## What still isn't great
 
-- **Some changes still need an install.** A new permission or native library means a new APK. That's rare, and the link arrives in the run summary, but it isn't automatic. Play internal testing would fix that, and I might add it later.
+- **Some changes still need an install.** Anything on the native side means a new APK. When I asked for the reminders to bark, the sound file had to be built into the Android app, because that's where notification sounds have to live. The Expo SDK 57 upgrade needed one too, because it changed the native libraries. That's rare, and the link arrives in the run summary, but it isn't automatic. Play internal testing would fix that, and I might add it later.
 - **The notification library has one maintainer.** notify-kit is actively developed, but by one person, so I've pinned its exact version and update it on purpose.
 - **Claude can't test on my phone.** It runs the tests, previews the screens in a browser and sends me screenshots, but notifications don't run there. Whether a reminder actually rings with the app closed, I only find out on my phone.
 - **Battery settings are different on every phone.** The app can check them and point me to the right screen, nothing more.
