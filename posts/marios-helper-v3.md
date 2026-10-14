@@ -88,7 +88,6 @@ After the rewrite, the rest were small requests from my phone. Each one was a PR
 
 - **Every 8 hours.** Mario's painkiller changed to one he takes every 8 hours, with the first dose at 07:00, and I couldn't set that up easily. Now a routine has "Every … hours". I pick the first dose and the gap, and it fills in 07:00, 15:00 and 23:00.
 - **An empty start.** A new install used to start with Mario's old schedule built in. His medicines have changed many times, so a built-in schedule no longer made sense. Now it starts empty, and I add what he takes now.
-- **The vet's first prescription.** The original instructions (Bactidrops, Blinkdrops and Tearshield until the end of August) had disappeared along with the old built-in data. I wanted them back, so now they're a fixed card on the prescription tab.
 
 ## A dog theme
 
@@ -100,9 +99,7 @@ The app is in Greek, so I've translated the screenshots for this post.
 
 ![The Today screen in the new theme: a paw print for each of the day's doses, the medicine that's due now, and the day's routines. Next to it, a finished day with every paw filled in and "Well done, Mario!"](/blog/marios-helper-v3-screens.png)
 
-Titles use a rounded font, to go with the softer, dog themed look. The first one Claude picked, Nunito, turned out to have no Greek letters at all, so it's M PLUS Rounded 1c instead, cut down to Latin and Greek so it's 64 KB instead of 3.6 MB.
-
-All of it was JavaScript and a font file, so it arrived as an update like everything else.
+None of it needed a new install, so it arrived as an update like everything else.
 
 ## What still isn't great
 
