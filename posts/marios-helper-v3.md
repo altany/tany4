@@ -4,94 +4,106 @@ date: "2026-10-11T12:00:00+0000"
 categories: ["AI", "React Native", "Mobile", "Side projects"]
 banner: "marios-helper-v3.png"
 color: "#fbf5ec"
-description: "I rebuilt the app that reminds me about my dog's medicines without opening my laptop. How a change gets from a message on my phone to the app, the safety nets that let me trust changes I didn't type, and the parts you can reuse."
-readingTimeMinutes: 9
+description: "Mario's medication app still let doses slip, and every fix meant sitting at my laptop. So I rebuilt it from my phone, with Claude Code, Expo and a GitHub Action."
+readingTimeMinutes: 8
 new: true
 ---
 
-**TL;DR**: My dog Mario takes medicines that have to be given in order, with set gaps between them. [Six months ago](/blog/posts/marios-helper-v2) I fixed the app that reminds me, but it still let doses slip, and every change needed my laptop. This time I rebuilt it from the Claude app on my phone. A change is now a message, a PR and "merge it", and a couple of minutes later it's on my phone. This post is about how that works, the safety nets that let me trust changes I didn't type, and the reminder logic, so you can take the parts you need.
+**TL;DR**: Mario's medication app still let doses slip, and every fix meant sitting at my laptop. So I rebuilt it without opening my laptop once. I asked for changes from the Claude app on my phone, and a GitHub Action got them onto the app a couple of minutes after I said "merge it". Here's how it works, what stops me from breaking things I can't see, and the bits you can steal for your own projects.
 
-## Why this app exists
+## The background
 
-Mario has eye drops several times a day, and an eye ointment 20 minutes after some of them. The gap matters: the drops need time to be absorbed, or the ointment washes them out. He also has a painkiller every 8 hours, and his medicines have changed many times.
+If you read [the last post](/blog/posts/marios-helper-v2), you've met Mario, my dog, and his eye drops. He has drops several times a day and an eye ointment 20 minutes after some of them, so the drops have time to absorb and the ointment doesn't wash them out. There's also a painkiller every 8 hours. And his medication keeps changing, so whatever I build has to be easy to change too.
 
-The medicine names in this post and its screenshots are made up. I'll call the drops Blinkdrops and the ointment Tearshield.
+(The medicine names in this post and the screenshots are made up. Let's call them Blinkdrops and Tearshield.)
 
-A normal reminder app rings at fixed times. That isn't enough here. The ointment should come 20 minutes after I actually gave the drops, not 20 minutes after they were planned.
+Last time I fixed the bugs with Claude Code and called it done. It mostly worked. Mostly.
 
-## What was still wrong
+## What was still broken
 
-The app from [the last post](/blog/posts/marios-helper-v2) mostly worked, but not always when it mattered:
+The buttons didn't work with the app closed. If I tapped "I gave it" on my Garmin watch, nothing ran, so the Tearshield reminder never came. Which was kind of the whole point of the app.
 
-- **The buttons did nothing with the app closed.** If I tapped "I gave it" on my Garmin watch, no code ran, so the reminder for the ointment never came.
-- **I couldn't plan ahead.** I could only postpone a reminder once it went off. When I'd slept in, or wanted an early night and had to start the doses early, I couldn't see or move the day's doses in advance. I wanted to know when each one would be, so I could plan my day.
-- **Every change ended at my laptop.** A fix for swiped-away notifications lived in an `android` folder I'd edited by hand, so only my laptop could build the app.
+I also couldn't plan ahead. I could only postpone a reminder once it went off. If I'd slept in, or wanted an early night and had to start the doses early, there was no way to see when each one would be or to move them in advance. I wanted to know when each one was coming so I could plan my day around it.
 
-The last one was the one I most wanted gone.
+And the swipe fix from last time lived in an `android` folder I'd patched by hand, so only my laptop could build the app. Every change, however small, ended with me at my laptop. That was the part that bothered me most.
 
-## Shipping from my phone
+## Doing it all from my phone
 
-I asked for the rewrite in a Claude Code session in the Claude app, and I never opened my laptop. Claude works on a branch, runs the tests, opens a PR and sends me screenshots of the screens. I look at them on my phone and say "merge it".
+So I opened a Claude Code session in the Claude app on my phone and asked for a rewrite. Same screens as before, but with notifications that stay until I answer them, chains of medicines, and easy time changes for single doses and whole chains.
 
-To get the result onto the phone without a laptop, I used two Expo services and a GitHub Action:
+The flow now is pretty simple. I ask for something, Claude makes it on a branch, runs the tests, opens a PR and sends me screenshots. I look at them on my phone and say "merge it". A couple of minutes later the app tells me there's a new version.
 
-- **EAS Build** builds the Android app (APK) in the cloud. I install it from a link.
+To get there I needed two Expo services and one GitHub Action:
+
+- **EAS Build** builds the APK in the cloud and gives me a link to install it.
 - **EAS Update** sends JavaScript changes over the air. The app downloads them by itself and shows "There's a new version" with a restart button.
 
-The Action runs on every merge to main and decides which of the two a change needs. It works out a fingerprint of the app's native side: native libraries, permissions and config. If a build with that fingerprint already exists, only JavaScript changed, so it publishes an update. If not, it starts a new build and puts the install link in the run summary. The app's runtime version is that same fingerprint, so an update can only reach a build that can run it.
+The Action runs on every merge to main and works out which of the two it needs. It takes a fingerprint of the native side of the app (native libraries, permissions, config). If there's already a build with that fingerprint, only JavaScript changed, so it publishes an update. If not, it starts a new build and puts the install link in the run summary. The app's runtime version is that same fingerprint, so an update can never land on a build that can't run it.
 
-Updates change the code, not the data. Medicines, times and history stay on the phone.
+Updates change the code, not the data. After the first one I had to ask if it had wiped the schedule I'd just set up. It hadn't.
 
-All of this fits in Expo's free plan. The one-time setup was an access token from expo.dev, saved as a secret in the GitHub repo, and I did that on my phone too.
+All of this runs on Expo's free plan, and the one-time setup (an Expo access token saved as a GitHub secret) I did on my phone too.
 
-**If you want this for your own app:** it's [one workflow](https://github.com/altany/marios-helper/blob/main/.github/workflows/deploy.yml) and [one script](https://github.com/altany/marios-helper/blob/main/scripts/deploy.sh). The fingerprint check is the part worth copying. You never have to decide by hand whether a change needs a new build.
+If you only take one thing from this post, take the fingerprint check. You never have to think about whether a change needs a new build. It's [one workflow](https://github.com/altany/marios-helper/blob/main/.github/workflows/deploy.yml) and [one script](https://github.com/altany/marios-helper/blob/main/scripts/deploy.sh).
 
-## Trusting changes I didn't type
+## Not breaking things I can't see
 
-From a phone, I don't read every line. So the setup has to catch mistakes for me.
+Here's the catch with coding from your phone: you don't read every line the way you would at a desk. So the project has to catch mistakes for me.
 
-- **Tests on the logic that matters.** The schedule logic is plain TypeScript, with no React or notification code in it, so it can be tested on its own. The notification flow is tested against a fake notification library. Claude can't run the app on my phone, so these tests are what check a change before it reaches me.
-- **One way to change the data.** Every change goes through one function. It saves the data, works out which reminders should exist, compares that with what's scheduled on the phone, and only changes the difference. Each dose has one notification ID, so a dose can't end up with two reminders.
-- **A second opinion.** Before I tested the Expo SDK 57 upgrade, a second Claude session reviewed the changes and the test plan. It caught things the first one missed: the notification library's version wasn't pinned, the plan never tried installing the new version over the old one, and nothing tested a reminder overnight, when Android delays alarms the most.
-- **A test copy of the app.** A change to the native side can break reminders, and these are Mario's medicines. Adding a label to a PR builds "Mario TEST", a separate app that installs next to the real one, with its own data. I try the change there first, including installing it over the old version.
+The schedule logic is plain TypeScript with no React or notification code in it, so it's tested on its own. The notification flow has tests too, against a fake notification library. Claude can't run the app on my phone, so the tests are what stands between a change and Mario's reminders.
 
-**TODO: one or two lines on what testing the upgrade on Mario TEST found.**
+Every change to the data goes through one function. It saves, works out which reminders should exist, compares that with what's scheduled on the phone, and only changes the difference. Each dose has one notification ID, so no more duplicate reminders like last time.
 
-**If you build with an AI agent from your phone:** keep the logic you care about where it can be tested without a phone, and send risky changes through a test copy of the app first.
+For the big stuff I get a second opinion. Before testing the Expo SDK 57 upgrade, I had another Claude session review the diff and the test plan. It found things the first one missed: the notification library wasn't pinned to an exact version, nothing tested installing the new version over the old one, and nothing tested a reminder overnight, which is exactly when Android likes to delay alarms.
 
-## Reminders that follow what actually happened
+And for anything native there's a test copy of the app. Adding a `test-build` label to a PR builds "Mario TEST", a separate app that sits next to the real one with its own data. These are Mario's actual medicines, so I'd rather break the test app.
 
-The schedule is built from routines. A routine is a few medicines given one after the other, at set times: Blinkdrops, then Tearshield 20 minutes later, at 09:00 and 21:00.
+**TODO: what testing the upgrade on Mario TEST found.**
 
-- **The gap counts from the tap.** The 20 minutes start when I tap "I gave it", not at 09:00. If I give Blinkdrops at 09:04, Tearshield rings at 09:24, and a notification counts down in between. That way the drops always get their full 20 minutes.
-- **"Every 8 hours" means 8 hours after the last dose.** If one painkiller dose is an hour late, the rest of the day moves with it.
-- **Every dose exists a week ahead.** Each one has its own record, so I can see the whole day in advance and move or skip one dose, a whole chain or the whole day: an hour later when we slept in, earlier before an early start. That's the planning I couldn't do before.
-- **Reminders don't need the app open.** Because the week is scheduled in advance, reminders keep coming even if I don't open the app for days.
+## Reminders that follow real life
 
-The notifications themselves:
+The schedule is made of routines. A routine is a few medicines one after the other at set times, like Blinkdrops and then Tearshield 20 minutes later, at 09:00 and 21:00.
 
-- **Buttons work with the app closed**, on the phone and on the watch. The notification library runs the app's code in the background, so "I gave it" on the watch records the dose and schedules the next medicine.
-- **Plain words**, because symbols like ✓ or ′ don't show properly on the watch: "Later 10 minutes", not "Later 10′".
-- **Hard to miss, but not forever.** An unanswered reminder rings every 10 minutes for an hour, then waits quietly. If I swipe it away without answering, it comes back without sound. After 12 hours it counts as missed, so old reminders don't pile up.
-- **Exact alarms**, so reminders go off on time even when the phone is idle.
+The important bit: the 20 minutes start when I tap "I gave it", not at 09:00. If I give Blinkdrops at 09:04, Tearshield rings at 09:24, with a countdown notification in between. Same with the painkiller. "Every 8 hours" means 8 hours after the dose I actually gave, so if one is an hour late, the rest of the day moves with it.
 
-The library is [react-native-notify-kit](https://github.com/marcocrupi/react-native-notify-kit), the maintained fork of [Notifee](https://github.com/invertase/notifee). The rewrite started on Notifee itself. It was archived in April 2026, and it doesn't work with React Native's New Architecture. When I upgraded the app to Expo SDK 57, which needs the New Architecture, I moved to the fork. It has the same API, so only the import changed.
+That one came from a real morning. I sent Claude this from my phone:
 
-**If you build reminders for anything** (medicines, feeding, plants): time follow-ups from the action, not the plan; make every button work without opening the app; and expect people to swipe notifications away.
+> I gave the 8-hour medicine at 8:22 but the next dose says 15:00. Didn't it move to 8 hours after?
 
-## The Android setting that quietly breaks reminders
+It didn't, and now it does. It took a couple more rounds to get it fully right, all reported the same way: from my phone, with the app open in front of me.
 
-This one is worth knowing even if you never build an app. On my phone, the switch "Allow background usage" was on, and reminders could still come late. The switch isn't enough. You have to tap the words next to it, not the switch, and choose "Unrestricted". Otherwise Android may not wake the app at all.
+Every dose exists a week ahead, each with its own record. So I can see my whole day in advance and move or skip one medicine, a whole chain, or the whole day. An hour later because we slept in, or earlier because I want an early night. Finally.
 
-An app can't change that setting itself. Mario's app has a list of checks in its settings (notifications, exact alarms, battery) that shows how each one is right now and opens the right screen to fix it. An earlier version labelled the battery line with what it *should* be, which read like everything was fine. Now each line says how things actually are.
+And the notifications:
+
+- The buttons work with the app closed, on the phone and on the watch. The library runs the app's code in the background, so "I gave it" on the watch records the dose and schedules the next one.
+- Plain words, because the watch doesn't show symbols properly: "Later 10 minutes", not "Later 10′".
+- If I don't answer, it rings every 10 minutes for an hour, then waits quietly. If I swipe it away without answering, it comes back without sound. After 12 hours it gives up and counts the dose as missed.
+- Exact alarms, so they go off on time even when the phone is idle.
+
+The library is [react-native-notify-kit](https://github.com/marcocrupi/react-native-notify-kit), the maintained fork of [Notifee](https://github.com/invertase/notifee). We started on Notifee itself, but it was archived in April 2026 and doesn't work with React Native's New Architecture, which Expo SDK 57 needs. The fork has the same API, so the switch was one import.
+
+## The Android setting that lies to you
+
+Worth knowing even if you never build an app. My phone said "Allow background usage" was on, and reminders still came late. Turns out the switch isn't enough. You have to tap the words next to it (not the switch!) and pick "Unrestricted". Otherwise Android can decide not to wake the app at all.
+
+The app can't change that for me. What it can do is show a checklist in the settings: notifications, exact alarms and battery, how each one is set right now, with a button that opens the right screen to fix it. The first version labelled the battery line with what it *should* be, which read like everything was fine. It wasn't. Now every line says how things actually are.
 
 ## Making it Mario's
 
-Once a change costs a message and a couple of minutes, I started asking for things I'd never have sat down to do:
+Once a change costs me a message and a couple of minutes, I started asking for things I'd never sit down to do.
 
-- **A dog theme.** The colours come from Mario's photo: cream for his fur, caramel for his ears, and red for his bandana. Paw prints fill in as the day's doses are given, and a finished day says "Well done, Mario!".
-- **Reminders that bark.** The bark is a synthesised "woof woof" made for the app, so there's no licence to worry about. A switch in the settings goes back to the phone's usual sound.
-- **TODO: English.** The app follows the phone's language, Greek or English, so people who don't read Greek can use it too. Fill in once it's done.
+> Can you make it dog themed?
+
+The colours now come from Mario's photo: cream for his fur, caramel for his ears and red for his bandana. Paw prints fill in as the day's doses are given, and when they're all done it says "Well done, Mario!".
+
+Then I wanted the reminders to bark. My feedback on the first bark Claude made:
+
+> It's a bit high-pitched and annoying, like a puppy. Make it more grown-up.
+
+The second one got an "ok". It's a synthesised "woof woof" made just for the app, so there's no licence to worry about, and a switch in the settings goes back to the phone's usual sound.
+
+**TODO: English version. The app follows the phone's language, Greek or English.**
 
 **TODO: retake the screenshots below from the English version of the app.**
 
@@ -99,18 +111,18 @@ Once a change costs a message and a couple of minutes, I started asking for thin
 
 ## What still isn't great
 
-- **Some changes still need an install.** Anything on the native side means a new APK. When I asked for the reminders to bark, the sound file had to be built into the Android app, because that's where notification sounds have to live. The Expo SDK 57 upgrade needed one too, because it changed the native libraries. That's rare, and the link arrives in the run summary, but it isn't automatic. Play internal testing would fix that, and I might add it later.
-- **The notification library has one maintainer.** notify-kit is actively developed, but by one person, so I've pinned its exact version and update it on purpose.
-- **Claude can't test on my phone.** The tests and the test app cover a lot, but whether a reminder actually rings with the app closed, I only find out on a real phone.
-- **Battery settings are different on every phone.** The app can check them and point to the right screen, nothing more.
+- Some changes still need an install. Anything native means a new APK: the bark had to be built into the Android app, and the SDK 57 upgrade changed the native libraries. It doesn't happen often, and the link lands in the run summary, but it isn't automatic. Play internal testing would fix that. Maybe later.
+- The notification library has one maintainer. I've pinned the exact version, and I'll update it on purpose.
+- Claude can't test on my phone. The tests and the test app catch a lot, but whether a reminder actually rings with the app closed, only my phone can tell me.
+- Battery settings are different on every phone. The app can check them and point me to the right screen, and that's it.
 
-## Take what you need
+## Key takeaways
 
-The code is on GitHub: [altany/marios-helper](https://github.com/altany/marios-helper). The parts most worth reusing:
+- The setup is what made this work. Once shipping is a message and a couple of minutes, small fixes actually happen.
+- Put the logic you care about somewhere it can be tested without a phone, and send risky changes through a test copy of the app first.
+- Time follow-ups from what actually happened, not from the plan. Real life runs late.
+- Report bugs like you'd tell a friend. "I gave it at 8:22 but it says 15:00" was enough to start from.
 
-- [`deploy.yml`](https://github.com/altany/marios-helper/blob/main/.github/workflows/deploy.yml) and [`deploy.sh`](https://github.com/altany/marios-helper/blob/main/scripts/deploy.sh): an update or a new build on every merge, decided by the native fingerprint.
-- [`app.config.js`](https://github.com/altany/marios-helper/blob/main/app.config.js) and the `test` profile in `eas.json`: a test copy of the app that installs next to the real one.
-- [`src/engine/`](https://github.com/altany/marios-helper/tree/main/src/engine): the schedule logic and its tests, with no React in it.
-- [`src/notify/`](https://github.com/altany/marios-helper/tree/main/src/notify): reminders whose buttons work with the app closed.
+The code is on GitHub: [altany/marios-helper](https://github.com/altany/marios-helper). If you want to steal bits, start with [`deploy.sh`](https://github.com/altany/marios-helper/blob/main/scripts/deploy.sh) for update-or-build on every merge, [`app.config.js`](https://github.com/altany/marios-helper/blob/main/app.config.js) for the side-by-side test app, and [`src/engine/`](https://github.com/altany/marios-helper/tree/main/src/engine) for the schedule logic and its tests.
 
-The biggest change from last time isn't the code. Last time, every change ended at my laptop. Now it's a message from my phone and a couple of minutes' wait, so I fix small things as soon as they bother me. If something small at home bothers you, that's cheap enough to just fix it.
+Mario gets his drops on time, and the app finally looks like him.
