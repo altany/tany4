@@ -23,9 +23,9 @@ So I opened a Claude Code session in the Claude app and asked for a rewrite. Sam
 
 ## A different notification library
 
-The old app used expo-notifications. The new one uses [Notifee](https://github.com/invertase/notifee), which handles the parts I kept fighting:
+The old app used expo-notifications. The new one uses [react-native-notify-kit](https://github.com/marcocrupi/react-native-notify-kit), the maintained fork of [Notifee](https://github.com/invertase/notifee). It handles the parts I kept fighting:
 
-- **Buttons work with the app closed.** Notifee runs the app's code in the background when a button is tapped. "I gave it" from the watch records the dose and schedules the next medicine straight away.
+- **Buttons work with the app closed.** The library runs the app's code in the background when a button is tapped. "I gave it" from the watch records the dose and schedules the next medicine straight away.
 - **It knows when a notification is swiped away.** The app posts it again, without sound. No patch and no Java of our own.
 - **Reminders use Android's exact alarms**, so they go off on time even when the phone is idle.
 
@@ -33,7 +33,7 @@ By default, if I don't answer, the reminder rings again every 10 minutes, up to 
 
 Notification texts use plain words instead of symbols like ✓ or ′ for minutes, so they show properly on the watch: "Αργότερα 10 λεπτά" (later, 10 minutes).
 
-One thing to know: Notifee's repository was archived in April 2026. It works fine on this app's React Native version, and there's a maintained fork with the same API, so moving later should be a small change.
+The rewrite started on Notifee itself. Its repository was archived in April 2026, and it doesn't work with React Native's New Architecture. When I upgraded the app to Expo SDK 57, which needs the New Architecture, I moved to notify-kit. Invertase, who made Notifee, recommend it, and it has the same API, so only the import changed in the app's code.
 
 ## Chains timed from when I actually gave the medicine
 
@@ -45,7 +45,7 @@ The app works out every dose a week ahead, and each dose has its own record. Tha
 
 Every change goes through one function. It saves the data, works out which notifications should exist, compares that with what's scheduled on the phone, and only changes the difference. Each dose has exactly one notification ID, so the duplicate snoozes from the last post can't come back.
 
-The schedule logic is plain TypeScript with tests, with no React or notification code in it. The notification flow has tests too, against a fake Notifee.
+The schedule logic is plain TypeScript with tests, with no React or notification code in it. The notification flow has tests too, against a fake notification library.
 
 On the first start, the old settings moved over by themselves. Hylogel at 09:00, 15:00 and 21:00 with Lacrimmune after the 09:00 and 21:00 ones became two routines.
 
@@ -107,7 +107,7 @@ All of it was JavaScript and a font file, so it arrived as an update like everyt
 ## What still isn't great
 
 - **Some changes still need an install.** A new permission or native library means a new APK. That's rare, and the link arrives in the run summary, but it isn't automatic. Play internal testing would fix that, and I might add it later.
-- **Notifee is archived.** It works today and the fork should make moving easy, but it's a dependency I'll have to replace at some point.
+- **The notification library has one maintainer.** notify-kit is actively developed, but by one person, so I've pinned its exact version and update it on purpose.
 - **Claude can't test on my phone.** It runs the tests, previews the screens in a browser and sends me screenshots, but notifications don't run there. Whether a reminder actually rings with the app closed, I only find out on my phone.
 - **Battery settings are different on every phone.** The app can check them and point me to the right screen, nothing more.
 
