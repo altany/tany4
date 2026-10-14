@@ -17,7 +17,7 @@ If you read [the last post](/blog/posts/marios-helper-v2), you've met Mario, my 
 
 (The medicine names in this post are made up. Let's call them Blinkdrops and Tearshield.)
 
-Last time I fixed several bugs with Claude Code, but there were still some things bugging me.
+Last time I fixed several bugs with Claude Code, but some problems were still there.
 
 ## What was still broken
 
@@ -81,11 +81,11 @@ And the notifications:
 - If I don't answer, it rings every 10 minutes for an hour, then waits quietly. If I swipe it away without answering, it comes back without sound. After 12 hours the reminder goes away and the dose counts as missed.
 - Exact alarms, so they go off on time even when the phone is idle.
 
-The library is [react-native-notify-kit](https://github.com/marcocrupi/react-native-notify-kit), the maintained fork of [Notifee](https://github.com/invertase/notifee). We started on Notifee itself, but it was archived in April 2026 and doesn't work with React Native's New Architecture, which Expo SDK 57 needs. The fork has the same API, so only the import changed.
+The library is [react-native-notify-kit](https://github.com/marcocrupi/react-native-notify-kit), the maintained fork of [Notifee](https://github.com/invertase/notifee). We started on Notifee itself, but it was archived in April 2026. Expo SDK 57 needs React Native's New Architecture, and the fork supports it. The fork has the same API, so only the import changed.
 
 ## An Android battery setting that can stop reminders
 
-This is useful to know even if you don't build apps. On my phone, "Allow background usage" was on, and reminders still came late. The switch isn't enough. You have to tap the words next to it, not the switch, and choose "Unrestricted". Otherwise Android may not start the app in the background, and reminders can come late or not at all.
+This is useful to know even if you don't build apps. On my OnePlus, "Allow background usage" was on, and reminders still came late. There, the switch isn't enough. You have to tap the words next to it, not the switch, and choose "Unrestricted". Otherwise Android may not start the app in the background, and reminders can come late or not at all.
 
 The app can't change that setting itself. Instead, it has a checklist in the settings: notifications, exact alarms and battery, how each one is set right now, with a button that opens the right screen to fix it. The first version labelled the battery line with what it *should* be, so it looked like everything was fine when it wasn't. Now every line says how things actually are.
 
@@ -122,3 +122,5 @@ I also asked for a custom sound for the reminders, and had fun generating a bark
 The code is on GitHub: [altany/marios-helper](https://github.com/altany/marios-helper). If you want to reuse parts of it, start with [`deploy.sh`](https://github.com/altany/marios-helper/blob/main/scripts/deploy.sh) for update-or-build on every merge, [`app.config.js`](https://github.com/altany/marios-helper/blob/main/app.config.js) for the side-by-side test app, and [`src/engine/`](https://github.com/altany/marios-helper/tree/main/src/engine) for the schedule logic and its tests.
 
 Mario gets his medicines on time, and the app now looks like him.
+
+**TODO, only if we enter: a last line about entering Mario's helper in the Expo App Awards, with a link.**

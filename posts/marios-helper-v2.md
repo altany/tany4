@@ -15,7 +15,7 @@ updated: "2026-10-11T12:00:00+0000"
 
 ## The background
 
-My dog Mario has an eye care and pain-killer routine. Every day, several times a day, he needs Hylogel drops. Twice a day, 20 minutes after the Hylogel, he needs Lacrimmune. And there are other medications on top of that.
+My dog Mario has an eye care and pain-killer routine. Every day, several times a day, he needs Blinkdrops eye drops. Twice a day, 20 minutes after the Blinkdrops, he needs Tearshield eye ointment. And there are other medications on top of that. (The medicine names in this post are made up.)
 
 It's hard to keep track of the timing, and he can't miss a dose. So about a year ago I built a small React Native app with Expo for the reminders. The notification had to be impossible to miss: it should stay in the drawer until I tap it, not disappear if I swipe it or close the app. Daily scheduled notifications, a "done" button and a snooze button.
 
@@ -45,7 +45,7 @@ The fixes took a couple of hours of back and forth. Mostly me describing what I 
 
 Once the bugs were fixed I realised the app was still pretty rigid. Every time Mario's prescription changed (which can be often) I had to edit the code.
 
-I asked Claude to add a settings page where I can add medications, define chain steps, set which hours each step fires and change the delays between steps. It was more complex than I expected because the chain logic had to stay consistent: if I apply Hylogel at 09:00, 15:00 and 21:00 and set Lacrimmune to follow only the 09:00 and 21:00 ones, any medication after Lacrimmune should only offer 09:00 and 21:00, not all three Hylogel times.
+I asked Claude to add a settings page where I can add medications, define chain steps, set which hours each step fires and change the delays between steps. It was more complex than I expected because the chain logic had to stay consistent: if I apply Blinkdrops at 09:00, 15:00 and 21:00 and set Tearshield to follow only the 09:00 and 21:00 ones, any medication after Tearshield should only offer 09:00 and 21:00, not all three Blinkdrops times.
 
 That constraint took a few rounds to get right. The settings UI and the preview summary on the notifications tab had to agree about which hours applied to each step.
 
