@@ -9,7 +9,7 @@ readingTimeMinutes: 8
 new: true
 ---
 
-**TL;DR**: [Six months ago](/blog/posts/marios-helper-v2) I fixed the bugs in the app that reminds me about my dog Mario's medicines. It still wasn't right. This time I had Claude Code rewrite it, and I did it all from the Claude app on my phone. The app uses a different notification library now, the next medicine in a chain is timed from when I actually gave the previous one, and every change reaches my phone by itself a couple of minutes after I say "κάνε merge" (merge it).
+**TL;DR**: [Six months ago](/blog/posts/marios-helper-v2) I fixed the bugs in the app that reminds me about my dog Mario's medicines. It still wasn't right. This time I had Claude Code rewrite it, and I did it all from the Claude app on my phone. The app uses a different notification library now, the next medicine in a chain is timed from when I actually gave the previous one, and every change reaches my phone by itself a couple of minutes after I say "merge it".
 
 ## What was still wrong
 
@@ -19,7 +19,7 @@ Mario still has Hylogel drops several times a day, and Lacrimmune 20 minutes aft
 - **I couldn't move a dose.** All I could do was postpone a reminder once it went off. I couldn't change its time in advance, or move it earlier.
 - **The swipe fix was fragile.** In the last post I patched the notification library so a swiped notification came back. The patch lived in an `android` folder I'd edited by hand, so the app could only be built on my laptop. And since Android 14, every phone lets you swipe away notifications marked as ongoing, not just OnePlus and Samsung.
 
-So I opened a Claude Code session in the Claude app and asked for a rewrite. Same screens as before (settings, the vet's prescription, the schedule preview), notifications that stay until I answer them, chains of medicines, and easy time changes for single doses. I also asked it to look into what else an app like this should do.
+So I opened a Claude Code session in the Claude app and asked for a rewrite. Same screens as before (settings, the vet's prescription, the schedule preview), notifications that stay until I answer them, chains of medicines, and easy time changes for single doses and whole chains. I also asked it to look into what else an app like this should do.
 
 ## A different notification library
 
@@ -31,7 +31,7 @@ The old app used expo-notifications. The new one uses [react-native-notify-kit](
 
 By default, if I don't answer, the reminder rings again every 10 minutes, up to six times, then stays in the drawer quietly. After 12 hours it clears itself and the dose counts as missed.
 
-Notification texts use plain words instead of symbols like ✓ or ′ for minutes, so they show properly on the watch: "Αργότερα 10 λεπτά" (later, 10 minutes).
+Notification texts use plain words instead of symbols like ✓ or ′ for minutes, so they show properly on the watch: "Later 10 minutes", not "Later 10′".
 
 The rewrite started on Notifee itself. Its repository was archived in April 2026, and it doesn't work with React Native's New Architecture. When I upgraded the app to Expo SDK 57, which needs the New Architecture, I moved to notify-kit. Invertase, who made Notifee, recommend it, and it has the same API, so only the import changed in the app's code.
 
@@ -56,7 +56,7 @@ This was the part I cared about most. Before, every change ended with me at my l
 My [Android Auto app](/blog/posts/greek-voice-commands-for-android-auto) goes through a Google Play internal testing track, because the car only shows apps installed from Play. Mario's app doesn't need that, so it uses Expo's own services:
 
 - **EAS Build** builds the APK in the cloud. I install it from a link on my phone.
-- **EAS Update** sends JavaScript changes over the air. The app downloads them by itself and shows "Υπάρχει νέα έκδοση" (there's a new version) with a restart button.
+- **EAS Update** sends JavaScript changes over the air. The app downloads them by itself and shows "There's a new version" with a restart button.
 
 A GitHub Action runs on every merge to main. It works out a fingerprint of the native side of the app: native libraries, permissions and config. If there's already a build with that fingerprint, only JavaScript changed, and it publishes an update. If not, it starts a new build and puts the install link in the run summary. The app's runtime version is that same fingerprint, so an update only ever reaches a build that can run it.
 
@@ -64,37 +64,37 @@ The one-time setup was an access token from expo.dev, saved as a secret in the G
 
 Now a change goes like this:
 
-1. I ask for it in Greek, in the Claude app.
+1. I ask for it in the Claude app.
 2. Claude makes it on a branch, runs the tests, opens a PR and sends me screenshots.
-3. I say "κάνε merge".
+3. I say "merge it".
 4. Claude merges it and checks the deploy run. A couple of minutes later it tells me the update is out.
-5. I open the app and tap "Επανεκκίνηση" (restart).
+5. I open the app and tap "Restart".
 
 Updates change the code, not the data. After the first one, I asked whether it had overwritten the new schedule I'd just set up. It hadn't. Medicines, times and history are saved on the phone and stay where they are.
 
 ## The battery setting that looked fine
 
-The app has a list of checks in its settings: notification permission, exact alarms, battery saving. On my phone the battery line said "Χωρίς περιορισμό μπαταρίας" (no battery restriction), while the phone's own settings said the app was restricted. I thought the app was wrong.
+The app has a list of checks in its settings: notification permission, exact alarms, battery saving. On my phone the battery line said "No battery restriction", while the phone's own settings said the app was restricted. I thought the app was wrong.
 
 It wasn't, but its label was. It named what the setting *should* be, with a warning icon next to it, and it read like a claim that all was fine. Now every line says how things are right now.
 
-Then the phone. Its switch "Επιτρέψτε τη χρήση στο παρασκήνιο" (allow background usage) was on, and that isn't enough. You have to tap the words next to it, not the switch, and choose "Χωρίς περιορισμούς" (unrestricted). Otherwise Android may not wake the app, and reminders can come late or not at all.
+Then the phone. Its switch "Allow background usage" was on, and that isn't enough. You have to tap the words next to it, not the switch, and choose "Unrestricted". Otherwise Android may not wake the app, and reminders can come late or not at all.
 
 The app can't flip that setting for me. It can only check it and open the right screen.
 
 ## Small changes, the same way
 
-After the rewrite, the rest were small requests from my phone. Each one was a PR, a "κάνε merge", and an update a couple of minutes later.
+After the rewrite, the rest were small requests from my phone. Each one was a PR, a "merge it", and an update a couple of minutes later.
 
-- **Every 8 hours.** Mario moved from Depon to a different medicine every 8 hours, with the first dose at 07:00, and I couldn't set that up easily. Now a routine has "Κάθε … ώρες" (every … hours). I pick the first dose and the gap, and it fills in 07:00, 15:00 and 23:00.
+- **Every 8 hours.** Mario moved from Depon to a different medicine every 8 hours, with the first dose at 07:00, and I couldn't set that up easily. Now a routine has "Every … hours". I pick the first dose and the gap, and it fills in 07:00, 15:00 and 23:00.
 - **An empty start.** A new install used to start with Mario's old schedule built in. Now it starts empty.
 - **The vet's first prescription.** The original instructions (Exocin, Hylogel and Lacrimmune until the end of August) had disappeared along with the old built-in data. I wanted them back, so now they're a fixed card on the prescription tab.
 
 ## A dog theme
 
-The last request was the fun one: "Μπορείς να την κάνεις dog themed?" (can you make it dog themed?)
+The last request was the fun one: "Can you make it dog themed?"
 
-The colours come from Mario's photo: cream for his fur, caramel for his ears, and a red ring around his photo for his bandana. Paw prints replace the ticks. A row of them fills in as the day's doses are given, and when they're all done it says "Μπράβο Μάριο!" (well done, Mario) next to a bone.
+The colours come from Mario's photo: cream for his fur, caramel for his ears, and a red ring around his photo for his bandana. Paw prints replace the ticks. A row of them fills in as the day's doses are given, and when they're all done it says "Well done, Mario!" next to a bone.
 
 The app is in Greek, so I've translated the screenshots for this post.
 
