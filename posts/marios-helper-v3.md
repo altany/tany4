@@ -15,8 +15,8 @@ new: true
 
 Mario still has Hylogel drops several times a day, and Lacrimmune 20 minutes after some of them. The app from [the last post](/blog/posts/marios-helper-v2) mostly worked, but not always when it mattered.
 
-- **The buttons did nothing with the app closed.** If I tapped "Το έδωσα" (I gave it) on the notification, or on my Garmin watch, while the app was closed, no code ran. So the reminder for Lacrimmune never came until I opened the app.
-- **I couldn't move a single dose.** Each reminder repeated every day at the same time. If we woke up late on a Sunday, I couldn't move that morning's 09:00 without moving every morning's.
+- **The buttons did nothing with the app closed.** If I tapped "I gave it" on the notification, or on my Garmin watch, while the app was closed, no code ran. So the reminder for Lacrimmune never came until I opened the app.
+- **I couldn't move a dose.** All I could do was postpone a reminder once it went off. I couldn't change its time in advance, or move it earlier.
 - **The swipe fix was fragile.** In the last post I patched the notification library so a swiped notification came back. The patch lived in an `android` folder I'd edited by hand, so the app could only be built on my laptop. And since Android 14, every phone lets you swipe away notifications marked as ongoing, not just OnePlus and Samsung.
 
 So I opened a Claude Code session in the Claude app and asked, in Greek, for a rewrite. Same screens as before (settings, the vet's prescription, the schedule preview), notifications that stay until I answer them, chains of medicines, and easy time changes for single doses. I also asked it to look into what else an app like this should do.
@@ -25,7 +25,7 @@ So I opened a Claude Code session in the Claude app and asked, in Greek, for a r
 
 The old app used expo-notifications. The new one uses [Notifee](https://github.com/invertase/notifee), which handles the parts I kept fighting:
 
-- **Buttons work with the app closed.** Notifee runs the app's code in the background when a button is tapped. "Το έδωσα" from the watch records the dose and schedules the next medicine straight away.
+- **Buttons work with the app closed.** Notifee runs the app's code in the background when a button is tapped. "I gave it" from the watch records the dose and schedules the next medicine straight away.
 - **It knows when a notification is swiped away.** The app posts it again, without sound. No patch and no Java of our own.
 - **Reminders use Android's exact alarms**, so they go off on time even when the phone is idle.
 
@@ -39,7 +39,7 @@ One thing to know: Notifee's repository was archived in April 2026. It works fin
 
 The schedule is built from routines. A routine is a few medicines given one after the other, at set times: Hylogel, then Lacrimmune 20 minutes later, at 09:00 and 21:00.
 
-The 20 minutes count from when I tap "Το έδωσα", not from 09:00. If I give Hylogel at 09:04, Lacrimmune rings at 09:24. In between, a notification counts down.
+The 20 minutes count from when I tap "I gave it", not from 09:00. If I give Hylogel at 09:04, Lacrimmune rings at 09:24. In between, a notification counts down.
 
 The app works out every dose a week ahead, and each dose has its own record. That's what makes single changes possible. I tap a future dose and move it or skip it, and nothing else changes. I can also move a whole day at once, for example an hour later when we wake up late.
 
