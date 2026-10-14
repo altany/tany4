@@ -29,7 +29,7 @@ The old app used expo-notifications. The new one uses [react-native-notify-kit](
 - **It knows when a notification is swiped away.** The app posts it again, without sound. No patch and no Java of our own.
 - **Reminders use Android's exact alarms**, so they go off on time even when the phone is idle.
 
-By default, if I don't answer, the reminder rings again every 10 minutes, up to six times, then stays in the drawer quietly. After 12 hours it clears itself and the dose counts as missed.
+By default, if I don't answer, the reminder rings again every 10 minutes, up to six times, so one I didn't hear keeps trying for an hour without ringing all day. Then it stays in the drawer quietly. After 12 hours it clears itself and the dose counts as missed, so old reminders don't pile up.
 
 Notification texts use plain words instead of symbols like ✓ or ′ for minutes, so they show properly on the watch: "Later 10 minutes", not "Later 10′".
 
@@ -41,13 +41,13 @@ The schedule is built from routines. A routine is a few medicines given one afte
 
 The 20 minutes count from when I tap "I gave it", not from 09:00. If I give Blinkdrops at 09:04, Tearshield rings at 09:24. In between, a notification counts down.
 
-The app works out every dose a week ahead, and each dose has its own record. That's what makes single changes possible. I tap a future dose and move it or skip it, and nothing else changes. I can also move a whole day at once, for example an hour later when we wake up late.
+The app works out every dose a week ahead, so reminders keep coming even if I don't open it for days. It tops the week up every time it opens or a reminder fires. Each dose has its own record, and that's what makes single changes possible. I tap a future dose and move it or skip it, and nothing else changes. I can also move a whole day at once, for example an hour later when we wake up late.
 
 Every change goes through one function. It saves the data, works out which notifications should exist, compares that with what's scheduled on the phone, and only changes the difference. Each dose has exactly one notification ID, so the duplicate snoozes from the last post can't come back.
 
-The schedule logic is plain TypeScript with tests, with no React or notification code in it. The notification flow has tests too, against a fake notification library.
+The schedule logic is plain TypeScript with tests, with no React or notification code in it. The notification flow has tests too, against a fake notification library. Claude can't run the app on my phone, so the tests are what check a change before it reaches me.
 
-On the first start, the old settings moved over by themselves. Blinkdrops at 09:00, 15:00 and 21:00 with Tearshield after the 09:00 and 21:00 ones became two routines.
+On the first start, the old settings moved over by themselves, so I didn't have to set anything up again. Blinkdrops at 09:00, 15:00 and 21:00 with Tearshield after the 09:00 and 21:00 ones became two routines.
 
 ## New versions without a laptop
 
@@ -87,7 +87,7 @@ The app can't flip that setting for me. It can only check it and open the right 
 After the rewrite, the rest were small requests from my phone. Each one was a PR, a "merge it", and an update a couple of minutes later.
 
 - **Every 8 hours.** Mario's painkiller changed to one he takes every 8 hours, with the first dose at 07:00, and I couldn't set that up easily. Now a routine has "Every … hours". I pick the first dose and the gap, and it fills in 07:00, 15:00 and 23:00.
-- **An empty start.** A new install used to start with Mario's old schedule built in. Now it starts empty.
+- **An empty start.** A new install used to start with Mario's old schedule built in. His medicines have changed many times, so a built-in schedule no longer made sense. Now it starts empty, and I add what he takes now.
 - **The vet's first prescription.** The original instructions (Bactidrops, Blinkdrops and Tearshield until the end of August) had disappeared along with the old built-in data. I wanted them back, so now they're a fixed card on the prescription tab.
 
 ## A dog theme
@@ -100,7 +100,7 @@ The app is in Greek, so I've translated the screenshots for this post.
 
 ![The Today screen in the new theme: a paw print for each of the day's doses, the medicine that's due now, and the day's routines. Next to it, a finished day with every paw filled in and "Well done, Mario!"](/blog/marios-helper-v3-screens.png)
 
-Titles use a rounded font. The first one Claude picked, Nunito, turned out to have no Greek letters at all, so it's M PLUS Rounded 1c instead, cut down to Latin and Greek so it's 64 KB instead of 3.6 MB.
+Titles use a rounded font, to go with the softer, dog themed look. The first one Claude picked, Nunito, turned out to have no Greek letters at all, so it's M PLUS Rounded 1c instead, cut down to Latin and Greek so it's 64 KB instead of 3.6 MB.
 
 All of it was JavaScript and a font file, so it arrived as an update like everything else.
 
