@@ -17,7 +17,7 @@ If you read [the last post](/blog/posts/marios-helper-v2), you've met Mario, my 
 
 (The medicine names in this post are made up. Let's call them Blinkdrops and Tearshield.)
 
-Last time I fixed the bugs with Claude Code and called it done. It mostly worked. Mostly.
+Last time I fixed several bugs with Claude Code, but there were still some things bugging me.
 
 ## What was still broken
 
