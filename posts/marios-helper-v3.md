@@ -66,11 +66,11 @@ The schedule is made of routines. A routine is a few medicines one after the oth
 
 The 20 minutes start when I tap "I gave it", not at 09:00. If I give Blinkdrops at 09:04, Tearshield rings at 09:24, with a countdown notification in between. Same with the painkiller. "Every 8 hours" means 8 hours after the dose I actually gave, so if one is an hour late, the rest of the day moves with it.
 
-This came from a bug I reported from my phone:
+At first the app didn't do this. When I gave the painkiller late one morning, the next dose stayed at its planned time, so I sent Claude this from my phone:
 
 > I gave the 8-hour medicine at 8:22 but the next dose says 15:00. Didn't it move to 8 hours after?
 
-Now it does. It took two more fixes to get it fully right, and I reported both the same way, from my phone.
+After that change, the next doses move with a late one. It took two more fixes to get it fully right, and I reported both the same way, from my phone.
 
 Every dose exists a week ahead, each with its own record. So I can see my whole day in advance and move or skip one medicine, a whole chain, or the whole day. For example, an hour later because we slept in, or earlier because I want an early night.
 
@@ -121,7 +121,7 @@ The second one was fine. It's a synthesised "woof woof" made for the app, so the
 - The deploy setup made the biggest difference. When a change takes a message and a few minutes, I also make the small fixes I used to put off.
 - Put the logic you care about somewhere it can be tested without a phone, and send risky changes through a test copy of the app first.
 - Time follow-up reminders from when something actually happened, not from when it was planned.
-- Describe bugs the way you see them in the app. "I gave it at 8:22 but it says 15:00" was enough for Claude to find the problem.
+- Describe problems the way you see them in the app. "I gave it at 8:22 but it says 15:00" was enough for Claude to make the change.
 
 The code is on GitHub: [altany/marios-helper](https://github.com/altany/marios-helper). If you want to reuse parts of it, start with [`deploy.sh`](https://github.com/altany/marios-helper/blob/main/scripts/deploy.sh) for update-or-build on every merge, [`app.config.js`](https://github.com/altany/marios-helper/blob/main/app.config.js) for the side-by-side test app, and [`src/engine/`](https://github.com/altany/marios-helper/tree/main/src/engine) for the schedule logic and its tests.
 
