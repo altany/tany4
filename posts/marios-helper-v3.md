@@ -19,7 +19,7 @@ Mario still has Hylogel drops several times a day, and Lacrimmune 20 minutes aft
 - **I couldn't move a dose.** All I could do was postpone a reminder once it went off. I couldn't change its time in advance, or move it earlier.
 - **The swipe fix was fragile.** In the last post I patched the notification library so a swiped notification came back. The patch lived in an `android` folder I'd edited by hand, so the app could only be built on my laptop. And since Android 14, every phone lets you swipe away notifications marked as ongoing, not just OnePlus and Samsung.
 
-So I opened a Claude Code session in the Claude app and asked, in Greek, for a rewrite. Same screens as before (settings, the vet's prescription, the schedule preview), notifications that stay until I answer them, chains of medicines, and easy time changes for single doses. I also asked it to look into what else an app like this should do.
+So I opened a Claude Code session in the Claude app and asked for a rewrite. Same screens as before (settings, the vet's prescription, the schedule preview), notifications that stay until I answer them, chains of medicines, and easy time changes for single doses. I also asked it to look into what else an app like this should do.
 
 ## A different notification library
 
