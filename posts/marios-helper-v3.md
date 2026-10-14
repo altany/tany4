@@ -97,11 +97,7 @@ Since changes are now quick to make, I also asked for things I wouldn't have mad
 
 The colours now come from Mario's photo: cream for his fur, caramel for his ears and red for his bandana. Paw prints fill in as the day's doses are given, and when they're all done it says "Well done, Mario!".
 
-Then I wanted the reminders to bark. My feedback on the first bark Claude made:
-
-> It's a bit high-pitched and annoying, like a puppy. Make it more grown-up.
-
-The second one was fine. It's a synthesised "woof woof" made for the app, so there are no licence issues, and a switch in the settings goes back to the phone's usual sound.
+I also asked for a custom sound for the reminders, and had fun generating a bark for it.
 
 **TODO: English version. The app follows the phone's language, Greek or English.**
 
