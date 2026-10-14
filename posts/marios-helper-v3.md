@@ -52,7 +52,7 @@ Here's the catch with coding from your phone: you don't read every line the way 
 
 The schedule logic is plain TypeScript with no React or notification code in it, so it's tested on its own. The notification flow has tests too, against a fake notification library. Claude can't run the app on my phone, so the tests are what stands between a change and Mario's reminders.
 
-Every change to the data goes through one function. It saves, works out which reminders should exist, compares that with what's scheduled on the phone, and only changes the difference. Each dose has one notification ID, so no more duplicate reminders like last time.
+It also helps that there's only one way to change the data. Every change goes through one function that saves it and then fixes up the reminders on the phone. So a new feature can't forget to update the alarms, and a dose can't end up with two reminders like last time.
 
 For the big stuff I get a second opinion. Before testing the Expo SDK 57 upgrade, I had another Claude session review the diff and the test plan. It found things the first one missed: the notification library wasn't pinned to an exact version, nothing tested installing the new version over the old one, and nothing tested a reminder overnight, which is exactly when Android likes to delay alarms.
 
