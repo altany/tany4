@@ -40,7 +40,7 @@ To get there I needed two Expo services and one GitHub Action:
 
 The Action runs on every merge to main and works out which of the two it needs. It takes a fingerprint of the native side of the app (native libraries, permissions, config). If there's already a build with that fingerprint, only JavaScript changed, so it publishes an update. If not, it starts a new build and puts the install link in the run summary. The app's runtime version is that same fingerprint, so an update can never land on a build that can't run it.
 
-Updates change the code, not the data. After the first one I had to ask if it had wiped the schedule I'd just set up. It hadn't.
+I've checked that updates change the code, not the data, so the day's schedule and the medicines I've already given are still there after an update.
 
 All of this runs on Expo's free plan, and the one-time setup (an Expo access token saved as a GitHub secret) I did on my phone too.
 
