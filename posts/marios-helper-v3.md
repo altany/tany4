@@ -13,9 +13,9 @@ new: true
 
 ## What was still wrong
 
-Mario still has Hylogel drops several times a day, and Lacrimmune 20 minutes after some of them. The app from [the last post](/blog/posts/marios-helper-v2) mostly worked, but not always when it mattered.
+Mario still has eye drops several times a day, and an eye ointment 20 minutes after some of them. Here I'll call them Blinkdrops and Tearshield: the medicine names in this post and its screenshots are made up. The app from [the last post](/blog/posts/marios-helper-v2) mostly worked, but not always when it mattered.
 
-- **The buttons did nothing with the app closed.** If I tapped "I gave it" on the notification, or on my Garmin watch, while the app was closed, no code ran. So the reminder for Lacrimmune never came until I opened the app.
+- **The buttons did nothing with the app closed.** If I tapped "I gave it" on the notification, or on my Garmin watch, while the app was closed, no code ran. So the reminder for Tearshield never came until I opened the app.
 - **I couldn't move a dose.** All I could do was postpone a reminder once it went off. I couldn't change its time in advance, or move it earlier.
 - **The swipe fix was fragile.** In the last post I patched the notification library so a swiped notification came back. The patch lived in an `android` folder I'd edited by hand, so the app could only be built on my laptop. And since Android 14, every phone lets you swipe away notifications marked as ongoing, not just OnePlus and Samsung.
 
@@ -37,9 +37,9 @@ The rewrite started on Notifee itself. Its repository was archived in April 2026
 
 ## Chains timed from when I actually gave the medicine
 
-The schedule is built from routines. A routine is a few medicines given one after the other, at set times: Hylogel, then Lacrimmune 20 minutes later, at 09:00 and 21:00.
+The schedule is built from routines. A routine is a few medicines given one after the other, at set times: Blinkdrops, then Tearshield 20 minutes later, at 09:00 and 21:00.
 
-The 20 minutes count from when I tap "I gave it", not from 09:00. If I give Hylogel at 09:04, Lacrimmune rings at 09:24. In between, a notification counts down.
+The 20 minutes count from when I tap "I gave it", not from 09:00. If I give Blinkdrops at 09:04, Tearshield rings at 09:24. In between, a notification counts down.
 
 The app works out every dose a week ahead, and each dose has its own record. That's what makes single changes possible. I tap a future dose and move it or skip it, and nothing else changes. I can also move a whole day at once, for example an hour later when we wake up late.
 
@@ -47,7 +47,7 @@ Every change goes through one function. It saves the data, works out which notif
 
 The schedule logic is plain TypeScript with tests, with no React or notification code in it. The notification flow has tests too, against a fake notification library.
 
-On the first start, the old settings moved over by themselves. Hylogel at 09:00, 15:00 and 21:00 with Lacrimmune after the 09:00 and 21:00 ones became two routines.
+On the first start, the old settings moved over by themselves. Blinkdrops at 09:00, 15:00 and 21:00 with Tearshield after the 09:00 and 21:00 ones became two routines.
 
 ## New versions without a laptop
 
@@ -86,9 +86,9 @@ The app can't flip that setting for me. It can only check it and open the right 
 
 After the rewrite, the rest were small requests from my phone. Each one was a PR, a "merge it", and an update a couple of minutes later.
 
-- **Every 8 hours.** Mario moved from Depon to a different medicine every 8 hours, with the first dose at 07:00, and I couldn't set that up easily. Now a routine has "Every … hours". I pick the first dose and the gap, and it fills in 07:00, 15:00 and 23:00.
+- **Every 8 hours.** Mario's painkiller changed to one he takes every 8 hours, with the first dose at 07:00, and I couldn't set that up easily. Now a routine has "Every … hours". I pick the first dose and the gap, and it fills in 07:00, 15:00 and 23:00.
 - **An empty start.** A new install used to start with Mario's old schedule built in. Now it starts empty.
-- **The vet's first prescription.** The original instructions (Exocin, Hylogel and Lacrimmune until the end of August) had disappeared along with the old built-in data. I wanted them back, so now they're a fixed card on the prescription tab.
+- **The vet's first prescription.** The original instructions (Bactidrops, Blinkdrops and Tearshield until the end of August) had disappeared along with the old built-in data. I wanted them back, so now they're a fixed card on the prescription tab.
 
 ## A dog theme
 
