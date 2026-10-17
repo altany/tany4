@@ -1,5 +1,5 @@
 ---
-title: "What I built after the Kent C. Dodds post, and what changed"
+title: "What I built after Kent C. Dodds's webinar"
 date: "2026-10-17T12:00:00+0000"
 categories: ["AI"]
 banner: "two-weeks-on.png"
