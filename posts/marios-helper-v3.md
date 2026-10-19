@@ -15,7 +15,7 @@ new: true
 
 If you read [the last post](/blog/posts/marios-helper-v2), you've met Mario, my dog, and his eye drops. He has drops several times a day and an eye ointment 20 minutes after some of them, so the drops have time to absorb and the ointment doesn't wash them out. There's also a painkiller every 8 hours. And his medication keeps changing, so whatever I build has to be easy to change too.
 
-I build things like this in my free time because I enjoy it, and because here a missed dose really matters.
+Giving Mario the right medicines at the right time isn't something I can risk getting wrong. So I use my passion for programming to help me with everyday things like this, and to look after him properly.
 
 (The medicine names in this post are made up. Let's call them Blinkdrops and Tearshield.)
 
@@ -60,7 +60,7 @@ For bigger changes, I ask a second Claude session to review. Before testing the 
 
 And for anything native there's a test copy of the app. Adding a `test-build` label to a PR builds "Mario TEST", a separate app that installs next to the real one, with its own data. If a change breaks something, it breaks in the test app and not in Mario's real reminders.
 
-Before the SDK 57 upgrade reached the real app, I installed it over the old version in Mario TEST, without opening it, and the reminder the old version had set rang on time. Once, it barked twice. Instead of guessing why, I asked Claude to add a log to the app that notes every reminder it shows, with or without sound, and why. It only happened on the first reminder after the update, so now I open the app once after installing.
+Before the SDK 57 upgrade reached the real app, I installed it over the old version in Mario TEST, without opening it, and the reminder the old version had set rang on time. Once, the same notification went off twice. Instead of guessing why, I asked Claude to add a log to the app that notes every notification it shows, with or without sound, and why. It only happened on the first notification after the update, so now I open the app once after installing.
 
 ## Reminders based on when I actually gave the medicine
 
@@ -117,7 +117,7 @@ Now the Today screen has a physio card with a "Done" button, and a reminder come
 
 ## What still isn't great
 
-- Some changes still need an install. Anything native means a new APK: the bark had to be built into the Android app, and the SDK 57 upgrade changed the native libraries. It doesn't happen often, and the install link is in the run summary, but it isn't automatic. Play internal testing would fix that, and I might add it later.
+- Some changes still need an install. Anything native means a new APK: the custom sound had to be built into the Android app, and the SDK 57 upgrade changed the native libraries. It doesn't happen often, and the install link is in the run summary, but it isn't automatic. Play internal testing would fix that, and I might add it later.
 - The notification library has one maintainer. I've pinned the exact version, and I'll update it on purpose.
 - Claude can't test on my phone. The tests and the test app catch a lot, but whether a reminder actually rings with the app closed, I can only check on a real phone.
 - Battery settings are different on every phone. The app can check them and open the right screen, but it can't change them.
@@ -133,5 +133,3 @@ Now the Today screen has a physio card with a "Done" button, and a reminder come
 The code is on GitHub: [altany/marios-helper](https://github.com/altany/marios-helper). If you want to reuse parts of it, start with [`deploy.sh`](https://github.com/altany/marios-helper/blob/main/scripts/deploy.sh) for update-or-build on every merge, [`app.config.js`](https://github.com/altany/marios-helper/blob/main/app.config.js) for the side-by-side test app, and [`src/engine/`](https://github.com/altany/marios-helper/tree/main/src/engine) for the schedule logic and its tests.
 
 Mario gets his medicines on time, and the app now looks like him.
-
-I'm entering Mario's Helper in the [Expo App Awards 2026](https://expo.dev/awards/2026).

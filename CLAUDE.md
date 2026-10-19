@@ -11,6 +11,6 @@ Every paragraph should serve one of the two. Leave out:
 - step-by-step accounts that don't teach anything;
 - filler and "AI prose": no hype, no cute personification, no fluffy phrasing. She would never write those herself.
 
-How she writes: simple, clear, plain words, short sentences, first person, like talking to someone. Say why, not only what. Quote her own messages as she wrote them (typos fixed). English posts have no Greek text.
+How she writes: simple, clear, plain words, short sentences, first person, like talking to someone. Say why, not only what, and in her own reasons. Call things by their plain name (a notification, not "a bark"). Quote her own messages as she wrote them (typos fixed). English posts have no Greek text.
 
 When suggesting changes to a post, give a list of before → after.
