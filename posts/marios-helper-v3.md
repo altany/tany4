@@ -60,7 +60,7 @@ For bigger changes, I ask a second Claude session to review. Before testing the 
 
 And for anything native there's a test copy of the app. Adding a `test-build` label to a PR builds "Mario TEST", a separate app that installs next to the real one, with its own data. If a change breaks something, it breaks in the test app and not in Mario's real reminders.
 
-Before the SDK 57 upgrade reached the real app, I installed it over the old version in Mario TEST, without opening it, and the reminder the old version had set rang on time. Once, the same notification went off twice. Instead of guessing why, I asked Claude to add a log to the app that notes every notification it shows, with or without sound, and why. It only happened on the first notification after the update, so now I open the app once after installing.
+Before the SDK 57 upgrade reached the real app, I installed it over the old version in Mario TEST, without opening it, and the reminder the old version had set rang on time. Once, the same notification went off twice. Instead of guessing why, I asked Claude to add a log to the app that notes every notification it shows, with or without sound, and why. It hasn't happened again, but the log is still in the app for the next time something odd happens.
 
 ## Reminders based on when I actually gave the medicine
 
