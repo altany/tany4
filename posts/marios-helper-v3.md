@@ -40,6 +40,8 @@ To get there I needed two Expo services and one GitHub Action:
 - **EAS Build** builds the APK in the cloud and gives me a link to install it.
 - **EAS Update** sends JavaScript changes over the air. The app downloads them by itself and shows "There's a new version" with a restart button.
 
+![The Today screen with a card at the top: "There's a new version. It's already downloaded. Tap to restart the app with the new version." and a Restart button.](/blog/marios-helper-v3-update.png)
+
 The Action runs on every merge to main and works out which of the two it needs. It takes a fingerprint of the native side of the app (native libraries, permissions, config). If there's already a build with that fingerprint, only JavaScript changed, so it publishes an update. If not, it starts a new build and puts the install link in the run summary. The app's runtime version is that same fingerprint, so an update can never land on a build that can't run it.
 
 I've checked that updates change the code, not the data, so the day's schedule and the medicines I've already given are still there after an update.
@@ -62,11 +64,15 @@ And for anything native there's a test copy of the app. Adding a `test-build` la
 
 Before the SDK 57 upgrade reached the real app, I installed it over the old version in Mario TEST, without opening it, and the reminder the old version had set rang on time. At first I got the same notification twice, so I asked Claude to add a log to the app that notes every notification it shows, with or without sound, and why. With the log, Claude found what caused it.
 
+![The notification log in the settings. Each line has the time, what happened and why: the Blinkdrops reminder showing, "I gave it" tapped on it, and the Tearshield reminder set for 20 minutes later.](/blog/marios-helper-v3-log.png)
+
 ## Reminders based on when I actually gave the medicine
 
 The schedule is made of routines. A routine is a few medicines one after the other at set times, like Blinkdrops and then Tearshield 20 minutes later, at 09:00 and 21:00.
 
 The 20 minutes start when I tap "I gave it", not at 09:00. If I give Blinkdrops at 09:04, Tearshield rings at 09:24, with a countdown notification in between. Same with the painkiller. "Every 8 hours" means 8 hours after the dose I actually gave, so if one is an hour late, the rest of the day moves with it.
+
+![Left: the Eyes routine at 09:00 and 21:00, Blinkdrops and then Tearshield 20 minutes later. Right: the day's schedule. Blinkdrops was given at 09:04, so Tearshield is at 09:24. The painkiller was given at 08:22, so the next one moved from 15:00 to 16:22.](/blog/marios-helper-v3-chain.png)
 
 At first the app didn't do this. When I gave the painkiller late one morning, the next dose stayed at its planned time, so I sent Claude this from my phone:
 
@@ -75,6 +81,8 @@ At first the app didn't do this. When I gave the painkiller late one morning, th
 Claude found the issue and fixed it remotely. After that change, the next doses move with a late one. It took two more fixes to get it fully right, and I reported both the same way, from my phone.
 
 The app plans every dose a week ahead. So I can see my whole day in advance and move or skip one medicine, a whole chain, or the whole day. For example, an hour later because we slept in, or earlier because I want an early night.
+
+![Left: tomorrow's doses, one by one. Right: tapping the 09:00 Eyes dose gives "Earlier", "Later" and "Skip", "Change the time just this once" and "Skip the whole dose".](/blog/marios-helper-v3-plan.png)
 
 And the notifications:
 
@@ -91,6 +99,8 @@ This is useful to know even if you don't build apps. On my OnePlus, "Allow backg
 
 The app can't change that setting itself. Instead, it has a checklist in the settings: notifications, exact alarms and battery, how each one is set right now, with a button that opens the right screen to fix it. The first version labelled the battery line with what it *should* be, so it looked like everything was fine when it wasn't. Now every line says how things actually are.
 
+![The checklist in the settings. Notifications, medicine reminders and exact alarms have green ticks. "Battery saving limits the app" has a warning, what to do, and an Open button.](/blog/marios-helper-v3-battery.png)
+
 ## Making it Mario's
 
 Since changes are now quick to make, I also asked for things I wouldn't have made time for before.
@@ -103,9 +113,7 @@ I also asked for a custom sound for the reminders, and had fun generating a bark
 
 The app is in English too now, so other people can use it. It follows the phone's language. Claude writes every new text in both languages, right where it's used, so there's no separate translation file to keep up to date.
 
-**TODO: retake the screenshots below from the English version of the app.**
-
-![The Today screen in the new theme: a paw print for each of the day's doses, the medicine that's due now, and the day's routines. Next to it, a finished day with every paw filled in and "Well done, Mario!"](/blog/marios-helper-v3-screens.png)
+![The Today screen in the new theme: a paw print for each of the day's doses, the medicine that's due now, and the physio card. Next to it, a finished day with every paw filled in and "Well done, Mario!"](/blog/marios-helper-v3-screens.png)
 
 ## Mario's physio
 
@@ -114,6 +122,8 @@ Mario started physio recently, so I sent this from my phone:
 > Mario now does physio, please add tracking for his physio training. We might go more detailed soon (count exercises etc.) but for now I just want to ensure I do it daily and track physio appointments.
 
 Now the Today screen has a physio card with a "Done" button, and a reminder comes if we haven't done the exercises by the evening. The last four weeks show as paw prints, and his appointments have their own list, with a reminder an hour before.
+
+![Left: the Today screen with the physio card: "Not done yet", a Done button, "4 days in a row" and the next appointment. Right: the last four weeks as paw prints, and the list of appointments.](/blog/marios-helper-v3-physio.png)
 
 ## What still isn't great
 
