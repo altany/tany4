@@ -5,7 +5,7 @@ categories: ["AI", "React Native", "Mobile", "Side projects"]
 banner: "marios-helper-v3.png"
 color: "#fbf5ec"
 description: "Mario's medication app still let doses slip, and every fix meant sitting at my laptop. So I rebuilt it from my phone, with Claude Code, Expo and a GitHub Action."
-readingTimeMinutes: 8
+readingTimeMinutes: 9
 new: true
 ---
 
@@ -58,7 +58,11 @@ For bigger changes, I ask a second Claude session to review. Before testing the 
 
 And for anything native there's a test copy of the app. Adding a `test-build` label to a PR builds "Mario TEST", a separate app that installs next to the real one, with its own data. If a change breaks something, it breaks in the test app and not in Mario's real reminders.
 
-**TODO: what testing the upgrade on Mario TEST found.**
+Before the SDK 57 upgrade reached the real app, I tested it this way. I installed the old version as Mario TEST and set a reminder. Then I installed the new version over it, without opening it. The reminder rang on time, so the reminders the old version had set still worked after the update.
+
+On that first reminder, it barked again a few minutes later. I asked Claude to add a log to the app that notes each reminder it shows, with or without sound, and why. The extra bark only happened that once, on the first reminder after the update, before I'd opened the app. Now I open the app once after installing a new version.
+
+I also gave a medicine from my watch and checked that the next one came 5 minutes later, and I restarted the phone to check that the reminders still rang.
 
 ## Reminders based on when I actually gave the medicine
 
@@ -99,11 +103,19 @@ The colours now come from Mario's photo: cream for his fur, caramel for his ears
 
 I also asked for a custom sound for the reminders, and had fun generating a bark for it.
 
-**TODO: English version. The app follows the phone's language, Greek or English.**
+The app is in English too now. It follows the phone's language, and you can change it in the settings. Claude writes every new text in both languages, right where it's used, so there's no separate translation file to keep up to date.
 
 **TODO: retake the screenshots below from the English version of the app.**
 
 ![The Today screen in the new theme: a paw print for each of the day's doses, the medicine that's due now, and the day's routines. Next to it, a finished day with every paw filled in and "Well done, Mario!"](/blog/marios-helper-v3-screens.png)
+
+## Mario's physio
+
+Mario started physio recently, so I sent this from my phone:
+
+> Mario now does physio, please add tracking for his physio training. We might go more detailed soon (count exercises etc.) but for now I just want to ensure I do it daily and track physio appointments.
+
+Now the Today screen has a physio card with a "Done" button. If we haven't done the exercises by the time I set, a reminder comes, and "Done" works from the watch too. The physio screen shows the last four weeks as paw prints, and lists his appointments, with a reminder an hour before each one.
 
 ## What still isn't great
 
@@ -123,4 +135,4 @@ The code is on GitHub: [altany/marios-helper](https://github.com/altany/marios-h
 
 Mario gets his medicines on time, and the app now looks like him.
 
-**TODO, only if we enter: a last line about entering Mario's helper in the Expo App Awards, with a link.**
+I'm entering Mario's Helper in the [Expo App Awards 2026](https://expo.dev/awards/2026).
