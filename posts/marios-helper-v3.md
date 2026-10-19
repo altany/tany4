@@ -91,6 +91,8 @@ And the notifications:
 - If I don't answer, it rings again every 10 minutes for an hour. If I swipe it away without answering, it comes back without sound.
 - Exact alarms, so they go off on time even when the phone is idle.
 
+<img src="/blog/marios-helper-v3/notifications@2x.png" alt="Three notifications, one after the other: &quot;Time for Blinkdrops, Mario!&quot; with the buttons &quot;I gave it&quot; and &quot;Later 10 minutes&quot;, then &quot;Well done! Blinkdrops given at 16:17. Next: Tearshield at 16:37&quot;, then &quot;Time for Tearshield, Mario!&quot; at 16:37." width="446">
+
 The library is [react-native-notify-kit](https://github.com/marcocrupi/react-native-notify-kit), the maintained fork of [Notifee](https://github.com/invertase/notifee). We started on Notifee itself, but it was archived in April 2026. Expo SDK 57 needs React Native's New Architecture, and the fork supports it. The fork has the same API, so only the import changed.
 
 ## An Android battery setting that can stop reminders
@@ -121,7 +123,11 @@ Mario started physio recently, so I sent this from my phone:
 
 > Mario now does physio, please add tracking for his physio training. We might go more detailed soon (count exercises etc.) but for now I just want to ensure I do it daily and track physio appointments.
 
-Now the Today screen has a physio card with a "Done" button, and a reminder comes if we haven't done the exercises by the evening. The last four weeks show as paw prints, and his appointments have their own list, with a reminder an hour before.
+Now the Today screen has a physio card with a "Done" button, and a reminder comes if we haven't done the exercises by the evening.
+
+<img src="/blog/marios-helper-v3/physio-notification@2x.png" alt="The physio reminder: &quot;Physio time, Mario! Today's exercises. Tap Done when you finish.&quot; with the buttons &quot;Done&quot; and &quot;Later 1 hour&quot;." width="446">
+
+The last four weeks show as paw prints, and his appointments have their own list, with a reminder an hour before.
 
 ![Left: the Today screen with the physio card: "Not done yet", a Done button, "4 days in a row" and the next appointment. Right: the last four weeks as paw prints, and the list of appointments.](/blog/marios-helper-v3/physio@2x.png)
 
