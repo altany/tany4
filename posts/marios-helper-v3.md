@@ -54,7 +54,7 @@ When I work from my phone, I don't read every line of code the way I would at a 
 
 The schedule logic is plain TypeScript with no React or notification code in it, so it's tested on its own. The notification flow has tests too, against a fake notification library. Claude can't run the app on my phone, so the tests are how a change gets checked before it reaches my phone.
 
-It also helps that there's only one way to change the data. Every change goes through one function that saves it and then updates the reminders scheduled on the phone. So a new feature can't forget to update the alarms, and a dose can't end up with two reminders like last time.
+It also helps that there's only one way to change the data. Every change goes through one function that saves it and then updates the reminders scheduled on the phone. So a new feature can't forget to update the alarms, and a dose can't end up with two reminders, like the duplicate notifications on snooze in [the last post](/blog/posts/marios-helper-v2).
 
 For bigger changes, I ask a second Claude session to review. Before testing the Expo SDK 57 upgrade, it reviewed the diff and the test plan. It found things the first one missed: the notification library wasn't pinned to an exact version, nothing tested installing the new version over the old one, and nothing tested a reminder overnight, when Android can delay alarms to save battery.
 
