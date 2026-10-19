@@ -79,7 +79,7 @@ The app plans every dose a week ahead. So I can see my whole day in advance and 
 And the notifications:
 
 - The buttons work with the app closed, on the phone and on the watch. The library runs the app's code in the background, so "I gave it" on the watch records the dose and schedules the next one.
-- Plain words, because the watch doesn't show symbols properly: "Later 10 minutes", not "Later 10′".
+- Plain words, because some phones don't show symbols properly: "Later 10 minutes", not "Later 10′".
 - If I don't answer, it rings again every 10 minutes for an hour. If I swipe it away without answering, it comes back without sound.
 - Exact alarms, so they go off on time even when the phone is idle.
 
