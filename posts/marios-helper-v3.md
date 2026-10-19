@@ -15,6 +15,8 @@ new: true
 
 If you read [the last post](/blog/posts/marios-helper-v2), you've met Mario, my dog, and his eye drops. He has drops several times a day and an eye ointment 20 minutes after some of them, so the drops have time to absorb and the ointment doesn't wash them out. There's also a painkiller every 8 hours. And his medication keeps changing, so whatever I build has to be easy to change too.
 
+I build things like this in my free time because I enjoy it, and because here a missed dose really matters.
+
 (The medicine names in this post are made up. Let's call them Blinkdrops and Tearshield.)
 
 Last time I fixed several bugs with Claude Code, but some problems were still there.
@@ -54,15 +56,11 @@ The schedule logic is plain TypeScript with no React or notification code in it,
 
 It also helps that there's only one way to change the data. Every change goes through one function that saves it and then updates the reminders scheduled on the phone. So a new feature can't forget to update the alarms, and a dose can't end up with two reminders like last time.
 
-For bigger changes, I ask a second Claude session to review. Before testing the Expo SDK 57 upgrade, it reviewed the diff and the test plan. It found things the first one missed: the notification library wasn't pinned to an exact version, nothing tested installing the new version over the old one, and nothing tested a reminder overnight, when the phone is idle for hours and Android can delay alarms to save battery.
+For bigger changes, I ask a second Claude session to review. Before testing the Expo SDK 57 upgrade, it reviewed the diff and the test plan. It found things the first one missed: the notification library wasn't pinned to an exact version, nothing tested installing the new version over the old one, and nothing tested a reminder overnight, when Android can delay alarms to save battery.
 
 And for anything native there's a test copy of the app. Adding a `test-build` label to a PR builds "Mario TEST", a separate app that installs next to the real one, with its own data. If a change breaks something, it breaks in the test app and not in Mario's real reminders.
 
-Before the SDK 57 upgrade reached the real app, I tested it this way. I installed the old version as Mario TEST and set a reminder. Then I installed the new version over it, without opening it. The reminder rang on time, so the reminders the old version had set still worked after the update.
-
-On that first reminder, it barked again a few minutes later. I asked Claude to add a log to the app that notes each reminder it shows, with or without sound, and why. The extra bark only happened that once, on the first reminder after the update, before I'd opened the app. Now I open the app once after installing a new version.
-
-I also gave a medicine from my watch and checked that the next one came 5 minutes later, and I restarted the phone to check that the reminders still rang.
+Before the SDK 57 upgrade reached the real app, I installed it over the old version in Mario TEST, without opening it, and the reminder the old version had set rang on time. Once, it barked twice. Instead of guessing why, I asked Claude to add a log to the app that notes every reminder it shows, with or without sound, and why. It only happened on the first reminder after the update, so now I open the app once after installing.
 
 ## Reminders based on when I actually gave the medicine
 
@@ -76,13 +74,13 @@ At first the app didn't do this. When I gave the painkiller late one morning, th
 
 After that change, the next doses move with a late one. It took two more fixes to get it fully right, and I reported both the same way, from my phone.
 
-Every dose exists a week ahead, each with its own record. So I can see my whole day in advance and move or skip one medicine, a whole chain, or the whole day. For example, an hour later because we slept in, or earlier because I want an early night.
+The app plans every dose a week ahead. So I can see my whole day in advance and move or skip one medicine, a whole chain, or the whole day. For example, an hour later because we slept in, or earlier because I want an early night.
 
 And the notifications:
 
 - The buttons work with the app closed, on the phone and on the watch. The library runs the app's code in the background, so "I gave it" on the watch records the dose and schedules the next one.
 - Plain words, because the watch doesn't show symbols properly: "Later 10 minutes", not "Later 10′".
-- If I don't answer, it rings every 10 minutes for an hour, then waits quietly. If I swipe it away without answering, it comes back without sound. After 12 hours the reminder goes away and the dose counts as missed.
+- If I don't answer, it rings again every 10 minutes for an hour. If I swipe it away without answering, it comes back without sound.
 - Exact alarms, so they go off on time even when the phone is idle.
 
 The library is [react-native-notify-kit](https://github.com/marcocrupi/react-native-notify-kit), the maintained fork of [Notifee](https://github.com/invertase/notifee). We started on Notifee itself, but it was archived in April 2026. Expo SDK 57 needs React Native's New Architecture, and the fork supports it. The fork has the same API, so only the import changed.
@@ -103,7 +101,7 @@ The colours now come from Mario's photo: cream for his fur, caramel for his ears
 
 I also asked for a custom sound for the reminders, and had fun generating a bark for it.
 
-The app is in English too now. It follows the phone's language, and you can change it in the settings. Claude writes every new text in both languages, right where it's used, so there's no separate translation file to keep up to date.
+The app is in English too now, so other people can use it. It follows the phone's language. Claude writes every new text in both languages, right where it's used, so there's no separate translation file to keep up to date.
 
 **TODO: retake the screenshots below from the English version of the app.**
 
@@ -115,7 +113,7 @@ Mario started physio recently, so I sent this from my phone:
 
 > Mario now does physio, please add tracking for his physio training. We might go more detailed soon (count exercises etc.) but for now I just want to ensure I do it daily and track physio appointments.
 
-Now the Today screen has a physio card with a "Done" button. If we haven't done the exercises by the time I set, a reminder comes, and "Done" works from the watch too. The physio screen shows the last four weeks as paw prints, and lists his appointments, with a reminder an hour before each one.
+Now the Today screen has a physio card with a "Done" button, and a reminder comes if we haven't done the exercises by the evening. The last four weeks show as paw prints, and his appointments have their own list, with a reminder an hour before.
 
 ## What still isn't great
 
@@ -130,6 +128,7 @@ Now the Today screen has a physio card with a "Done" button. If we haven't done 
 - Put the logic you care about somewhere it can be tested without a phone, and send risky changes through a test copy of the app first.
 - Time follow-up reminders from when something actually happened, not from when it was planned.
 - Describe problems the way you see them in the app. "I gave it at 8:22 but it says 15:00" was enough for Claude to make the change.
+- When something odd happens on the phone, ask for a log instead of guessing.
 
 The code is on GitHub: [altany/marios-helper](https://github.com/altany/marios-helper). If you want to reuse parts of it, start with [`deploy.sh`](https://github.com/altany/marios-helper/blob/main/scripts/deploy.sh) for update-or-build on every merge, [`app.config.js`](https://github.com/altany/marios-helper/blob/main/app.config.js) for the side-by-side test app, and [`src/engine/`](https://github.com/altany/marios-helper/tree/main/src/engine) for the schedule logic and its tests.
 
