@@ -60,7 +60,7 @@ For bigger changes, I ask a second Claude session to review. Before testing the 
 
 And for anything native there's a test copy of the app. Adding a `test-build` label to a PR builds "Mario TEST", a separate app that installs next to the real one, with its own data. If a change breaks something, it breaks in the test app and not in Mario's real reminders.
 
-Before the SDK 57 upgrade reached the real app, I installed it over the old version in Mario TEST, without opening it, and the reminder the old version had set rang on time. Once, the same notification went off twice. Instead of guessing why, I asked Claude to add a log to the app that notes every notification it shows, with or without sound, and why. It hasn't happened again, but the log is still in the app for the next time something odd happens.
+Before the SDK 57 upgrade reached the real app, I installed it over the old version in Mario TEST, without opening it, and the reminder the old version had set rang on time. At first I got the same notification twice, so I asked Claude to add a log to the app that notes every notification it shows, with or without sound, and why. With the log, Claude found what caused it.
 
 ## Reminders based on when I actually gave the medicine
 
@@ -79,7 +79,7 @@ The app plans every dose a week ahead. So I can see my whole day in advance and 
 And the notifications:
 
 - The buttons work with the app closed, on the phone and on the watch. The library runs the app's code in the background, so "I gave it" on the watch records the dose and schedules the next one.
-- Plain words, because some phones don't show symbols properly: "Later 10 minutes", not "Later 10′".
+- Plain words, because some watches don't show symbols properly: "Later 10 minutes", not "Later 10′".
 - If I don't answer, it rings again every 10 minutes for an hour. If I swipe it away without answering, it comes back without sound.
 - Exact alarms, so they go off on time even when the phone is idle.
 
