@@ -72,7 +72,7 @@ At first the app didn't do this. When I gave the painkiller late one morning, th
 
 > I gave the 8-hour medicine at 8:22 but the next dose says 15:00. Didn't it move to 8 hours after?
 
-After that change, the next doses move with a late one. It took two more fixes to get it fully right, and I reported both the same way, from my phone.
+Claude found the issue and fixed it remotely. After that change, the next doses move with a late one. It took two more fixes to get it fully right, and I reported both the same way, from my phone.
 
 The app plans every dose a week ahead. So I can see my whole day in advance and move or skip one medicine, a whole chain, or the whole day. For example, an hour later because we slept in, or earlier because I want an early night.
 
