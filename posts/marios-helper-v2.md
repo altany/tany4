@@ -6,13 +6,16 @@ banner: "marios-helper.png"
 color: "#556f30"
 description: "A year ago I built an Expo app to remind me about my dog's eye drops. I came back to it with Claude Code, fixed the notification bugs, and rewrote most of it."
 readingTimeMinutes: 6
+updated: "2026-10-20T12:00:00+0000"
 ---
+
+**Update, October 2026**: I've since rewritten the app, so most of the code described here is gone. [Rewriting my dog's medication app from my phone](/blog/posts/marios-helper-v3) covers the new version.
 
 **TL;DR**: I built a medication reminder app for my dog using Expo. It worked well enough but had a few bugs I couldn't fix on my own. A year later I came back to it with Claude Code, fixed the bugs in a couple of sessions, and ended up rewriting most of the app while I was at it.
 
 ## The background
 
-My dog Mario has an eye care and pain-killer routine. Every day, several times a day, he needs Hylogel drops. Twice a day, 20 minutes after the Hylogel, he needs Lacrimmune. And there are other medications on top of that.
+My dog Mario has an eye care and pain-killer routine. Every day, several times a day, he needs Blinkdrops eye drops. Twice a day, 20 minutes after the Blinkdrops, he needs Tearshield eye ointment. And there are other medications on top of that. (The medicine names in this post are made up.)
 
 It's hard to keep track of the timing, and he can't miss a dose. So about a year ago I built a small React Native app with Expo for the reminders. The notification had to be impossible to miss: it should stay in the drawer until I tap it, not disappear if I swipe it or close the app. Daily scheduled notifications, a "done" button and a snooze button.
 
@@ -42,7 +45,7 @@ The fixes took a couple of hours of back and forth. Mostly me describing what I 
 
 Once the bugs were fixed I realised the app was still pretty rigid. Every time Mario's prescription changed (which can be often) I had to edit the code.
 
-I asked Claude to add a settings page where I can add medications, define chain steps, set which hours each step fires and change the delays between steps. It was more complex than I expected because the chain logic had to stay consistent: if I apply Hylogel at 09:00, 15:00 and 21:00 and set Lacrimmune to follow only the 09:00 and 21:00 ones, any medication after Lacrimmune should only offer 09:00 and 21:00, not all three Hylogel times.
+I asked Claude to add a settings page where I can add medications, define chain steps, set which hours each step fires and change the delays between steps. It was more complex than I expected because the chain logic had to stay consistent: if I apply Blinkdrops at 09:00, 15:00 and 21:00 and set Tearshield to follow only the 09:00 and 21:00 ones, any medication after Tearshield should only offer 09:00 and 21:00, not all three Blinkdrops times.
 
 That constraint took a few rounds to get right. The settings UI and the preview summary on the notifications tab had to agree about which hours applied to each step.
 
