@@ -6,7 +6,6 @@ banner: "parallel-sessions.png"
 color: "#f3f0ff"
 description: "How I went from two or three AI coding sessions to as many as fifteen at once on a two-person team, what broke along the way, and the hub session I added to keep track of it all."
 readingTimeMinutes: 5
-new: true
 updated: "2026-10-01T12:00:00+0000"
 ---
 

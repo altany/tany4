@@ -6,7 +6,7 @@ banner: "marios-helper.png"
 color: "#556f30"
 description: "A year ago I built an Expo app to remind me about my dog's eye drops. I came back to it with Claude Code, fixed the notification bugs, and rewrote most of it."
 readingTimeMinutes: 6
-updated: "2026-10-11T12:00:00+0000"
+updated: "2026-10-20T12:00:00+0000"
 ---
 
 **Update, October 2026**: I've since rewritten the app, so most of the code described here is gone. [Rewriting my dog's medication app from my phone](/blog/posts/marios-helper-v3) covers the new version.

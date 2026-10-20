@@ -1,6 +1,6 @@
 ---
 title: "Rewriting my dog's medication app from my phone"
-date: "2026-10-11T12:00:00+0000"
+date: "2026-10-20T12:00:00+0000"
 categories: ["AI", "React Native", "Mobile", "Side projects"]
 banner: "marios-helper-v3.png"
 color: "#fbf5ec"
