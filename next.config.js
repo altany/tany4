@@ -1,22 +1,7 @@
-const crypto = require('crypto');
-const fs = require('fs');
-
-// A short hash of what the CV PDF is made from. It goes in the PDF link, so the link
-// changes whenever the CV does and browsers fetch the new PDF instead of a cached one.
-const cvVersion = crypto
-  .createHash('sha256')
-  .update(fs.readFileSync('src/cv/cv.ts'))
-  .update(fs.readFileSync('src/cv/pdf/CvPdfDocument.tsx'))
-  .digest('hex')
-  .slice(0, 10);
-
 /**
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-  env: {
-    NEXT_PUBLIC_CV_VERSION: cvVersion,
-  },
   images: {
     remotePatterns: [
       {
@@ -70,7 +55,7 @@ const nextConfig = {
         ],
       },
       {
-        source: '/:path*.:ext(png|jpg|jpeg|gif|webp|svg|ico|pdf)',
+        source: '/:path*.:ext(png|jpg|jpeg|gif|webp|svg|ico)',
         headers: [
           {
             key: 'Cache-Control',
@@ -82,12 +67,16 @@ const nextConfig = {
           },
         ],
       },
-      // The CV link carries a version in the query string so browsers fetch a new PDF
-      // when the CV changes. Every one of those is the same file, so this says which
-      // address search engines should treat as the real one.
+      // The CV keeps one address and changes with every build, so browsers check it is
+      // current each time instead of keeping it for a year. Older links with a version in
+      // the query string still reach the same file, and the canonical names this address.
       {
         source: '/TaniaPapazafeiropoulou-CV.pdf',
         headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=0, must-revalidate',
+          },
           {
             key: 'Link',
             value: '<https://tany4.com/TaniaPapazafeiropoulou-CV.pdf>; rel="canonical"',
