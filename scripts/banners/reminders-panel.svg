@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <!-- Banner for the reminders panel post: a Code session, a chat and a Cowork
+       task on the left each set reminders, and the panel on the right lists them
+       all in one place, colour coded by state -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eefaf4"/>
+      <stop offset="1" stop-color="#fbfaff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="170%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#2f2a45" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="700" fill="url(#bg)"/>
+
+  <!-- paths from each session to the panel -->
+  <g stroke="#b9adf6" stroke-width="2.5" stroke-dasharray="6 9" fill="none" stroke-linecap="round">
+    <path d="M420 185 C 520 185, 540 300, 650 300"/>
+    <path d="M420 355 L 650 355"/>
+    <path d="M420 525 C 520 525, 540 410, 650 410"/>
+  </g>
+
+  <!-- the sessions that set reminders -->
+  <g filter="url(#shadow)">
+    <rect x="130" y="120" width="290" height="130" rx="18" fill="#26213d"/>
+    <rect x="130" y="290" width="290" height="130" rx="18" fill="#ffffff" stroke="#e4def8"/>
+    <rect x="130" y="460" width="290" height="130" rx="18" fill="#ffffff" stroke="#e4def8"/>
+  </g>
+
+  <!-- a Code session: a terminal -->
+  <g>
+    <circle cx="156" cy="146" r="6" fill="#f5a3b5"/>
+    <circle cx="176" cy="146" r="6" fill="#f7d58b"/>
+    <circle cx="196" cy="146" r="6" fill="#a8dcc6"/>
+    <rect x="156" y="174" width="120" height="9" rx="4.5" fill="#9ad9bb"/>
+    <rect x="156" y="198" width="170" height="9" rx="4.5" fill="#514a78"/>
+    <rect x="156" y="222" width="12" height="15" rx="3" fill="#a597ff"/>
+    <!-- a small clock: it set a reminder -->
+    <circle cx="380" cy="160" r="17" fill="#3a3358" stroke="#a597ff" stroke-width="2.5"/>
+    <path d="M380 150 v10 l7 5" fill="none" stroke="#a597ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- a chat: two message bubbles -->
+  <g>
+    <rect x="156" y="312" width="150" height="30" rx="15" fill="#efecff"/>
+    <rect x="236" y="354" width="160" height="30" rx="15" fill="#e3f4ec"/>
+    <rect x="172" y="323" width="96" height="8" rx="4" fill="#a597ff"/>
+    <rect x="252" y="365" width="112" height="8" rx="4" fill="#6bbf99"/>
+    <rect x="156" y="396" width="86" height="8" rx="4" fill="#ebe7f7"/>
+  </g>
+
+  <!-- a Cowork task: a page and a check -->
+  <g>
+    <path d="M162 486 h36 l14 14 v52 a6 6 0 0 1 -6 6 h-44 a6 6 0 0 1 -6 -6 v-60 a6 6 0 0 1 6 -6 z" fill="#efecff" stroke="#a597ff" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M198 486 v14 h14" fill="none" stroke="#a597ff" stroke-width="2.5" stroke-linejoin="round"/>
+    <rect x="166" y="514" width="30" height="6" rx="3" fill="#a597ff"/>
+    <rect x="166" y="528" width="36" height="6" rx="3" fill="#d9d2ff"/>
+    <rect x="240" y="500" width="140" height="10" rx="5" fill="#d9d2ff"/>
+    <rect x="240" y="524" width="110" height="10" rx="5" fill="#ebe7f7"/>
+    <circle cx="252" cy="558" r="11" fill="#e3f4ec"/>
+    <path d="M246 558 l4 4 l8 -9" fill="none" stroke="#6bbf99" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="272" y="553" width="90" height="10" rx="5" fill="#ebe7f7"/>
+  </g>
+
+  <!-- the panel -->
+  <g filter="url(#shadow)">
+    <rect x="650" y="80" width="430" height="540" rx="22" fill="#ffffff" stroke="#e4def8"/>
+  </g>
+  <g>
+    <!-- title and refresh -->
+    <rect x="684" y="114" width="190" height="16" rx="8" fill="#26213d"/>
+    <rect x="990" y="108" width="58" height="28" rx="9" fill="#f4f2fb" stroke="#e4def8"/>
+    <rect x="684" y="146" width="140" height="9" rx="4.5" fill="#d9d2ff"/>
+
+    <!-- next up -->
+    <rect x="684" y="174" width="364" height="76" rx="14" fill="#ffffff" stroke="#9db8f2" stroke-width="2"/>
+    <rect x="704" y="192" width="70" height="7" rx="3.5" fill="#d9d2ff"/>
+    <rect x="704" y="208" width="200" height="11" rx="5.5" fill="#514a78"/>
+    <rect x="704" y="228" width="150" height="8" rx="4" fill="#ebe7f7"/>
+
+    <!-- tabs -->
+    <rect x="684" y="268" width="80" height="26" rx="9" fill="#d98a6b"/>
+    <rect x="772" y="268" width="104" height="26" rx="9" fill="#f4f2fb" stroke="#e4def8"/>
+    <rect x="884" y="268" width="44" height="26" rx="9" fill="#f4f2fb" stroke="#e4def8"/>
+
+    <!-- a group: its session name and kind -->
+    <rect x="684" y="314" width="150" height="11" rx="5.5" fill="#26213d"/>
+    <rect x="844" y="314" width="44" height="11" rx="5.5" fill="#a597ff"/>
+
+    <!-- coming up -->
+    <circle cx="692" cy="350" r="7" fill="#4caf73"/>
+    <rect x="710" y="345" width="200" height="10" rx="5" fill="#514a78"/>
+    <rect x="710" y="363" width="140" height="7" rx="3.5" fill="#d9d2ff"/>
+    <rect x="990" y="342" width="58" height="26" rx="9" fill="#f4f2fb" stroke="#e4def8"/>
+
+    <!-- late -->
+    <circle cx="692" cy="396" r="7" fill="#f0a046"/>
+    <rect x="710" y="391" width="170" height="10" rx="5" fill="#514a78"/>
+    <rect x="710" y="409" width="120" height="7" rx="3.5" fill="#f7d7b0"/>
+    <rect x="990" y="388" width="58" height="26" rx="9" fill="#f4f2fb" stroke="#e4def8"/>
+
+    <!-- another group -->
+    <rect x="684" y="446" width="120" height="11" rx="5.5" fill="#26213d"/>
+    <rect x="814" y="446" width="44" height="11" rx="5.5" fill="#6bbf99"/>
+
+    <!-- paused -->
+    <circle cx="692" cy="482" r="7" fill="#c9c5d6"/>
+    <rect x="710" y="477" width="180" height="10" rx="5" fill="#9a94b3"/>
+    <rect x="710" y="495" width="110" height="7" rx="3.5" fill="#ebe7f7"/>
+    <rect x="990" y="474" width="58" height="26" rx="9" fill="#f4f2fb" stroke="#e4def8"/>
+
+    <!-- completed -->
+    <circle cx="692" cy="528" r="11" fill="#e3f4ec"/>
+    <path d="M686 528 l4 4 l8 -9" fill="none" stroke="#6bbf99" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="710" y="523" width="150" height="10" rx="5" fill="#d9d2ff"/>
+    <rect x="710" y="541" width="100" height="7" rx="3.5" fill="#ebe7f7"/>
+    <rect x="990" y="520" width="58" height="26" rx="9" fill="#f4f2fb" stroke="#e4def8"/>
+
+    <rect x="684" y="582" width="240" height="7" rx="3.5" fill="#ebe7f7"/>
+  </g>
+</svg>
