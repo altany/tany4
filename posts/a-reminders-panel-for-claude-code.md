@@ -4,7 +4,7 @@ date: "2026-10-26T12:00:00+0000"
 categories: ["AI"]
 banner: "reminders-panel.png"
 color: "#eefaf4"
-description: "My reminders and scheduled check-ins were spread over many Claude sessions, so I had Claude build a panel that lists them all in one place, colour coded, where I can change them, tick them off and undo."
+description: "My reminders and scheduled tasks were spread over many Claude sessions, so I had Claude build a panel that lists them all in one place, colour coded, where I can change them, tick them off and undo."
 readingTimeMinutes: 3
 new: true
 ---
@@ -13,7 +13,7 @@ new: true
 
 ## Why I needed it
 
-I use reminders a lot. When a session opens a PR or starts a deploy, it sets a check-in for later. When I ask a session to remind me about something on Friday, it schedules it. In two weeks I had 28 of them, spread over several sessions, and only two were still to come.
+I use reminders a lot. When a session opens a PR or starts a deploy, it sets a reminder to check on it later. When I ask a session to remind me about something on Friday, it schedules it. In two weeks I had 28 of them, spread over several sessions, and only two were still to come.
 
 To find one, I had to remember which session set it up, open it and ask. To move one to another day, the same.
 
@@ -39,8 +39,8 @@ And a minute later: "Oh and allow me to view completed ones, mark as completed a
 ## What I learned
 
 - **Panels only show where the app draws them.** A mod is a Claude Code plugin, and it can add a panel next to the chat. The first version said "Opened the Reminders panel" and nothing appeared. I was in a cloud session in the Claude app, and that doesn't draw plugin panels at all. The panel works in Claude Code on my computer. In a cloud session, `/reminders` now gives the same list as plain text, which is what I use on my phone.
-- **Ask to see it first.** Before setting anything up, I asked Claude to show me what it would look like. It drew the panel with my real reminders, and I could say no before anything was installed.
-- **Time zones.** The cloud runs on UTC and I'm in Athens, so a reminder at 08:00 was really 10:00 for me. The panel shows and reads every time in my time zone, and that's a setting.
+- **Ask to see it first.** Before setting anything up, I asked Claude to show me what it would look like, because I might not like it. It drew the panel with my real reminders, so I could say no before anything was installed.
+- **Time zones.** The cloud runs on UTC. London matches it in winter but is an hour ahead in summer, so for half the year a reminder at 08:00 was really 09:00 for me. The panel shows and reads every time in my time zone, and that's a setting.
 
 ## Try it
 
