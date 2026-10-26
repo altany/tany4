@@ -27,18 +27,19 @@ And a minute later: "Oh and allow me to view completed ones, mark as completed a
 
 ## What it does
 
-![The panel with example reminders: a next-up box at the top, then the reminders grouped by session, each with a coloured dot for its state and a Done button](/blog/reminders-panel-example.png)
+![The panel with example reminders, grouped by session, each with a coloured dot for its state and a Done button](/blog/reminders-panel-example.png)
 
 - Everything is grouped by the session's name, with a label for Code, Cowork or Chat.
-- The dot shows the state: green is coming up, orange is late, grey is paused, red failed. Under each item it says what it is: a reminder, a routine that repeats, a scheduled task, or a to-do.
-- The next one is always at the top.
+- The dot shows the state: green is coming up, orange is late, grey is paused, red failed, and blue is a to-do. Repeating ones say when they repeat.
+- Anything late comes first, then the soonest.
 - Clicking an item lets me change its name, its time, or what Claude does when it runs. I can type the time the way I'd say it: "tomorrow 9:00", "friday 6pm", "in 2 hours".
-- Done turns it off so it won't run, and Undo turns it back on. Finished ones stay under Completed.
+- Done turns it off so it won't run, and Undo turns it back on. Finished ones move to the Done tab.
 - Each item links to the session that set it up.
 
 ## What I learned
 
 - **Panels only show where the app draws them.** A mod is a Claude Code plugin, and it can add a panel next to the chat. The first version said "Opened the Reminders panel" and nothing appeared. I was in a cloud session in the Claude app, and that doesn't draw plugin panels at all. The panel works in Claude Code on my computer. In a cloud session, `/reminders` now gives the same list as plain text, which is what I use on my phone.
+- **My list wasn't a list of types.** I wrote "reminders, scheduled tasks, routines and todos" to make sure nothing was missed. Claude turned them into four labels, each with its own colour. Underneath, the first three are the same thing: a scheduled task that runs once or repeats. So I asked for the labels to go.
 - **Ask to see it first.** Before setting anything up, I asked Claude to show me what it would look like, because I might not like it. It drew the panel with my real reminders, so I could say no before anything was installed.
 - **Time zones.** The cloud runs on UTC. London matches it in winter but is an hour ahead in summer, so for half the year a reminder at 08:00 was really 09:00 for me. The panel shows and reads every time in my time zone, and that's a setting.
 
