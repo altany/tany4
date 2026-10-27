@@ -8,7 +8,7 @@ description: "My MCP server's agent kept saying things weren't possible, adding 
 readingTimeMinutes: 5
 ---
 
-Part 3 of 3 - [Part 1: Building a job-hunting MCP server](/blog/posts/building-a-job-hunting-mcp-server) · [Part 2: Taking it remote](/blog/posts/taking-my-job-hunting-mcp-server-remote)
+Part 3 of 4 - [Part 1: Building a job-hunting MCP server](/blog/posts/building-a-job-hunting-mcp-server) · [Part 2: Taking it remote](/blog/posts/taking-my-job-hunting-mcp-server-remote) · [Part 4: Editing its docs](/blog/posts/my-job-hunting-mcp-server-can-now-edit-its-docs)
 
 **TL;DR**: After I moved the server remote ([part two](/blog/posts/taking-my-job-hunting-mcp-server-remote)), I used it every day and kept hitting the same problems: the agent would say something wasn't possible when it was, create a duplicate row instead of updating one, or refuse to add notes to a Google Doc I'd already linked. The cause was my tool descriptions, which were too short. I wrote better ones, added a server "instructions" field, and made a couple of the tools more forgiving.
 
@@ -29,7 +29,7 @@ The duplicates had a more specific cause. To update a row, the server looks it u
 
 ## What I changed
 
-**Server instructions.** MCP lets the server send a short block of text that the client keeps as context for the whole session. I used it to describe what the server is, the normal flow (rate a role, save it, keep it updated, prep before interviews), and what isn't possible. For example: it can't create Google Docs on a personal Drive, so if there's no doc linked, ask me for the link instead of failing or inventing one. And: to change something about an application that already exists, update it, don't add it again.
+**Server instructions.** MCP lets the server send a short block of text that the client keeps as context for the whole session. I used it to describe what the server is, the normal flow (rate a role, save it, keep it updated, prep before interviews), and what isn't possible. For example: it can't create Google Docs on a personal Drive, so if there's no doc linked, ask me for the link instead of failing or inventing one. (It can now, see [part four](/blog/posts/my-job-hunting-mcp-server-can-now-edit-its-docs).) And: to change something about an application that already exists, update it, don't add it again.
 
 **Clearer tool descriptions.** The update tool now says plainly that it changes any field, including the rating, and that it's the one to use when a company is already in the tracker. The add tool says it's only for something new. That stops the agent using "add" when it should update.
 
@@ -47,4 +47,4 @@ The code is on GitHub at [altany/job-hunter](https://github.com/altany/job-hunte
 
 ---
 
-Part 1: [Building a job-hunting MCP server](/blog/posts/building-a-job-hunting-mcp-server) · Part 2: [Taking my job-hunting MCP server remote](/blog/posts/taking-my-job-hunting-mcp-server-remote)
+Part 1: [Building a job-hunting MCP server](/blog/posts/building-a-job-hunting-mcp-server) · Part 2: [Taking my job-hunting MCP server remote](/blog/posts/taking-my-job-hunting-mcp-server-remote) · Part 4: [My job-hunting MCP server can now edit its docs](/blog/posts/my-job-hunting-mcp-server-can-now-edit-its-docs)

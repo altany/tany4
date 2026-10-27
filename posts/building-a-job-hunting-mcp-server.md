@@ -8,7 +8,7 @@ description: "I built a personal MCP server that researches companies, scores ho
 readingTimeMinutes: 5
 ---
 
-Part 1 of 3 - [Part 2: Taking it remote](/blog/posts/taking-my-job-hunting-mcp-server-remote) · [Part 3: Teaching it what it can do](/blog/posts/teaching-my-job-hunting-mcp-server-what-it-can-do)
+Part 1 of 4 - [Part 2: Taking it remote](/blog/posts/taking-my-job-hunting-mcp-server-remote) · [Part 3: Teaching it what it can do](/blog/posts/teaching-my-job-hunting-mcp-server-what-it-can-do) · [Part 4: Editing its docs](/blog/posts/my-job-hunting-mcp-server-can-now-edit-its-docs)
 
 **TL;DR**: When I'm looking for a job, most of the time goes on research and tracking, not on applying. I built a small MCP server that plugs into Claude or ChatGPT and does the repetitive parts: company research, scoring how well a role fits, and keeping track of my applications.
 
@@ -100,4 +100,4 @@ This started as a tool that only ran on my laptop. Since then I've moved it to a
 
 ---
 
-Part 2: [Taking my job-hunting MCP server remote](/blog/posts/taking-my-job-hunting-mcp-server-remote) · Part 3: [Teaching my job-hunting MCP server what it can do](/blog/posts/teaching-my-job-hunting-mcp-server-what-it-can-do)
+Part 2: [Taking my job-hunting MCP server remote](/blog/posts/taking-my-job-hunting-mcp-server-remote) · Part 3: [Teaching my job-hunting MCP server what it can do](/blog/posts/teaching-my-job-hunting-mcp-server-what-it-can-do) · Part 4: [My job-hunting MCP server can now edit its docs](/blog/posts/my-job-hunting-mcp-server-can-now-edit-its-docs)
