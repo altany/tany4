@@ -477,10 +477,9 @@ function SidebarSection({
       <Text style={isSecondary ? styles.sidebarHeadingSecondary : styles.sidebarHeading}>{section.title}</Text>
 
       {section.paragraphs?.map((p) => (
-        <>
         <Text key={p} style={isSecondary ? styles.sidebarParagraphSecondary : styles.sidebarParagraph}>
           {p}
-        </Text></>
+        </Text>
       ))}
 
       
