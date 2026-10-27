@@ -43,17 +43,15 @@ Adding a section whose heading is already in the doc now fails too, and the mess
 
 ## Tailored CVs
 
-I moved my job applications to Claude Cowork. When I asked it to tailor my CV for a role, it saved the CV and my application answers as separate files. I wanted everything about an application in that application's doc.
+I moved my job applications to Claude Cowork. When I asked it to tailor my CV for a role, it saved the CV as a separate file. I wanted everything about an application in that application's doc.
 
 My CV lives in my website's code as structured data. The same code turns it into the PDF on my site. Now the server tailors a copy with the same structure and saves it in the application doc as JSON. I review and edit it there. The CV on my website stays generic, and each tailored version stays in its application's doc.
 
 When I approve it, the server makes the PDF with my website's own PDF code. I download it for the application. I don't need to store a copy, which takes up space. The JSON in the doc is enough of a record, and I can generate the PDF again from it if I need to.
 
-## Telling a new chat how I work
+## Where things go
 
-Before, only the server's general instructions said where things go. Now each tool description says it too: research, the CV, cover letters, answers to application questions and interview prep all go in the application doc, never in separate files.
-
-I also added a file with how I write: plain, no hooks or punchlines, no buzzwords. The tools that write in my voice include it, and it overrides their generic advice. One of the tool prompts used to ask for a cover letter that "opens with a strong hook".
+Before, only the server's general instructions said where things go. Now each tool description says it too: research, the tailored CV and interview prep all go in the application doc, never in separate files.
 
 ## Restarts
 
