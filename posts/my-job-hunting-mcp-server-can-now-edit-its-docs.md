@@ -4,7 +4,9 @@ date: "2026-10-27T12:00:00+0000"
 categories: ["AI", "MCP", "Side projects"]
 banner: "job-hunter-mcp.png"
 color: "#006e8f"
-description: "My job-hunting MCP server now creates and formats its Google Docs, corrects one section at a time, and keeps tailored CVs in the application doc."
+description: "My MCP server now creates and formats its Google Docs, and changes one section at a time, with rules so the AI agent can't wreck them."
+seoTitle: "Letting an AI agent edit my Google Docs safely"
+seoImage: "doc-section-edit.png"
 readingTimeMinutes: 4
 new: true
 ---

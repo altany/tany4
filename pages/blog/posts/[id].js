@@ -15,8 +15,11 @@ export default function Post({ data, others = [] }) {
   const baseUrl = SITE_URL.endsWith("/") ? SITE_URL.slice(0, -1) : SITE_URL;
   const canonicalUrl = `${baseUrl}/blog/posts/${data.id}`;
   // Search results cut titles around 60 characters, so the posts carry their own
-  // title only: the site name is already in the URL and in the site-wide metadata
-  const seoTitle = data.title;
+  // title only: the site name is already in the URL and in the site-wide metadata.
+  // seoTitle / seoImage in a post's front matter change only what search engines
+  // and link previews show, not the page itself.
+  const seoTitle = data.seoTitle || data.title;
+  const seoImage = data.seoImage || data.banner;
   const seoDescription = data.description || undefined;
   const categories = Array.isArray(data.categories) ? data.categories : [];
   const headings = data.headings || [];
@@ -36,13 +39,13 @@ export default function Post({ data, others = [] }) {
       '@type': 'Person',
       name: NAME,
     },
-    image: data.banner ? [`${baseUrl}/blog/${data.banner}`] : undefined,
+    image: seoImage ? [`${baseUrl}/blog/${seoImage}`] : undefined,
   };
 
   return (
     <Layout
       active="blog"
-      seoImage={data.banner ? `/blog/${data.banner}` : undefined}
+      seoImage={seoImage ? `/blog/${seoImage}` : undefined}
       canonicalUrl={canonicalUrl}
       seoTitle={seoTitle}
       seoDescription={seoDescription}
