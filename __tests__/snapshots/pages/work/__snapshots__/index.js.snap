@@ -415,6 +415,65 @@ exports[`renders the work page unchanged 1`] = `
               I like pairing and mentoring, and working with backend and design until something makes sense technically and still feels good to use. I can explain technical trade-offs to people who aren't engineers, plainly and without promising things we can't deliver.
             </p>
           </div>
+          <div
+            class="nextPage"
+          >
+            <p
+              class="lede inline"
+            >
+              I write about some of this work on the 
+              <a
+                href="/blog"
+              >
+                blog
+              </a>
+              , like
+               
+              <a
+                href="/blog/posts/seven-years-at-olio"
+              >
+                7 Years at Olio
+              </a>
+               and
+               
+              <a
+                href="/blog/posts/running-ai-coding-sessions-in-parallel"
+              >
+                running AI coding sessions in parallel
+              </a>
+              .
+            </p>
+            <a
+              aria-label="Next page: blog"
+              class="termLink"
+              href="/blog"
+            >
+              <span
+                class="termLinkCommand"
+              >
+                <span
+                  class="prompt"
+                >
+                  tania@tany4
+                </span>
+                 ~/
+                work
+                 % cd ../
+                blog
+              </span>
+              <span
+                class="termLinkTarget"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  →
+                </span>
+                 
+                blog
+              </span>
+            </a>
+          </div>
         </section>
         <aside
           class="pane side"

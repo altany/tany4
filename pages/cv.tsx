@@ -2,6 +2,7 @@ import Layout from "../components/layout";
 import SplitPage from "../components/splitPage";
 import Terminal, { Mark } from "../components/terminal";
 import DownloadCv from "../components/downloadCv";
+import NextPage from "../components/nextPage";
 import styles from "../styles/page.module.scss";
 import { cv } from "../src/cv/cv";
 import { SITE_TITLE, SITE_URL, CV_PDF_URL } from "../lib/constants";
@@ -149,6 +150,8 @@ export default function CvPage() {
         ))}
 
         <DownloadCv />
+
+        <NextPage from="cv">That&apos;s the work. Outside of it there&apos;s dancing, running, movies and my dog, Mario.</NextPage>
       </SplitPage>
     </Layout>
   );

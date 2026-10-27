@@ -186,6 +186,45 @@ exports[`renders an blog page with a post unchanged 1`] = `
               </a>
             </li>
           </ul>
+          <div
+            class="nextPage"
+          >
+            <p
+              class="lede inline"
+            >
+              The posts are the long version. My CV has every role and date in one place.
+            </p>
+            <a
+              aria-label="Next page: cv"
+              class="termLink"
+              href="/cv"
+            >
+              <span
+                class="termLinkCommand"
+              >
+                <span
+                  class="prompt"
+                >
+                  tania@tany4
+                </span>
+                 ~/
+                blog
+                 % cd ../
+                cv
+              </span>
+              <span
+                class="termLinkTarget"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  →
+                </span>
+                 
+                cv
+              </span>
+            </a>
+          </div>
         </section>
         <aside
           class="pane side"
@@ -385,6 +424,45 @@ exports[`renders an empty blog page unchanged 1`] = `
           <ul
             class="rows"
           />
+          <div
+            class="nextPage"
+          >
+            <p
+              class="lede inline"
+            >
+              The posts are the long version. My CV has every role and date in one place.
+            </p>
+            <a
+              aria-label="Next page: cv"
+              class="termLink"
+              href="/cv"
+            >
+              <span
+                class="termLinkCommand"
+              >
+                <span
+                  class="prompt"
+                >
+                  tania@tany4
+                </span>
+                 ~/
+                blog
+                 % cd ../
+                cv
+              </span>
+              <span
+                class="termLinkTarget"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  →
+                </span>
+                 
+                cv
+              </span>
+            </a>
+          </div>
         </section>
         <aside
           class="pane side"

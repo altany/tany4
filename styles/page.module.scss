@@ -187,8 +187,8 @@ $mono: var(--font-mono), ui-monospace, Menlo, monospace;
   }
 }
 
-// ---------- the CV download, a terminal line you can click ----------
-.cvDownload {
+// ---------- terminal lines you can click: the CV download, the next page ----------
+.termLink {
   display: block;
   background: var(--color-term-bg);
   border-radius: 14px;
@@ -204,7 +204,7 @@ $mono: var(--font-mono), ui-monospace, Menlo, monospace;
     transform: translateY(-2px);
     box-shadow: 0 26px 44px -26px var(--color-shadow);
 
-    .cvDownloadFile {
+    .termLinkTarget {
       color: var(--color-term-green);
     }
   }
@@ -219,12 +219,12 @@ $mono: var(--font-mono), ui-monospace, Menlo, monospace;
   }
 }
 
-.cvDownloadCommand {
+.termLinkCommand {
   display: block;
   color: var(--color-term-dim);
 }
 
-.cvDownloadFile {
+.termLinkTarget {
   display: block;
   color: var(--color-term-text);
   font-size: 14px;
@@ -240,12 +240,22 @@ $mono: var(--font-mono), ui-monospace, Menlo, monospace;
   }
 }
 
+.nextPage {
+  margin: 56px 0 8px;
+  padding-top: 28px;
+  border-top: 1px solid var(--color-faint);
+
+  .lede {
+    margin-bottom: 16px;
+  }
+}
+
 .cvDownloadCompact {
   padding: 12px 14px;
   font-size: 12px;
   margin-bottom: 26px;
 
-  .cvDownloadFile {
+  .termLinkTarget {
     font-size: 13px;
   }
 

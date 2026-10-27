@@ -15,18 +15,11 @@ import {
   LAST_COMMIT_ENDPOINT,
   JOB_TITLE,
   CONTACT_EMAIL,
+  PAGES,
   profile,
 } from "../lib/constants";
 
 const ChatWidget = dynamic(() => import("./chatWidget"), { ssr: false });
-
-const PAGES = [
-  { href: "/", label: "home" },
-  { href: "/work", label: "work" },
-  { href: "/blog", label: "blog" },
-  { href: "/cv", label: "cv" },
-  { href: "/about", label: "about" },
-];
 
 // The accounts the footer links to, in the order they are shown
 const FOOTER_PROFILES = ["linkedin", "github", "twitter"];

@@ -9,13 +9,13 @@ export default function DownloadCv({ compact = false }) {
       href={CV_PDF_URL}
       target="_cv"
       rel="noopener noreferrer"
-      className={`${styles.cvDownload} ${compact ? styles.cvDownloadCompact : ""}`}
+      className={`${styles.termLink} ${compact ? styles.cvDownloadCompact : ""}`}
       aria-label="Download the CV as a PDF"
     >
-      <span className={styles.cvDownloadCommand}>
+      <span className={styles.termLinkCommand}>
         <span className={styles.prompt}>tania@tany4</span> ~ % open cv.pdf
       </span>
-      <span className={styles.cvDownloadFile}>
+      <span className={styles.termLinkTarget}>
         <span aria-hidden="true">↓</span> {compact ? "CV.pdf" : "TaniaPapazafeiropoulou-CV.pdf"}
         {/* One blinking caret on the page is enough: the side pane's copy sits
             next to the CV itself and would be a second thing flashing */}
