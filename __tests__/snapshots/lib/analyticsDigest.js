@@ -82,7 +82,7 @@ describe('buildReport', () => {
     const { subject, text } = buildReport({ label: '14 Sept – 20 Sept 2026', shortLabel: '14–20 Sept', vercel, cloudflare })
     expect(subject).toBe('📊 tany4.com analytics · 14–20 Sept: 40 visitors')
     expect(text).toContain('Visitors: 40 (down 20% on the week before)')
-    expect(text).toContain('CV downloads: 3 (no earlier week to compare)')
+    expect(text).toContain('CV downloads: 3 (none the week before)')
     expect(text).toContain('Page load time: 1,200 ms (down 83% on the week before)')
     expect(text).toContain('Direct or unknown: 20')
     expect(text).toContain('linkedin.com: 5')
@@ -94,6 +94,13 @@ describe('buildReport', () => {
     expect(text).toContain('sampled estimates')
     expect(text).not.toContain('Needs a look')
     expect(text).not.toContain('incomplete')
+  })
+
+  it('says the week before had none rather than calling it the first week', () => {
+    const none = buildReport({ label: 'x', vercel: { ...vercel, downloads: 0, previousDownloads: 0 }, cloudflare })
+    expect(none.text).toContain('CV downloads: 0 (same as the week before)')
+    const firstWeek = buildReport({ label: 'x', vercel: { ...vercel, previousDownloads: undefined }, cloudflare })
+    expect(firstWeek.text).toContain('CV downloads: 3 (no earlier week to compare)')
   })
 
   it('does not compare page load time when it comes from too few page loads', () => {
