@@ -3,6 +3,7 @@ import Layout from "../../components/layout";
 import SplitPage from "../../components/splitPage";
 import Outline from "../../components/outline";
 import Terminal from "../../components/terminal";
+import NextPage from "../../components/nextPage";
 import { PROFILES, SITE_TITLE, SITE_URL } from "../../lib/constants";
 import styles from "../../styles/page.module.scss";
 
@@ -204,6 +205,12 @@ export default function Work() {
             plainly and without promising things we can&apos;t deliver.
           </p>
         </div>
+
+        <NextPage from="work">
+          I write about some of this work on the <Link href="/blog">blog</Link>, like{" "}
+          <Link href="/blog/posts/seven-years-at-olio">7 Years at Olio</Link> and{" "}
+          <Link href="/blog/posts/running-ai-coding-sessions-in-parallel">running AI coding sessions in parallel</Link>.
+        </NextPage>
       </SplitPage>
     </Layout>
   );

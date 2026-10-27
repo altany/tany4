@@ -4,6 +4,7 @@ import Layout from "../../components/layout";
 import SplitPage from "../../components/splitPage";
 import PostRows from "../../components/postRows";
 import Terminal from "../../components/terminal";
+import NextPage from "../../components/nextPage";
 import { getSortedPostsData } from "../../lib/posts";
 import { SITE_TITLE, SITE_URL } from "../../lib/constants";
 import styles from "../../styles/page.module.scss";
@@ -91,6 +92,8 @@ export default function Blog({ posts = [] }) {
           ]}
         />
         <PostRows posts={shown} withExcerpt />
+
+        <NextPage from="blog">The posts are the long version. My CV has every role and date in one place.</NextPage>
       </SplitPage>
     </Layout>
   );
