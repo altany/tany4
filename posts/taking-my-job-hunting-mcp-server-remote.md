@@ -8,7 +8,7 @@ description: "I turned my job-hunting MCP server from a laptop-only tool into a 
 readingTimeMinutes: 5
 ---
 
-Part 2 of 3 - [Part 1: Building a job-hunting MCP server](/blog/posts/building-a-job-hunting-mcp-server) · [Part 3: Teaching it what it can do](/blog/posts/teaching-my-job-hunting-mcp-server-what-it-can-do)
+Part 2 of 4 - [Part 1: Building a job-hunting MCP server](/blog/posts/building-a-job-hunting-mcp-server) · [Part 3: Teaching it what it can do](/blog/posts/teaching-my-job-hunting-mcp-server-what-it-can-do) · [Part 4: Editing its docs](/blog/posts/my-job-hunting-mcp-server-can-now-edit-its-docs)
 
 **TL;DR**: In [part one](/blog/posts/building-a-job-hunting-mcp-server) I built a personal MCP server that scores job fits and tracks my pipeline. It only ran on my laptop. I've now turned it into a remote server with a public URL, so I can use it from the Claude and ChatGPT apps on my phone. Most of the work was getting personal data out of the code, finding free hosting, and fixing an error that only happened in ChatGPT.
 
@@ -68,4 +68,4 @@ The code is on GitHub at [altany/job-hunter](https://github.com/altany/job-hunte
 
 ---
 
-Part 1: [Building a job-hunting MCP server](/blog/posts/building-a-job-hunting-mcp-server) · Part 3: [Teaching my job-hunting MCP server what it can do](/blog/posts/teaching-my-job-hunting-mcp-server-what-it-can-do)
+Part 1: [Building a job-hunting MCP server](/blog/posts/building-a-job-hunting-mcp-server) · Part 3: [Teaching my job-hunting MCP server what it can do](/blog/posts/teaching-my-job-hunting-mcp-server-what-it-can-do) · Part 4: [My job-hunting MCP server can now edit its docs](/blog/posts/my-job-hunting-mcp-server-can-now-edit-its-docs)
