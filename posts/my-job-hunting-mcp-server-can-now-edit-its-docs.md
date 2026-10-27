@@ -31,15 +31,17 @@ The script sends one small request per heading, bullet or table, and Google allo
 
 The server could only add a new section to the end of a doc. To correct something, it wrote the updated version at the end, and I had to replace the old one by hand, in the right place.
 
-Now there is a tool that replaces one section: a heading and everything under it, up to the next heading of the same level. These are the rules I set for it:
+Now there is a tool that replaces one section: a heading and everything under it, up to the next heading of the same level. I set a few rules so things don't get messy:
 
 - If the heading matches no section, or more than one, it changes nothing and lists the headings it found.
-- By default it only shows what it would remove and what it would put instead. It writes only when I say yes.
+- I review a before and after, and confirm each change before it's applied.
 - Before it writes, it saves the old text in my tracker spreadsheet, so I can put it back.
-- If I edited the doc after the preview, it doesn't write.
+- It checks it's editing the latest version of the doc, and otherwise stops and tells me.
 - There is no tool that deletes a doc or clears all of it. If I ever need that, I'll do it by hand.
 
 Adding a section whose heading is already in the doc now fails too, and the message points to the replace tool.
+
+These rules are built into the server, so they hold even when the agent doesn't follow its instructions.
 
 ## Tailored CVs
 
