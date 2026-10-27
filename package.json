@@ -28,8 +28,8 @@
     "cross-env": "^7.0.3",
     "date-fns": "^2.12.0",
     "gray-matter": "^4.0.2",
-    "next": "16.3.8",
-    "nodemailer": "^10.0.10",
+    "next": "16.4.3",
+    "nodemailer": "^10.1.4",
     "prismjs": "^1.30.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -38,7 +38,7 @@
     "remark-html": "^15.0.1",
     "sass": "^1.26.5",
     "swr": "^2.2.2",
-    "zod": "^3.23.8"
+    "zod": "^4.6.6"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -47,7 +47,7 @@
     "@types/node": "^24.13.4",
     "@types/react": "^18.3.31",
     "eslint": "^9.0.0",
-    "eslint-config-next": "16.3.8",
+    "eslint-config-next": "16.4.3",
     "jest": "^30.5.2",
     "jest-environment-jsdom": "^30.5.2",
     "next-sitemap": "^4.2.3",
@@ -61,8 +61,11 @@
     "node": "24.x"
   },
   "overrides": {
-    "undici": "^6.28.1",
+    "undici": "^6.29.1",
     "@tootallnate/once": "^2.0.1",
-    "moment": "^2.31.0"
+    "moment": "^2.31.0",
+    "@vercel/cli-config": {
+      "zod": "$zod"
+    }
   }
 }
