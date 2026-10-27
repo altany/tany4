@@ -47,7 +47,7 @@ I moved my job applications to Claude Cowork. When I asked it to tailor my CV fo
 
 My CV lives in my website's code as structured data. The same code turns it into the PDF on my site. Now the server tailors a copy with the same structure and saves it in the application doc as JSON. I review and edit it there. The CV on my website stays generic, and each tailored version stays in its application's doc.
 
-When I approve it, the server builds the PDF with my website's own PDF code. On my laptop it saves the PDF to Downloads. The hosted server downloads my website's code from GitHub first, and puts a temporary copy in my Drive. It deletes copies older than a day. I didn't want old PDFs using up my Drive space, and the JSON in the doc is enough of a record.
+When I approve it, the server makes the PDF with my website's own PDF code. I download it for the application and don't keep it. The JSON in the doc is enough of a record.
 
 ## Telling a new chat how I work
 
