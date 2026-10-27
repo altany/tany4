@@ -61,7 +61,7 @@
     "node": "24.x"
   },
   "overrides": {
-    "undici": "^6.28.1",
+    "undici": "^6.29.1",
     "@tootallnate/once": "^2.0.1",
     "moment": "^2.31.0"
   }
