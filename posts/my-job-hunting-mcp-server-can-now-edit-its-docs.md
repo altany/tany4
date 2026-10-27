@@ -25,7 +25,7 @@ Docs came out as plain text with markdown in it: `##` for headings, `**` for bol
 
 Now the server runs the same script after every write. I also put the formatting rules in the description of each tool that writes to a doc, because the tool description is the only place the agent reliably reads.
 
-The script sends one small request per heading, bullet or table, and Google allows about 60 a minute. A long doc went over that and ended up half formatted. Now the server waits and tries again.
+The script sends one small request per heading, bullet or table, and Google allows about 60 a minute. On a long doc it went over that, and I had to run it again and again until everything was formatted. Now the server waits and tries again by itself.
 
 ## Correcting a section
 
