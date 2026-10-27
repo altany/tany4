@@ -5,7 +5,7 @@ categories: ["AI", "MCP", "Side projects"]
 banner: "job-hunter-mcp.png"
 color: "#006e8f"
 description: "My job-hunting MCP server now creates and formats its Google Docs, corrects one section at a time, and keeps tailored CVs in the application doc."
-readingTimeMinutes: 5
+readingTimeMinutes: 4
 new: true
 ---
 
@@ -55,11 +55,9 @@ Before, only the server's general instructions said where things go. Now each to
 
 ## Restarts
 
-The hosted server kept each chat's connection in memory. Every time I deployed a change, the server restarted and lost them. Cowork then failed every call with "No valid session ID" until I reconnected it by hand. Cowork's own reply pointed out that the server should have answered with a different error, one that makes the app reconnect by itself.
+Every time I deployed a change, the hosted server restarted, and Cowork stopped working until I reconnected it by hand. The server kept a record of each open chat in memory. A restart wiped those records, and the server then rejected the next request from every chat.
 
-Now the server doesn't keep connections at all. Each request is handled on its own, so a restart makes no difference to an open chat.
-
-The apps also keep their own copy of the tool list. After I changed a tool, Cowork kept using the old version until I reconnected it or started a new chat. For a while I also had both the local and the hosted server switched on in Cowork, with the same tool names, and it only showed me the three tools that existed in just one of them.
+Now the server doesn't keep any record between requests. Each request stands on its own, so a restart doesn't affect an open chat. If you host an MCP server somewhere that restarts it, the MCP SDK has a stateless mode for this.
 
 The code is on GitHub at [altany/job-hunter](https://github.com/altany/job-hunter).
 
