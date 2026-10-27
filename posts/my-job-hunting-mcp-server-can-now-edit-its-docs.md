@@ -29,7 +29,7 @@ The script sends one small request per heading, bullet or table, and Google allo
 
 ## Correcting a section
 
-The server could only add a new section to the end of a doc. To correct something, the agent added a second copy of the section, and my docs filled up with duplicates.
+The server could only add a new section to the end of a doc. To correct something, it wrote the updated version at the end, and I had to replace the old one by hand, in the right place.
 
 Now there is a tool that replaces one section: a heading and everything under it, up to the next heading of the same level. These are the rules I set for it:
 
