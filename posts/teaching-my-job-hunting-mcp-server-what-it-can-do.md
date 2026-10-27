@@ -47,4 +47,4 @@ The code is on GitHub at [altany/job-hunter](https://github.com/altany/job-hunte
 
 ---
 
-Part 1: [Building a job-hunting MCP server](/blog/posts/building-a-job-hunting-mcp-server) · Part 2: [Taking my job-hunting MCP server remote](/blog/posts/taking-my-job-hunting-mcp-server-remote) · Part 4: [My job-hunting MCP server can now edit its docs](/blog/posts/my-job-hunting-mcp-server-can-now-edit-its-docs)
+Part 1: [Building a job-hunting MCP server](/blog/posts/building-a-job-hunting-mcp-server) · Part 2: [Taking my job-hunting MCP server remote](/blog/posts/taking-my-job-hunting-mcp-server-remote) · Part 4: [Letting an AI agent edit my Google Docs safely](/blog/posts/my-job-hunting-mcp-server-can-now-edit-its-docs)

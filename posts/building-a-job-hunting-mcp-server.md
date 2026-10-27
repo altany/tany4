@@ -100,4 +100,4 @@ This started as a tool that only ran on my laptop. Since then I've moved it to a
 
 ---
 
-Part 2: [Taking my job-hunting MCP server remote](/blog/posts/taking-my-job-hunting-mcp-server-remote) · Part 3: [Teaching my job-hunting MCP server what it can do](/blog/posts/teaching-my-job-hunting-mcp-server-what-it-can-do) · Part 4: [My job-hunting MCP server can now edit its docs](/blog/posts/my-job-hunting-mcp-server-can-now-edit-its-docs)
+Part 2: [Taking my job-hunting MCP server remote](/blog/posts/taking-my-job-hunting-mcp-server-remote) · Part 3: [Teaching my job-hunting MCP server what it can do](/blog/posts/teaching-my-job-hunting-mcp-server-what-it-can-do) · Part 4: [Letting an AI agent edit my Google Docs safely](/blog/posts/my-job-hunting-mcp-server-can-now-edit-its-docs)
