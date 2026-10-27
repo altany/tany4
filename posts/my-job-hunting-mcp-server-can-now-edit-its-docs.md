@@ -45,7 +45,7 @@ Adding a section whose heading is already in the doc now fails too, and the mess
 
 I moved my job applications to Claude Cowork. When I asked it to tailor my CV for a role, it saved the CV and my application answers as separate files. I wanted everything about an application in that application's doc.
 
-My CV lives in my website's code as structured data. The same code turns it into the PDF on my site. Now the server tailors a copy with the same structure and saves it in the application doc as JSON. I review and edit it there. The version in the doc is the one I approve, so my website's CV doesn't change for each application.
+My CV lives in my website's code as structured data. The same code turns it into the PDF on my site. Now the server tailors a copy with the same structure and saves it in the application doc as JSON. I review and edit it there. The CV on my website stays generic, and each tailored version stays in its application's doc.
 
 When I approve it, the server builds the PDF with my website's own PDF code. On my laptop it saves the PDF to Downloads. The hosted server downloads my website's code from GitHub first, and puts a temporary copy in my Drive. It deletes copies older than a day. I didn't want old PDFs using up my Drive space, and the JSON in the doc is enough of a record.
 
