@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 460" width="1000" height="460" role="img" aria-label="GreekInk — a Greek handwriting keyboard for the iPad">
+  <defs>
+    <linearGradient id="icon" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#05d8c8"/>
+      <stop offset="0.5" stop-color="#4a6cf7"/>
+      <stop offset="1" stop-color="#a02bea"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="460" fill="#2b2f45"/>
+
+  <!-- text field with the typed result -->
+  <rect x="90" y="40" width="820" height="110" rx="20" fill="#353a55" stroke="#ffffff" stroke-opacity="0.18" stroke-width="2"/>
+  <text x="130" y="112" font-family="Helvetica,Arial,sans-serif" font-size="44" fill="#ffffff">Νερό στη βάρκα μας</text>
+  <rect x="570" y="78" width="3" height="46" fill="#9fd3ff"/>
+
+  <!-- candidate bar -->
+  <rect x="90" y="172" width="200" height="50" rx="25" fill="#9fd3ff"/>
+  <text x="190" y="205" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="24" font-weight="600" fill="#1b2033">μας</text>
+  <rect x="305" y="172" width="160" height="50" rx="25" fill="none" stroke="#a9b0cf" stroke-width="2"/>
+  <text x="385" y="205" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="24" fill="#e6e9f5">μιας</text>
+  <rect x="480" y="172" width="160" height="50" rx="25" fill="none" stroke="#a9b0cf" stroke-width="2"/>
+  <text x="560" y="205" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="24" fill="#e6e9f5">μα</text>
+
+  <!-- writing strip with "μας" in handwriting -->
+  <rect x="90" y="240" width="820" height="140" rx="20" fill="#f3f1ea"/>
+  <g fill="none" stroke="#1b2033" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <!-- μ -->
+    <path d="M406,280 C405,312 402,342 397,370"/>
+    <path d="M405,310 C407,330 420,336 432,326 C440,319 443,302 444,282 C443,304 443,322 450,329 C455,333 461,331 466,325"/>
+    <!-- α -->
+    <path d="M531,295 C520,280 490,283 486,307 C483,328 502,336 516,325 C526,317 532,302 535,284 C532,305 535,324 551,332"/>
+    <!-- ς -->
+    <path d="M608,288 C595,277 572,287 572,307 C572,324 590,327 600,332 C609,337 606,354 593,360"/>
+  </g>
+
+  <!-- app icon -->
+  <rect x="90" y="398" width="46" height="46" rx="11" fill="url(#icon)"/>
+  <text x="112" y="431" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-size="34" fill="#ffffff">α</text>
+  <path d="M99,436 C105,439 110,436 115,437 C120,438 124,439 128,435" fill="none" stroke="#ffc94d" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="152" y="429" font-family="Helvetica,Arial,sans-serif" font-size="24" fill="#b9bfdb">GreekInk · a Greek handwriting keyboard for the iPad</text>
+</svg>
