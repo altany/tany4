@@ -9,7 +9,7 @@ readingTimeMinutes: 6
 new: true
 ---
 
-**TL;DR**: I write Greek by hand on my iPad with an Apple Pencil and wanted it as typed text, in any app. Apple's handwriting recognition doesn't support Greek, and I couldn't find an app I could try without paying first. So I built GreekInk, a keyboard where I write on a strip at the bottom of the screen and the words appear where the cursor is. Recognition runs on the iPad, so my handwriting never leaves it.
+**TL;DR**: I write Greek by hand on my iPad with an Apple Pencil and wanted it as typed text, in any app. Apple's handwriting recognition doesn't support Greek, and I couldn't find an app I could try without paying first. So I built GreekInk, a keyboard where I write on a strip at the bottom of the screen and the words appear where the cursor is. Everything runs on the iPad, so nothing I write gets sent anywhere.
 
 ## The problem
 
