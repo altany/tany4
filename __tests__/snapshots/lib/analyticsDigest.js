@@ -72,6 +72,7 @@ describe('buildReport', () => {
     referrers: [{ name: '', visitors: 20 }, { name: 'www.linkedin.com', visitors: 5 }],
     countries: [{ name: 'GR', visitors: 12 }],
     outbound: [{ name: '/download/TaniaPapazafeiropoulou-CV.pdf', pageviews: 3 }],
+    spam: [{ name: 'aocr.org', visitors: 8 }],
   }
   const cloudflare = {
     current: { pageviews: 80, visits: 30, sampleInterval: 1, loadTimeMs: 1200, loadTimeSamples: 400 },
@@ -89,6 +90,7 @@ describe('buildReport', () => {
     expect(text).toContain('Greece: 12')
     expect(text).toContain('Fixing the app I built for my dog (/blog/posts/marios-helper-v2): 4')
     expect(text).toContain('CV (PDF): 3')
+    expect(text).toContain('Left out as referrer spam:\n  aocr.org: 8')
     expect(text).toContain('Cloudflare counted 30 visits (up 50% on the week before)')
     expect(text).toContain("page views. Page load time is Cloudflare's median of 400 measured page loads.")
     expect(text).toContain('sampled estimates')

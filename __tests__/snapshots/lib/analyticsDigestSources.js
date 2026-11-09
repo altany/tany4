@@ -63,6 +63,7 @@ const vercelFetch = (calls) => async (input) => {
     referrerHostname: [{ referrerHostname: '', visitors: 20 }],
     country: [{ country: 'GR', visitors: 12 }],
   }
+  if (p.filter === "referrerHostname eq 'aocr.org'") return json({ data: [{ referrerHostname: 'aocr.org', visitors: 5 }] })
   return json({ data: rows[p.by] })
 }
 
@@ -80,6 +81,10 @@ describe('getVercelWeek', () => {
     const daily = calls.filter((u) => u.searchParams.get('by') === 'day')
     expect(daily).toHaveLength(2)
     expect(daily.every((u) => u.searchParams.get('filter').includes("not startswith(requestPath,'/out/')"))).toBe(true)
+    // Referrer spam is left out of every number and counted on its own
+    const spamQuery = (u) => u.searchParams.get('filter') === "referrerHostname eq 'aocr.org'"
+    expect(calls.filter((u) => !spamQuery(u)).every((u) => u.searchParams.get('filter').includes("referrerHostname ne 'aocr.org'"))).toBe(true)
+    expect(result.spam).toEqual([{ name: 'aocr.org', visitors: 5 }])
 
     expect(result.totals).toEqual({ visitors: 40, pageviews: 90 })
     expect(result.previousTotals.visitors).toBe(50)
