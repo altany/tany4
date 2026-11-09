@@ -13,6 +13,8 @@ Every paragraph should serve one of the two. Leave out:
 
 How she writes: simple, clear, plain words, short sentences, first person, like talking to someone. Say why, not only what, and in her own reasons. Call things by their plain name (a notification, not "a bark"). Quote her own messages as she wrote them (typos fixed). English posts have no Greek text.
 
+Sentences in a paragraph follow on from each other, in the order she would think them: each one picks up from the one before (the same subject, or a "so", "but", "also", "because"). Don't write a paragraph as a list of separate facts. If a sentence could move to another place in the paragraph without changing anything, connect it to its neighbours or move it to where it belongs.
+
 What goes in a post:
 
 - **Her real process.** Describe what she actually did, not what seems likely. If you don't know how she did something, ask.
